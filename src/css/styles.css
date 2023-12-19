@@ -1,0 +1,309 @@
+/* body {
+    margin: 0;
+}
+.title {
+    background-color: red;
+    color: #fff;
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.custom-table,
+.custom-td {
+
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 10px;
+}
+
+.custom-table th {
+    background-color: mediumaquamarine;
+    color: #fff;
+}
+.custom-table tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+.main-heading {
+    padding: 30px;
+    font-size: 22px;
+    margin: 20px auto;
+    text-align: center;
+}
+.active {
+    background-color: cornflowerblue;
+    color: #fff;
+    border: 2px solid red;
+}
+
+.form-text {
+    border: 2px solid red;
+}
+
+
+.btn {
+    min-width: 150px;
+    background-color: crimson;
+    color: #fff;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: rgb(130, 189, 248);
+}
+.btn.btn-warning {
+    background-color: orange;
+}
+
+.btn:disabled {
+    background-color: darkgrey;
+    cursor: not-allowed;
+}
+.top_nav {
+
+    display: flex;
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.top_nav .navig {
+
+    margin: 15px;
+    padding: 20px;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}*/
+.loader-container {
+    height: 100vh;
+ 
+    background-color: rgb(174, 191, 191);
+
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    /* align-items: center; */
+}
+
+.comments-container {
+    max-width: 450px;
+    margin: auto;
+}
+.comments {
+    padding: 20px 0;
+    border-bottom:  solid 2px  #ccc;
+ 
+} 
+ body {
+    padding: 50px;
+    background-color: #cacbda;
+    color: #0d2a32;
+}
+.todo-input-container input{
+    padding: 10px;
+    border: 2px sollid #fff;
+    border-radius: 5px;
+    outline: none;
+}
+.todo-input-container .btn {
+    margin-left: 10px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+.todo-list {
+    padding: 0;
+    list-style: none;
+    max-width: 350px;
+}
+
+.todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333;
+    background-color: #61dafb;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+} 
+
+.loader-container {
+    height: 100hv;
+   
+    background-color: rgb(195, 204, 204);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-comment {
+    background-color: #61dafb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: #333;
+}
+.single-comment
+.samoID {
+    background-color: blueviolet;
+    padding: 12px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.users-container {
+    min-width: 900px;
+    /* background-color: #61dafb; */
+}
+
+.users-container th,
+.users-container td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid rgb(156, 161, 199);
+    padding-right: 30px;
+}
+
+.users:nth-child(even) {
+
+    border: 1px solid rgb(156, 161, 199);
+    padding: 10px;
+
+    background-color: rgb(156, 161, 199);
+}
+
+.users td {
+
+    padding: 5px 20px;
+
+}
+
+
+.korisnik {
+    display: flex;
+    justify-content: space-between;
+
+    
+
+    /* width: 750px; */
+    background-color: #61dafb;
+}
+.korisnik h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px 10px;
+    color: darkslateblue;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+.korisnik p {
+    padding: 10px 10px;
+    font-size: 12px;
+
+}
+
+.korisnik div {
+    width: 250px;
+    padding: 0 10px;
+    /* padding: 8px; */
+    background-color: rgb(184, 205, 227);
+    color: darkslategrey;
+    border-bottom: 2px solid #7272ab;
+}
+
+.korisnik li {
+    list-style: none;
+    padding: 10px;
+}
+
+.lista {
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+.glavni {
+    display: flex;
+}
+
+.glavni h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande';
+    text-align: center;
+    background-color: antiquewhite;
+    color: darkslategrey;
+}
+
+/* .karusel img{
+    height: 460px;
+    color: rgb(250, 155, 30);
+    
+    font-size: 18px;
+    text-align: center;
+    background-color: #61dafb;
+   } */
+.vajari {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid rgb(81, 88, 137);
+   
+}
+.vajari .vajar-opis p, 
+.vajari .vajar-opis h2{
+   width: 300px;
+   
+    padding: 15px;
+}
+.vajar-slika {
+text-align: center;
+padding: 15px;
+}
+.upis-todo {
+    background-color: aliceblue;
+}
+
+
+.tacke2 {
+    margin-top: 460px;
+    top: 8px;
+    width: 1960px;
+    display: block;
+    position: absolute;
+    border-bottom: 16px dotted;
+    animation: move2 5s infinite linear;
+  
+}
+
+
+
+
+@keyframes move2 {
+    from {
+        transform: translateX(1%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+.zaDigitron {
+   margin: 0px 150px;
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+}
+.form-tekst {
+    border: 2px solid green;
+}
+.form-tekst:hover {
+    border-color: #61dafb;
+    background-color: #ccc;
+}

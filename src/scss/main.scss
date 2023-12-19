@@ -1,0 +1,577 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.facts {
+    display: flex;
+    justify-content: center;
+    
+
+
+    width: 100%;
+    height: 900px;
+   
+    
+   background-color: #006064;
+   
+    color: #b2ebf2;
+    font-size: 30px;
+    text-shadow: 3px 3px 15px black;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+    // padding-top: 10PX;
+    font-weight: bold;
+    .table {
+        width: 700px;
+        text-align: center;
+    }
+    hr {
+        border: 1px solid #4dd0e1;
+    }
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    background-color: #293629;
+    width: 800px;
+}
+
+.loader {
+    margin: auto;
+    padding-top: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.history {
+    font-size: 28px;
+    text-align: center;
+    height: 80px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.paper {
+    display: flex;
+    flex-basis: auto;
+    margin-top: 8px;
+
+    height: 35px;
+    justify-items: center;
+    width: 250px;
+
+
+    .base {
+        justify-items: center;
+
+        height: 30px;
+        padding-top: 11px;
+        padding-left: 15px;
+        font-size: 22px;
+        color: dodgerblue;
+
+    }
+}
+
+
+
+.place {
+
+    justify-content: space-between;
+
+    width: 600px;
+    height: 430px;
+    margin: auto;
+    background-color: #bdd8ee;
+    padding: 30px 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+
+
+    margin-top: 10px;
+
+
+    .search {
+        width: 300px;
+    }
+
+
+}
+
+
+.drzava {
+    cursor: pointer;
+
+    &:hover {
+        color: rgb(255, 221, 86);
+        font-weight: bold;
+        text-shadow: 2px 2px 12px black;
+    }
+}
+
+
+
+.tabelaZemlje {
+
+    margin: auto;
+
+
+
+    width: 800px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .razmak {
+        height: 70px;
+    }
+
+    .results {
+        background-color: #bbdefb;
+        font-size: 18px;
+    }
+
+    .navod {
+        font-size: 24px;
+
+        display: flex;
+        align-content: flex-start;
+
+        width: 120px;
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: #e5e4e7;
+        }
+    }
+
+    .nameComm {
+        font-size: 28px;
+        width: 650px;
+    }
+
+    .history {
+        font-size: 28px;
+        text-align: center;
+        height: 60px;
+    }
+
+    .celebrity {
+        text-transform: capitalize;
+        text-align: left;
+    }
+
+    .celebrity,
+    .networth {
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .historyPerson {
+        font-weight: bold;
+        font-size: 30px;
+        cursor: pointer;
+
+        &:hover {
+            text-shadow: 1px 1px 3px #64b5f6;
+        }
+
+
+    }
+
+    .dictionary {
+        width: 800px;
+        font-size: 28px;
+    }
+
+    .nameComm {
+        font-size: 24px;
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            padding: 0;
+        }
+    }
+
+    .more {
+        display: block;
+        align-items: end;
+        width: 120px;
+        // text-align: right;
+        color: #1976d2;
+        cursor: pointer;
+        font-size: 24px;
+
+        &:hover {
+            color: #64b5f6;
+        }
+    }
+
+    img {
+        width: 700px;
+    }
+
+    .imgRobot {
+        width: 300px;
+    }
+
+    hr {
+
+
+        border: 2px solid #6a757e;
+    }
+
+    td {
+        font-size: 24px;
+    }
+
+
+}
+
+.mainDiv {
+    background-color: #ffe0b2;
+
+}
+
+
+
+
+
+
+
+.jokesMain {
+    background-color: #b2ebf2;
+    width: 500px;
+    border-radius: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    th {
+        font-size: 32px;
+    }
+
+    td {
+        padding: 25px;
+        font-size: 34px;
+        font-family: 'Arial Narrow Bold', sans-serif;
+
+        img {
+            width: 500px;
+        }
+    }
+
+    .pun {
+        text-align: center;
+        font-size: 34px;
+        font-weight: bold;
+    }
+}
+
+.jokesText {
+    display: flex;
+    width: 600px;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    th {
+        font-size: 32px;
+    }
+
+    td {
+        padding: 25px;
+        font-size: 34px;
+        font-family: 'Arial Narrow Bold', sans-serif;
+
+    }
+
+    .created {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+.poznatiMain {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid black;
+    width: 1200px;
+    height: 1650px;
+}
+
+
+
+.punapi {
+    width: 500px;
+    border-radius: 10px;
+    background-color: #fff8e1;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    th {
+        font-size: 28px;
+        color: rgb(43, 127, 127);
+        text-align: center;
+    }
+
+    td {
+        font-size: 28px;
+        padding: 2px 20px;
+    }
+}
+
+.jokeMain {
+    border-radius: 12px;
+    width: 600px;
+    // height: 500px;
+    margin: auto;
+    background-color: #f9fbe7;
+    padding: 20px 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .jokeAnswer,
+    .jokeAns {
+        font-weight: bold;
+        font-size: 28px;
+        color: #1a237e;
+    }
+
+    .jokeAnswer {
+        &:hover {
+            color: #ff8f00;
+        }
+    }
+}
+
+.trivia {
+    width: 600px;
+    height: 900px;
+    margin: auto;
+    background-color: #bdd8ee;
+    padding: 30px 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .category {
+        width: 300px;
+        height: 40px;
+        margin-top: 10px;
+        background-color: #80deea;
+        border-radius: 7px;
+        font-size: 24px;
+        padding: 5px 15px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #26c6da;
+        }
+    }
+
+    .triviaAnswer {
+        &:hover {
+            color: #388e3c;
+        }
+    }
+
+    .triviaAnswer,
+    .triviaAns {
+        font-weight: bold;
+        font-size: 28px;
+        color: #1a237e;
+    }
+}
+
+.dadJokes {
+    background-color: #c8e6c9;
+    width: 600px;
+    font-size: 29px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .created {
+        font-size: 20px;
+    }
+}
+
+
+.footer {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    padding-top: 450px;
+    height: 480px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .place {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        width: 352px;
+
+    }
+
+    .jokesText {
+        display: block;
+        width: 358px;
+
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        th {
+            font-size: 22px;
+        }
+
+        td {
+            padding: 8px;
+            font-size: 20px;
+
+
+        }
+    }
+
+    .trivia {
+        width: 358px;
+
+        .triviaAnswer {
+            font-size: 22px;
+
+        }
+
+        .triviaAns {
+            font-size: 22px;
+        }
+
+        .category {
+            font-size: 20px;
+            height: 36px;
+        }
+    }
+
+    .facts {
+      
+        font-size: 18px;
+        text-shadow: 1px 1px 3px black;
+        .table {
+            width: 340px;
+            td {
+                padding: 0px 5px;
+            }
+         
+        }
+    }
+
+    .jokeMain {
+        width: 358px;
+        border-radius: 0;
+
+        .jokeAnswer {
+            font-size: 22px;
+
+        }
+
+        .jokeAns {
+            font-size: 22px;
+        }
+
+
+    }
+
+    .tabelaZemlje {
+        width: 350px;
+
+        .razmak {
+            height: 20px;
+        }
+
+        .history,
+        .historyPerson {
+            font-size: 20px;
+            height: 40px;
+        }
+
+
+        .celebrity {
+            font-size: 22px;
+            padding-left: 8px;
+        }
+
+        .dictionary {
+            padding-left: 8px;
+            font-size: 20px;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        .imgRobot {
+            width: 200px;
+        }
+
+        .navod,
+        .more {
+            padding-left: 8px;
+            font-size: 16px;
+            width: 90px;
+        }
+
+        .nameComm {
+            padding-left: 8px;
+            font-size: 20px;
+            width: 260px;
+        }
+
+        .networth {
+            font-size: 24px;
+        }
+    }
+
+    .dadJokes {
+
+        width: 358px;
+        font-size: 18px;
+
+        .created {
+            font-size: 14px;
+        }
+
+        hr {
+            border: 1px solid;
+        }
+    }
+
+    .mainJoke {
+        width: 358px;
+        font-size: 20px;
+    }
+
+    .jokesMain {
+
+        width: 358px;
+        border-radius: 0;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        th {
+            font-size: 20px;
+        }
+
+        td {
+            padding: 15px;
+            font-size: 20px;
+
+
+            img {
+                width: 350px;
+            }
+        }
+
+        .pun {
+            font-size: 22px;
+        }
+    }
+
+}
