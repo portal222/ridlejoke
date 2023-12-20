@@ -77,8 +77,8 @@ const ResultsAdvice = () => {
                              {searchStringValue} Advice
                             </th>
                     </tr>
-                    <tr>
-                        <th></th>
+                    <tr className="results">
+                        <th>Number of Advice: {results}</th>
                     </tr>
                     <tr>
                         <th></th>

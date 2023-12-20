@@ -90,14 +90,11 @@ const CatProb = () => {
 
                     </tr>
                     <tr>
-                        <td>{jokes.answer}</td>
+                        <td
+                        className="borderGif">
+                            {jokes.answer}</td>
                     </tr>
-                    <tr>
-                      
-                      <hr></hr>
-                      
-
-                  </tr>
+               
                   <tr>
                     <td className="pun">
                         Pun

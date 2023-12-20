@@ -64,19 +64,18 @@ const DadJokes = () => {
                 </tr>
             </thead>
             {facts.map((fact) => (
-                <tbody>
+                <tbody key={fact.joke}>
               
                     <tr>
                       
-                        <td>{fact.joke}</td>
+                        <td
+                        className="border">
+                            {fact.joke}</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <hr></hr>
-                        </td>
-                    </tr>
+                 
                 
       
+                  
                 </tbody>
             ))}
      

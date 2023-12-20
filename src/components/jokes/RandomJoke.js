@@ -64,7 +64,7 @@ const RandomJoke = () => {
                     </tr>
                     <tr>
                         <th >
-                            Random Jokes:</th>
+                            Random Jokes</th>
                     </tr>
 
 
@@ -80,16 +80,14 @@ const RandomJoke = () => {
                     >
                     
                         <tr>
-                            <td >{dataObj.joke}</td>
+                            <td 
+                            className="border">
+                                {dataObj.joke}</td>
                         </tr>
                       
                    
 
-                        <tr>
-                            <td >
-                                <hr></hr>
-                            </td>
-                        </tr>
+                     
                     </tbody>
 
                 ))}

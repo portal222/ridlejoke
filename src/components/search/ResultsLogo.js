@@ -87,8 +87,8 @@ const ResultsCelebs = () => {
                         >Logo {searchStringValue}</th>
                     </tr>
                     <tr className="results">
-                        <th>Number of Logo:</th>
-                        <th>{results}</th>
+                        <th>Number of Logo:
+                        {results}</th>
                     </tr>
 
                 </thead>

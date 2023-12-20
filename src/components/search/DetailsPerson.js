@@ -69,9 +69,7 @@ const DetailsPerson = (props) => {
                             <SearchPlace />
                         </th>
                     </tr>
-                    <tr>
-                        <th className="razmak"></th>
-                    </tr>
+                 
 
 
                 </thead>

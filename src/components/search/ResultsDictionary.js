@@ -15,7 +15,7 @@ const ResultsDictionary = () => {
     const [dictionary, setDictionary] = useState([]);
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [robot, setRobot] = useState([]);
+    
 
 
     const globalCtx = useContext(GlobalContext);
@@ -23,7 +23,7 @@ const ResultsDictionary = () => {
 
     useEffect(() => {
         getDictionary(searchStringValue);
-        getRobot(searchStringValue);
+      
     }, [searchStringValue]);
     console.log("iz resultDictionary searchStringValue:", searchStringValue)
  
@@ -53,19 +53,7 @@ const ResultsDictionary = () => {
         
     };
 
-    const getRobot = async (searchStringValue) => {
-        const url = `https://robohash.org/${searchStringValue}.png`
-     
 
-        try {
-            const response = await axios.get(url);
-            const data = response;
-            console.log("robot randum slike", data)
-            setRobot(url)
-        } catch (err) {
-            setError(err);
-        }
-    };
 
     if (isLoading) {
         return <Loader />
@@ -110,11 +98,7 @@ const ResultsDictionary = () => {
                            
                            <td className="dictionary">{dictionary.definition}</td>
                        </tr>
-                       <tr>
-                        <td>
-                            <img src={robot}></img>
-                        </td>
-                       </tr>
+                 
 
                         <tr>
                             <td >

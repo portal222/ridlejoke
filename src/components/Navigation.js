@@ -65,7 +65,7 @@ const Navigation = () => {
       <HashRouter basename="/">
         <div >
           <ThemeProvider
-          className="navigation"
+   
            theme={theme}>
 
             <NavLink to="/">

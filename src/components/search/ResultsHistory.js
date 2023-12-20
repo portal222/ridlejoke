@@ -78,6 +78,9 @@ const ResultsHistory = () => {
                     <tr>
                         <th className="history">Historical Year {searchStringValue}</th>
                     </tr>
+                    <tr className="results">
+                        <th>Number of History Events: {results}</th>
+                    </tr>
 
 
                 </thead>

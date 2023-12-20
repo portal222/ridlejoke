@@ -19,7 +19,7 @@ const SearchPlace = () => {
             <SearchLogo placeholder={'Search Logo'} linkTo={'/logo'}  />
             <Dictionary placeholder={'Search Word'} linkTo={'/dictionary'}  />
             <SearchAdvice placeholder={'Search Advice'} linkTo={'/advice'} />
-            <hr></hr>
+         
             <h2>Search History</h2>
 
             <SearchHistory placeholder={'Year'} linkTo={'/history'}  />

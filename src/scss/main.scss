@@ -6,15 +6,15 @@ body {
 .facts {
     display: flex;
     justify-content: center;
-    
+
 
 
     width: 100%;
     height: 900px;
-   
-    
-   background-color: #006064;
-   
+
+
+    background-color: #006064;
+
     color: #b2ebf2;
     font-size: 30px;
     text-shadow: 3px 3px 15px black;
@@ -22,10 +22,12 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
     // padding-top: 10PX;
     font-weight: bold;
+
     .table {
         width: 700px;
         text-align: center;
     }
+
     hr {
         border: 1px solid #4dd0e1;
     }
@@ -138,6 +140,7 @@ body {
         align-content: flex-start;
 
         width: 120px;
+        padding-left: 5px;
     }
 
     tr {
@@ -149,6 +152,7 @@ body {
     .nameComm {
         font-size: 28px;
         width: 650px;
+        padding-left: 5px;
     }
 
     .history {
@@ -183,6 +187,7 @@ body {
     .dictionary {
         width: 800px;
         font-size: 28px;
+        padding-left: 10px;
     }
 
     .nameComm {
@@ -247,7 +252,7 @@ body {
 .jokesMain {
     background-color: #b2ebf2;
     width: 400px;
-    border-radius: 10px;
+
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     th {
@@ -264,6 +269,10 @@ body {
         }
     }
 
+    .borderGif {
+        border-bottom: 2px solid rgb(103, 103, 188);
+    }
+
     .pun {
         text-align: center;
         font-size: 34px;
@@ -273,7 +282,7 @@ body {
 
 .jokesText {
     display: flex;
-   justify-content: space-around;
+    justify-content: space-around;
     width: 1700px;
 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -393,8 +402,23 @@ body {
     font-size: 24px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-    .created {
+    .border {
+        border-bottom: 1px solid #4db6ac;
+
+
+    }
+
+    .borderChuk {
+        border-bottom: 1px solid #4db6ac;
+
         font-size: 20px;
+    }
+
+
+
+    img {
+        width: 700px;
+        text-align: center;
     }
 }
 
@@ -453,15 +477,17 @@ body {
     }
 
     .facts {
-      
+
         font-size: 18px;
         text-shadow: 1px 1px 3px black;
+
         .table {
             width: 340px;
+
             td {
                 padding: 0px 5px;
             }
-         
+
         }
     }
 
@@ -515,15 +541,15 @@ body {
 
         .navod,
         .more {
-            padding-left: 8px;
+            padding-left: 4px;
             font-size: 16px;
-            width: 90px;
+            width: 95px;
         }
 
         .nameComm {
-            padding-left: 8px;
+            padding-left: 4px;
             font-size: 20px;
-            width: 260px;
+            width: 255px;
         }
 
         .networth {
