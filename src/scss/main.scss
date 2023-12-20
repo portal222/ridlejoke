@@ -246,7 +246,7 @@ body {
 
 .jokesMain {
     background-color: #b2ebf2;
-    width: 500px;
+    width: 400px;
     border-radius: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -273,7 +273,8 @@ body {
 
 .jokesText {
     display: flex;
-    width: 600px;
+   justify-content: space-around;
+    width: 1700px;
 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -328,7 +329,7 @@ body {
 
 .jokeMain {
     border-radius: 12px;
-    width: 600px;
+    width: 500px;
     // height: 500px;
     margin: auto;
     background-color: #f9fbe7;
@@ -388,8 +389,8 @@ body {
 
 .dadJokes {
     background-color: #c8e6c9;
-    width: 600px;
-    font-size: 29px;
+    width: 500px;
+    font-size: 24px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     .created {
