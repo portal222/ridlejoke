@@ -22,7 +22,7 @@ const Trivia = (props) => {
     }, []);
 
     const getAnswer = async () => {
-        const url = `https://api.api-ninjas.com/v1/trivia?category=${triviaCat}`;
+        const url = `https://api.api-ninjas.com/v1/trivia?category=artliterature`;
 
         try {
             const response = await axios.get(url,
@@ -53,7 +53,7 @@ const Trivia = (props) => {
 
     return (
         <div className="trivia" >
-            <h3>{triviaCat}</h3>
+            <h3>Art & Literature</h3>
             <p>{answer.title}</p>
       
             <Collapse

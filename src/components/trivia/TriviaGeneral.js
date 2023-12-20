@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import axios from 'axios';
 import { Collapse } from "antd";
+import Loader from "../Loader";
 
-const Ridles = () => {
+
+
+const Trivia = (props) => {
 
     const [answer, setAnswer] = useState([]);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    const params = useParams();
+    
 
     useEffect(() => {
         getAnswer();
     }, []);
 
     const getAnswer = async () => {
-        const url = "https://api.api-ninjas.com/v1/riddles";
+        const url = `https://api.api-ninjas.com/v1/trivia?category=general`;
 
         try {
             const response = await axios.get(url,
@@ -22,9 +31,11 @@ const Ridles = () => {
                     'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                 }
             });
-            const data = response.data;
-            setAnswer(data[0]);
-            console.log("podaci iz zagonetki", data);
+            const data = response.data[0];
+            setAnswer(data);
+            console.log("podaci iz  trivia general", data);
+            setIsLoading(false);
+
         } catch (err) {
             setError(err);
         }
@@ -32,13 +43,19 @@ const Ridles = () => {
     //ubaceni antd dodatak da bi se pojavio odgovor
     const text = answer.answer
 
-
+    if (isLoading) {
+        return (
+            <div className="trivia">
+             <Loader />   
+            </div>
+        )
+    } 
 
     return (
         <div className="trivia" >
-            <h2>Riddles</h2>
-            <h3>{answer.title}</h3>
-            {/* <span>{answer.airdate}</span> */}
+            <h3>General</h3>
+            <p>{answer.title}</p>
+      
             <Collapse
 
                 size="large"
@@ -47,7 +64,8 @@ const Ridles = () => {
                     children: <p className="triviaAns">{text}</p>,
                     showArrow: false,
                 }]} />
+               
         </div>
     )
 }
-export default Ridles;
+export default Trivia;
