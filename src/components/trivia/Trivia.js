@@ -55,7 +55,7 @@ const Trivia = (props) => {
         <div className="trivia" >
             <h3>{triviaCat}</h3>
             <p>{answer.title}</p>
-            {/* <span>{answer.airdate}</span> */}
+      
             <Collapse
 
                 size="large"

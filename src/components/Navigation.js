@@ -29,7 +29,7 @@ import Trivia from "./trivia/Trivia";
 import PickTrivia from "./trivia/PickTrivia";
 import ResultsAdvice from "./search/ResultsAdvice";
 import Ridles from "./trivia/Ridles";
-import QuestAnswer from "./trivia/QuestAnswer";
+
 // import SearchComp from "./search/SearchComp";
 import JokePlace from "./jokes/JokePlace";
 import SearchPlace from "./search/SearchPlace";
@@ -127,7 +127,7 @@ const Navigation = () => {
           <Route path="/trivia/:triviaCat" element={<Trivia />} />
           <Route path="/advice" element={<ResultsAdvice />} />
           <Route path="/ridles" element={<Ridles />} />
-          <Route path="/quiz" element={<QuestAnswer />} />
+       
 
         </Routes>
 

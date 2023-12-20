@@ -40,21 +40,14 @@ const PickTrivia = () => {
         const LinkTo = '/ridles';
         navigate(LinkTo);
     }
-    const handleQuiz = () => {
-        console.log("klik na quiz");
-        const LinkTo = '/quiz';
-        navigate(LinkTo);
-    }
+ 
 
 
 
     return (
         <>
             <div className="trivia">
-                <div onClick={() => handleQuiz()}
-                    className="category">
-                    Jopardi
-                </div>
+              
                 <div onClick={() => handleRidles()}
                     className="category">
                     Ridles
