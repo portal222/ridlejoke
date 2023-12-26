@@ -51,7 +51,7 @@ const ChukNorris = () => {
     const name = Math.random();
 
     const getRobot = async () => {
-        const url = `https://robohash.org/set_set2/${name}.png`
+        const url = `https://robohash.org/set_set4/${name}.png`
 
 
         try {

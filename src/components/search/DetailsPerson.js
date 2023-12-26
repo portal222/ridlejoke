@@ -15,6 +15,7 @@ const DetailsPerson = (props) => {
     const [error, setError] = useState(null);
     const [persons, setPersons] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [celebs, setCelebs] = useState([]);
  
 
     const params = useParams()
@@ -28,6 +29,7 @@ const DetailsPerson = (props) => {
 
     const getPerson = async () => {
         const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${personName}`;
+        const urlCel = `https://api.api-ninjas.com/v1/celebrity?name=${personName}`;
 
         try {
             const response = await axios.get(url,
@@ -36,13 +38,27 @@ const DetailsPerson = (props) => {
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
                 }
+                
+
+            );
+
+            const responseCel = await axios.get(urlCel,
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                }
+                
+
             );
             const data = response.data;
+            const dataCel = responseCel.data;
 
 
 
             console.log("detalji istorijske persone", data)
             setPersons(data);
+            setCelebs(dataCel);
 
             setIsLoading(false);
 
@@ -398,10 +414,48 @@ const DetailsPerson = (props) => {
                             </td>
                         </tr>
                     </tbody>
+                   
 
 
                 ))}
             </table >
+            <table className="tabelaZemlje">
+                {celebs.map((celeb) => (
+
+                    <tbody>
+                                      <tr>
+                            <td className="navod">Height:</td>
+                            <td className="nameComm">{celeb.height}</td>
+
+                        </tr>
+                        <tr>
+                            <td className="navod">Occupation:</td>
+                            <td className="nameComm">
+                                <ul>
+                                    <li>{celeb.occupation?.[0]}</li>
+                                    <li>{celeb.occupation?.[1]}</li>
+                                    <li>{celeb.occupation?.[2]}</li>
+                                    <li>{celeb.occupation?.[3]}</li>
+                                    <li>{celeb.occupation?.[4]}</li>
+                                    <li>{celeb.occupation?.[5]}</li>
+                                    <li>{celeb.occupation?.[6]}</li>
+                                    <li>{celeb.occupation?.[7]}</li>
+                                    <li>{celeb.occupation?.[8]}</li>
+                                    <li>{celeb.occupation?.[9]}</li>
+                                    <li>{celeb.occupation?.[10]}</li>
+                                    <li>{celeb.occupation?.[11]}</li>
+                                    <li>{celeb.occupation?.[12]}</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="navod">Net worth:</td>
+                            <td className="networth">{celeb.net_worth}</td>
+                        </tr>
+
+                    </tbody>
+                ))}
+                 </table>
           
 
         </>
