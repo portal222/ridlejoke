@@ -132,7 +132,7 @@ const Navigation = () => {
           <Route path="/general" element={<TriviaGeneral />} />
           <Route path="/food" element={<TriviaFood />} />
           <Route path="/people" element={<TriviaPeople />} />
-          <Route path="/history" element={<TriviaHistory />} />
+          <Route path="/holidays" element={<TriviaHistory />} />
           <Route path="/geography" element={<TriviaGeography />} />
           <Route path="/entertainment" element={<TriviaEntertainment />} />
           <Route path="/toys" element={<TriviaToys />} />

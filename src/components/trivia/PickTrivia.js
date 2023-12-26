@@ -51,7 +51,7 @@ const PickTrivia = () => {
     }
     const handleHistory = () => {
       
-        const LinkTo = '/history';
+        const LinkTo = '/holidays';
         navigate(LinkTo);
     }
     const handleGeography = () => {
