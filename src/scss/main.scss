@@ -82,21 +82,24 @@ body {
 
 .place {
 
-    justify-content: space-between;
-
-    width: 600px;
+  
+    text-align: center;
+    width: 900px;
     height: 430px;
     margin: auto;
     background-color: #bdd8ee;
-    padding: 30px 15px;
+ 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
 
-
+    padding-top: 10px;
     margin-top: 10px;
 
 
     .search {
-        width: 300px;
+        width: 250px;
+        margin: auto;
+        background-color: #add3f1;
+        padding: auto;
     }
 
 
@@ -430,6 +433,87 @@ body {
     height: 480px;
 }
 
+
+.metropolitanMain {
+    font-family: Tahoma, sans-serif;
+    margin: auto;
+    width: 900px;
+    .tableRow {
+        width: 900px;
+     
+    }
+
+    .results {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .metroTitle {
+        text-align: center;
+        font-weight: bold;
+        font-size: 28px;
+    }
+
+    .forLink {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .imgMetro {
+        width: 900px;
+        border-radius: 5px;
+    }
+
+    td {
+        font-size: 24px;
+        width: 900px;
+        padding: 7px;
+    }
+
+    .dropdown {
+        font-size: 30px;
+        font-weight: bold;
+
+        text-align: center;
+
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+
+        .dropdown-content {
+            display: none;
+            font-size: 22px;
+            font-weight: lighter;
+            position: absolute;
+
+
+            background-color: #f9f9f9;
+            min-width: 40px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 1px 20px;
+
+            // z-index: 1;
+            a {
+                font-size: 16px;
+            }
+
+        }
+
+        &:hover {
+            color: #fdc714;
+            text-shadow: 2px 2px 7px black;
+        }
+
+        &:hover .dropdown-content {
+            display: block;
+            color: black;
+            text-shadow: none;
+
+
+        }
+    }
+}
+
 @media screen and (max-width: 500px) {
 
     .place {
@@ -598,6 +682,85 @@ body {
 
         .pun {
             font-size: 22px;
+        }
+    }
+    .metropolitanMain {
+       
+        width: 350px;
+        .tableRow {
+            width: 350px;
+         
+        }
+    
+        .results {
+            padding: 7px;
+            font-size: 18px;
+        }
+    
+        .metroTitle {
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+        }
+    
+        .forLink {
+            text-align: center;
+            font-size: 10px;
+        }
+    
+        .imgMetro {
+            width: 350px;
+            border-radius: 5px;
+        }
+    
+        td {
+            font-size: 17px;
+            width: 350px;
+            padding: 2px;
+        }
+    
+        .dropdown {
+            font-size: 24px;
+            font-weight: bold;
+    
+            text-align: center;
+    
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+    
+            .dropdown-content {
+                display: none;
+                font-size: 18px;
+                font-weight: lighter;
+                position: absolute;
+    
+    
+                background-color: #f9f9f9;
+                min-width: 40px;
+                max-width: 300px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                padding: 1px 10px;
+    
+                // z-index: 1;
+                a {
+                    font-size: 10px;
+                }
+    
+            }
+    
+            &:hover {
+                color: #fdc714;
+                text-shadow: 2px 2px 7px black;
+            }
+    
+            &:hover .dropdown-content {
+                display: block;
+                color: black;
+                text-shadow: none;
+    
+    
+            }
         }
     }
 

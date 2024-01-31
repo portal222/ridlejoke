@@ -27,10 +27,11 @@ import TriviaGeography from "./trivia/TriviaGeography";
 import TriviaEntertainment from "./trivia/TriviaEntertainment"; 
 import TriviaToys from "./trivia/TriviaToys";
 import TriviaMusic from "./trivia/TriviaMusic";
-import TriviaLanguage from "./trivia/TriviaLanguage"
-import TriviaReligion from "./trivia/TriviaReligion"
-import TriviaSport from "./trivia/TriviaSport"
-import TriviaMathematics from "./trivia/TriviaMathematics"
+import TriviaLanguage from "./trivia/TriviaLanguage";
+import TriviaReligion from "./trivia/TriviaReligion";
+import TriviaSport from "./trivia/TriviaSport";
+import TriviaMathematics from "./trivia/TriviaMathematics";
+import ResultsMetropolitan from "./search/ResultsMetropolitan";
 
 
 
@@ -141,6 +142,7 @@ const Navigation = () => {
           <Route path="/religion" element={<TriviaReligion />} />
           <Route path="/sport" element={<TriviaSport />} />
           <Route path="/mathematics" element={<TriviaMathematics />} />
+          <Route path="/metropolitan" element={<ResultsMetropolitan />} />
           
           
 
