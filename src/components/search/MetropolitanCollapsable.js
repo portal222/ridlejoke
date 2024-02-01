@@ -103,15 +103,14 @@ const MetropolitanCollapsable = (props) => {
                     <span className="dropdown-content">
                         <p>{metro.artistRole}</p>
                         <p>{metro.artistDisplayBio}</p>
-                        <p>    <a href={metro.artistWikidata_URL} target="_blank">
-                            {metro.artistWikidata_URL
-                            }
-                        </a></p>
-                        <p>
+                          <a href={metro.artistWikidata_URL} target="_blank">
+                        {metro.artistWikidata_URL}
+                        </a>
+                        <br></br>
                             <a href={metro.artistULAN_URL} target="_blank">
                                 {metro.artistULAN_URL}
                             </a>
-                        </p>
+                       
 
                     </span>
                 </td>

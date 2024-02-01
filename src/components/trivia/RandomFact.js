@@ -23,7 +23,7 @@ const RandomFact = () => {
   
 
     const getFacts = async () => {
-        const url = `https://api.api-ninjas.com/v1/facts?limit=5`;
+        const url = `https://api.api-ninjas.com/v1/facts?limit=3`;
 
         try {
             const response = await axios.get(url,
@@ -69,18 +69,19 @@ const RandomFact = () => {
 
 
 
-                {facts.map((dataObj) => (
 
 
 
-                    <tbody key={dataObj.fact}
+                    <tbody 
                     >
+                    {facts.map((dataObj) => (
                     
-                        <tr>
+                        <tr key={dataObj.fact}>
                             <td >{dataObj.fact}</td>
                         </tr>
                       
                    
+                      ))}
 
                         <tr>
                             <td >
@@ -89,9 +90,9 @@ const RandomFact = () => {
                         </tr>
                     </tbody>
 
-                ))}
 
             </table >
+ 
             </div>
          
         </>

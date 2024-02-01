@@ -4,7 +4,7 @@ const Footers = () => {
 return (
     <div className="footer">
         <hr></hr>
-        Walter ©®
+        Interval ©®
     </div>
 )
 }

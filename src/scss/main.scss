@@ -3,14 +3,21 @@ body {
     margin: 0px;
 }
 
+.slika {
+    background-color: #006064;
+}
+
 .facts {
-    display: flex;
-    justify-content: center;
+    margin: auto;
+
+    justify-items: center;
+    flex-direction: column;
+
 
 
 
     width: 100%;
-    height: 900px;
+    // height: 300px;
 
 
     background-color: #006064;
@@ -20,12 +27,37 @@ body {
     text-shadow: 3px 3px 15px black;
 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
-    // padding-top: 10PX;
+
     font-weight: bold;
 
     .table {
+        margin: auto;
         width: 700px;
         text-align: center;
+
+        td {
+            padding: 10px 5px;
+        }
+
+        .category {
+            text-align: left;
+            font-size: 24px;
+        }
+
+        .author {
+            cursor: pointer;
+            font-size: 26px;
+            text-align: right;
+            padding-bottom: 20px;
+            color: #9fefd6;
+
+            &:hover {
+                color: rgb(255, 221, 86);
+                font-weight: bold;
+                text-shadow: 2px 2px 8px black;
+            }
+        }
+
     }
 
     hr {
@@ -82,13 +114,13 @@ body {
 
 .place {
 
-  
+
     text-align: center;
     width: 900px;
     height: 430px;
     margin: auto;
     background-color: #bdd8ee;
- 
+
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
 
     padding-top: 10px;
@@ -99,7 +131,7 @@ body {
         width: 250px;
         margin: auto;
         background-color: #add3f1;
-        padding: auto;
+        // padding: auto;
     }
 
 
@@ -414,7 +446,7 @@ body {
     .borderChuk {
         border-bottom: 1px solid #4db6ac;
 
-        font-size: 20px;
+        font-size: 16px;
     }
 
 
@@ -438,9 +470,10 @@ body {
     font-family: Tahoma, sans-serif;
     margin: auto;
     width: 900px;
+
     .tableRow {
         width: 900px;
-     
+
     }
 
     .results {
@@ -470,6 +503,7 @@ body {
         padding: 7px;
     }
 
+
     .dropdown {
         font-size: 30px;
         font-weight: bold;
@@ -490,7 +524,8 @@ body {
             background-color: #f9f9f9;
             min-width: 40px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            padding: 1px 20px;
+            padding: 10px;
+
 
             // z-index: 1;
             a {
@@ -521,6 +556,7 @@ body {
         display: flex;
         flex-direction: column;
         width: 350px;
+        height: 500px;
 
     }
 
@@ -565,11 +601,20 @@ body {
         font-size: 18px;
         text-shadow: 1px 1px 3px black;
 
+
         .table {
             width: 340px;
 
-            td {
-                padding: 0px 5px;
+            tr {
+                padding: 4px;
+            }
+
+            .category {
+                font-size: 15px;
+            }
+
+            .author {
+                font-size: 16px;
             }
 
         }
@@ -646,6 +691,7 @@ body {
         width: 350px;
         font-size: 18px;
 
+        .borderChuk,
         .created {
             font-size: 14px;
         }
@@ -684,82 +730,84 @@ body {
             font-size: 22px;
         }
     }
+
     .metropolitanMain {
-       
+
         width: 350px;
+
         .tableRow {
             width: 350px;
-         
+
         }
-    
+
         .results {
             padding: 7px;
             font-size: 18px;
         }
-    
+
         .metroTitle {
             text-align: center;
             font-weight: bold;
             font-size: 22px;
         }
-    
+
         .forLink {
             text-align: center;
             font-size: 10px;
         }
-    
+
         .imgMetro {
             width: 350px;
             border-radius: 5px;
         }
-    
+
         td {
             font-size: 17px;
             width: 350px;
             padding: 2px;
         }
-    
+
         .dropdown {
             font-size: 24px;
             font-weight: bold;
-    
+
             text-align: center;
-    
+
             position: relative;
             display: inline-block;
             cursor: pointer;
-    
+
             .dropdown-content {
                 display: none;
                 font-size: 18px;
                 font-weight: lighter;
                 position: absolute;
-    
-    
+
+
                 background-color: #f9f9f9;
                 min-width: 40px;
                 max-width: 300px;
                 box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                padding: 1px 10px;
-    
+                padding: 10px;
+
                 // z-index: 1;
                 a {
                     font-size: 10px;
                 }
-    
+
             }
-    
+
             &:hover {
                 color: #fdc714;
                 text-shadow: 2px 2px 7px black;
             }
-    
+
             &:hover .dropdown-content {
                 display: block;
                 color: black;
                 text-shadow: none;
-    
-    
+
+
             }
         }
     }

@@ -10,6 +10,7 @@ import Loader from "../Loader";
 const Trivia = (props) => {
 
     const [answer, setAnswer] = useState([]);
+    const [answer2, setAnswer2] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -23,16 +24,25 @@ const Trivia = (props) => {
 
     const getAnswer = async () => {
         const url = `https://api.api-ninjas.com/v1/trivia?category=artliterature`;
+        const url2 = `https://api.api-ninjas.com/v1/trivia?category=artliterature`;
 
         try {
             const response = await axios.get(url,
-            {
-                headers: {
-                    'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
-                }
-            });
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                });
+            const response2 = await axios.get(url2,
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                });
             const data = response.data[0];
+            const data2 = response2.data[0];
             setAnswer(data);
+            setAnswer2(data2);
             console.log("podaci iz  trivia", data);
             setIsLoading(false);
 
@@ -42,20 +52,21 @@ const Trivia = (props) => {
     }
     //ubaceni antd dodatak da bi se pojavio odgovor
     const text = answer.answer
+    const text2 = answer2.answer
 
     if (isLoading) {
         return (
             <div className="trivia">
-             <Loader />   
+                <Loader />
             </div>
         )
-    } 
+    }
 
     return (
         <div className="trivia" >
             <h3>Art & Literature</h3>
             <p>{answer.title}</p>
-      
+
             <Collapse
 
                 size="large"
@@ -64,7 +75,17 @@ const Trivia = (props) => {
                     children: <p className="triviaAns">{text}</p>,
                     showArrow: false,
                 }]} />
-               
+            <p>{answer2.title}</p>
+
+            <Collapse
+
+                size="large"
+                items={[{
+                    label: <p className="triviaAnswer">{answer2.question}</p>,
+                    children: <p className="triviaAns">{text2}</p>,
+                    showArrow: false,
+                }]} />
+
         </div>
     )
 }

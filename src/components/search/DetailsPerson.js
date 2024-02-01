@@ -182,16 +182,17 @@ const DetailsPerson = (props) => {
                         <tr>
                             <td className="navod">Occupation:</td>
                             <td className="nameComm">
-                                {dataObj.info.occupation}
+                              
 
-                                {/* <ul>
-                                    <li>{dataObj.info.occupation?.[0]}</li>
+                                <ul>
+                                    <li>{dataObj.info.occupation || dataObj.info.occupation?.[0]}</li>
                                     <li>{dataObj.info.occupation?.[1]}</li>
                                     <li>{dataObj.info.occupation?.[2]}</li>
                                     <li>{dataObj.info.occupation?.[3]}</li>
                                     <li>{dataObj.info.occupation?.[4]}</li>
                                     <li>{dataObj.info.occupation?.[5]}</li>
-                                </ul> */}
+                                 
+                                </ul>
                             </td>
                         </tr>
                         <tr>
@@ -327,11 +328,6 @@ const DetailsPerson = (props) => {
                             <td className="nameComm">{dataObj.info.branch}</td>
                         </tr>
 
-                        {/* <tr>
-                            <td></td>
-                            <td>{dataObj.info.service/branch}</td>
-                        </tr> */}
-
                         <tr>
                             <td className="navod">Wars:</td>
                             <td className="nameComm">
@@ -404,7 +400,9 @@ const DetailsPerson = (props) => {
                         <tr>
                             <td className="navod">Website:</td>
                             <td className="nameComm">
-                                {dataObj.info.website}
+                               <a href={dataObj.info.website}>
+                               {dataObj.info.website}
+                               </a>
                             </td>
                         </tr>
                     

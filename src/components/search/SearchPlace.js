@@ -25,9 +25,9 @@ const SearchPlace = () => {
             </div>
 
 
-            <h2>Search History</h2>
 
             <div className="search">
+            <h2>Search History</h2>
                 <SearchHistory placeholder={'Year'} linkTo={'/history'} />
                 <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
                 <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
