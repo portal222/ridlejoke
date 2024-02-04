@@ -85,11 +85,13 @@ const MetropolitanCollapsable = (props) => {
                 <td >
                     <img
                         className="imgMetro"
-                        src={metro.primaryImage} alt=" ... no data for this number"
+                        src={metro.primaryImage} 
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null;
                             currentTarget.src = `./img/noPicture.png`;
-                        }} />
+                        }}
+                        alt=" ... no data for this number"
+                        />
                 </td>
             </tr>
             <tr>
