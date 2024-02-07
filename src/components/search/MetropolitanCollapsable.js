@@ -35,24 +35,9 @@ const MetropolitanCollapsable = (props) => {
         try {
 
             const response = await axios.get(url);
-
-
-
             const data = response.data;
-
-
-
             console.log("rezultat metropolitan", data)
-
-
             setMetro(data);
-
-
-
-
-
-
-
 
 
         } catch (err) {
@@ -85,13 +70,13 @@ const MetropolitanCollapsable = (props) => {
                 <td >
                     <img
                         className="imgMetro"
-                        src={metro.primaryImage} 
+                        src={metro.primaryImage}
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null;
                             currentTarget.src = `./img/noPicture.png`;
                         }}
                         alt=" ... no data for this number"
-                        />
+                    />
                 </td>
             </tr>
             <tr>
@@ -105,14 +90,14 @@ const MetropolitanCollapsable = (props) => {
                     <span className="dropdown-content">
                         <p>{metro.artistRole}</p>
                         <p>{metro.artistDisplayBio}</p>
-                          <a href={metro.artistWikidata_URL} target="_blank">
-                        {metro.artistWikidata_URL}
+                        <a href={metro.artistWikidata_URL} target="_blank">
+                            {metro.artistWikidata_URL}
                         </a>
                         <br></br>
-                            <a href={metro.artistULAN_URL} target="_blank">
-                                {metro.artistULAN_URL}
-                            </a>
-                       
+                        <a href={metro.artistULAN_URL} target="_blank">
+                            {metro.artistULAN_URL}
+                        </a>
+
 
                     </span>
                 </td>

@@ -102,9 +102,9 @@ const ResultsMetropolitan = () => {
                         </th>
                     </tr>
                     <tr >
-                        <th className="results"
-                        >Number of Objects: {prikaz}</th>
-                    </tr>
+                    <th className="results"
+                    >Number of Objects by name {prikaz}, by title {results}</th>
+                </tr>
                 </thead>
                 <tbody>
                     {metro.map((metroId) => (
@@ -123,9 +123,9 @@ const ResultsMetropolitan = () => {
                         </th>
                     </tr>
                     <tr >
-                        <th className="results"
-                        >Number of Objects: {results}</th>
-                    </tr>
+                    <th className="results"
+                    >Number of Objects by name {prikaz}, by title {results}</th>
+                </tr>
                 </thead>
                 <tbody>
                     {title.map((metroId) => (
@@ -147,17 +147,17 @@ const ResultsMetropolitan = () => {
                 </tr>
                 <tr >
                     <th className="results"
-                    >Number of Objects: {results + prikaz}</th>
+                    >Number of Objects by name {prikaz}, by title {results}</th>
                 </tr>
             </thead>
-            <tbody>
+          
                 {metro.map((metroId) => (
                     <TableRowMetro key={metroId} metropolitan={metroId} />
                 ))}
                 {title.map((metroId) => (
                     <TableRowMetroTitle key={metroId} metropolitan={metroId} />
                 ))}
-            </tbody>
+         
 
 
         </table>)

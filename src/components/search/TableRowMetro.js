@@ -52,7 +52,7 @@ const handleId = (metroId) => {
 
 
     return (
-        <>
+     <tbody>
             <tr>
                 <td className="colorName" >
                
@@ -89,7 +89,7 @@ const handleId = (metroId) => {
 
             {/* <div><BackToTop /></div> */}
 
-        </>
+      </tbody>
 
     );
 };
