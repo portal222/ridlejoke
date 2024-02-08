@@ -75,7 +75,7 @@ const MetropolitanCollapsable = (props) => {
                             currentTarget.onerror = null;
                             currentTarget.src = `./img/noPicture.png`;
                         }}
-                        alt=" ... no data for this number"
+                       
                     />
                 </td>
             </tr>
@@ -84,12 +84,13 @@ const MetropolitanCollapsable = (props) => {
                 <td className="dropdown">
                     <span>
 
-                        {/* {metro.artistDisplayName + " " + "(" + metro.artistBeginDate + "-" + metro.artistEndDate + ")"} */}
+                     
                         {metro.artistDisplayName}
                     </span>
                     <span className="dropdown-content">
                         <p>{metro.artistRole}</p>
                         <p>{metro.artistDisplayBio}</p>
+                        <p>{metro.artistBeginDate + " - " + metro.artistEndDate}</p>
                         <a href={metro.artistWikidata_URL} target="_blank">
                             {metro.artistWikidata_URL}
                         </a>

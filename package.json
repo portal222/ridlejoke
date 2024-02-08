@@ -46,7 +46,6 @@
     "prop-type": "^0.0.1",
     "prop-types": "^15.8.1",
     "react": "latest",
-    "react-bootstrap": "^2.7.4",
     "react-dom": "latest",
     "react-router-dom": "^6.10.0",
     "react-spinners": "^0.13.8",
