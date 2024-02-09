@@ -218,6 +218,7 @@ body {
 
 
     }
+
     .phonetics {
         font-size: 16px;
         background-color: #bcd0df;
@@ -226,8 +227,12 @@ body {
         margin-left: 10px;
         max-width: 150px;
         cursor: pointer;
-       
-       overflow: hidden;
+
+        overflow: hidden;
+    }
+
+    .logoImg {
+        max-width: 300px;
     }
 
     .dictionary {
@@ -665,6 +670,9 @@ body {
             font-size: 22px;
             padding-left: 8px;
         }
+        .logoImg {
+            max-width: 200px;
+        }
 
         .dictionary {
             padding-left: 8px;
@@ -695,14 +703,15 @@ body {
         .networth {
             font-size: 24px;
         }
+
         .phonetics {
             font-size: 10px;
-         
-          
+
+
             border-radius: 3px;
             margin-left: 5px;
             max-width: 100px;
-      
+
         }
     }
 

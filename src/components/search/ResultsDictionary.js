@@ -18,7 +18,7 @@ const ResultsDictionary = () => {
     const [dictionary2, setDictionary2] = useState([]);
     const [results, setResults] = useState([]);
     const [results2, setResults2] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
 
 
 
@@ -61,7 +61,7 @@ const ResultsDictionary = () => {
 
             console.log("prvi niz", results)
             console.log("drugi niz", results2)
-            setIsLoading(false);
+            // setIsLoading(false);
         } catch (err) {
             setError(err);
 
@@ -71,9 +71,9 @@ const ResultsDictionary = () => {
 
 
 
-    if (isLoading) {
-        return <Loader />
-    } else 
+    // if (isLoading) {
+    //     return <Loader />
+    // } else 
     if (results == 0 && results2 == 0) {
         return (
             <>
@@ -84,59 +84,59 @@ const ResultsDictionary = () => {
             </>
         )
     }
-    else if (results2 == 0) {
-        return (
-            <table className="tabelaZemlje">
-                <thead>
-                    <tr>
-                        <th>
-                            <SearchPlace />
+    // else if (results2 == 0) {
+    //     return (
+    //         <table className="tabelaZemlje">
+    //             <thead>
+    //                 <tr>
+    //                     <th>
+    //                         <SearchPlace />
 
-                        </th>
-                    </tr>
-                    <tr>
-                        <th className="results">
-                            Number of Objects {results}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+    //                     </th>
+    //                 </tr>
+    //                 <tr>
+    //                     <th className="results">
+    //                         Number of Objects {results}
+    //                     </th>
+    //                 </tr>
+    //             </thead>
+    //             <tbody>
                  
-                        <TableRowDictionary key={dictionary.phonetic} dictRow={dictionary} />
+    //                     <TableRowDictionary key={dictionary.phonetic} dictRow={dictionary} />
 
               
-                </tbody>
-            </table>
-        )
-    } else if (results == 0) {
-        return (
-            <table className="tabelaZemlje">
-                <thead>
-                    <tr>
-                        <th>
-                            <SearchPlace />
+    //             </tbody>
+    //         </table>
+    //     )
+    // } else if (results == 0) {
+    //     return (
+    //         <table className="tabelaZemlje">
+    //             <thead>
+    //                 <tr>
+    //                     <th>
+    //                         <SearchPlace />
 
-                        </th>
-                    </tr>
-                    <tr>
-                        <th className="results">
-                            Number of Objects {results2}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+    //                     </th>
+    //                 </tr>
+    //                 <tr>
+    //                     <th className="results">
+    //                         Number of Objects {results2}
+    //                     </th>
+    //                 </tr>
+    //             </thead>
+    //             <tbody>
                 
-                        <TableRowDictionary key={dictionary.id} dictRow={dictionary} />
+    //                     <TableRowDictionary key={dictionary.id} dictRow={dictionary} />
 
                 
-                    {dictionary2.map((dict2) => (
-                        <TableRowDictionary2 dictRow2={dict2} />
+    //                 {dictionary2.map((dict2) => (
+    //                     <TableRowDictionary2 dictRow2={dict2} />
 
-                    ))}
-                </tbody>
-            </table>
-        )
-    }
+    //                 ))}
+    //             </tbody>
+    //         </table>
+    //     )
+    // }
     return (
         <>
             <table className="tabelaZemlje">

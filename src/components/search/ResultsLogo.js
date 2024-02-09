@@ -15,7 +15,9 @@ import Loader from "../Loader";
 const ResultsCelebs = () => {
     const [error, setError] = useState(null);
     const [logo, setLogo] = useState([]);
+    const [logo2, setLogo2] = useState([]);
     const [results, setResults] = useState([]);
+    const [results2, setResults2] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
 
@@ -30,6 +32,7 @@ const ResultsCelebs = () => {
 
     const getLogos = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/logo?name=${searchStringValue}`;
+        const url2 = `https://autocomplete.clearbit.com/v1/companies/suggest?query=${searchStringValue}`;
 
         try {
             const response = await axios.get(url,
@@ -42,13 +45,22 @@ const ResultsCelebs = () => {
                 }
 
             );
+
+            const response2 = await axios.get(url2);
+
             const data = response.data;
+            const data2 = response2.data;
 
 
 
             console.log("rezultat Logoa", data)
+            console.log("drugi logo podaci", data2)
+
             setLogo(data);
+            setLogo2(data2);
             setResults(data.length);
+            setResults2(data2.length);
+
             setIsLoading(false);
         } catch (err) {
             setError(err);
@@ -61,7 +73,7 @@ const ResultsCelebs = () => {
 
     if (isLoading) {
         return <Loader />
-    } else if (results == 0) {
+    } else if (results == 0 && results2 == 0) {
         return (
             <>
                 <div>
@@ -88,7 +100,7 @@ const ResultsCelebs = () => {
                     </tr>
                     <tr className="results">
                         <th>Number of Logo:
-                        {results}</th>
+                            {results + results2}</th>
                     </tr>
 
                 </thead>
@@ -111,7 +123,8 @@ const ResultsCelebs = () => {
                         <tr>
 
                             <td >
-                                <img src={dataObj.image} /></td>
+                                <img
+                                    className="logoImg" src={dataObj.image} /></td>
 
                         </tr>
 
@@ -122,6 +135,32 @@ const ResultsCelebs = () => {
                         </tr>
                     </tbody>
 
+
+                ))}
+                {logo2.map((dataObj2) => (
+                    <tbody>
+                        <tr>
+                            <td className="celebrity">
+                                {dataObj2.name}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="celebrity">
+                                {dataObj2.domain}   </td>
+                        </tr>
+                        <tr>
+                            <td className="celebrity">
+                                <img src={dataObj2.logo}
+                                    className="logoImg" alt="no picture" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <hr></hr>
+                            </td>
+                        </tr>
+
+                    </tbody>
 
                 ))}
             </table >
