@@ -5,6 +5,14 @@ body {
 
 .slika {
     background-color: #006064;
+
+
+
+    td {
+        padding: 0px 20px;
+    }
+
+
 }
 
 .facts {
@@ -117,7 +125,7 @@ body {
 
     text-align: center;
     width: 900px;
-    height: 430px;
+    height: 460px;
     margin: auto;
     background-color: #bdd8ee;
 
@@ -177,12 +185,6 @@ body {
         width: 120px;
         padding-left: 5px;
     }
-
-    // tr {
-    //     &:nth-child(even) {
-    //         background-color: #e5e4e7;
-    //     }
-    // }
 
     .nameComm {
         font-size: 28px;
@@ -286,6 +288,29 @@ body {
         font-size: 24px;
     }
 
+    .colorHex {
+        font-size: 22px;
+        width: 300px;
+        height: 60px;
+        cursor: copy;
+    }
+
+    .colorBut {
+        text-align: center;
+        border-radius: 10px;
+        width: 100px;
+        background-color: #64b5f6;
+        height: 45px;
+        font-size: 22px;
+        padding: 10px;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: #1976d2;
+            color: #64b5f6;
+        }
+    }
 
 }
 
@@ -477,8 +502,8 @@ body {
 .footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    padding-top: 450px;
-    height: 480px;
+    padding-top: 750px;
+    height: 80px;
 }
 
 
@@ -488,34 +513,30 @@ body {
     width: 900px;
 
     .tableRow {
-        width: 900px;
+        width: 890px;
 
+        .imgMetro {
+            width: 895px;
+            border-radius: 5px;
+        }
     }
 
     .results {
-        padding: 15px;
-        font-size: 20px;
+        padding: 5px;
+        font-size: 18px;
     }
-
     .metroTitle {
         text-align: center;
         font-weight: bold;
         font-size: 28px;
     }
-
     .forLink {
         text-align: center;
         font-size: 16px;
     }
-
-    .imgMetro {
-        width: 900px;
-        border-radius: 5px;
-    }
-
     td {
         font-size: 24px;
-        width: 900px;
+        width: 880px;
         padding: 7px;
     }
 
@@ -562,6 +583,65 @@ body {
 
 
         }
+    }
+}
+
+.gridColor {
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    width: 1200px;
+    gap: 0px;
+    background-image: linear-gradient(rgb(222, 211, 211), rgb(194, 213, 194));
+    font-size: 18px;
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        height: 150px;
+
+        .dropdown-content {
+            display: none;
+            font-size: 22px;
+            font-weight: lighter;
+            position: absolute;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #f9f9f9;
+            min-width: 145px;
+            max-width: 145px;
+            height: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding-left: 5px;
+            cursor: copy;
+        }
+
+        &:hover .dropdown-content {
+            display: block;
+            color: black;
+            text-shadow: none;
+        }
+    }
+}
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 300px;
+
+    color: #84867b;
+    cursor: pointer;
+    border-radius: 5px;
+
+    .arrowup {
+        align-items: center;
+
+        width: 30px;
+        height: 25px;
+        color: #7a9c99ac;
+        background-color: rgba(222, 211, 211, 0.43);
+
+        border-radius: 5px;
+        border: solid 3px #95beba7c;
     }
 }
 
@@ -670,6 +750,7 @@ body {
             font-size: 22px;
             padding-left: 8px;
         }
+
         .logoImg {
             max-width: 200px;
         }
@@ -701,7 +782,7 @@ body {
         }
 
         .networth {
-            font-size: 24px;
+            font-size: 18px;
         }
 
         .phonetics {
@@ -712,6 +793,20 @@ body {
             margin-left: 5px;
             max-width: 100px;
 
+        }
+
+        .colorHex {
+            font-size: 18px;
+            width: 220px;
+            height: 40px;
+
+        }
+        .colorBut {
+            width: 80px;
+            border-radius: 7px;
+            height: 35px;
+            font-size: 18px;
+            padding: 8px;
         }
     }
 
@@ -765,13 +860,17 @@ body {
         width: 350px;
 
         .tableRow {
-            width: 350px;
+            width: 340px;
 
+            .imgMetro {
+                width: 340px;
+                border-radius: 5px;
+            }
         }
 
         .results {
-            padding: 7px;
-            font-size: 18px;
+            padding: 4px;
+            font-size: 16px;
         }
 
         .metroTitle {
@@ -785,14 +884,11 @@ body {
             font-size: 10px;
         }
 
-        .imgMetro {
-            width: 350px;
-            border-radius: 5px;
-        }
+
 
         td {
             font-size: 17px;
-            width: 350px;
+            width: 335px;
             padding: 2px;
         }
 
@@ -839,6 +935,26 @@ body {
 
             }
         }
+    }
+
+    .gridColor {
+        grid-template-columns: auto auto auto auto;
+        width: 350px;
+        font-size: 16px;
+
+        .dropdown {
+            height: 87px;
+
+            .dropdown-content {
+                font-size: 16px;
+                min-width: 82px;
+                max-width: 82px;
+                height: 87px;
+            }
+        }
+    }
+    .back-to-top {
+        right: 20px;
     }
 
 }

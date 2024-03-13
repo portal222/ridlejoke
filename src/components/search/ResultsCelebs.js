@@ -2,14 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
-
+import SearchBox from "./SearchBox";
 import Loader from "../Loader";
-
-
-
-
-
-
+import BackToTop from "../BackToTop";
 
 const ResultsCelebs = () => {
     const [error, setError] = useState(null);
@@ -82,7 +77,8 @@ const ResultsCelebs = () => {
 
                     <tr>
                         <th colSpan={2}>
-                            <SearchPlace />
+                <SearchBox placeholder={'Celebrity'} linkTo={'/poznati'} />
+                          
                         </th>
                     </tr>
                     <tr>
@@ -175,9 +171,7 @@ const ResultsCelebs = () => {
 
                 ))}
             </table >
-     
-          
-
+            <BackToTop />
         </>
     );
 };

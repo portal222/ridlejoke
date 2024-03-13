@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
+import SearchPerson from "./SearchPerson";
 import Loader from "../Loader";
 import { useParams } from "react-router-dom";
 
@@ -37,24 +37,17 @@ const DetailsPerson = (props) => {
                     headers: {
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
-                }
-                
-
+                }                
             );
-
             const responseCel = await axios.get(urlCel,
                 {
                     headers: {
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
                 }
-                
-
             );
             const data = response.data;
             const dataCel = responseCel.data;
-
-
 
             console.log("detalji istorijske persone", data)
             setPersons(data);
@@ -82,7 +75,7 @@ const DetailsPerson = (props) => {
 
                     <tr>
                         <th colSpan={2}>
-                            <SearchPlace />
+                        <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
                         </th>
                     </tr>
                  
@@ -185,7 +178,7 @@ const DetailsPerson = (props) => {
                               
 
                                 <ul>
-                                    <li>{dataObj.info.occupation || dataObj.info.occupation?.[0]}</li>
+                                    <li>{dataObj.info.occupation?.[0]}</li>
                                     <li>{dataObj.info.occupation?.[1]}</li>
                                     <li>{dataObj.info.occupation?.[2]}</li>
                                     <li>{dataObj.info.occupation?.[3]}</li>

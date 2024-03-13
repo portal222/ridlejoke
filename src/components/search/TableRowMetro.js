@@ -54,7 +54,7 @@ const handleId = (metroId) => {
     return (
      <tbody>
             <tr>
-                <td className="colorName" >
+                <td className="tableRow" >
                
                     <IconButton
                         aria-label='expand row'
@@ -78,17 +78,6 @@ const handleId = (metroId) => {
                         </Box>
                     </Collapse>
          
-
-
-
-
-
-
-
-
-
-            {/* <div><BackToTop /></div> */}
-
       </tbody>
 
     );

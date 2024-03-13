@@ -3,9 +3,9 @@ import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
-
-import Footers from "../Footers";
 import Loader from "../Loader";
+import SearchPerson from "./SearchPerson";
+import BackToTop from "../BackToTop";
 
 
 
@@ -90,7 +90,7 @@ const ResultsPerson = () => {
 
                     <tr>
                         <th colSpan={2}>
-                            <SearchPlace />
+                        <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
                         </th>
                     </tr>
                     <tr>
@@ -100,15 +100,9 @@ const ResultsPerson = () => {
                     </tr>
                     <tr className="results">
                         <th colSpan={2}>Number of Historyc persons: {results}</th>
-
                     </tr>
-
                 </thead>
-
                 {persons.map((dataObj) => (
-
-
-
                     <tbody key={dataObj.name} >
                         <tr>
                             <td className="navod">Name:</td>
@@ -136,19 +130,15 @@ const ResultsPerson = () => {
                                 more...
                             </td>
                         </tr>
-
                         <tr>
                             <td colSpan={2}>
                                 <hr></hr>
                             </td>
                         </tr>
                     </tbody>
-
-
                 ))}
             </table >
-            <Footers />
-
+           <BackToTop />
         </>
     );
 };

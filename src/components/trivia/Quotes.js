@@ -131,7 +131,9 @@ const Quotes = () => {
                     <p className="author"
                         onClick={() => handleClick(random3.author)}>
                         {random3.author}</p>
+                        <hr></hr>
                 </div>
+                
 
 
             </div>

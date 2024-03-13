@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
-import Footers from "../Footers";
 import Loader from "../Loader";
+import SearchLogo from "./SearchLogo"
+import BackToTop from "../BackToTop";
 
 
 
@@ -90,7 +91,7 @@ const ResultsCelebs = () => {
 
                     <tr>
                         <th colSpan={2}>
-                            <SearchPlace />
+                        <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                         </th>
                     </tr>
                     <tr>
@@ -164,7 +165,7 @@ const ResultsCelebs = () => {
 
                 ))}
             </table >
-            <Footers />
+         <BackToTop />
 
         </>
     );

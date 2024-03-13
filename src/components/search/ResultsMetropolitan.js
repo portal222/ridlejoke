@@ -1,25 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import Box from '@mui/material/Box';
-
-
+import SearchMetropolitan from "./SearchMetropolitan";
 import GlobalContext from "../GlobalContext";
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
 import TableRowMetro from "./TableRowMetro";
 import TableRowMetroTitle from "./TableRowMetroTitle";
 import SearchPlace from "./SearchPlace";
 import Loader from "../Loader";
-
-
-
-
-
-
-// import BackToTop from "./BackToTop";
+import BackToTop from "../BackToTop";
 
 
 const ResultsMetropolitan = () => {
@@ -71,7 +58,7 @@ const ResultsMetropolitan = () => {
             setPrikaz(data.total);
             setResults(dataTit.total);
             setIsLoading(false);
-5
+            5
         } catch (err) {
             setError(err);
         }
@@ -81,30 +68,46 @@ const ResultsMetropolitan = () => {
         return (
             <SearchPlace />,
             <Loader />)
-    } 
+    }
     else if (prikaz == 0 && results == 0) {
         return (
             <>
-                <SearchPlace />
+                <table className="metropolitanMain">
+                    <thead>
+                        <tr>
+                            <th colSpan={2}>
+                                <SearchMetropolitan placeholder={'Metropolitan'} linkTo={'/metropolitan'} />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colSpan={2}>
+                                <h2 className="history">Nothing found</h2>
 
-                <h2 className="history">Nothing found</h2></>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </>
+
+
         )
     }
-    
+
     else if (results == 0) {
         return (
             <table className="metropolitanMain">
                 <thead >
 
                     <tr>
-                        <th >
-                            <SearchPlace />
+                        <th colSpan={2}>
+                            <SearchMetropolitan placeholder={'Metropolitan'} linkTo={'/metropolitan'} />
                         </th>
                     </tr>
                     <tr >
-                    <th className="results"
-                    >Number of Objects by name {prikaz}, by title {results}</th>
-                </tr>
+                        <th  colSpan={2}
+                        className="results"
+                        >Number of Objects by name {prikaz}, by title {results}</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {metro.map((metroId) => (
@@ -118,14 +121,15 @@ const ResultsMetropolitan = () => {
             <table className="metropolitanMain">
                 <thead >
                     <tr>
-                        <th >
-                            <SearchPlace />
+                        <th colSpan={2}>
+                            <SearchMetropolitan placeholder={'Metropolitan'} linkTo={'/metropolitan'} />
                         </th>
                     </tr>
                     <tr >
-                    <th className="results"
-                    >Number of Objects by name {prikaz}, by title {results}</th>
-                </tr>
+                        <th colSpan={2}
+                            className="results"
+                        >Number of Objects by name {prikaz}, by title {results}</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {title.map((metroId) => (
@@ -134,33 +138,39 @@ const ResultsMetropolitan = () => {
                 </tbody>
             </table>)
     }
-    
+
     return (
+        <>
 
         <table className="metropolitanMain">
             <thead >
 
                 <tr>
-                    <th >
-                        <SearchPlace />
+                    <th colSpan={2}>
+                        <SearchMetropolitan placeholder={'Metropolitan'} linkTo={'/metropolitan'} />
                     </th>
                 </tr>
                 <tr >
-                    <th className="results"
-                    >Number of Objects by name {prikaz}, by title {results}</th>
+                    <th colSpan={2}
+                        className="results"
+                    >Number of Objects by name {prikaz}, by title {results}
+                    </th>
                 </tr>
             </thead>
-          
-                {metro.map((metroId) => (
-                    <TableRowMetro key={metroId} metropolitan={metroId} />
-                ))}
-                {title.map((metroId) => (
-                    <TableRowMetroTitle key={metroId} metropolitan={metroId} />
-                ))}
-         
+
+            {metro.map((metroId) => (
+                <TableRowMetro key={metroId} metropolitan={metroId} />
+            ))}
+            {title.map((metroId) => (
+                <TableRowMetroTitle key={metroId} metropolitan={metroId} />
+            ))}
 
 
-        </table>)
+
+        </table>
+        <BackToTop />
+        </>
+        )
 
 };
 export default ResultsMetropolitan;

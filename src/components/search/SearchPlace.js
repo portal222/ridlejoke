@@ -7,6 +7,7 @@ import SearchHistoryEvents from "./searchHistoryEvents";
 import SearchPerson from "./SearchPerson";
 import SearchAdvice from "./SearchAdvice";
 import SearchMetropolitan from "./SearchMetropolitan";
+import SearchColors from "./SearchColors";
 
 
 
@@ -19,6 +20,7 @@ const SearchPlace = () => {
             <div className="search">
                 <SearchBox placeholder={'Celebrity'} linkTo={'/poznati'} />
                 <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
+                <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
                 <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
                 <SearchAdvice placeholder={'Advice'} linkTo={'/advice'} />
                 <SearchMetropolitan placeholder={'Metropolitan'} linkTo={'/metropolitan'} />
@@ -27,7 +29,7 @@ const SearchPlace = () => {
 
 
             <div className="search">
-            <h2>Search History</h2>
+            <h3>Search History</h3>
                 <SearchHistory placeholder={'Year'} linkTo={'/history'} />
                 <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
                 <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />

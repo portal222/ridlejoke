@@ -32,6 +32,8 @@ import TriviaReligion from "./trivia/TriviaReligion";
 import TriviaSport from "./trivia/TriviaSport";
 import TriviaMathematics from "./trivia/TriviaMathematics";
 import ResultsMetropolitan from "./search/ResultsMetropolitan";
+import ResultsColors from "./search/ResultsColors";
+import SearchResultsColor from "./search/SearchResultsColor";
 
 
 
@@ -127,6 +129,7 @@ const Navigation = () => {
           <Route path="/historyPerson/:personName" element={<DetailsPerson />} />
           <Route path="/trivia/:triviaCat" element={<Trivia />} />
           <Route path="/advice" element={<ResultsAdvice />} />
+          <Route path="/colors" element={<ResultsColors />} />
           <Route path="/ridles" element={<Ridles />} />
           <Route path="/art" element={<Trivia />} />
           <Route path="/science" element={<TriviaScience />} />
@@ -143,6 +146,8 @@ const Navigation = () => {
           <Route path="/sport" element={<TriviaSport />} />
           <Route path="/mathematics" element={<TriviaMathematics />} />
           <Route path="/metropolitan" element={<ResultsMetropolitan />} />
+          <Route path="/colors" element={<ResultsColors />} />
+          <Route path="/colorsSearch" element={<SearchResultsColor />} />
           
           
 

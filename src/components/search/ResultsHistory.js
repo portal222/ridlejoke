@@ -2,22 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
-import Footers from "../Footers";
 import Loader from "../Loader";
-
-
-
-
-
-
+import SearchHistory from "./searchHistory";
+import BackToTop from "../BackToTop";
 
 const ResultsHistory = () => {
     const [error, setError] = useState(null);
     const [history, setHistory] = useState([]);
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
@@ -40,8 +33,6 @@ const ResultsHistory = () => {
             );
             const data = response.data;
 
-
-
             console.log("rezultat recnika", data)
             setHistory(data);
             setResults(data.length);
@@ -49,9 +40,7 @@ const ResultsHistory = () => {
 
         } catch (err) {
             setError(err);
-
         }
-
     };
     if (isLoading) {
         return <Loader />
@@ -72,7 +61,7 @@ const ResultsHistory = () => {
 
                     <tr>
                         <th >
-                            <SearchPlace />
+                        <SearchHistory placeholder={'Year'} linkTo={'/history'} />
                         </th>
                     </tr>
                     <tr>
@@ -113,7 +102,7 @@ const ResultsHistory = () => {
                 ))}
 
             </table >
-            <Footers />
+       <BackToTop />
         </>
     );
 };

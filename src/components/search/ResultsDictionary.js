@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
-
-import Loader from "../Loader";
+import Dictionary from "./Dictionary";
 import TableRowDictionary from "./TableRowDictionary";
 import TableRowDictionary2 from "./TableRowDictionary2";
+import BackToTop from "../BackToTop";
 
 
 
@@ -44,13 +44,10 @@ const ResultsDictionary = () => {
                     }
                 }
             );
-
             const response2 = await axios.get(url2);
 
             const data = response.data;
             const data2 = response2.data
-
-
 
             console.log("rezultat recnika", data)
             console.log("rezultat drugo recnika", data2)
@@ -61,19 +58,10 @@ const ResultsDictionary = () => {
 
             console.log("prvi niz", results)
             console.log("drugi niz", results2)
-            // setIsLoading(false);
         } catch (err) {
             setError(err);
-
         }
-
     };
-
-
-
-    // if (isLoading) {
-    //     return <Loader />
-    // } else 
     if (results == 0 && results2 == 0) {
         return (
             <>
@@ -83,60 +71,7 @@ const ResultsDictionary = () => {
                 </div>
             </>
         )
-    }
-    // else if (results2 == 0) {
-    //     return (
-    //         <table className="tabelaZemlje">
-    //             <thead>
-    //                 <tr>
-    //                     <th>
-    //                         <SearchPlace />
-
-    //                     </th>
-    //                 </tr>
-    //                 <tr>
-    //                     <th className="results">
-    //                         Number of Objects {results}
-    //                     </th>
-    //                 </tr>
-    //             </thead>
-    //             <tbody>
-                 
-    //                     <TableRowDictionary key={dictionary.phonetic} dictRow={dictionary} />
-
-              
-    //             </tbody>
-    //         </table>
-    //     )
-    // } else if (results == 0) {
-    //     return (
-    //         <table className="tabelaZemlje">
-    //             <thead>
-    //                 <tr>
-    //                     <th>
-    //                         <SearchPlace />
-
-    //                     </th>
-    //                 </tr>
-    //                 <tr>
-    //                     <th className="results">
-    //                         Number of Objects {results2}
-    //                     </th>
-    //                 </tr>
-    //             </thead>
-    //             <tbody>
-                
-    //                     <TableRowDictionary key={dictionary.id} dictRow={dictionary} />
-
-                
-    //                 {dictionary2.map((dict2) => (
-    //                     <TableRowDictionary2 dictRow2={dict2} />
-
-    //                 ))}
-    //             </tbody>
-    //         </table>
-    //     )
-    // }
+    } 
     return (
         <>
             <table className="tabelaZemlje">
@@ -144,7 +79,7 @@ const ResultsDictionary = () => {
 
                     <tr>
                         <th colSpan={2}>
-                            <SearchPlace />
+                        <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
                         </th>
                     </tr>
                     <tr>
@@ -156,18 +91,13 @@ const ResultsDictionary = () => {
 
                 <tbody>
               
-                        <TableRowDictionary  dictRow={dictionary} />
-
-                
+                        <TableRowDictionary  dictRow={dictionary} />            
                     {dictionary2.map((dict2) => (
                         <TableRowDictionary2 dictRow2={dict2} />
                     ))}
                 </tbody>
-
-
-
             </table >
-
+            <BackToTop />
         </>
     );
 

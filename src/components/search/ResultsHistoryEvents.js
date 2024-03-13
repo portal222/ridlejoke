@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
-import Footers from "../Footers";
 import Loader from "../Loader";
+import SearchHistoryEvents from "./searchHistoryEvents";
+import BackToTop from "../BackToTop";
 
 
 
@@ -76,7 +77,7 @@ const ResultsHistoryEvents = () => {
 
                     <tr>
                         <th >
-                            <SearchPlace />
+                            <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
                         </th>
                     </tr>
                     <tr>
@@ -84,7 +85,7 @@ const ResultsHistoryEvents = () => {
                     </tr>
                     <tr className="results">
                         <th>Number of Event:
-                        {results}</th>
+                            {results}</th>
                     </tr>
 
 
@@ -118,7 +119,7 @@ const ResultsHistoryEvents = () => {
                 ))}
 
             </table >
-            <Footers />
+            <BackToTop />
         </>
     );
 };

@@ -2,12 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
-import Footers from "../Footers";
-
-
-
-
-
+import SearchAdvice from "./SearchAdvice";
+import BackToTop from "../BackToTop";
 
 const ResultsAdvice = () => {
     const [error, setError] = useState(null);
@@ -68,7 +64,7 @@ const ResultsAdvice = () => {
 
                     <tr>
                         <th colSpan={2}>
-                            <SearchPlace />
+                        <SearchAdvice placeholder={'Advice'} linkTo={'/advice'} />
                         </th>
                     </tr>
                     <tr>
@@ -104,56 +100,7 @@ const ResultsAdvice = () => {
                         <td className="nameComm">{dataAdv.date}</td>
 
                     </tr>
-                    {/* <tr>
-
-                        <td className="celebrity">{advice.slips?.[1].advice}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="nameComm">{advice.slips?.[1].date}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="celebrity">{advice.slips?.[2].advice}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="nameComm">{advice.slips?.[2].date}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="celebrity">{advice.slips?.[3].advice}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="nameComm">{advice.slips?.[3].date}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="celebrity">{advice.slips?.[4].advice}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="nameComm">{advice.slips?.[4].date}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="celebrity">{advice.slips?.[5].advice}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="nameComm">{advice.slips?.[5].date}</td>
-
-                    </tr> */}
+                  
 
                     <tr>
                         <td >
@@ -167,8 +114,8 @@ const ResultsAdvice = () => {
 
 
             </table >
-            <Footers />
-
+       
+<BackToTop />
         </>
     );
 };
