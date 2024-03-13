@@ -36,7 +36,7 @@ const SearchResultsColor = () => {
     }, [searchStringValue]);
 
     const getBoje = async (searchStringValue) => {
-        const url = "./colors.json";
+        const url = "../../../colors.json";
 
         try {
             const response = await axios.get(url);
