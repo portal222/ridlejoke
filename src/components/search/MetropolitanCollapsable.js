@@ -60,12 +60,6 @@ const MetropolitanCollapsable = (props) => {
     return (
         <>
 
-
-
-
-
-
-
             <tr className="tableRow">
                 <td >
                     <img

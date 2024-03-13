@@ -30,7 +30,7 @@ const ResultsColors = () => {
 
 
     const getColors = async () => {
-        const url = `./colors.json`;
+        const url = `../public/colors.json`;
 
         try {
             const response = await axios.get(url);
