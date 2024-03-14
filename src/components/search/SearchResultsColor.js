@@ -4,6 +4,7 @@ import axios from 'axios';
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
 import SearchColors from "./SearchColors";
+import datas from "../../../public/colors.json";
 
 
 import Loader from "../Loader";
@@ -28,27 +29,28 @@ const SearchResultsColor = () => {
 
 
 
-
+console.log("trazena boja",searchStringValue );
+console.log("podaci datas boje",datas)
 
 
     useEffect(() => {
         getBoje(searchStringValue);
     }, [searchStringValue]);
 
-    const getBoje = async (searchStringValue) => {
-        const url = "../../../colors.json";
+  
+        const getBoje = (searchStringValue) => {
+
 
         try {
-            const response = await axios.get(url);
-            const data = response.data;
-            const filterData = data.filter((color) => {
+         
+            const filterData = datas.filter((color) => {
                 return (
                     color.name.toLowerCase().includes(searchStringValue.toLowerCase())
 
                 )
 
             });
-            console.log("spisak boja", data);
+            console.log("spisak boja", datas);
             console.log("Pretraga boja", filterData);
             setIsLoading(false);
 
@@ -75,18 +77,31 @@ const SearchResultsColor = () => {
     } else if (prikaz == 0) {
         return (
             <><table className="tabelaZemlje">
+                <tbody>
 
-                <tr>
-                    <td colSpan={2}>
-                        <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
+                    <tr>
+                        <td colSpan={2}>
+                            <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
 
-                    </td>
-                </tr>
-                <tr >
-                    <td>
-                        <h2 className="results">Nothing found</h2>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td colSpan={2}>
+                            <h2 className="results">Nothing found</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="networth">
+                            View about 1300 colors</td>
+                        <td>
+                            <p className="colorBut"
+                                onClick={() => colorClick()} >
+                                Colors
+                            </p>
+
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             </>
         )
@@ -143,16 +158,16 @@ const SearchResultsColor = () => {
                             View about 1300 colors</td>
                         <td>
                             <p className="colorBut"
-                           onClick={() => colorClick()} >
-                           Colors 
-                                </p> 
-                            
+                                onClick={() => colorClick()} >
+                                Colors
+                            </p>
+
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-<BackToTop />
+            <BackToTop />
         </>
 
     );
