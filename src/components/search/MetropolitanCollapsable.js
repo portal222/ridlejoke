@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
+// import noPicture from "../../../public/img/noPicture.png"
 // import Loader from "./Loader";
 
 
@@ -65,10 +66,11 @@ const MetropolitanCollapsable = (props) => {
                     <img
                         className="imgMetro"
                         src={metro.primaryImage}
-                        onError={({ currentTarget }) => {
-                            currentTarget.onerror = null;
-                            currentTarget.src = `./img/noPicture.png`;
-                        }}
+                        // onError={({ currentTarget }) => {
+                        //     currentTarget.onerror = null;
+                        //     currentTarget.src = `.img/noPicture.png`;
+                        //     currentTarget.src={noPicture};
+                        // }}
                        alt=" no picture"
                     />
                 </td>
@@ -105,9 +107,6 @@ const MetropolitanCollapsable = (props) => {
             <tr>
                 <td>{metro.objectDate}</td>
             </tr>
-            {/* <tr>
-                <td>{metro.objectName}</td>
-            </tr> */}
             <tr>
                 <td>{metro.classification}</td>
             </tr>
@@ -117,80 +116,32 @@ const MetropolitanCollapsable = (props) => {
             <tr>
                 <td>{metro.dimensions}</td>
             </tr>
-
-
-
-
             <tr>
                 <td>{metro.culture}</td>
             </tr>
             <tr>
                 <td>{metro.dynasty}</td>
             </tr>
-            {/* <tr>
-                <td>{metro.country}</td>
-            </tr> */}
-
-
-            <tr>
-
-
+                       <tr>
                 <td>{metro.creditLine}</td>
-
             </tr>
             <tr>
-
                 <td>{metro.portfolio}</td>
             </tr>
             <tr>
-
                 <td>{metro.department}</td>
             </tr>
-
-
-
             <tr>
-
                 <td className="forLink">
                     <a href={metro.objectURL} target="_blank" >
                         {metro.objectURL}</a>
                 </td>
             </tr>
-            {/* <tr>
-                <td className="forLink">
-                    <a href={metro.artistULAN_URL} target="_blank">
-                        {metro.artistULAN_URL}
-                    </a>
-                </td>
-            </tr> */}
-            {/* <tr>
-                <td className="forLink">
-                    <a href={metro.artistWikidata_URL} target="_blank">
-                        {metro.artistWikidata_URL
-                        }
-                    </a>
-                </td>
-            </tr> */}
-            {/* <tr>
-                <td >
-                    <img
-                        className="imgMetro"
-                        src={metro.additionalImages} />
-                </td>
-            </tr> */}
-
             <tr>
                 <td >
                     <hr></hr>
                 </td>
             </tr>
-
-
-
-
-
-
-
         </>
     );
 };
