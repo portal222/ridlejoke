@@ -4,8 +4,6 @@ import axios from 'axios';
 
 const PokemonSound = (props) => {
 
-   
-
     const [pokemon, setPokemon] = useState([]);
     const [results, setResults] = useState([]);
     const [error, setError] = useState(null);
