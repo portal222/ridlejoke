@@ -28,12 +28,19 @@ const ChukNorris = () => {
 
     const getFacts = async () => {
 
+        
 
-
-        const url = "https://api.chucknorris.io/jokes/random"
+        // const url = "https://api.chucknorris.io/jokes/random"
+        const url = "https://api.api-ninjas.com/v1/chucknorris?"
 
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(url,
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                }
+            );
             const data = response.data;
 
             console.log("chuk norris sale", data);
@@ -82,14 +89,9 @@ const ChukNorris = () => {
 
                     <tr>
 
-                        <td >{facts.value}</td>
+                        <td >{facts.joke}</td>
                     </tr>
-                    <tr>
-                      
-                        <td className="borderChuk">
-                            Created: {facts.created_at}
-                        </td>
-                    </tr>
+               
                     <tr>
                         <td>
                             <img src={robot}></img>

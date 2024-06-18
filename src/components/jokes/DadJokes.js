@@ -25,7 +25,7 @@ const DadJokes = () => {
     const getFacts = async () => {
      
         
-        const url = 'https://api.api-ninjas.com/v1/dadjokes?limit=2'
+        const url = 'https://api.api-ninjas.com/v1/dadjokes'
       
 
         try {

@@ -20,11 +20,11 @@ import SearchPlace from "./search/SearchPlace";
 import Trivia from "./trivia/Trivia";
 import TriviaScience from "./trivia/TriviaScience";
 import TriviaGeneral from "./trivia/TriviaGeneral";
-import TriviaFood from "./trivia/TriviaFood"; 
-import TriviaPeople from "./trivia/TriviaPeople"; 
-import TriviaHistory from "./trivia/TriviaHistory"; 
-import TriviaGeography from "./trivia/TriviaGeography"; 
-import TriviaEntertainment from "./trivia/TriviaEntertainment"; 
+import TriviaFood from "./trivia/TriviaFood";
+import TriviaPeople from "./trivia/TriviaPeople";
+import TriviaHistory from "./trivia/TriviaHistory";
+import TriviaGeography from "./trivia/TriviaGeography";
+import TriviaEntertainment from "./trivia/TriviaEntertainment";
 import TriviaToys from "./trivia/TriviaToys";
 import TriviaMusic from "./trivia/TriviaMusic";
 import TriviaLanguage from "./trivia/TriviaLanguage";
@@ -34,6 +34,10 @@ import TriviaMathematics from "./trivia/TriviaMathematics";
 import ResultsMetropolitan from "./search/ResultsMetropolitan";
 import ResultsColors from "./search/ResultsColors";
 import SearchResultsColor from "./search/SearchResultsColor";
+import Pokemon from "./pokemons/Pokemon";
+import SearchRes from "./pokemons/SearchRes";
+import PokemonPage from "./pokemons/PokemonPage";
+import PokJson from "./pokemons/PokJson";
 
 
 
@@ -66,10 +70,10 @@ const Navigation = () => {
 
 
       <HashRouter basename="/">
-        <div >
+        <div className="tabelaZemlje">
           <ThemeProvider
-   
-           theme={theme}>
+
+            theme={theme}>
 
             <NavLink to="/">
               <Button variant="contained">Home</Button>
@@ -80,27 +84,14 @@ const Navigation = () => {
             </NavLink>
             <NavLink to="/jokes">
               <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
-               Jokes
+                Jokes
               </Button>
             </NavLink>
-           
-           
-    
-      
-      
-        
             <NavLink to="/pickTrivia">
               <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
-             Quiz
+                Quiz
               </Button>
             </NavLink>
-
-
-        
-
-         
-
-
           </ThemeProvider>
         </div>
 
@@ -109,18 +100,18 @@ const Navigation = () => {
           <Route path="/search" element={<SearchPlace />} />
           <Route path="/poznati" element={<ResultsCelebs />} />
           <Route path="/jokes" element={<JokePlace />} />
-       
-   
-        
 
-       
-         
-        
-   
+
+
+
+
+
+
+
           <Route path="/pickTrivia" element={<PickTrivia />} />
-         
-         
-       
+
+
+
           <Route path="/logo" element={<ResultsLogo />} />
           <Route path="/dictionary" element={<ResultsDictionary />} />
           <Route path="/history" element={<ResultsHistory />} />
@@ -148,15 +139,20 @@ const Navigation = () => {
           <Route path="/metropolitan" element={<ResultsMetropolitan />} />
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/colorsSearch" element={<SearchResultsColor />} />
-          
-          
+          <Route path="/pokemon" element={<Pokemon />} />
+          <Route path="/pokemonSearch" element={<SearchRes />} />
+          <Route path="/:numId" element={<PokemonPage />} />
+          <Route path="/pokJson" element={<PokJson />} />
+
+
+
 
         </Routes>
 
       </HashRouter>
 
 
-<Footers />
+      <Footers />
 
 
 

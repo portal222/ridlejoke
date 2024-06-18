@@ -1,24 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-// import noPicture from "../../../public/img/noPicture.png"
-// import Loader from "./Loader";
-
-
-
-
-
-
 
 
 const MetropolitanCollapsable = (props) => {
     const [error, setError] = useState(null);
     const [metro, setMetro] = useState([]);
-
-
-
-
-
-
 
 
     useEffect(() => {
@@ -30,9 +16,6 @@ const MetropolitanCollapsable = (props) => {
 
         const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${props.metropolitan}`;
 
-
-
-
         try {
 
             const response = await axios.get(url);
@@ -40,23 +23,10 @@ const MetropolitanCollapsable = (props) => {
             console.log("rezultat metropolitan", data)
             setMetro(data);
 
-
         } catch (err) {
             setError(err);
-
-
         }
     };
-
-
-
-
-
-
-
-
-
-
 
     return (
         <>
@@ -66,12 +36,7 @@ const MetropolitanCollapsable = (props) => {
                     <img
                         className="imgMetro"
                         src={metro.primaryImage}
-                        // onError={({ currentTarget }) => {
-                        //     currentTarget.onerror = null;
-                        //     currentTarget.src = `.img/noPicture.png`;
-                        //     currentTarget.src={noPicture};
-                        // }}
-                       alt=" no picture"
+                        alt=" no picture"
                     />
                 </td>
             </tr>
@@ -80,13 +45,13 @@ const MetropolitanCollapsable = (props) => {
                 <td className="dropdown">
                     <span>
 
-                     
+
                         {metro.artistDisplayName}
                     </span>
                     <span className="dropdown-content">
                         <p>{metro.artistRole}</p>
                         <p>{metro.artistDisplayBio}</p>
-                    
+
                         <a href={metro.artistWikidata_URL} target="_blank">
                             {metro.artistWikidata_URL}
                         </a>
@@ -122,7 +87,7 @@ const MetropolitanCollapsable = (props) => {
             <tr>
                 <td>{metro.dynasty}</td>
             </tr>
-                       <tr>
+            <tr>
                 <td>{metro.creditLine}</td>
             </tr>
             <tr>

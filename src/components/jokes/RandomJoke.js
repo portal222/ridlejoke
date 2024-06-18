@@ -23,7 +23,7 @@ const RandomJoke = () => {
   
 
     const getJokes = async () => {
-        const url = `https://api.api-ninjas.com/v1/jokes?limit=3`;
+        const url = `https://api.api-ninjas.com/v1/jokes`;
 
         try {
             const response = await axios.get(url,

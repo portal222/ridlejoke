@@ -92,8 +92,8 @@ const ResultsDictionary = () => {
                 <tbody>
               
                         <TableRowDictionary  dictRow={dictionary} />            
-                    {dictionary2.map((dict2) => (
-                        <TableRowDictionary2 dictRow2={dict2} />
+                    {dictionary2.map((dict2, id) => (
+                        <TableRowDictionary2 key={id} dictRow2={dict2} />
                     ))}
                 </tbody>
             </table >

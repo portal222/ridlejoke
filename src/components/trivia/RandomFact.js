@@ -23,7 +23,7 @@ const RandomFact = () => {
   
 
     const getFacts = async () => {
-        const url = `https://api.api-ninjas.com/v1/facts?limit=3`;
+        const url = `https://api.api-ninjas.com/v1/facts`;
 
         try {
             const response = await axios.get(url,

@@ -95,11 +95,7 @@ const CatProb = () => {
                             {jokes.answer}</td>
                     </tr>
                
-                  <tr>
-                    <td className="pun">
-                        Pun
-                            </td>
-                  </tr>
+                
                  
                   <tr>
                       <td>

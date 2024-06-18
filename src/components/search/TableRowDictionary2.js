@@ -1,4 +1,5 @@
 import React from "react";
+import Player from "../Player";
 
 const TableRowDictionary2 = (props) => {
     return (
@@ -7,23 +8,20 @@ const TableRowDictionary2 = (props) => {
                 <td className="celebrity">{props.dictRow2.word + " " + props.dictRow2.phonetic}</td>
             </tr>
             {props.dictRow2.phonetics.map((phone) => (
-                <tr>
-                    <td >
-                        <a href={phone.audio} target="_blank"
-                            className="phonetics">{phone.audio}
-                        </a></td>
-                </tr>
+           
+                        <Player url={phone.audio}/>
+           
             ))}
-            {props.dictRow2.meanings.map((mean) => (
+            {props.dictRow2.meanings.map((mean, id) => (
                 <>
-                    {mean.definitions.map((defin) => (
-                        <tr>
+                    {mean.definitions.map((defin, id) => (
+                        <tr key={id}>
                             <td>
                                 {defin.definition}         </td>
                         </tr>
                     ))}
                     <tr>
-                        <td className="nameComm"> synonyms
+                        <td key={id} className="nameComm"> 
                             <ul>
                                 <li>{mean.synonyms?.[0]}</li>
                                 <li>{mean.synonyms?.[1]}</li>

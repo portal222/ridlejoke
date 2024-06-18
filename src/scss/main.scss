@@ -1,3 +1,6 @@
+@import '../scss/_pokemons.scss';
+
+
 body {
     padding: 0px;
     margin: 0px;
@@ -125,7 +128,7 @@ body {
 
     text-align: center;
     width: 900px;
-    height: 460px;
+    height: 560px;
     margin: auto;
     background-color: #bdd8ee;
 
@@ -502,7 +505,7 @@ body {
 .footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    padding-top: 750px;
+    padding-top: 900px;
     height: 80px;
 }
 
@@ -652,7 +655,7 @@ body {
         display: flex;
         flex-direction: column;
         width: 350px;
-        height: 500px;
+        height: 600px;
 
     }
 
