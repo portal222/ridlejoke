@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import PaginatePok from "./PaginationPok";
 import { Box, Pagination } from "@mui/material";
 import GlobalContext from "../GlobalContext";
-import PokemonSound from "./PokemonSound";
 import axios from 'axios';
 import Pokemon from "./Pokemon";
 import PokJson from "./PokJson";
 import BackToTop from "../BackToTop";
+import PokemonImg from "./PokemonImg";
 
 
 const SearchRes = () => {
@@ -55,7 +55,7 @@ const SearchRes = () => {
     }
 
 
-    const pageSize = 20;
+    const pageSize = 15;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
@@ -72,8 +72,6 @@ const SearchRes = () => {
         )
     }
     return (
-
-
         <>
             <Box>
                 {paginatedPosts.length > 1 && (
@@ -90,14 +88,7 @@ const SearchRes = () => {
                     {currentPosts &&
                         currentPosts.map((post) => (
 
-                            <div key={post.id} className="dropDown">
-                                <img src={post.images.small} alt="no picture" className="small" />
-                                <PokemonSound sound={post.name} />
-
-                                <div className="dropdownImg">
-                                    <img src={post.images.large} alt="no picture" className="large" />
-                                </div>
-                            </div>
+                            <PokemonImg post={post}/>
 
                         ))}
                 </div>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PaginatePok from "./PaginationPok";
-import { Box, Typography, Pagination } from "@mui/material";
+import { Box, Typography, Pagination, TableRow } from "@mui/material";
 import Loader from "../Loader";
-import PokemonSound from "./PokemonSound";
+
+
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import BackToTop from "../BackToTop";
+import PokemonImg from "./PokemonImg";
 
 
 const PokemonPage = () => {
@@ -14,6 +16,8 @@ const PokemonPage = () => {
     const [error, setError] = useState(null);
     const [pokemon, setPokemon] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+
 
     const navigate = useNavigate();
 
@@ -43,7 +47,7 @@ const PokemonPage = () => {
         navigate(LinkTo);
     }
 
-    const pageSize = 30;
+    const pageSize = 15;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
@@ -69,15 +73,12 @@ const PokemonPage = () => {
                     {currentPosts &&
                         currentPosts.map((post) => (
 
-                            <div key={post.id} className="dropDown">
-                                <img src={post.images.small} alt="no picture" className="small" />
-                                <PokemonSound sound={post.name} />
-                                <div className="dropdownImg">
-                                    <img src={post.images.large} alt="no picture" className="large" />
-                                </div>
-                            </div>
+                   <PokemonImg post={post}/>
+
                         ))}
+
                 </div>
+
             </Box>
             <div className="main">
                 <div className="button" onClick={() => clickHandle()}>More...</div>

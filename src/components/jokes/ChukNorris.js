@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import axios from 'axios';
 import { randomNumberBetween } from "@mui/x-data-grid/utils/utils";
+// import apiKey from '../../secrets.js';
 
 
 
@@ -26,21 +27,28 @@ const ChukNorris = () => {
         getRobot();
     }, [])
 
-    const getFacts = async () => {
+
+
+
+
+
+   const getFacts = async () => {
 
         
 
         // const url = "https://api.chucknorris.io/jokes/random"
-        const url = "https://api.api-ninjas.com/v1/chucknorris?"
+        const url = `https://api.api-ninjas.com/v1/chucknorris?`
 
         try {
-            const response = await axios.get(url,
+            const response = await axios.get(url, 
                 {
                     headers: {
+                        // 'X-Api-Key': apiKey22
+                      
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
                 }
-            );
+           );
             const data = response.data;
 
             console.log("chuk norris sale", data);
@@ -66,6 +74,7 @@ const ChukNorris = () => {
             const data = response;
             console.log("robot randum slike", name)
             setRobot(url)
+         
         } catch (err) {
             setError(err);
         }

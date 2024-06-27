@@ -3,15 +3,16 @@ import PaginatePok from "./PaginationPok";
 import { Box, Pagination } from "@mui/material";
 import Loader from "../Loader";
 import axios from 'axios';
-import PokemonSound from "./PokemonSound";
 import PokJson from "./PokJson";
 import BackToTop from "../BackToTop";
+import PokemonImg from "./PokemonImg";
 
 const Pokemon = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemon, setPokemon] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [style, setStyle] = useState("large");
 
 
     useEffect(() => {
@@ -24,10 +25,7 @@ const Pokemon = () => {
 
     }, [])
 
-
-
-
-    const pageSize = 30;
+    const pageSize = 15;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
@@ -55,18 +53,8 @@ const Pokemon = () => {
                     {currentPosts &&
                         currentPosts.map((post) => (
 
-                            <>
-                                <div key={post.id} className="dropDown"
-                                >
-                                    <img src={post.images.small} alt="no picture" className="small" />
+                <PokemonImg post={post}/>
 
-                                <PokemonSound sound={post.name} />
-
-                                    <div className="dropdownImg">
-                                        <img src={post.images.large} alt="no picture" className="large" />
-                                    </div>
-                                </div>
-                            </>
                         ))}
                 </div>
           
