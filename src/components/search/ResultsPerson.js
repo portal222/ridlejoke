@@ -19,6 +19,8 @@ const ResultsPerson = () => {
     const [persons, setPersons] = useState([]);
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [celebs, setCelebs] = useState([]);
+    const [resultsCel, setResultsCel] = useState([]);
 
     const navigate = useNavigate();
 
@@ -35,6 +37,7 @@ const ResultsPerson = () => {
 
     const getPerson = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${searchStringValue}`;
+        const urlCel = `https://api.api-ninjas.com/v1/celebrity?name=${searchStringValue}`;
 
         try {
             const response = await axios.get(url,
@@ -44,13 +47,24 @@ const ResultsPerson = () => {
                     }
                 }
             );
+            const responseCel = await axios.get(urlCel,
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                }
+            );
             const data = response.data;
+            const dataCel = responseCel.data;
+
 
 
 
             console.log("rezultat poznatih", data)
             setPersons(data);
             setResults(data.length);
+            setCelebs(dataCel);
+            setResultsCel(dataCel.length);
             setIsLoading(false);
 
         } catch (err) {
@@ -73,13 +87,49 @@ const ResultsPerson = () => {
         return (
             <SearchPlace />,
             <Loader />)
+    } else if (results == 0 && resultsCel == 0) {
+        return (
+            <div>
+                <SearchPlace />
+                <h2 className="history">Nothing found</h2>
+            </div>
+        )
+
     } else if (results == 0) {
+
+
         return (
             <>
                 <div>
                     <SearchPlace />
-                    <h2 className="history">Nothing found</h2>
+                    <h2 className="history">Nothing found in history</h2>
                 </div>
+                <table className="tabelaZemlje">
+                    {celebs.map((dataObj, id) => (
+                        <tbody key={id} >
+                            <tr>
+                                <td className="navod">Name:</td>
+                                <td className="historyPerson"
+                                    onClick={() => handleClick(dataObj.name)}
+                                >{dataObj.name}</td>
+
+                            </tr>
+                            <tr>
+                                <td className="navod">Gender:</td>
+                                <td className="nameComm">{dataObj.gender}</td>
+
+                            </tr>
+                            <tr>
+                                <td colSpan={2}
+                                    className="more"
+                                    onClick={() => handleClick(dataObj.name)}>
+
+                                    more...
+                                </td>
+                            </tr>
+                        </tbody>
+                    ))}
+                </table>
             </>
         )
     }
@@ -90,7 +140,7 @@ const ResultsPerson = () => {
 
                     <tr>
                         <th colSpan={2}>
-                        <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
+                            <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
                         </th>
                     </tr>
                     <tr>
@@ -110,18 +160,12 @@ const ResultsPerson = () => {
                                 onClick={() => handleClick(dataObj.name)}>
                                 {dataObj.name}</td>
                         </tr>
-                        <tr>
-                            <td className="navod">Title:</td>
-                            <td className="nameComm">{dataObj.title}</td>
-                        </tr>
-                        <tr>
-                            <td className="navod">Birthday:</td>
-                            <td className="nameComm">{dataObj.info.born}</td>
-                        </tr>
-                        <tr>
-                            <td className="navod">Death:</td>
-                            <td className="nameComm">{dataObj.info.died}</td>
-                        </tr>
+                        {dataObj.title && (
+                            <tr>
+                                <td className="navod">Title:</td>
+                                <td className="nameComm">{dataObj.title}</td>
+                            </tr>
+                        )}
                         <tr>
                             <td colSpan={2}
                                 className="more"
@@ -138,7 +182,46 @@ const ResultsPerson = () => {
                     </tbody>
                 ))}
             </table >
-           <BackToTop />
+
+            <table className="tabelaZemlje">
+                <thead>
+                    <tr className="results">
+                        <th colSpan={2}>Number of Celebrity persons: {resultsCel}</th>
+                    </tr>
+                </thead>
+                {celebs.map((dataObj, id) => (
+                    <tbody key={id} >
+                        <tr>
+                            <td className="navod">Name:</td>
+                            <td className="historyPerson"
+                                onClick={() => handleClick(dataObj.name)}
+                            >{dataObj.name}</td>
+
+                        </tr>
+                        {dataObj.gender && (
+                            <tr>
+                                <td className="navod">Gender:</td>
+                                <td className="nameComm">{dataObj.gender}</td>
+
+                            </tr>
+                        )}
+                        <tr>
+                            <td colSpan={2}
+                                className="more"
+                                onClick={() => handleClick(dataObj.name)}>
+
+                                more...
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                <hr></hr>
+                            </td>
+                        </tr>
+                    </tbody>
+                ))}
+            </table>
+            <BackToTop />
         </>
     );
 };

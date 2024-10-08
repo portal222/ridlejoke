@@ -58,7 +58,7 @@ const ResultsMetropolitan = () => {
             setPrikaz(data.total);
             setResults(dataTit.total);
             setIsLoading(false);
-            5
+            
         } catch (err) {
             setError(err);
         }

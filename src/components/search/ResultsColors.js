@@ -15,20 +15,6 @@ import data from "../../../public/colors.json";
 const ResultsColors = () => {
    
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
   
     return (
         <>

@@ -4,7 +4,7 @@ import { Paper,InputBase,IconButton } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-import { UserOutlined  } from "@ant-design/icons";
+import { TeamOutlined  } from "@ant-design/icons";
 
 const SearchPerson = (props) => {
 
@@ -50,7 +50,8 @@ const SearchPerson = (props) => {
          
             aria-label='search'
             >
-          <UserOutlined />
+                     <TeamOutlined />
+
             </IconButton>
         </Paper>
     );

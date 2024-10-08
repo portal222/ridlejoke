@@ -164,9 +164,6 @@ body {
 .tabelaZemlje {
 
     margin: auto;
-
-
-
     width: 800px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -180,8 +177,8 @@ body {
     }
 
     .navod {
-        font-size: 24px;
-
+        font-size: 22px;
+        color: gray;
         display: flex;
         align-content: flex-start;
 
@@ -312,6 +309,45 @@ body {
         &:hover {
             background-color: #1976d2;
             color: #64b5f6;
+        }
+    }
+    .nytName {
+        font-size: 25px;
+        padding: 20px;
+        font-weight: bold;
+        background-color: #013441;
+        color: #c4c6b7;
+        text-align: center;
+    }
+
+    .nytTitle {
+        font-size: 25px;
+        font-weight: 800;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .nytAbs {
+        padding: 10px 15px;
+        font-size: 24px;
+    }
+
+    .nytPar {
+        padding: 5px 15px;
+        font-size: 22px;
+    }
+
+    .nytDate {
+        display: flex;
+        padding: 10px 15px;
+        font-size: 14px;
+        justify-content: space-between;
+    }
+    .imgHold {
+        text-align: center;
+        padding-top: 15px;
+        .nytImg {
+            width: 620px;
         }
     }
 
@@ -774,7 +810,7 @@ body {
         .navod,
         .more {
             padding-left: 4px;
-            font-size: 16px;
+            font-size: 14px;
             width: 95px;
         }
 
@@ -810,6 +846,37 @@ body {
             height: 35px;
             font-size: 18px;
             padding: 8px;
+        }
+        .nytName {
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .nytTitle {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 8px;
+        }
+
+        .nytAbs {
+            padding: 7px 10px;
+            font-size: 18px;
+        }
+
+        .nytPar {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        .nytDate {
+            padding: 7px 10px;
+            font-size: 10px;
+        }
+        .imgHold {
+            padding-top: 10px;
+            .nytImg {
+                width: 340px;
+            }
         }
     }
 

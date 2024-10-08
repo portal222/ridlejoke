@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBox from "./SearchBox";
+// import SearchBox from "./SearchBox";
 import SearchLogo from "./SearchLogo";
 import Dictionary from "./Dictionary";
 import SearchHistory from "./searchHistory";
@@ -10,6 +10,7 @@ import SearchMetropolitan from "./SearchMetropolitan";
 import SearchColors from "./SearchColors";
 import { useNavigate } from "react-router-dom";
 import SearchPoke from "../pokemons/SearchPoke";
+import SearchNYT from "./SearchNYT";
 
 
 
@@ -26,11 +27,12 @@ const SearchPlace = () => {
 
         <div className="place">
             <div className="search">
-                <SearchBox placeholder={'Celebrity'} linkTo={'/poznati'} />
+                <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
                 <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                 <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
                 <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
                 <SearchAdvice placeholder={'Advice'} linkTo={'/advice'} />
+                <SearchNYT placeholder={'New York Times'} linkTo={'/nyTimes'}/>
                 <SearchMetropolitan placeholder={'Metropolitan'} linkTo={'/metropolitan'} />
                 <SearchPoke placeholder={'Pokemon'} linkTo={'/pokemonSearch'} />
             </div>
@@ -41,7 +43,6 @@ const SearchPlace = () => {
             <h3>Search History</h3>
                 <SearchHistory placeholder={'Year'} linkTo={'/history'} />
                 <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
-                <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
               
             </div>
 

@@ -38,6 +38,7 @@ import Pokemon from "./pokemons/Pokemon";
 import SearchRes from "./pokemons/SearchRes";
 import PokemonPage from "./pokemons/PokemonPage";
 import PokJson from "./pokemons/PokJson";
+import SearchResutsNYT from "./search/SearchResultsNYT";
 
 
 
@@ -100,18 +101,7 @@ const Navigation = () => {
           <Route path="/search" element={<SearchPlace />} />
           <Route path="/poznati" element={<ResultsCelebs />} />
           <Route path="/jokes" element={<JokePlace />} />
-
-
-
-
-
-
-
-
           <Route path="/pickTrivia" element={<PickTrivia />} />
-
-
-
           <Route path="/logo" element={<ResultsLogo />} />
           <Route path="/dictionary" element={<ResultsDictionary />} />
           <Route path="/history" element={<ResultsHistory />} />
@@ -137,6 +127,7 @@ const Navigation = () => {
           <Route path="/sport" element={<TriviaSport />} />
           <Route path="/mathematics" element={<TriviaMathematics />} />
           <Route path="/metropolitan" element={<ResultsMetropolitan />} />
+          <Route path="/nyTimes" element={<SearchResutsNYT />} />
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/colorsSearch" element={<SearchResultsColor />} />
           <Route path="/pokemon" element={<Pokemon />} />
