@@ -60,7 +60,7 @@ const RandomFact = () => {
                  
                     <tr>
                         <th >
-                            <h2>WELCOME</h2>
+                     
                             <h3>Random Facts:</h3></th>
                     </tr>
 

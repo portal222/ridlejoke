@@ -1,3 +1,4 @@
+@import '../scss/cssreset';
 @import '../scss/_pokemons.scss';
 
 
@@ -6,13 +7,26 @@ body {
     margin: 0px;
 }
 
-.slika {
+.home {
+    margin: auto;
+    width: 900px;
     background-color: #006064;
+    position: relative;
 
+    .imgHold {
+        text-align: center;
 
+        width: 900px;
+    }
 
-    td {
-        padding: 0px 20px;
+    .welcom {
+        color: rgba(1, 151, 49, 0.351);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 36px;
+        font-weight: bold;
+        // text-shadow: 1px 1px 2px #006064;
+        top: -200px;
+        position: relative;
     }
 
 
@@ -20,42 +34,40 @@ body {
 
 .facts {
     margin: auto;
-
     justify-items: center;
     flex-direction: column;
-
-
-
-
     width: 100%;
-    // height: 300px;
-
-
     background-color: #006064;
-
     color: #b2ebf2;
     font-size: 30px;
     text-shadow: 3px 3px 15px black;
-
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
-
     font-weight: bold;
 
     .table {
+        padding: 20px;
         margin: auto;
         width: 700px;
         text-align: center;
+        padding: 10px;
 
-        td {
-            padding: 10px 5px;
+        h1 {
+            padding: 30px;
+            font-size: 40px;
+        }
+
+        h3 {
+            padding: 20px;
         }
 
         .category {
+            padding: 10px;
             text-align: left;
             font-size: 24px;
         }
 
         .author {
+            padding: 30px 10px;
             cursor: pointer;
             font-size: 26px;
             text-align: right;
@@ -85,10 +97,14 @@ body {
 
 .loader {
     margin: auto;
-    padding-top: 350px;
+    // padding-top: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #bdd8ee;
+    width: 900px;
+    height: 850px;
+
 
 }
 
@@ -106,7 +122,7 @@ body {
 
     height: 35px;
     justify-items: center;
-    width: 250px;
+    width: 300px;
 
 
     .base {
@@ -131,18 +147,12 @@ body {
     height: 560px;
     margin: auto;
     background-color: #bdd8ee;
-
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
 
-    padding-top: 10px;
-    margin-top: 10px;
-
-
     .search {
-        width: 250px;
+        width: 300px;
         margin: auto;
         background-color: #add3f1;
-        // padding: auto;
     }
 
 
@@ -159,21 +169,28 @@ body {
     }
 }
 
-
-
 .tabelaZemlje {
 
     margin: auto;
-    width: 800px;
+    width: 900px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #bbdefb;
+    min-height: 80px;
 
     .razmak {
         height: 70px;
     }
 
     .results {
-        background-color: #bbdefb;
-        font-size: 18px;
+        background-image: linear-gradient(rgb(102, 176, 250), #bbdefb);
+        height: 40px;
+        padding: 10px;
+
+        font-size: 22px;
+
+        th {
+            padding: 15px;
+        }
     }
 
     .navod {
@@ -182,40 +199,55 @@ body {
         display: flex;
         align-content: flex-start;
 
-        width: 120px;
-        padding-left: 5px;
+        width: 200px;
+        padding-left: 15px;
+        padding-top: 8px;
     }
 
     .nameComm {
         font-size: 28px;
+        padding-top: 8px;
         width: 650px;
-        padding-left: 5px;
+        padding-left: 10px;
+        padding-right: 15px;
     }
 
     .history {
         font-size: 28px;
         text-align: center;
         height: 60px;
+        padding: 10px;
     }
 
     .celebrity {
         text-transform: capitalize;
         text-align: left;
+        padding: 10px 0px;
+        padding-left: 25px;
     }
 
     .celebrity,
     .networth {
         font-weight: bold;
         font-size: 30px;
+
+    }
+
+    .networth {
+
+        padding-left: 20px;
     }
 
     .historyPerson {
+        text-transform: capitalize;
         font-weight: bold;
+        color: #014780;
         font-size: 30px;
         cursor: pointer;
 
         &:hover {
-            text-shadow: 1px 1px 3px #64b5f6;
+            color: #64b5f6;
+            text-shadow: 1px 1px 3px #014780;
         }
 
 
@@ -229,18 +261,18 @@ body {
         margin-left: 10px;
         max-width: 150px;
         cursor: pointer;
-
         overflow: hidden;
     }
 
     .logoImg {
+        padding-left: 25px;
         max-width: 300px;
     }
 
     .dictionary {
         width: 800px;
         font-size: 28px;
-        padding-left: 10px;
+        padding: 20px
     }
 
     .nameComm {
@@ -259,6 +291,7 @@ body {
     .more {
         display: block;
         align-items: end;
+        padding-left: 15px;
         width: 120px;
         // text-align: right;
         color: #1976d2;
@@ -311,46 +344,118 @@ body {
             color: #64b5f6;
         }
     }
+
+
+
+}
+
+@font-face {
+    font-family: fontnyt;
+    src: url("../../public/Chomsky-8MOa2.otf");
+}
+
+.nytFont {
+
+    margin: auto;
+    width: 900px;
+    // height: 250px;
+    font-family: fontnyt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 48px;
+    color: whitesmoke;
+    background-image: linear-gradient(#013441, #ADDFAD);
+    padding: 10px;
+    text-align: center;
+
+    .paper {
+        display: flex;
+        // flex-basis: auto;
+        margin-top: 8px;
+
+        height: 35px;
+        justify-items: baseline;
+        width: 300px;
+
+
+        .base {
+            justify-items: center;
+
+            height: 30px;
+            padding-top: 20px;
+            padding-left: 15px;
+            font-size: 22px;
+            color: dodgerblue;
+
+        }
+    }
+
+
+    div {
+        padding: 30px;
+    }
+
+    .archive {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 32px;
+        color: #293629;
+    }
+}
+
+
+
+.tableNYT {
+    background-color: #ADDFAD;
+    margin: auto;
+    width: 900px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+
     .nytName {
         font-size: 25px;
         padding: 20px;
         font-weight: bold;
         background-color: #013441;
-        color: #c4c6b7;
+        color: whitesmoke;
         text-align: center;
     }
 
     .nytTitle {
         font-size: 25px;
-        font-weight: 800;
+        font-weight: 900;
         padding: 15px;
         text-align: center;
     }
 
     .nytAbs {
-        padding: 10px 15px;
+        padding: 10px 20px;
         font-size: 24px;
     }
 
     .nytPar {
-        padding: 5px 15px;
+        padding: 5px 20px;
         font-size: 22px;
     }
 
     .nytDate {
         display: flex;
-        padding: 10px 15px;
+        padding: 10px 20px;
         font-size: 14px;
         justify-content: space-between;
     }
+
     .imgHold {
         text-align: center;
         padding-top: 15px;
+
         .nytImg {
-            width: 620px;
+            width: 880px;
         }
     }
-
 }
 
 .mainDiv {
@@ -374,16 +479,6 @@ body {
         font-size: 32px;
     }
 
-    td {
-        padding: 25px;
-        font-size: 34px;
-        font-family: 'Arial Narrow Bold', sans-serif;
-
-        img {
-            width: 500px;
-        }
-    }
-
     .borderGif {
         border-bottom: 2px solid rgb(103, 103, 188);
     }
@@ -397,30 +492,38 @@ body {
 
 .jokesText {
     display: flex;
-    justify-content: space-around;
-    width: 1700px;
-
+    margin: auto;
+    width: 900px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-    th {
-        font-size: 32px;
-    }
 
-    td {
-        padding: 25px;
-        font-size: 34px;
-        font-family: 'Arial Narrow Bold', sans-serif;
+    .dadJokes {
+        background-color: #c8e6c9;
+        width: 450px;
 
-    }
 
-    .created {
-        font-size: 18px;
+
+        .titleJoke {
+            text-align: center;
+            padding-top: 40px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #013441;
+        }
+
+        .border {
+            font-size: 28px;
+            padding: 40px;
+            border-bottom: 1px solid #4db6ac;
+            text-align: justify;
+        }
+
+        img {
+            width: 450px;
+            text-align: center;
+        }
     }
 }
-
-
-
-
 
 .poznatiMain {
     margin: auto;
@@ -452,13 +555,24 @@ body {
 }
 
 .jokeMain {
-    border-radius: 12px;
-    width: 500px;
+
+    width: 450px;
     // height: 500px;
     margin: auto;
     background-color: #f9fbe7;
     padding: 20px 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .type {
+        padding: 10px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .imgYes {
+        width: 440px;
+
+    }
 
     .jokeAnswer,
     .jokeAns {
@@ -474,13 +588,24 @@ body {
     }
 }
 
-.trivia {
-    width: 600px;
-    height: 900px;
+.pickTrivia {
+    display: flex;
+    justify-content: space-around;
+    width: 900px;
+    height: 700px;
     margin: auto;
     background-color: #bdd8ee;
     padding: 30px 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .history {
+        text-align: left;
+        height: 20px;
+        padding: 30px 0px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #014780;
+    }
 
     .category {
         width: 300px;
@@ -497,6 +622,25 @@ body {
         }
     }
 
+}
+
+.trivia {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 1400px;
+    margin: auto;
+    background-color: #bdd8ee;
+    padding: 30px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .categ {
+        font-size: 28px;
+        font-weight: 600;
+        padding: 20px;
+        text-align: center;
+    }
+
     .triviaAnswer {
         &:hover {
             color: #388e3c;
@@ -508,40 +652,17 @@ body {
         font-weight: bold;
         font-size: 28px;
         color: #1a237e;
+
     }
 }
 
-.dadJokes {
-    background-color: #c8e6c9;
-    width: 500px;
-    font-size: 24px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-    .border {
-        border-bottom: 1px solid #4db6ac;
-
-
-    }
-
-    .borderChuk {
-        border-bottom: 1px solid #4db6ac;
-
-        font-size: 16px;
-    }
-
-
-
-    img {
-        width: 700px;
-        text-align: center;
-    }
-}
 
 
 .footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    padding-top: 900px;
+    padding-top: 200px;
     height: 80px;
 }
 
@@ -551,41 +672,80 @@ body {
     margin: auto;
     width: 900px;
 
+    border-collapse: collapse;
+    background-color: rgb(241, 241, 225);
+
+
+
     .tableRow {
-        width: 890px;
+        display: flex;
+        align-items: center;
+        width: 900px;
 
         .imgMetro {
-            width: 895px;
+            width: 890px;
             border-radius: 5px;
+            margin: auto;
         }
     }
 
     .results {
-        padding: 5px;
+        text-align: center;
+        background-image: linear-gradient(#FED8B1, rgb(241, 241, 225));
+
+
+        padding: 15px 0px;
         font-size: 18px;
     }
+
     .metroTitle {
         text-align: center;
-        font-weight: bold;
-        font-size: 28px;
+        font-weight: 700;
+        font-size: 26px;
+        padding: 10px;
     }
+
+    .titleMetro {
+        display: flex;
+        justify-content: space-between;
+        height: 180px;
+        text-align: center;
+        padding: 30px;
+        color: rgb(151, 93, 1);
+        font-weight: bold;
+        font-size: 44px;
+        background-image: linear-gradient(#FED8B1, rgb(228, 190, 96), rgb(241, 241, 225));
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .object {
+        padding: 8px 15px;
+        font-size: 24px;
+    }
+
+    .gift {
+        padding: 8px 15px;
+        font-size: 20px;
+    }
+
     .forLink {
         text-align: center;
         font-size: 16px;
     }
-    td {
-        font-size: 24px;
-        width: 880px;
-        padding: 7px;
-    }
+
+
 
 
     .dropdown {
         font-size: 30px;
         font-weight: bold;
-
+        padding: 12px;
         text-align: center;
-
+        width: 900px;
+        color: rgb(151, 93, 1);
         position: relative;
         display: inline-block;
         cursor: pointer;
@@ -602,6 +762,9 @@ body {
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             padding: 10px;
 
+            p {
+                padding: 5px;
+            }
 
             // z-index: 1;
             a {
@@ -628,8 +791,8 @@ body {
 .gridColor {
     margin: auto;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
-    width: 1200px;
+    grid-template-columns: auto auto auto auto auto auto;
+    width: 900px;
     gap: 0px;
     background-image: linear-gradient(rgb(222, 211, 211), rgb(194, 213, 194));
     font-size: 18px;
@@ -662,6 +825,7 @@ body {
         }
     }
 }
+
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -685,36 +849,93 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+    .home {
+        width: 347px;
+
+        .imgHold {
+            width: 347px;
+        }
+    }
+
+    .loader {
+
+        width: 347px;
+    }
+
+    .paper {
+        width: 260px;
+
+        .base {
+            font-size: 20px;
+            color: #6a757e;
+        }
+    }
 
     .place {
         margin: 0;
         display: flex;
         flex-direction: column;
-        width: 350px;
+        width: 347px;
         height: 600px;
+
+        .search {
+            width: 260px;
+        }
 
     }
 
     .jokesText {
         display: block;
-        width: 350px;
+        width: 347px;
 
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        .dadJokes {
+            width: 347px;
 
-        th {
-            font-size: 22px;
+            .titleJoke {
+                padding-top: 25px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .border {
+                font-size: 22px;
+                padding: 25px;
+            }
+
+            .img {
+                width: 347px;
+            }
+        }
+    }
+
+    .pickTrivia {
+        display: block;
+        width: 347px;
+        justify-content: start;
+        height: 600px;
+
+        .history {
+
+            font-size: 20px;
         }
 
-        td {
-            padding: 8px;
+        .category {
             font-size: 20px;
-
-
+            height: 36px;
         }
     }
 
     .trivia {
-        width: 350px;
+        display: block;
+        width: 347px;
+        height: 1300px;
+        padding: 20px 15px;
+
+        .categ {
+            font-size: 22px;
+            font-weight: 400;
+            padding: 10px;
+        }
 
         .triviaAnswer {
             font-size: 22px;
@@ -725,10 +946,7 @@ body {
             font-size: 22px;
         }
 
-        .category {
-            font-size: 20px;
-            height: 36px;
-        }
+
     }
 
     .facts {
@@ -756,7 +974,7 @@ body {
     }
 
     .jokeMain {
-        width: 350px;
+        width: 347px;
         border-radius: 0;
 
         .jokeAnswer {
@@ -768,11 +986,15 @@ body {
             font-size: 22px;
         }
 
+        .imgYes {
+            width: 347px;
+
+        }
 
     }
 
     .tabelaZemlje {
-        width: 350px;
+        width: 347px;
 
         .razmak {
             height: 20px;
@@ -795,12 +1017,12 @@ body {
         }
 
         .dictionary {
-            padding-left: 8px;
+            padding: 15px;
             font-size: 20px;
         }
 
         img {
-            width: 348px;
+            width: 347px;
         }
 
         .imgRobot {
@@ -809,7 +1031,7 @@ body {
 
         .navod,
         .more {
-            padding-left: 4px;
+            padding-left: 8px;
             font-size: 14px;
             width: 95px;
         }
@@ -822,6 +1044,7 @@ body {
 
         .networth {
             font-size: 18px;
+            padding-left: 10px;
         }
 
         .phonetics {
@@ -836,10 +1059,11 @@ body {
 
         .colorHex {
             font-size: 18px;
-            width: 220px;
+            width: 160px;
             height: 40px;
 
         }
+
         .colorBut {
             width: 80px;
             border-radius: 7px;
@@ -847,6 +1071,31 @@ body {
             font-size: 18px;
             padding: 8px;
         }
+
+        .results {
+            font-size: 16px;
+        }
+
+
+    }
+
+    .nytFont {
+        width: 347px;
+        font-size: 30px;
+        padding: 15px;
+
+        div {
+            padding: 10px;
+        }
+
+        .archive {
+            font-size: 24px;
+        }
+    }
+
+    .tableNYT {
+        width: 347px;
+
         .nytName {
             font-size: 20px;
             padding: 10px;
@@ -872,37 +1121,24 @@ body {
             padding: 7px 10px;
             font-size: 10px;
         }
+
         .imgHold {
             padding-top: 10px;
+
             .nytImg {
-                width: 340px;
+                width: 347px;
             }
         }
     }
 
-    .dadJokes {
-
-        width: 350px;
-        font-size: 18px;
-
-        .borderChuk,
-        .created {
-            font-size: 14px;
-        }
-
-        hr {
-            border: 1px solid;
-        }
-    }
-
     .mainJoke {
-        width: 350px;
+        width: 347px;
         font-size: 20px;
     }
 
     .jokesMain {
 
-        width: 350px;
+        width: 347px;
         border-radius: 0;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -916,7 +1152,7 @@ body {
 
 
             img {
-                width: 348px;
+                width: 347px;
             }
         }
 
@@ -927,26 +1163,48 @@ body {
 
     .metropolitanMain {
 
-        width: 350px;
+        width: 347px;
 
         .tableRow {
-            width: 340px;
+            width: 347px;
 
             .imgMetro {
-                width: 340px;
-                border-radius: 5px;
+                width: 347px;
+                border-radius: 2px;
             }
         }
 
         .results {
-            padding: 4px;
+            padding: 6px 0px;
             font-size: 16px;
         }
 
         .metroTitle {
+            width: 347px;
             text-align: center;
             font-weight: bold;
             font-size: 22px;
+        }
+
+        .titleMetro {
+
+            padding: 12px;
+            height: 140px;
+            font-weight: bold;
+            font-size: 32px;
+
+            align-items: center;
+
+        }
+
+        .object {
+            padding: 4px 15px;
+            font-size: 18px;
+        }
+
+        .gift {
+            padding: 4px 15px;
+            font-size: 14px;
         }
 
         .forLink {
@@ -959,13 +1217,13 @@ body {
         td {
             font-size: 17px;
             width: 335px;
-            padding: 2px;
+            padding: 7px;
         }
 
         .dropdown {
             font-size: 24px;
             font-weight: bold;
-
+            width: 347px;
             text-align: center;
 
             position: relative;
@@ -980,7 +1238,7 @@ body {
 
 
                 background-color: #f9f9f9;
-               
+
                 min-width: 40px;
                 max-width: 300px;
                 box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -1010,7 +1268,7 @@ body {
 
     .gridColor {
         grid-template-columns: auto auto auto auto;
-        width: 350px;
+        width: 347px;
         font-size: 16px;
 
         .dropdown {
@@ -1024,6 +1282,7 @@ body {
             }
         }
     }
+
     .back-to-top {
         right: 20px;
     }

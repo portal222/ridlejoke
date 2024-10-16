@@ -1,9 +1,10 @@
 .main {
     background-color: #F0EAD6;
-    width: 1230px;
+    width: 900px;
     height: 100px;
     margin: auto;
     display: flex;
+    
     justify-content: center;
     align-items: center;
 
@@ -44,15 +45,18 @@
         }
     }
 }
+.pagination {
+    width: 900px;
+}
 
 .pokemon {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     margin: auto;
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    width: 1230px;
-    gap: 5px;
+    grid-template-columns: auto auto auto auto;
+    width: 900px;
+    gap: 6px;
     background-image: linear-gradient(rgb(241, 241, 225), rgb(249, 219, 187));
     font-size: 18px;
     padding: 10px;
@@ -117,7 +121,7 @@
 
 @media screen and (max-width: 500px) {
     .main {
-        width: 350px;
+        width: 347px;
         height: 300px;
 
         .gridNum {
@@ -126,12 +130,16 @@
             gap: 2px;
         }
     }
+    .pagination {
+        width: 347px;
+    }
 
     .pokemon {
-        width: 350px;
+        width: 347px;
         grid-template-columns: auto auto auto;
         gap: 2px;
         padding: 4px;
+        font-size: 16px;
 
         .dropDown {
             .sound {

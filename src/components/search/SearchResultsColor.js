@@ -86,8 +86,8 @@ console.log("podaci datas boje",datas)
                         </td>
                     </tr>
                     <tr >
-                        <td colSpan={2}>
-                            <h2 className="results">Nothing found</h2>
+                        <td colSpan={2} >
+                          <div className="results">Nothing found</div>  
                         </td>
                     </tr>
                     <tr>
@@ -103,6 +103,7 @@ console.log("podaci datas boje",datas)
                     </tr>
                 </tbody>
             </table>
+            <div className="pickTrivia"></div>
             </>
         )
     }

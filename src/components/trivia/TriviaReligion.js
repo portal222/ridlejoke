@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import axios from 'axios';
 import { Collapse } from "antd";
 import Loader from "../Loader";
@@ -9,8 +8,10 @@ import Loader from "../Loader";
 
 const Trivia = () => {
 
+
     const [answer, setAnswer] = useState([]);
     const [answer2, setAnswer2] = useState([]);
+    const [answer3, setAnswer3] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +25,7 @@ const Trivia = () => {
     const getAnswer = async () => {
         const url = `https://api.api-ninjas.com/v1/trivia?category=religionmythology`;
         const url2 = `https://api.api-ninjas.com/v1/trivia?category=religionmythology`;
+        const url3 = `https://api.api-ninjas.com/v1/trivia?category=religionmythology`;
 
         try {
             const response = await axios.get(url,
@@ -38,13 +40,18 @@ const Trivia = () => {
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
                 });
+            const response3 = await axios.get(url3,
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                });
             const data = response.data[0];
             const data2 = response2.data[0];
+            const data3 = response3.data[0];
             setAnswer(data);
             setAnswer2(data2);
-
-            console.log("prvi podaci religija",data)
-            console.log("drugi podaci religija",data2)
+            setAnswer3(data3);
             setIsLoading(false);
 
         } catch (err) {
@@ -54,23 +61,20 @@ const Trivia = () => {
 
     const text = answer.answer
     const text2 = answer2.answer
+    const text3 = answer3.answer
 
     if (isLoading) {
         return (
-            <div className="trivia">
-                <Loader />
-            </div>
+            <Loader />
         )
     }
 
     return (
         <>
             <div className="trivia" >
-                <h3>Religion & Mythology</h3>
-                <p>{answer.title}</p>
+                <div className="categ">Religion & Mythology</div>
 
                 <Collapse
-
                     size="large"
                     items={[{
                         label: <p className="triviaAnswer">{answer.question}</p>,
@@ -78,19 +82,27 @@ const Trivia = () => {
                         showArrow: false,
                     }]} />
 
-                <p>{answer2.title}</p>
+                <div className="categ"></div>
+
 
                 <Collapse
-
                     size="large"
                     items={[{
                         label: <p className="triviaAnswer">{answer2.question}</p>,
                         children: <p className="triviaAns">{text2}</p>,
                         showArrow: false,
                     }]} />
+                <div className="categ"></div>
+
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer3.question}</p>,
+                        children: <p className="triviaAns">{text3}</p>,
+                        showArrow: false,
+                    }]} />
 
             </div>
-
         </>
     )
 }

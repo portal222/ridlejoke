@@ -45,26 +45,14 @@ const SearchResutsNYT = () => {
     };
 
 
-
-    // const getTimes = async (searchStringValue) => {
-    //     const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchStringValue}&api-key=GmsdDOX2JjxHcopan54o6M2dgET0H2hp`
-
-    //     const response = await fetch(url);
-    //     const data = await response.json();
-    //     console.log(" podaci NYTymes ", data.response.docs);
-    //     setIsLoading(false);
-
-    //     setNyTimes(data.response.docs);
-    //     setResults(data.response.docs.length)
-    // }
-
     if (isLoading) {
         return <Loader />
     } 
 
     return (
         <>  
-            <NyTimes news={nyTimes} />
+     
+            <NyTimes name={searchStringValue} news={nyTimes} />
             <div>{<BackToTop />}</div>
         </>
     )

@@ -55,7 +55,7 @@ const SearchRes = () => {
     }
 
 
-    const pageSize = 15;
+    const pageSize = 12;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
@@ -64,18 +64,17 @@ const SearchRes = () => {
         return (
             <>
                 <div className="pokemon">
-                    {searchStringValue} is not found
+                    {searchStringValue} was not found but there are other POKEMON
                 </div>
                 <Pokemon />
             </>
-
         )
     }
     return (
         <>
             <Box>
                 {paginatedPosts.length > 1 && (
-                    <Box mt={2} display="flex" justifyContent="center"
+                    <Box mt={2} display="flex" justifyContent="center" className="pagination"
                     margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
                         <Pagination
                             count={paginatedPosts.length}
@@ -92,7 +91,6 @@ const SearchRes = () => {
 
                         ))}
                 </div>
-
             </Box>
             <PokJson />
             <BackToTop />

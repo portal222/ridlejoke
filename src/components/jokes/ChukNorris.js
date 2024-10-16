@@ -26,6 +26,7 @@ const ChukNorris = () => {
             );
             const data = response.data;
             setFacts(data);
+            console.log("chucknorris podaci", data);
 
         } catch (err) {
             setError(err);
@@ -53,25 +54,15 @@ const ChukNorris = () => {
 
     return (
         <>
-            <table className="dadJokes">
-                <thead>
-                    <tr>
-                        <th colSpan={2}>
-                            Chuk Norris jokes
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td >{facts.joke}</td>
-                    </tr>
-                    <tr>
-                        <td>
+            <div className="dadJokes">
+                        <div className="titleJoke">
+                           CHUCK NORRIS JOKE
+                        </div>
+                        <div className="border">{facts.joke}</div>
+                        <div>
                             <img src={robot}></img>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+            </div>
         </>
     )
 }

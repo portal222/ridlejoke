@@ -66,6 +66,7 @@ const ResultsPerson = () => {
             setCelebs(dataCel);
             setResultsCel(dataCel.length);
             setIsLoading(false);
+            console.log("broj licnosti", results);
 
         } catch (err) {
             setError(err);
@@ -89,9 +90,9 @@ const ResultsPerson = () => {
             <Loader />)
     } else if (results == 0 && resultsCel == 0) {
         return (
-            <div>
+            <div className="tabelaZemlje">
                 <SearchPlace />
-                <h2 className="history">Nothing found</h2>
+                <div className="results">Nothing found</div>
             </div>
         )
 
@@ -198,10 +199,10 @@ const ResultsPerson = () => {
                             >{dataObj.name}</td>
 
                         </tr>
-                        {dataObj.gender && (
+                        {dataObj.occupation && (
                             <tr>
-                                <td className="navod">Gender:</td>
-                                <td className="nameComm">{dataObj.gender}</td>
+                                <td className="navod">Title:</td>
+                                <td className="nameComm">{dataObj.occupation?.[0]}</td>
 
                             </tr>
                         )}

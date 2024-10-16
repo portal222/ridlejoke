@@ -1,5 +1,3 @@
-import React from "react";
-
 const PaginatePok = (pokemon, pageSize) => {
 
     console.log("iz paginationPok konzola", pokemon)

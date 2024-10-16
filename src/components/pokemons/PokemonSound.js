@@ -22,7 +22,7 @@ const PokemonSound = (props) => {
 
             setPokemon(data);
             setResults(data.length);
-     
+
 
         } catch (err) {
             setError(err);
@@ -30,22 +30,25 @@ const PokemonSound = (props) => {
     }
 
 
-  
-     if (results == 0) {
+
+    if (results == 0) {
         return (
             <>
                 <div className="sound">
-                     No sound in the base
+                    No sound in the base
                 </div></>
         )
     }
     return (
+        <>
+            {pokemon.cries?.latest && (
+                <div className="sound">
+                    <Player url={pokemon.cries?.latest} />
+                    <a href={pokemon.cries.latest} target="_blank">download </a>
 
-            <div className="sound">
-                <Player url={pokemon.cries?.latest} />
-                <a href={pokemon.cries.latest} target="_blank">download </a>
-
-            </div>
+                </div>
+            )}
+        </>
 
     );
 

@@ -65,9 +65,9 @@ const ResultsDictionary = () => {
     if (results == 0 && results2 == 0) {
         return (
             <>
-                <div>
+                <div className="tabelaZemlje">
                     <SearchPlace />
-                    <h2 className="history">Nothing found</h2>
+                    <h2 className="results">Nothing found</h2>
                 </div>
             </>
         )

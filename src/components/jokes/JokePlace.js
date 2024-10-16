@@ -7,36 +7,27 @@ import ChukNorris from "./ChukNorris";
 import JokesRandom from "./JokesRandom";
 import JokesOfficial from "./JokesOfficial";
 import RandomJoke from "./RandomJoke";
+import JokesOne from "./JokesOne";
 
 
 
-const PapirKamen = () => {
-
+const JokePlace = () => {
 
     const [error, setError] = useState(null);
-
-
-
 
     return (
         <>
 
             <div className="jokesText">
                 <div>
-                    {<JokesRandom />}
-                
+                    {<JokesRandom />}  
                     {<JokesOfficial />}
-                </div>
-                <div>
-
-
                     {<YesNoGif />}
+                    {<JokesOne />}
                 </div>
                 <div>
                     {<DadJokes />}
-
-                    {<RandomJoke />}
-                  
+                    {<RandomJoke />}      
                     {<ChukNorris />}
                 </div>
 
@@ -48,4 +39,4 @@ const PapirKamen = () => {
 
     )
 }
-export default PapirKamen;
+export default JokePlace;

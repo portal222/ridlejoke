@@ -61,8 +61,8 @@ const text = randumJokes.delivery
         <>
            
         <div className="jokeMain" >
-            <h3>Joke </h3>
-            <h3>Category: {randumJokes.category}</h3>
+          
+            <div className="type">Random joke category: {randumJokes.category}</div>
             <Collapse
 
                 size="large"

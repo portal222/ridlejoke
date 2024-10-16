@@ -77,10 +77,11 @@ const ResultsCelebs = () => {
     } else if (results == 0 && results2 == 0) {
         return (
             <>
-                <div>
+                <div className="tabelaZemlje">
                     <SearchPlace />
-                    <h2 className="history">Nothing found</h2>
+                    <div className="results">Nothing found</div>
                 </div>
+             
             </>
         )
     }
@@ -91,7 +92,7 @@ const ResultsCelebs = () => {
 
                     <tr>
                         <th colSpan={2}>
-                        <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
+                            <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                         </th>
                     </tr>
                     <tr>
@@ -147,10 +148,11 @@ const ResultsCelebs = () => {
                         </tr>
                         <tr>
                             <td className="celebrity">
-                                {dataObj2.domain}   </td>
+                                <a href={`https://www.${dataObj2.domain}`} target="_blank">{dataObj2.domain}</a>
+                            </td>
                         </tr>
                         <tr>
-                            <td className="celebrity">
+                            <td >
                                 <img src={dataObj2.logo}
                                     className="logoImg" alt="no picture" />
                             </td>
@@ -165,7 +167,7 @@ const ResultsCelebs = () => {
 
                 ))}
             </table >
-         <BackToTop />
+            <BackToTop />
 
         </>
     );

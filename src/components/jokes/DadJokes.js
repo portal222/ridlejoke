@@ -1,32 +1,21 @@
 import React, { useState, useEffect } from "react";
-
 import axios from 'axios';
-
-
 
 const DadJokes = () => {
 
     const [error, setError] = useState(null);
-  
-    const [facts, setFacts] = useState([]);
-    
- 
-
-
-
- 
-    
-   
+    const [dad, setDad] = useState([]);
+    const [joke, setJoke] = useState([]);
 
     useEffect(() => {
-        getFacts();
-    },[])
+        getDad();
+        getJoke();
+    }, [])
 
-    const getFacts = async () => {
-     
-        
+    const getDad = async () => {
+
         const url = 'https://api.api-ninjas.com/v1/dadjokes'
-      
+
 
         try {
             const response = await axios.get(url,
@@ -36,52 +25,52 @@ const DadJokes = () => {
                     }
                 });
             const data = response.data;
-       
-            console.log("randum tatine sale", data);
-           
+            setDad(data);
 
-            setFacts(data);
-         
         } catch (err) {
             setError(err);
-           
         }
 
     };
 
+    const getJoke = async () => {
+        const url = "https://icanhazdadjoke.com/"
+
+        try {
+            const response = await axios.get(url,
+                {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+            const data = response.data;
+            setJoke(data);
+            console.log("novi dad joke", data);
+        } catch (err) {
+            setError(err);
+        }
+    }
 
 
 
     return (
         <>
-        <table className="dadJokes">
-            <thead>
-                <tr>
-                    <th >
-                      Dad jokes
-                  
-                    </th>
-                </tr>
-            </thead>
-            {facts.map((fact) => (
-                <tbody key={fact.joke}>
-              
-                    <tr>
-                      
-                        <td
+            <div className="dadJokes">
+                <div className="titleJoke">
+                    DAD JOKE
+                </div>
+                {dad.map((fact) => (
+                    <div key={fact.joke}
                         className="border">
-                            {fact.joke}</td>
-                    </tr>
-                 
-                
-      
-                  
-                </tbody>
-            ))}
-     
-        </table>
+                        {fact.joke}
+                    </div>
+                ))}
+                <div className="border">
+                    {joke.joke}
+                </div>
+            </div>
+
         </>
     )
-
 }
 export default DadJokes;

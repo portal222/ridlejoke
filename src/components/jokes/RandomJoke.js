@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-
-
-
-
-
-
-
-
 const RandomJoke = () => {
     const [error, setError] = useState(null);
     const [jokes, setJokes] = useState([]);
 
-
-
-
-
     useEffect(() => {
         getJokes();
     }, []);
-  
 
     const getJokes = async () => {
         const url = `https://api.api-ninjas.com/v1/jokes`;
@@ -33,67 +20,29 @@ const RandomJoke = () => {
                     }
                 }
             );
-            const data = response.data;
-
-
-
-
-            console.log("rezultat gradova", data)
-
+            const data = response.data
             setJokes(data);
-         
+
         } catch (err) {
             setError(err);
-
         }
-
     };
-
-
-
 
     return (
         <>
-            <table className="dadJokes">
-                <thead >
+            <div className="dadJokes">
+                <div className="titleJoke">
 
-                    <tr>
-                        <th >
-                    
-                        </th>
-                    </tr>
-                    <tr>
-                        <th >
-                            Random Jokes</th>
-                    </tr>
-
-
-                </thead>
-
-
-
+                    RANDOM JOKE
+                </div>
                 {jokes.map((dataObj) => (
 
-
-
-                    <tbody key={dataObj.joke}
-                    >
-                    
-                        <tr>
-                            <td 
-                            className="border">
-                                {dataObj.joke}</td>
-                        </tr>
-                      
-                   
-
-                     
-                    </tbody>
-
+                    <div key={dataObj.joke}
+                        className="border" >
+                        {dataObj.joke}
+                    </div>
                 ))}
-
-            </table >
-         
+            </div >
         </>
     );
 };

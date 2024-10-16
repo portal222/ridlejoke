@@ -39,6 +39,7 @@ import SearchRes from "./pokemons/SearchRes";
 import PokemonPage from "./pokemons/PokemonPage";
 import PokJson from "./pokemons/PokJson";
 import SearchResutsNYT from "./search/SearchResultsNYT";
+import ResultsMetro from "./metropolitan/ResultsMetro";
 
 
 
@@ -126,7 +127,8 @@ const Navigation = () => {
           <Route path="/religion" element={<TriviaReligion />} />
           <Route path="/sport" element={<TriviaSport />} />
           <Route path="/mathematics" element={<TriviaMathematics />} />
-          <Route path="/metropolitan" element={<ResultsMetropolitan />} />
+          {/* <Route path="/metropolitan" element={<ResultsMetropolitan />} /> */}
+          <Route path="/metro" element={<ResultsMetro />} />
           <Route path="/nyTimes" element={<SearchResutsNYT />} />
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/colorsSearch" element={<SearchResultsColor />} />

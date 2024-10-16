@@ -47,7 +47,7 @@ const PokemonPage = () => {
         navigate(LinkTo);
     }
 
-    const pageSize = 15;
+    const pageSize = 12;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
@@ -60,8 +60,9 @@ const PokemonPage = () => {
         <>
             <Box>
                 {paginatedPosts.length > 1 && (
-                    <Box mt={2} display="flex" justifyContent="center"
-                        margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                    <Box mt={2} display="flex" justifyContent="center" className="pagination"
+                        margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)"
+                      paddingTop="20px">
                         <Pagination
                             count={paginatedPosts.length}
                             page={currentPage}

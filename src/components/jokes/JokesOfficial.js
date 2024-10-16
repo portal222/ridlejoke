@@ -10,6 +10,7 @@ const JokesOfficial = () => {
 
     const [error, setError] = useState(null);
     const [jokes, setJokes] = useState([]);
+    const [fox, setFox] = useState([]);
    
    
   
@@ -20,6 +21,7 @@ const JokesOfficial = () => {
 
     useEffect(() => {
         getJokes();
+        getFox();
       
         
        
@@ -46,6 +48,24 @@ const JokesOfficial = () => {
 
     };
 
+    const getFox = async () => {
+     
+        const url = "https://randomfox.ca/floof/";
+
+        try {
+            const response = await axios.get(url);
+            const data = response.data
+           
+
+            setFox(data);
+         
+        } catch (err) {
+            setError(err);
+           
+        }
+
+    };
+
    
 
     
@@ -60,7 +80,7 @@ const text = jokes.punchline
     return (
         <>
            <div className="jokeMain" >
-            <h3>Random Joke</h3>
+            <div className="type">Random joke type: {jokes.type}</div>
             <Collapse
 
                 size="large"
@@ -69,7 +89,11 @@ const text = jokes.punchline
                     children: <p className="jokeAns">{text}</p>,
                     showArrow: false,
                 }]} />
+              <div>
+            <img src={fox.image} alt="fox" style={{paddingTop: "20px"}} className="imgYes"/>
+        </div>    
         </div>
+      
        
        
         </>

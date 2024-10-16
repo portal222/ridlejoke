@@ -60,8 +60,6 @@ const CatProb = () => {
         }
 
     };
-    
-    //kraj axios metode
 
 
 
@@ -70,43 +68,29 @@ const CatProb = () => {
 
     return (
         <>
-        <table className="jokesMain">
-            <thead>
-                <tr>
-                    <th >
+        <div className="jokeMain">
+           <div className="type">
                        Random GIF
-                  
-                    </th>
-                </tr>
-            </thead>
+           </div>
+         <div>
+                            <img src={jokes.image} alt="yesno" className="imgYes"/>
+         </div>
         
-                <tbody>
-                    <tr>
-                        
-                    
-                        <td>
-                            <img src={jokes.image}/>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td
-                        className="borderGif">
-                            {jokes.answer}</td>
-                    </tr>
+              
+                  
+                    <div className="type">
+                            {jokes.answer}
+                    </div>
                
                 
                  
-                  <tr>
-                      <td>
+                 <div>
+
                           {punapi.pun}
-                      </td>
-                  </tr>
-                
-      
-                </tbody>
+                 </div>
+                 
      
-        </table>
+        </div>
         </>
     )
 

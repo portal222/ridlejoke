@@ -14,7 +14,19 @@ const Home = () => {
 
     return (
         <>
-        <div className="slika">
+        <div className="home">
+
+      <div className="imgHold">
+
+     
+        <img className="imgHome" src="https://picsum.photos/347/462" alt="grad"/>
+     
+          
+                <div className="welcom">WELCOME</div>
+              
+         
+       </div>
+  
        
 
         <RandomFact />

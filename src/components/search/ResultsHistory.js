@@ -47,9 +47,9 @@ const ResultsHistory = () => {
     } else if (results == 0) {
         return (
             <>
-                <div>
+                <div className="tabelaZemlje">
                     <SearchPlace />
-                    <h2 className="history">Nothing found</h2>
+                    <div className="results">Nothing found</div>
                 </div>
             </>
         )

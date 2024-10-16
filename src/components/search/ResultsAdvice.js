@@ -43,18 +43,13 @@ const ResultsAdvice = () => {
     if (results == 0) {
         return (
             <>
-                <br></br>
-                <br></br>
-                <table className="tabelaZemlje">
-                    <thead>
-                        <tr>
-                            <th><SearchPlace /></th>
-                        </tr>
-                        <tr>
-                            <th>Nothing found</th>
-                        </tr>
-                    </thead>
-                </table></>
+            
+                <div className="tabelaZemlje">
+                   <SearchPlace />
+                            <div className="results">Nothing found</div>
+                   
+                </div>
+                </>
         )
     }
     return (
@@ -114,6 +109,7 @@ const ResultsAdvice = () => {
 
 
             </table >
+            <div className="pickTrivia"></div>
        
 <BackToTop />
         </>
