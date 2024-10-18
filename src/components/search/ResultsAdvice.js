@@ -26,30 +26,26 @@ const ResultsAdvice = () => {
             const response = await axios.get(url);
             const data = response.data.slips;
 
-
-
             console.log("rezultat advicea", data)
             setAdvice(data);
             setResults(data.length);
         } catch (err) {
             setError(err);
-
         }
-
     };
-
-
 
     if (results == 0) {
         return (
             <>
-            
-                <div className="tabelaZemlje">
-                   <SearchPlace />
-                            <div className="results">Nothing found</div>
-                   
+                <div className="pickTrivia">
+                    <SearchAdvice placeholder={'Advice'} linkTo={'/advice'} />
                 </div>
-                </>
+                <div className="tabelaZemlje">
+                    <div className="results">Nothing found</div>
+                </div>
+                <div className="place"></div>
+
+            </>
         )
     }
     return (
@@ -57,16 +53,12 @@ const ResultsAdvice = () => {
             <table className="tabelaZemlje">
                 <thead >
 
-                    <tr>
-                        <th colSpan={2}>
-                        <SearchAdvice placeholder={'Advice'} linkTo={'/advice'} />
-                        </th>
-                    </tr>
+                  
                     <tr>
                         <th className="celebrity"
                             colSpan={2}>
-                             {searchStringValue} Advice
-                            </th>
+                            {searchStringValue} Advice
+                        </th>
                     </tr>
                     <tr className="results">
                         <th>Number of Advice: {results}</th>
@@ -74,44 +66,31 @@ const ResultsAdvice = () => {
                     <tr>
                         <th></th>
                     </tr>
-                
-
                 </thead>
 
-
-
-{advice.map((dataAdv) => (
-
-
-
-                <tbody key={dataAdv.id}>
-                    <tr>
-
-                        <td className="celebrity">{dataAdv.advice}</td>
-
-                    </tr>
-                    <tr>
-
-                        <td className="nameComm">{dataAdv.date}</td>
-
-                    </tr>
-                  
-
-                    <tr>
-                        <td >
-                            <hr></hr>
-                        </td>
-                    </tr>
-                </tbody>
+                {advice.map((dataAdv) => (
+                    <tbody key={dataAdv.id}>
+                        <tr>
+                            <td className="celebrity">{dataAdv.advice}</td>
+                        </tr>
+                        <tr>
+                            <td className="nameComm">{dataAdv.date}</td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <hr></hr>
+                            </td>
+                        </tr>
+                    </tbody>
                 ))}
-             
+
 
 
 
             </table >
-            <div className="pickTrivia"></div>
-       
-<BackToTop />
+            <div className="place"></div>
+
+            <BackToTop />
         </>
     );
 };

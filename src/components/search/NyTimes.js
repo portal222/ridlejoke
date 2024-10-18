@@ -13,7 +13,7 @@ const NyTimes = (props) => {
                     </div>
 
                 </div>
-                <div className="pickTrivia"></div>
+                <div className="place"></div>
 
             </>
         )
@@ -27,7 +27,7 @@ const NyTimes = (props) => {
 
             <div className="nytFont">
                 <div>The New York Times</div>
-                <SearchNYT placeholder={'Search'} linkTo={'/nyTimes'} />
+                {/* <SearchNYT placeholder={'Search'} linkTo={'/nyTimes'} /> */}
 
                 <div className="archive">{props.name} in archive</div>
                 <hr></hr>

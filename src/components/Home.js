@@ -19,7 +19,7 @@ const Home = () => {
       <div className="imgHold">
 
      
-        <img className="imgHome" src="https://picsum.photos/347/462" alt="grad"/>
+        <img className="imgHome" src="https://picsum.photos/358/477" alt="grad"/>
      
           
                 <div className="welcom">WELCOME</div>
@@ -34,6 +34,7 @@ const Home = () => {
      
        
         </div>
+        <div className="place"></div>
    
         </>
     )

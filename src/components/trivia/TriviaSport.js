@@ -95,6 +95,7 @@ const Trivia = () => {
                         showArrow: false,
                     }]} />
             </div>
+            <div className="place"></div>
         </>
     )
 }

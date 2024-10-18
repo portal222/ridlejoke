@@ -71,6 +71,7 @@ const Trivia = (props) => {
     }
 
     return (
+        <>
         <div className="trivia" >
             <div className="categ">Art & Literature</div>
 
@@ -101,6 +102,8 @@ const Trivia = (props) => {
                     showArrow: false,
                 }]} />
         </div>
+        <div className="place"></div>
+        </>
     )
 }
 export default Trivia;

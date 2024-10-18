@@ -103,6 +103,9 @@ const ResultsCelebs = (props) => {
                                 <td className="networth">{celeb.net_worth}</td>
                             </tr>
                         )}
+                        <tr>
+                            <td colSpan={2} style={{height: "25px"}}></td>
+                        </tr>
                     </tbody>
                 ))}
 

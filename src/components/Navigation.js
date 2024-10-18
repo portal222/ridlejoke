@@ -40,6 +40,7 @@ import PokemonPage from "./pokemons/PokemonPage";
 import PokJson from "./pokemons/PokJson";
 import SearchResutsNYT from "./search/SearchResultsNYT";
 import ResultsMetro from "./metropolitan/ResultsMetro";
+import ResultsClickPerson from "./search/ResultsClickPerson";
 
 
 
@@ -108,6 +109,7 @@ const Navigation = () => {
           <Route path="/history" element={<ResultsHistory />} />
           <Route path="/historyEvents" element={<ResultsHistoryEvents />} />
           <Route path="/historyPerson" element={<ResultsPerson />} />
+          <Route path="/linkPerson/:linkName" element={<ResultsClickPerson />} />
           <Route path="/historyPerson/:personName" element={<DetailsPerson />} />
           <Route path="/trivia/:triviaCat" element={<Trivia />} />
           <Route path="/advice" element={<ResultsAdvice />} />

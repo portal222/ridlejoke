@@ -65,10 +65,15 @@ const ResultsDictionary = () => {
     if (results == 0 && results2 == 0) {
         return (
             <>
-                <div className="tabelaZemlje">
-                    <SearchPlace />
-                    <h2 className="results">Nothing found</h2>
-                </div>
+                <div className="pickTrivia">
+                <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
+                  </div> 
+                  <div className="tabelaZemlje">
+                    
+                    <div className="results">Nothing found</div>
+                    </div> 
+               
+                <div className="place"></div>
             </>
         )
     } 
@@ -76,12 +81,6 @@ const ResultsDictionary = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                    <tr>
-                        <th colSpan={2}>
-                        <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
-                        </th>
-                    </tr>
                     <tr>
                         <th className="results">Word {searchStringValue}</th>
                     </tr>

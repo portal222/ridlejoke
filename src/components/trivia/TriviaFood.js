@@ -102,7 +102,7 @@ const Trivia = (props) => {
                     }]} />
 
             </div>
-
+            <div className="place"></div>
         </>
     )
 }

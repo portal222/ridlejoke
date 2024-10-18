@@ -170,7 +170,9 @@ const PickTrivia = () => {
                         Mathematicss
                     </div>
                 </div>
-            </div></>
+            </div>
+            <div className="place"></div>
+            </>
     )
 }
 export default PickTrivia;

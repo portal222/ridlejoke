@@ -20,9 +20,9 @@ body {
     }
 
     .welcom {
-        color: rgba(1, 151, 49, 0.351);
+        color: rgba(0, 130, 104, 0.305);
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 36px;
+        font-size: 42px;
         font-weight: bold;
         // text-shadow: 1px 1px 2px #006064;
         top: -200px;
@@ -47,7 +47,7 @@ body {
     .table {
         padding: 20px;
         margin: auto;
-        width: 700px;
+        width: 600px;
         text-align: center;
         padding: 10px;
 
@@ -67,7 +67,7 @@ body {
         }
 
         .author {
-            padding: 30px 10px;
+            padding: 30px 20px;
             cursor: pointer;
             font-size: 26px;
             text-align: right;
@@ -140,22 +140,18 @@ body {
 
 
 .place {
-
-
     text-align: center;
     width: 900px;
-    height: 560px;
+    height: 600px;
     margin: auto;
     background-color: #bdd8ee;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+
 
     .search {
         width: 300px;
         margin: auto;
         background-color: #add3f1;
     }
-
-
 }
 
 
@@ -170,7 +166,6 @@ body {
 }
 
 .tabelaZemlje {
-
     margin: auto;
     width: 900px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -182,7 +177,7 @@ body {
     }
 
     .results {
-        background-image: linear-gradient(rgb(102, 176, 250), #bbdefb);
+        background-image: linear-gradient(rgb(118, 169, 220), #bbdefb);
         height: 40px;
         padding: 10px;
 
@@ -199,17 +194,40 @@ body {
         display: flex;
         align-content: flex-start;
 
-        width: 200px;
+        width: 250px;
         padding-left: 15px;
         padding-top: 8px;
     }
 
-    .nameComm {
+    .nameComm,
+    .nameLink {
         font-size: 28px;
         padding-top: 8px;
         width: 650px;
         padding-left: 10px;
         padding-right: 15px;
+        vertical-align: bottom;
+    }
+
+    .nameLink {
+        font-size: 27px;
+        cursor: pointer;
+        color: #276aad;
+
+        &:hover {
+            color: #64b5f6;
+        }
+    }
+
+    .nameComm {
+        ul {
+            li {
+                padding: 3px 0px;
+                list-style: none;
+            }
+        }
+
+
     }
 
     .history {
@@ -229,7 +247,7 @@ body {
     .celebrity,
     .networth {
         font-weight: bold;
-        font-size: 30px;
+        font-size: 28px;
 
     }
 
@@ -244,10 +262,11 @@ body {
         color: #014780;
         font-size: 30px;
         cursor: pointer;
+        padding-right: 15px;
 
         &:hover {
             color: #64b5f6;
-            text-shadow: 1px 1px 3px #014780;
+
         }
 
 
@@ -275,18 +294,7 @@ body {
         padding: 20px
     }
 
-    .nameComm {
-        font-size: 24px;
 
-        ul {
-            padding: 0;
-        }
-
-        li {
-            list-style: none;
-            padding: 0;
-        }
-    }
 
     .more {
         display: block;
@@ -314,7 +322,7 @@ body {
     hr {
 
 
-        border: 2px solid #6a757e;
+        border: 2px solid #91afc8;
     }
 
     td {
@@ -443,7 +451,7 @@ body {
 
     .nytDate {
         display: flex;
-        padding: 10px 20px;
+        padding: 10px 30px;
         font-size: 14px;
         justify-content: space-between;
     }
@@ -460,14 +468,7 @@ body {
 
 .mainDiv {
     background-color: #ffe0b2;
-
 }
-
-
-
-
-
-
 
 .jokesMain {
     background-color: #b2ebf2;
@@ -592,7 +593,7 @@ body {
     display: flex;
     justify-content: space-around;
     width: 900px;
-    height: 700px;
+    // height: 700px;
     margin: auto;
     background-color: #bdd8ee;
     padding: 30px 15px;
@@ -628,7 +629,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 900px;
-    height: 1400px;
+    // height: 1400px;
     margin: auto;
     background-color: #bdd8ee;
     padding: 30px 100px;
@@ -850,16 +851,16 @@ body {
 
 @media screen and (max-width: 500px) {
     .home {
-        width: 347px;
+        width: 358px;
 
         .imgHold {
-            width: 347px;
+            width: 358px;
         }
     }
 
     .loader {
 
-        width: 347px;
+        width: 358px;
     }
 
     .paper {
@@ -875,7 +876,7 @@ body {
         margin: 0;
         display: flex;
         flex-direction: column;
-        width: 347px;
+        width: 358px;
         height: 600px;
 
         .search {
@@ -886,10 +887,10 @@ body {
 
     .jokesText {
         display: block;
-        width: 347px;
+        width: 358px;
 
         .dadJokes {
-            width: 347px;
+            width: 358px;
 
             .titleJoke {
                 padding-top: 25px;
@@ -903,16 +904,16 @@ body {
             }
 
             .img {
-                width: 347px;
+                width: 358px;
             }
         }
     }
 
     .pickTrivia {
         display: block;
-        width: 347px;
+        width: 358px;
         justify-content: start;
-        height: 600px;
+        // height: 600px;
 
         .history {
 
@@ -927,8 +928,8 @@ body {
 
     .trivia {
         display: block;
-        width: 347px;
-        height: 1300px;
+        width: 358px;
+        // height: 1300px;
         padding: 20px 15px;
 
         .categ {
@@ -956,7 +957,7 @@ body {
 
 
         .table {
-            width: 340px;
+            width: 310px;
 
             tr {
                 padding: 4px;
@@ -974,7 +975,7 @@ body {
     }
 
     .jokeMain {
-        width: 347px;
+        width: 358px;
         border-radius: 0;
 
         .jokeAnswer {
@@ -987,14 +988,14 @@ body {
         }
 
         .imgYes {
-            width: 347px;
+            width: 358px;
 
         }
 
     }
 
     .tabelaZemlje {
-        width: 347px;
+        width: 358px;
 
         .razmak {
             height: 20px;
@@ -1022,7 +1023,7 @@ body {
         }
 
         img {
-            width: 347px;
+            width: 358px;
         }
 
         .imgRobot {
@@ -1031,15 +1032,21 @@ body {
 
         .navod,
         .more {
-            padding-left: 8px;
+            padding-left: 10px;
             font-size: 14px;
             width: 95px;
         }
 
-        .nameComm {
+        .nameComm,
+        .nameLink {
             padding-left: 4px;
-            font-size: 20px;
-            width: 255px;
+            font-size: 18px;
+            padding-right: 15px;
+            width: 245px;
+        }
+
+        .nameLink {
+            font-size: 17px;
         }
 
         .networth {
@@ -1080,7 +1087,7 @@ body {
     }
 
     .nytFont {
-        width: 347px;
+        width: 358px;
         font-size: 30px;
         padding: 15px;
 
@@ -1094,7 +1101,7 @@ body {
     }
 
     .tableNYT {
-        width: 347px;
+        width: 358px;
 
         .nytName {
             font-size: 20px;
@@ -1104,21 +1111,21 @@ body {
         .nytTitle {
             font-size: 20px;
             font-weight: 700;
-            padding: 8px;
+            padding: 20px;
         }
 
         .nytAbs {
-            padding: 7px 10px;
+            padding: 7px 15px;
             font-size: 18px;
         }
 
         .nytPar {
-            padding: 5px 10px;
+            padding: 5px 15px;
             font-size: 16px;
         }
 
         .nytDate {
-            padding: 7px 10px;
+            padding: 7px 20px;
             font-size: 10px;
         }
 
@@ -1126,19 +1133,19 @@ body {
             padding-top: 10px;
 
             .nytImg {
-                width: 347px;
+                width: 358px;
             }
         }
     }
 
     .mainJoke {
-        width: 347px;
+        width: 358px;
         font-size: 20px;
     }
 
     .jokesMain {
 
-        width: 347px;
+        width: 358px;
         border-radius: 0;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
@@ -1152,7 +1159,7 @@ body {
 
 
             img {
-                width: 347px;
+                width: 358px;
             }
         }
 
@@ -1163,13 +1170,13 @@ body {
 
     .metropolitanMain {
 
-        width: 347px;
+        width: 358px;
 
         .tableRow {
-            width: 347px;
+            width: 358px;
 
             .imgMetro {
-                width: 347px;
+                width: 358px;
                 border-radius: 2px;
             }
         }
@@ -1180,7 +1187,7 @@ body {
         }
 
         .metroTitle {
-            width: 347px;
+            width: 358px;
             text-align: center;
             font-weight: bold;
             font-size: 22px;
@@ -1223,7 +1230,7 @@ body {
         .dropdown {
             font-size: 24px;
             font-weight: bold;
-            width: 347px;
+            width: 358px;
             text-align: center;
 
             position: relative;
@@ -1268,7 +1275,7 @@ body {
 
     .gridColor {
         grid-template-columns: auto auto auto auto;
-        width: 347px;
+        width: 358px;
         font-size: 16px;
 
         .dropdown {

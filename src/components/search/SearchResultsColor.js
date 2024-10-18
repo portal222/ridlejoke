@@ -103,7 +103,7 @@ console.log("podaci datas boje",datas)
                     </tr>
                 </tbody>
             </table>
-            <div className="pickTrivia"></div>
+            <div className="place"></div>
             </>
         )
     }

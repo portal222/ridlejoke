@@ -47,10 +47,13 @@ const ResultsHistory = () => {
     } else if (results == 0) {
         return (
             <>
+                <div className="pickTrivia">
+                    <SearchHistory placeholder={'Year'} linkTo={'/history'} />
+                </div>
                 <div className="tabelaZemlje">
-                    <SearchPlace />
                     <div className="results">Nothing found</div>
                 </div>
+                <div className="place"></div>
             </>
         )
     }
@@ -58,51 +61,32 @@ const ResultsHistory = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                    <tr>
-                        <th >
-                        <SearchHistory placeholder={'Year'} linkTo={'/history'} />
-                        </th>
-                    </tr>
                     <tr>
                         <th className="history">Historical Year {searchStringValue}</th>
                     </tr>
                     <tr className="results">
                         <th>Number of History Events: {results}</th>
                     </tr>
-
-
                 </thead>
 
-
-
                 {history.map((dataObj) => (
-
-
-
-                    <tbody key={history.word}
-                    >
+                    <tbody key={history.word}>
                         <tr>
-
                             <td className="celebrity">{dataObj.day + " " + dataObj.month + " " +
                                 dataObj.year}</td>
                         </tr>
                         <tr>
-
                             <td className="dictionary">{dataObj.event}</td>
                         </tr>
-
                         <tr>
                             <td >
                                 <hr></hr>
                             </td>
                         </tr>
                     </tbody>
-
                 ))}
-
             </table >
-       <BackToTop />
+            <BackToTop />
         </>
     );
 };

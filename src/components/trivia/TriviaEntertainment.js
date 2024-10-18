@@ -101,6 +101,7 @@ const Trivia = (props) => {
                         showArrow: false,
                     }]} />
             </div>
+            <div className="place"></div>
         </>
     )
 }

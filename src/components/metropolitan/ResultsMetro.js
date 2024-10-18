@@ -142,6 +142,7 @@ const ResultsMetro = () => {
                     </div>
 
                 </Box>
+                <div className="place"></div>
                 <BackToTop />
 
             </div>
@@ -286,6 +287,7 @@ const ResultsMetro = () => {
                         </tr>
                     </thead>
                 </table>
+                <div className="place"></div>
             </>
         )
     }

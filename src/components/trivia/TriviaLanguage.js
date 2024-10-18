@@ -66,7 +66,7 @@ const Trivia = (props) => {
 
     if (isLoading) {
         return (
-                <Loader />
+            <Loader />
         )
     }
 
@@ -101,6 +101,7 @@ const Trivia = (props) => {
                         showArrow: false,
                     }]} />
             </div>
+            <div className="place"></div>
         </>
     )
 }

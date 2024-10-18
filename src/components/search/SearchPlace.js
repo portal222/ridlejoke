@@ -24,7 +24,7 @@ const SearchPlace = () => {
 
     return (
 
-     
+     <>
         <div className="pickTrivia">
       
             <div>
@@ -45,6 +45,8 @@ const SearchPlace = () => {
                 <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />      
             </div>
         </div>
+        <div className="place"></div>
+        </>
     )
 
 }

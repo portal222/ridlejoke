@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
+
 import GlobalContext from "../GlobalContext";
 import Loader from "../Loader";
 import SearchHistoryEvents from "./searchHistoryEvents";
@@ -61,12 +61,15 @@ const ResultsHistoryEvents = () => {
         return <Loader />
     } else if (results == 0) {
         return (
-
             <>
+                <div className="pickTrivia">
+                    <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
+                </div>
                 <div className="tabelaZemlje">
-                    <SearchPlace />
+
                     <div className="results">Nothing found</div>
                 </div>
+                <div className="place"></div>
             </>
         )
     }
@@ -74,12 +77,6 @@ const ResultsHistoryEvents = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                    <tr>
-                        <th >
-                            <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
-                        </th>
-                    </tr>
                     <tr>
                         <th className="history">Historical Event {searchStringValue}</th>
                     </tr>
@@ -87,18 +84,10 @@ const ResultsHistoryEvents = () => {
                         <th>Number of Event:
                             {results}</th>
                     </tr>
-
-
                 </thead>
 
-
-
                 {historyEvents.map((dataObj) => (
-
-
-
-                    <tbody key={historyEvents.word}
-                    >
+                    <tbody key={historyEvents.word}>
                         <tr>
 
                             <td className="celebrity">{dataObj.day + " " + dataObj.month + " " +

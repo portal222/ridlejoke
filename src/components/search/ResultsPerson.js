@@ -86,14 +86,19 @@ const ResultsPerson = () => {
 
     if (isLoading) {
         return (
-            <SearchPlace />,
-            <Loader />)
+            <Loader />
+        )
     } else if (results == 0 && resultsCel == 0) {
         return (
-            <div className="tabelaZemlje">
-                <SearchPlace />
-                <div className="results">Nothing found</div>
-            </div>
+            <>
+                <div className="pickTrivia">
+                    <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
+                </div>
+                <div className="tabelaZemlje">
+                    <div className="results">Nothing found</div>
+                </div>
+                <div className="place"></div>
+            </>
         )
 
     } else if (results == 0) {
@@ -101,11 +106,15 @@ const ResultsPerson = () => {
 
         return (
             <>
-                <div>
-                    <SearchPlace />
-                    <h2 className="history">Nothing found in history</h2>
-                </div>
+
                 <table className="tabelaZemlje">
+                    <thead>
+                        <tr className="results">
+                            <td colSpan={2}>
+                                Nothing found in history persons base
+                            </td>
+                        </tr>
+                    </thead>
                     {celebs.map((dataObj, id) => (
                         <tbody key={id} >
                             <tr>
@@ -131,6 +140,7 @@ const ResultsPerson = () => {
                         </tbody>
                     ))}
                 </table>
+                <div className="place"></div>
             </>
         )
     }
@@ -139,11 +149,7 @@ const ResultsPerson = () => {
             <table className="tabelaZemlje">
                 <thead >
 
-                    <tr>
-                        <th colSpan={2}>
-                            <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
-                        </th>
-                    </tr>
+                
                     <tr>
                         <th className="history"
                             colSpan={2}>
@@ -222,6 +228,7 @@ const ResultsPerson = () => {
                     </tbody>
                 ))}
             </table>
+            <div className="place"></div>
             <BackToTop />
         </>
     );

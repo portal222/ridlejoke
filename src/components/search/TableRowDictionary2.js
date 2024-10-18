@@ -8,21 +8,22 @@ const TableRowDictionary2 = (props) => {
                 <td className="celebrity">{props.dictRow2.word + " " + props.dictRow2.phonetic}</td>
             </tr>
             {props.dictRow2.phonetics.map((phone) => (
-           
+       
                         <Player url={phone.audio}/>
+              
            
             ))}
             {props.dictRow2.meanings.map((mean, id) => (
                 <>
                     {mean.definitions.map((defin, id) => (
                         <tr key={id}>
-                            <td>
+                            <td className="dictionary">
                                 {defin.definition}         </td>
                         </tr>
                     ))}
                     <tr>
-                        <td key={id} className="nameComm"> 
-                            <ul>
+                        <td key={id} className="nameComm" > 
+                            <ul style={{paddingLeft: "25px"}}>
                                 <li>{mean.synonyms?.[0]}</li>
                                 <li>{mean.synonyms?.[1]}</li>
                                 <li>{mean.synonyms?.[2]}</li>

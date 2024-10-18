@@ -99,8 +99,8 @@ const Trivia = (props) => {
                         children: <p className="triviaAns">{text3}</p>,
                         showArrow: false,
                     }]} />
-
             </div>
+            <div className="place"></div>
         </>
     )
 }

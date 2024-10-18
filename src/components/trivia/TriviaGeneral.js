@@ -71,35 +71,37 @@ const Trivia = (props) => {
     }
 
     return (
-        <div className="trivia" >
-            <div className="categ">General</div>
-            <Collapse
-                size="large"
-                items={[{
-                    label: <p className="triviaAnswer">{answer.question}</p>,
-                    children: <p className="triviaAns">{text}</p>,
-                    showArrow: false,
-                }]} />
-            <div className="categ"></div>
+        <>
+            <div className="trivia" >
+                <div className="categ">General</div>
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer.question}</p>,
+                        children: <p className="triviaAns">{text}</p>,
+                        showArrow: false,
+                    }]} />
+                <div className="categ"></div>
 
-            <Collapse
-                size="large"
-                items={[{
-                    label: <p className="triviaAnswer">{answer2.question}</p>,
-                    children: <p className="triviaAns">{text2}</p>,
-                    showArrow: false,
-                }]} />
-            <div className="categ"></div>
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer2.question}</p>,
+                        children: <p className="triviaAns">{text2}</p>,
+                        showArrow: false,
+                    }]} />
+                <div className="categ"></div>
 
-            <Collapse
-                size="large"
-                items={[{
-                    label: <p className="triviaAnswer">{answer3.question}</p>,
-                    children: <p className="triviaAns">{text3}</p>,
-                    showArrow: false,
-                }]} />
-
-        </div>
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer3.question}</p>,
+                        children: <p className="triviaAns">{text3}</p>,
+                        showArrow: false,
+                    }]} />
+            </div>
+            <div className="place"></div>
+        </>
     )
 }
 export default Trivia;

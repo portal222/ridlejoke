@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
 import Loader from "../Loader";
 import SearchLogo from "./SearchLogo"
@@ -77,11 +76,16 @@ const ResultsCelebs = () => {
     } else if (results == 0 && results2 == 0) {
         return (
             <>
+                <div className="pickTrivia">
+                    <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
+                </div>
                 <div className="tabelaZemlje">
-                    <SearchPlace />
+
                     <div className="results">Nothing found</div>
                 </div>
-             
+
+                <div className="place"></div>
+
             </>
         )
     }
@@ -89,12 +93,6 @@ const ResultsCelebs = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                    <tr>
-                        <th colSpan={2}>
-                            <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
-                        </th>
-                    </tr>
                     <tr>
                         <th className="history"
                             colSpan={2}
@@ -104,7 +102,6 @@ const ResultsCelebs = () => {
                         <th>Number of Logo:
                             {results + results2}</th>
                     </tr>
-
                 </thead>
 
                 {logo.map((dataObj) => (

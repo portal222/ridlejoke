@@ -63,7 +63,7 @@ const SearchRes = () => {
     if (results == 0) {
         return (
             <>
-                <div className="pokemon">
+                <div className="pokemon" style={{textAlign: "center"}}>
                     {searchStringValue} was not found but there are other POKEMON
                 </div>
                 <Pokemon />

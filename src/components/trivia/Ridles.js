@@ -69,6 +69,7 @@ const Ridles = () => {
     }
 
     return (
+        <>
         <div className="trivia" >
             <div className="categ" >Riddles</div>
             <hr></hr>
@@ -101,6 +102,8 @@ const Ridles = () => {
         showArrow: false,
     }]} />
         </div>
+        <div className="place"></div>
+        </>
     )
 }
 export default Ridles;

@@ -10,8 +10,8 @@ const useAudio = url => {
   const toggle = () => setPlaying(!playing);
 
   useEffect(() => {
-      playing ? audio.play() : audio.pause();
-    },
+    playing ? audio.play() : audio.pause();
+  },
     [playing]
   );
 
@@ -32,22 +32,22 @@ const Player = ({ url }) => {
   if (url == '') {
     return (
       <>
-      <tr>
-        <td>
-           no sound
-        </td>
-      </tr>
-     </>
+        <tr>
+          <td style={{ padding: "3px 5px 3px 10px" }}>
+            no sound
+          </td>
+        </tr>
+      </>
     )
   }
 
   return (
-<tr>
-  <td>
-    <button onClick={toggle} className="button">{playing ? "Pause" : "Play Sound"}</button>
-  </td>
-</tr>
-      
+    <tr>
+      <td style={{ padding: "2px 2px 2px 1px" }}>
+        <button onClick={toggle} className="button">{playing ? "Pause" : "Play Sound"}</button>
+      </td>
+    </tr>
+
 
   );
 };

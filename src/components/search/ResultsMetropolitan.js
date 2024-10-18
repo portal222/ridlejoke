@@ -87,6 +87,7 @@ const ResultsMetropolitan = () => {
                         </tr>
                     </thead>
                 </table>
+                <div className="place"></div>
             </>
 
 
