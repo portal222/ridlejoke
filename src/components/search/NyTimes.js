@@ -11,24 +11,17 @@ const NyTimes = (props) => {
                     <SearchNYT placeholder={'Search'} linkTo={'/nyTimes'} />
                     <div className="archive">{props.name} not found in archive
                     </div>
-
                 </div>
-                <div className="place"></div>
-
+                <div className="place">
+                </div>
             </>
         )
     }
 
     return (
         <>
-
-
-
-
             <div className="nytFont">
                 <div>The New York Times</div>
-                {/* <SearchNYT placeholder={'Search'} linkTo={'/nyTimes'} /> */}
-
                 <div className="archive">{props.name} in archive</div>
                 <hr></hr>
             </div>
@@ -51,12 +44,8 @@ const NyTimes = (props) => {
                         <hr></hr>
                     </div>
                 ))}
-
             </div>
-
         </>
-
     )
-
 }
 export default NyTimes;

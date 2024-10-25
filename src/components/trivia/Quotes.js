@@ -1,32 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-
 import Loader from "../Loader";
-
 import { useNavigate } from "react-router-dom";
-
-
-
-
-
-
-
 
 const Quotes = () => {
     const [error, setError] = useState(null);
-
-
-
     const [random, setRandom] = useState([]);
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-
     const navigate = useNavigate();
-
-
-
 
     useEffect(() => {
         getDomain();
@@ -61,34 +45,21 @@ const Quotes = () => {
                     }
                 }
             );
-
             const data = response.data;
             const data2 = response2.data;
             const data3 = response3.data;
-
-
-
-
-
-            console.log("rezultat quotes", data)
-
 
             setRandom(data[0]);
             setRandom2(data2[0]);
             setRandom3(data3[0]);
             setIsLoading(false);
 
-
-
         } catch (err) {
             setError(err);
-
         }
-
     };
 
     const handleClick = (personName) => {
-        console.log("klik na personu iz quotes", personName);
         const LinkTo = `/historyPerson/${personName}`;
 
         navigate(LinkTo);
@@ -103,9 +74,7 @@ const Quotes = () => {
 
     return (
         <>
-
             <div className="facts">
-
                 <div className="table">
                     <h3>Random Quotes:</h3>
                     <p className="category">{random.category}</p>
@@ -115,9 +84,6 @@ const Quotes = () => {
 
                         {random.author}</p>
                 </div>
-
-
-
                 <div className="table">
                     <p className="category">{random2.category}</p>
                     <p>{random2.quote}</p>
@@ -131,16 +97,9 @@ const Quotes = () => {
                     <p className="author"
                         onClick={() => handleClick(random3.author)}>
                         {random3.author}</p>
-                        <hr></hr>
+                    <hr></hr>
                 </div>
-                
-
-
             </div>
-
-
-
-
         </>
     );
 };

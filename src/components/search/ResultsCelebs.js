@@ -10,7 +10,7 @@ const ResultsCelebs = (props) => {
                 <thead>
                     <tr className="results">
                         <th colSpan={2} >
-                          Nothing found in celebs base 
+                            Nothing found in celebs base
                         </th>
                     </tr>
                 </thead>
@@ -24,14 +24,14 @@ const ResultsCelebs = (props) => {
                 <thead>
                     <tr className="results">
                         <th colSpan={2} >
-                        Data from celebs base
+                            Data from celebs base
                         </th>
                     </tr>
                 </thead>
 
 
-                {props.celebs.map((celeb) => (
-                    <tbody>
+                {props.celebs.map((celeb, id) => (
+                    <tbody key={id}>
                         {celeb.name && (
                             <tr>
                                 <td className="navod">Name:</td>
@@ -81,7 +81,7 @@ const ResultsCelebs = (props) => {
                                     <td className="nameComm">
                                         <ul>
                                             {celeb.occupation.map((occup, id) => (
-                                                <li key={id}>{occup}</li>
+                                                <li key={id}>{occup.replace(/_/g, ' ')}</li>
                                             ))}
                                         </ul>
                                     </td>
@@ -91,7 +91,7 @@ const ResultsCelebs = (props) => {
                                     <td className="navod">Occupation:</td>
                                     <td className="nameComm">
                                         <td>
-                                            {celeb.occupation}
+                                            {celeb.occupation.replace(/_/g, ' ')}
                                         </td>
                                     </td>
                                 </tr>
@@ -104,11 +104,15 @@ const ResultsCelebs = (props) => {
                             </tr>
                         )}
                         <tr>
-                            <td colSpan={2} style={{height: "25px"}}></td>
+                            <td colSpan={2} style={{ height: "25px" }}></td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                <hr></hr>
+                            </td>
                         </tr>
                     </tbody>
                 ))}
-
             </table>
         </>
     );

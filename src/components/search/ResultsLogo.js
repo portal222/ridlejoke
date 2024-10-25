@@ -5,13 +5,6 @@ import Loader from "../Loader";
 import SearchLogo from "./SearchLogo"
 import BackToTop from "../BackToTop";
 
-
-
-
-
-
-
-
 const ResultsCelebs = () => {
     const [error, setError] = useState(null);
     const [logo, setLogo] = useState([]);
@@ -20,15 +13,12 @@ const ResultsCelebs = () => {
     const [results2, setResults2] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-
-
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
 
     useEffect(() => {
         getLogos(searchStringValue);
     }, [searchStringValue]);
-    console.log("iz resultLogo searchStringValue:", searchStringValue)
 
     const getLogos = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/logo?name=${searchStringValue}`;
@@ -40,36 +30,22 @@ const ResultsCelebs = () => {
                     headers: {
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
-
-
                 }
-
             );
-
             const response2 = await axios.get(url2);
 
             const data = response.data;
             const data2 = response2.data;
 
-
-
-            console.log("rezultat Logoa", data)
-            console.log("drugi logo podaci", data2)
-
             setLogo(data);
             setLogo2(data2);
             setResults(data.length);
             setResults2(data2.length);
-
             setIsLoading(false);
         } catch (err) {
             setError(err);
-
         }
-
     };
-
-
 
     if (isLoading) {
         return <Loader />
@@ -80,12 +56,9 @@ const ResultsCelebs = () => {
                     <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                 </div>
                 <div className="tabelaZemlje">
-
                     <div className="results">Nothing found</div>
                 </div>
-
                 <div className="place"></div>
-
             </>
         )
     }
@@ -105,36 +78,24 @@ const ResultsCelebs = () => {
                 </thead>
 
                 {logo.map((dataObj) => (
-
-
-
                     <tbody key={dataObj.name} >
                         <tr>
-
                             <td className="celebrity">{dataObj.name}</td>
-
                         </tr>
                         <tr>
-
                             <td className="celebrity">{dataObj.ticker}</td>
-
                         </tr>
                         <tr>
-
                             <td >
-                                <img
-                                    className="logoImg" src={dataObj.image} /></td>
-
+                                <img className="logoImg" src={dataObj.image} />
+                            </td>
                         </tr>
-
                         <tr>
                             <td >
                                 <hr></hr>
                             </td>
                         </tr>
                     </tbody>
-
-
                 ))}
                 {logo2.map((dataObj2) => (
                     <tbody>
@@ -159,13 +120,10 @@ const ResultsCelebs = () => {
                                 <hr></hr>
                             </td>
                         </tr>
-
                     </tbody>
-
                 ))}
             </table >
             <BackToTop />
-
         </>
     );
 };

@@ -36,30 +36,27 @@ const Pokemon = () => {
 
     return (
         <>
-<div >
+            <div >
+                <Box>
+                    {paginatedPosts.length > 1 && (
+                        <Box mt={2} display="flex" justifyContent="center" className="pagination"
+                            margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                            <Pagination
+                                count={paginatedPosts.length}
+                                page={currentPage}
+                                onChange={(_, newPage) => setCurrentPage(newPage)}
+                            />
+                        </Box>
+                    )}
+                    <div className="pokemon">
+                        {currentPosts &&
+                            currentPosts.map((post) => (
+                                <PokemonImg post={post} />
+                            ))}
+                    </div>
 
-            <Box>
-                {paginatedPosts.length > 1 && (
-                    <Box mt={2} display="flex" justifyContent="center" className="pagination"
-                    margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
-                        <Pagination 
-                            count={paginatedPosts.length}
-                            page={currentPage}
-                            onChange={(_, newPage) => setCurrentPage(newPage)}
-                        />
-                    </Box>
-                )}
-                <div className="pokemon">
-                    {currentPosts &&
-                        currentPosts.map((post) => (
-
-                <PokemonImg post={post}/>
-
-                        ))}
-                </div>
-          
-            </Box>
-            <PokJson />
+                </Box>
+                <PokJson />
             </div>
             <BackToTop />
         </>

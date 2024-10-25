@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
 import SearchAdvice from "./SearchAdvice";
 import BackToTop from "../BackToTop";
@@ -10,14 +9,12 @@ const ResultsAdvice = () => {
     const [advice, setAdvice] = useState({});
     const [results, setResults] = useState([]);
 
-
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
 
     useEffect(() => {
         getAdvices(searchStringValue);
     }, [searchStringValue]);
-    console.log("iz advice searchStringValue:", searchStringValue)
 
     const getAdvices = async (searchStringValue) => {
         const url = `https://api.adviceslip.com/advice/search/${searchStringValue}`;
@@ -26,7 +23,6 @@ const ResultsAdvice = () => {
             const response = await axios.get(url);
             const data = response.data.slips;
 
-            console.log("rezultat advicea", data)
             setAdvice(data);
             setResults(data.length);
         } catch (err) {
@@ -44,7 +40,6 @@ const ResultsAdvice = () => {
                     <div className="results">Nothing found</div>
                 </div>
                 <div className="place"></div>
-
             </>
         )
     }
@@ -52,8 +47,6 @@ const ResultsAdvice = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                  
                     <tr>
                         <th className="celebrity"
                             colSpan={2}>
@@ -67,7 +60,6 @@ const ResultsAdvice = () => {
                         <th></th>
                     </tr>
                 </thead>
-
                 {advice.map((dataAdv) => (
                     <tbody key={dataAdv.id}>
                         <tr>
@@ -83,13 +75,8 @@ const ResultsAdvice = () => {
                         </tr>
                     </tbody>
                 ))}
-
-
-
-
             </table >
             <div className="place"></div>
-
             <BackToTop />
         </>
     );

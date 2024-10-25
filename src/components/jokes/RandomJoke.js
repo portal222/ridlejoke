@@ -32,11 +32,9 @@ const RandomJoke = () => {
         <>
             <div className="dadJokes">
                 <div className="titleJoke">
-
                     RANDOM JOKE
                 </div>
                 {jokes.map((dataObj) => (
-
                     <div key={dataObj.joke}
                         className="border" >
                         {dataObj.joke}

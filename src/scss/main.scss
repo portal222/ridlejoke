@@ -207,10 +207,12 @@ body {
         padding-left: 10px;
         padding-right: 15px;
         vertical-align: bottom;
+
+
     }
 
     .nameLink {
-        font-size: 27px;
+        font-size: 28px;
         cursor: pointer;
         color: #276aad;
 
@@ -220,6 +222,8 @@ body {
     }
 
     .nameComm {
+
+
         ul {
             li {
                 padding: 3px 0px;
@@ -228,6 +232,28 @@ body {
         }
 
 
+
+    }
+
+    .link {
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 10px;
+        max-width: 380px !important;
+        padding-top: 6px;
+
+        a {
+            text-decoration: none;
+            color: #276aad;
+            font-size: 28px;
+            vertical-align: text-bottom;
+
+
+            &:hover {
+                color: #64b5f6;
+            }
+        }
     }
 
     .history {
@@ -580,6 +606,8 @@ body {
         font-weight: bold;
         font-size: 28px;
         color: #1a237e;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .jokeAnswer {
@@ -1043,10 +1071,21 @@ body {
             font-size: 18px;
             padding-right: 15px;
             width: 245px;
+            overflow: hidden;
+
         }
 
         .nameLink {
-            font-size: 17px;
+            font-size: 18px;
+        }
+
+        .link {
+            max-width: 220px !important;
+            padding-left: 4px;
+
+            a {
+                font-size: 18px;
+            }
         }
 
         .networth {

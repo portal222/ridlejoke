@@ -1,25 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-
 import GlobalContext from "../GlobalContext";
 import axios from "axios";
 import BackToTop from "../BackToTop";
 import Loader from "../Loader";
-
 import NyTimes from "./NyTimes";
 
 const SearchResutsNYT = () => {
 
     const [error, setError] = useState(null);
-   
     const [isLoading, setIsLoading] = useState(true);
-
     const [nyTimes, setNyTimes] = useState([]);
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
-  
-
-    console.log("searchStringvalue NYT", searchStringValue)
 
     useEffect(() => {
         getTimes(searchStringValue);
@@ -31,27 +24,29 @@ const SearchResutsNYT = () => {
         try {
             const response = await axios.get(url);
             const data = response.data;
-            
-            console.log("NYT podaci", data);
 
             setIsLoading(false);
             setNyTimes(data.response.docs);
-        setResults(data.response.docs.length)
-
+            setResults(data.response.docs.length)
 
         } catch (err) {
             setError(err);
         }
     };
 
-
     if (isLoading) {
-        return <Loader />
-    } 
+        return (
+            <>
+                <div className="nytFont">
+                    <div>The New York Times</div>
+                </div>
+                <Loader />
+            </>
+        )
+    }
 
     return (
-        <>  
-     
+        <>
             <NyTimes name={searchStringValue} news={nyTimes} />
             <div>{<BackToTop />}</div>
         </>

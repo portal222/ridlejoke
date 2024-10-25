@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import SearchPerson from "./SearchPerson";
 import Loader from "../Loader";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import NyTimes from "./NyTimes";
 import BackToTop from "../BackToTop";
 import ResultsCelebs from "./ResultsCelebs";
@@ -16,7 +14,6 @@ const DetailsPerson = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [celebs, setCelebs] = useState([]);
     const [nytPerson, setNytPerson] = useState([]);
-
     const [results, setResults] = useState();
     const [resHis, setResHis] = useState();
 
@@ -30,7 +27,6 @@ const DetailsPerson = (props) => {
         getPerson();
         getTimes();
     }, []);
-    console.log("iz detailsPerson params:", personName);
 
     const getPerson = async () => {
         const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${personName}`;
@@ -55,43 +51,29 @@ const DetailsPerson = (props) => {
             const dataCel = responseCel.data;
 
             console.log("detalji istorijske persone", data)
-            console.log("detalji celebsa", dataCel);
             setPersons(data);
             setCelebs(dataCel);
             setIsLoading(false);
             setResults(dataCel.length);
             setResHis(data.length);
 
-
-
-
         } catch (err) {
             setError(err);
-
         }
     };
-
-    console.log("celebs rezultati", results)
 
     const getTimes = async () => {
         const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${personName}&api-key=GmsdDOX2JjxHcopan54o6M2dgET0H2hp`
 
         const response = await fetch(url);
         const data = await response.json();
-        console.log(" podaci NYT persone sa fetchom ", data.response.docs);
         setNytPerson(data.response.docs);
     }
 
-
     const handleClick = (linkName) => {
-
         const LinkTo = `/linkPerson/${linkName}`;
         navigate(LinkTo);
     }
-
-
-
-
 
     if (isLoading) {
         return <Loader />
@@ -105,7 +87,6 @@ const DetailsPerson = (props) => {
                                 Nothing found in historical persons base
                             </th>
                         </tr>
-
                     </thead>
                 </table>
                 <ResultsCelebs celebs={celebs} results={results} />
@@ -117,18 +98,11 @@ const DetailsPerson = (props) => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-                    {/* <tr>
-                        <th colSpan={2}>
-                            <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
-                        </th>
-                    </tr> */}
-
                     <tr className="results">
                         <th colSpan={2} >
                             Data from historical persons base
                         </th>
                     </tr>
-
                 </thead>
 
                 {persons.map((dataObj, id) => (
@@ -141,6 +115,12 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Native name:</td>
                                 <td className="nameComm">{dataObj.info.native_name}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.full_name && (
+                            <tr>
+                                <td className="navod">Full name:</td>
+                                <td className="nameComm">{dataObj.info.full_name}</td>
                             </tr>
                         )}
                         {dataObj.info.also_known_as && (
@@ -163,8 +143,27 @@ const DetailsPerson = (props) => {
                                 </tr>
                             ) : (
                                 <tr>
-                                    <td className="navod">Nickname:</td>
+                                    <td className="navod">Nicknames:</td>
                                     <td className="nameComm">{dataObj.info.nicknames}</td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.nickname && (
+                            Array.isArray(dataObj.info.nickname) ? (
+                                <tr>
+                                    <td className="navod">Nickname:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.nickname.map((nick, id) => (
+                                                <li key={id}>{nick}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Nickname:</td>
+                                    <td className="nameComm">{dataObj.info.nickname}</td>
                                 </tr>
                             )
                         )}
@@ -225,6 +224,30 @@ const DetailsPerson = (props) => {
                                 <td className="nameComm">{dataObj.info.pen_name}</td>
                             </tr>
                         )}
+                        {dataObj.info.chinese && (
+                            <tr>
+                                <td className="navod">Chinese:</td>
+                                <td className="nameComm">{dataObj.info.chinese}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.hanyu_pinyin && (
+                            <tr>
+                                <td className="navod">Hanyu pinyin:</td>
+                                <td className="nameComm">{dataObj.info.hanyu_pinyin}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["wade-giles"] && (
+                            <tr>
+                                <td className="navod">Wade giles:</td>
+                                <td className="nameComm">{dataObj.info["wade-giles"]}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.romanization && (
+                            <tr>
+                                <td className="navod">Romanization:</td>
+                                <td className="nameComm">{dataObj.info.romanization}</td>
+                            </tr>
+                        )}
                         {dataObj.info.billed_from && (
                             <tr>
                                 <td className="navod">From:</td>
@@ -237,6 +260,183 @@ const DetailsPerson = (props) => {
                                 <td className="nameComm">{dataObj.title}</td>
                             </tr>
                         )}
+                        {dataObj.info.areas && (
+                            Array.isArray(dataObj.info.areas) ? (
+                                <tr>
+                                    <td className="navod">Areas:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.areas.map((area, id) => (
+                                                <li key={id}>{area}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Areas:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.areas}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.base_of_operations && (
+                            Array.isArray(dataObj.info.base_of_operations) ? (
+                                <tr>
+                                    <td className="navod">Base of operations:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.base_of_operations.map((base, id) => (
+                                                <li key={id}>{base}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Base of operations:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.base_of_operations}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.coronation && (
+                            <tr>
+                                <td className="navod">Coronation:</td>
+                                <td className="nameComm">{dataObj.info.coronation}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.reign && (
+                            <tr>
+                                <td className="navod">Reign:</td>
+                                <td className="nameComm">{dataObj.info.reign}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.acclamation && (
+                            <tr>
+                                <td className="navod">Acclamation:</td>
+                                <td className="nameComm">{dataObj.info.acclamation}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.tenure && (
+                            <tr>
+                                <td className="navod">Tenure:</td>
+                                <td className="nameComm">{dataObj.info.tenure}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.house && (
+                            <tr>
+                                <td className="navod">House:</td>
+                                <td className="nameComm">{dataObj.info.house}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.noble_family && (
+                            <tr>
+                                <td className="navod">Noble family:</td>
+                                <td className="nameComm">{dataObj.info.noble_family}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.dynasty && (
+                            <tr>
+                                <td className="navod">Dinasty:</td>
+                                <td className="nameComm">{dataObj.info.dynasty}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.heir_apparent && (
+                            <tr>
+                                <td className="navod">Heir apparent:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.heir_apparent)}
+                                >{dataObj.info.heir_apparent}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.occupations && (
+                            Array.isArray(dataObj.info.occupations) ? (
+                                <tr>
+                                    <td className="navod">Occupations:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.occupations.map((occupation, id) => (
+                                                <li key={id}>{occupation}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Occupations:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.occupations}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.occupation && (
+                            Array.isArray(dataObj.info.occupation) ? (
+                                <tr>
+                                    <td className="navod">Occupation:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.occupation.map((occup, id) => (
+                                                <li key={id}>{occup}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Occupation:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.occupation}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.medium && (
+                            Array.isArray(dataObj.info.medium) ? (
+                                <tr>
+                                    <td className="navod">Medium:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.medium.map((med, id) => (
+                                                <li key={id}>{med}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Medium:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.medium}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.television && (
+                            Array.isArray(dataObj.info.television) ? (
+                                <tr>
+                                    <td className="navod">Television:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.television.map((tele, id) => (
+                                                <li key={id}>{tele}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Television:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.television}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+
                         {dataObj.info.period && (
                             <tr>
                                 <td className="navod">Period:</td>
@@ -328,18 +528,65 @@ const DetailsPerson = (props) => {
                                 </tr>
                             ) : (
                                 <tr>
-                                    <td className="navod">cooking_style:</td>
+                                    <td className="navod">Cooking style:</td>
                                     <td className="nameComm">
                                         {dataObj.info.cooking_style}
                                     </td>
                                 </tr>
                             )
                         )}
-                        {dataObj.info.other_posts && (
+                        {dataObj.info.nationality && (
                             <tr>
-                                <td className="navod">Other posts:</td>
-                                <td className="nameComm">{dataObj.info.other_posts}</td>
+                                <td className="navod">Nationality:</td>
+                                <td className="nameComm">{dataObj.info.nationality}</td>
                             </tr>
+                        )}
+                        {dataObj.info.sport_country && (
+                            <tr>
+                                <td className="navod">Sport country:</td>
+                                <td className="nameComm">{dataObj.info.sport_country}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.country && (
+                            Array.isArray(dataObj.info.country) ? (
+                                <tr>
+                                    <td className="navod">Country:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.country.map((count, id) => (
+                                                <li key={id}>{count}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Country:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.country}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.other_posts && (
+                            Array.isArray(dataObj.info.other_posts) ? (
+                                <tr>
+                                    <td className="navod">Other posts:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.other_posts.map((post, id) => (
+                                                <li key={id}>{post}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Other posts:</td>
+                                    <td className="nameComm">{dataObj.info.other_posts}</td>
+                                </tr>
+                            )
+
                         )}
                         {dataObj.info.predecessor && (
                             <tr>
@@ -382,6 +629,31 @@ const DetailsPerson = (props) => {
                                 >{dataObj.info.monarch}</td>
                             </tr>
                         )}
+                        {dataObj.info["co-rulers"] && (
+                            Array.isArray(dataObj.info["co-rulers"]) ? (
+                                <tr>
+                                    <td className="navod">Co-rulers:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info["co-rulers"].map((ruler, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(ruler)}
+                                                >{ruler}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Co-rulers:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info["co-rulers"])}
+                                    >
+                                        {dataObj.info["co-rulers"]}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.president && (
                             <tr>
                                 <td className="navod">President:</td>
@@ -390,11 +662,194 @@ const DetailsPerson = (props) => {
                                 >{dataObj.info.president}</td>
                             </tr>
                         )}
+                        {dataObj.info.vice_president && (
+                            <tr>
+                                <td className="navod">Vice president:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.vice_president)}
+                                >{dataObj.info.vice_president}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.premier && (
+                            <tr>
+                                <td className="navod">Premier:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.premier)}
+                                >{dataObj.info.premier}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.governor && (
+                            <tr>
+                                <td className="navod">Governor:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.governor)}
+                                >{dataObj.info.governor}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.governor_general && (
+                            <tr>
+                                <td className="navod">Governor general:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.governor_general)}
+                                >{dataObj.info.governor_general}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.lieutenant_governor && (
+                            <tr>
+                                <td className="navod">Lieutenant governor:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.lieutenant_governor)}
+                                >{dataObj.info.lieutenant_governor}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.prime_minister && (
+                            Array.isArray(dataObj.info.prime_minister) ? (
+                                <tr>
+                                    <td className="navod">Prime minister:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.prime_minister.map((minist, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(minist)}
+                                                >{minist}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Prime minister:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.prime_minister)}
+                                    >
+                                        {dataObj.info.prime_minister}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.minister && (
+                            Array.isArray(dataObj.info.minister) ? (
+                                <tr>
+                                    <td className="navod">Minister:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.minister.map((minist, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(minist)}
+                                                >{minist}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Minister:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.minister)}
+                                    >
+                                        {dataObj.info.minister}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.leader && (
+                            Array.isArray(dataObj.info.leader) ? (
+                                <tr>
+                                    <td className="navod">Leader:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.leader.map((lead, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(lead)}
+                                                >{lead}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Leader:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.leader)}
+                                    >
+                                        {dataObj.info.leader}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.appointed_by && (
+                            <tr>
+                                <td className="navod">Appointed by:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.appointed_by)}>
+                                    {dataObj.info.appointed_by}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.elected && (
+                            <tr>
+                                <td className="navod">Elected:</td>
+                                <td className="nameComm"
+                                >
+                                    {dataObj.info.elected}</td>
+                            </tr>
+                        )}
                         {dataObj.info.deputy && (
                             <tr>
                                 <td className="navod">Deputy:</td>
-                                <td className="nameComm">{dataObj.info.deputy}</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.deputy)}>
+                                    {dataObj.info.deputy}</td>
                             </tr>
+                        )}
+                        {dataObj.info.lieutenant && (
+                            Array.isArray(dataObj.info.lieutenant) ? (
+                                <tr>
+                                    <td className="navod">Lieutenant:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.lieutenant.map((lieuten, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(lieuten)}
+                                                >{lieuten}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Lieutenant:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.lieutenant)}
+                                    >
+                                        {dataObj.info.lieutenant}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.general_secretary && (
+                            Array.isArray(dataObj.info.general_secretary) ? (
+                                <tr>
+                                    <td className="navod">General secretary:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.general_secretary.map((secret, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(secret)}
+                                                >{secret}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">General secretary:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.general_secretary)}
+                                    >
+                                        {dataObj.info.general_secretary}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.first_secretary && (
                             Array.isArray(dataObj.info.first_secretary) ? (
@@ -417,6 +872,81 @@ const DetailsPerson = (props) => {
                                         onClick={() => handleClick(dataObj.info.first_secretary)}
                                     >
                                         {dataObj.info.first_secretary}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.chair && (
+                            Array.isArray(dataObj.info.chair) ? (
+                                <tr>
+                                    <td className="navod">Chair:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.chair.map((chair, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(chair)}
+                                                >{chair}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Chair:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.chair)}
+                                    >
+                                        {dataObj.info.chair}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info["sec._of_state"] && (
+                            Array.isArray(dataObj.info["sec._of_state"]) ? (
+                                <tr>
+                                    <td className="navod">Secretary of state:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info["sec._of_state"].map((state, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(state)}
+                                                >{state}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Secretary of state:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info["sec._of_state"])}
+                                    >
+                                        {dataObj.info["sec._of_state"]}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.shadowing && (
+                            Array.isArray(dataObj.info.shadowing) ? (
+                                <tr>
+                                    <td className="navod">Shadowing:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.shadowing.map((shadow, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(shadow)}
+                                                >{shadow}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Shadowing:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.shadowing)}
+                                    >
+                                        {dataObj.info.shadowing}
                                     </td>
                                 </tr>
                             )
@@ -656,6 +1186,66 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+                        {dataObj.info.selection && (
+                            Array.isArray(dataObj.info.selection) ? (
+                                <tr>
+                                    <td className="navod">Selection:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.selection.map((select, id) => (
+                                                <li key={id}>{select}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Selection:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.selection}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.missions && (
+                            Array.isArray(dataObj.info.missions) ? (
+                                <tr>
+                                    <td className="navod">Missions:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.missions.map((mission, id) => (
+                                                <li key={id}>{mission}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Missions:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.missions}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.time_in_space && (
+                            <tr>
+                                <td className="navod">Time in space:</td>
+                                <td className="nameComm">{dataObj.info.time_in_space}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.total_evas && (
+                            <tr>
+                                <td className="navod">Total evas:</td>
+                                <td className="nameComm">{dataObj.info.total_evas}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.total_eva_time && (
+                            <tr>
+                                <td className="navod">Total eva time:</td>
+                                <td className="nameComm">{dataObj.info.total_eva_time}</td>
+                            </tr>
+                        )}
                         {dataObj.info.instruments && (
                             Array.isArray(dataObj.info.instruments) ? (
                                 <tr>
@@ -742,6 +1332,69 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+                        {dataObj.info.sport && (
+                            Array.isArray(dataObj.info.sport) ? (
+                                <tr>
+                                    <td className="navod">Sport:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.sport.map((sport, id) => (
+                                                <li key={id}>{sport}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Sport:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.sport}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.events && (
+                            Array.isArray(dataObj.info.events) ? (
+                                <tr>
+                                    <td className="navod">Events:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.events.map((event, id) => (
+                                                <li key={id}>{event}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Events:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.events}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.personal_bests && (
+                            Array.isArray(dataObj.info.personal_bests) ? (
+                                <tr>
+                                    <td className="navod">Personal bests:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.personal_bests.map((best, id) => (
+                                                <li key={id}>{best}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Personal bests:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.personal_bests}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.profession && (
                             <tr>
                                 <td className="navod">Profession:</td>
@@ -752,6 +1405,189 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Position:</td>
                                 <td className="nameComm">{dataObj.info.position}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.sporting_nationality && (
+                            <tr>
+                                <td className="navod">Sporting nationality:</td>
+                                <td className="nameComm">{dataObj.info.sporting_nationality}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.status && (
+                            <tr>
+                                <td className="navod">Status:</td>
+                                <td className="nameComm">{dataObj.info.status}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.ana_inspiration && (
+                            <tr>
+                                <td className="navod">Ana inspiration:</td>
+                                <td className="nameComm">{dataObj.info.ana_inspiration}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.du_maurier_classic && (
+                            <tr>
+                                <td className="navod">Du maurier classic:</td>
+                                <td className="nameComm">{dataObj.info.du_maurier_classic}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["u.s._women's_open"] && (
+                            <tr>
+                                <td className="navod">U.S. women's open:</td>
+                                <td className="nameComm">{dataObj.info["u.s._women's_open"]}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["women's_british_open"] && (
+                            <tr>
+                                <td className="navod">Women's british open:</td>
+                                <td className="nameComm">{dataObj.info["women's_british_open"]}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["women's_pga_c'ship"] && (
+                            <tr>
+                                <td className="navod">Women's PGA c'ship:</td>
+                                <td className="nameComm">{dataObj.info["women's_pga_c'ship"]}</td>
+                            </tr>
+                        )}
+
+                        {dataObj.info.former_tours && (
+                            Array.isArray(dataObj.info.former_tours) ? (
+                                <tr>
+                                    <td className="navod">Former tours:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.former_tours.map((tour, id) => (
+                                                <li key={id}>{tour}</li>
+                                            ))}
+                                        </ul></td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Former tours:</td>
+                                    <td className="nameComm">{dataObj.info.former_tours}</td>
+                                </tr>
+                            )
+
+                        )}
+                        {dataObj.info.pga_championship && (
+                            <tr>
+                                <td className="navod">PGA cahampionship</td>
+                                <td className="nameComm">{dataObj.info.pga_championship}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.pga_player_of_the_year && (
+                            <tr>
+                                <td className="navod">PGA player of the year:</td>
+                                <td className="nameComm">{dataObj.info.pga_player_of_the_year}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.pga_tour && (
+                            <tr>
+                                <td className="navod">PGA tour:</td>
+                                <td className="nameComm">{dataObj.info.pga_tour}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.pga_tour_of_australasis && (
+                            <tr>
+                                <td className="navod">PGA tour of australasis:</td>
+                                <td className="nameComm">{dataObj.info.pga_tour_of_australasis}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.pga_tourleading_money_winner && (
+                            <tr>
+                                <td className="navod">PGA tourleading money winner:</td>
+                                <td className="nameComm">{dataObj.info.pga_tourleading_money_winner}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.pga_tourplayer_of_the_year && (
+                            <tr>
+                                <td className="navod">PGA tourplayer of the year:</td>
+                                <td className="nameComm">{dataObj.info.pga_tourplayer_of_the_year}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.sunshine_tour && (
+                            <tr>
+                                <td className="navod">Sunshine tour:</td>
+                                <td className="nameComm">{dataObj.info.sunshine_tour}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.the_open_championship && (
+                            <tr>
+                                <td className="navod">The open championship:</td>
+                                <td className="nameComm">{dataObj.info.the_open_championship}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["u.s._open"] && (
+                            <tr>
+                                <td className="navod">U.S. open:</td>
+                                <td className="nameComm">{dataObj.info["u.s._open"]}</td>
+                            </tr>
+                        )}
+
+                        {dataObj.info.payne_stewart_award && (
+                            <tr>
+                                <td className="navod">Payne stewart award:</td>
+                                <td className="nameComm">{dataObj.info.payne_stewart_award}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.byron_nelson_award && (
+                            <tr>
+                                <td className="navod">Byron Nelson award:</td>
+                                <td className="nameComm">{dataObj.info.byron_nelson_award}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.vardon_trophy && (
+                            <tr>
+                                <td className="navod">Vardon trophy:</td>
+                                <td className="nameComm">{dataObj.info.vardon_trophy}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.european_tour && (
+                            <tr>
+                                <td className="navod">European tour:</td>
+                                <td className="nameComm">{dataObj.info.european_tour}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.european_tourgolfer_of_the_year && (
+                            <tr>
+                                <td className="navod">European tourgolfer of the year:</td>
+                                <td className="nameComm">{dataObj.info.european_tourgolfer_of_the_year}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.european_tourorder_of_merit_winner && (
+                            <tr>
+                                <td className="navod">European tourorder of merit winner:</td>
+                                <td className="nameComm">{dataObj.info.european_tourorder_of_merit_winner}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.masters_tournament && (
+                            <tr>
+                                <td className="navod">Masters tournament:</td>
+                                <td className="nameComm">{dataObj.info.masters_tournament}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.turned_professional && (
+                            <tr>
+                                <td className="navod">Turned professional:</td>
+                                <td className="nameComm">{dataObj.info.turned_professional}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.world_golf_hall_of_fame && (
+                            <tr>
+                                <td className="navod">World gold hall of fame:</td>
+                                <td className="nameComm">{dataObj.info.world_golf_hall_of_fame}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.lpga_tour && (
+                            <tr>
+                                <td className="navod">LPGA tour:</td>
+                                <td className="nameComm">{dataObj.info.lpga_tour}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.professional_wins && (
+                            <tr>
+                                <td className="navod">Professional wins:</td>
+                                <td className="nameComm">{dataObj.info.professional_wins}</td>
                             </tr>
                         )}
                         {dataObj.info.number && (
@@ -779,10 +1615,40 @@ const DetailsPerson = (props) => {
                                 <td className="nameComm">{dataObj.info.forced_fumbles}</td>
                             </tr>
                         )}
+                        {dataObj.info.field_goals && (
+                            <tr>
+                                <td className="navod">Field goals:</td>
+                                <td className="nameComm">{dataObj.info.field_goals}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.longest_field_goal && (
+                            <tr>
+                                <td className="navod">Longest field goal:</td>
+                                <td className="nameComm">{dataObj.info.longest_field_goal}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.points_scored && (
+                            <tr>
+                                <td className="navod">Points scored:</td>
+                                <td className="nameComm">{dataObj.info.points_scored}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.undrafted && (
+                            <tr>
+                                <td className="navod">Undrafted:</td>
+                                <td className="nameComm">{dataObj.info.undrafted}</td>
+                            </tr>
+                        )}
                         {dataObj.info.tackles && (
                             <tr>
                                 <td className="navod">Tackles:</td>
                                 <td className="nameComm">{dataObj.info.tackles}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.sacks && (
+                            <tr>
+                                <td className="navod">Sacks:</td>
+                                <td className="nameComm">{dataObj.info.sacks}</td>
                             </tr>
                         )}
                         {dataObj.info.playing_career && (
@@ -814,6 +1680,81 @@ const DetailsPerson = (props) => {
                                 <td className="navod">NFL draft:</td>
                                 <td className="nameComm">{dataObj.info.nfl_draft}</td>
                             </tr>
+                        )}
+                        {dataObj.info.national_team && (
+                            <tr>
+                                <td className="navod">National team:</td>
+                                <td className="nameComm">{dataObj.info.national_team}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.played_for && (
+                            <tr>
+                                <td className="navod">Played for:</td>
+                                <td className="nameComm">{dataObj.info.played_for}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.shot && (
+                            <tr>
+                                <td className="navod">Shot:</td>
+                                <td className="nameComm">{dataObj.info.shot}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.receiving_touchdowns && (
+                            <tr>
+                                <td className="navod">Receiving touchdowns:</td>
+                                <td className="nameComm">{dataObj.info.receiving_touchdowns}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.receiving_yards && (
+                            <tr>
+                                <td className="navod">Receiving yards:</td>
+                                <td className="nameComm">{dataObj.info.receiving_yards}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.league && (
+                            <tr>
+                                <td className="navod">League:</td>
+                                <td className="nameComm">{dataObj.info.league}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.passer_rating && (
+                            <tr>
+                                <td className="navod">Passer rating:</td>
+                                <td className="nameComm">{dataObj.info.passer_rating}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.passing_yards && (
+                            <tr>
+                                <td className="navod">Passing yards:</td>
+                                <td className="nameComm">{dataObj.info.passing_yards}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["td-int"] && (
+                            <tr>
+                                <td className="navod">TD-INT:</td>
+                                <td className="nameComm">{dataObj.info["td-int"]}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.nba_draft && (
+                            Array.isArray(dataObj.info.nba_draft) ? (
+                                <tr>
+                                    <td className="navod">NBA draft:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.nba_draft.map((draft, id) => (
+                                                <li key={id}>{draft}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">NBA draft:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.nba_draft}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.teams && (
                             Array.isArray(dataObj.info.teams) ? (
@@ -853,6 +1794,66 @@ const DetailsPerson = (props) => {
                                     <td className="navod">Current team:</td>
                                     <td className="nameComm">
                                         {dataObj.info.current_team}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.assists && (
+                            <tr>
+                                <td className="navod">Assists:</td>
+                                <td className="nameComm">{dataObj.info.assists}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.rebounds && (
+                            <tr>
+                                <td className="navod">Rebounds:</td>
+                                <td className="nameComm">{dataObj.info.rebounds}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.points && (
+                            <tr>
+                                <td className="navod">Points:</td>
+                                <td className="nameComm">{dataObj.info.points}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.engines && (
+                            Array.isArray(dataObj.info.engines) ? (
+                                <tr>
+                                    <td className="navod">Engines:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.engines.map((engin, id) => (
+                                                <li key={id}>{engin}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Engines:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.engines}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.national_side && (
+                            Array.isArray(dataObj.info.national_side) ? (
+                                <tr>
+                                    <td className="navod">National side:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.national_side.map((side, id) => (
+                                                <li key={id}>{side}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">National side:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.national_side}
                                     </td>
                                 </tr>
                             )
@@ -977,44 +1978,105 @@ const DetailsPerson = (props) => {
                                 <td className="nameComm">{dataObj.info.years}</td>
                             </tr>
                         )}
-                        {dataObj.info.occupations && (
-                            Array.isArray(dataObj.info.occupations) ? (
+                        {dataObj.info.role && (
+                            <tr>
+                                <td className="navod">Role:</td>
+                                <td className="nameComm">{dataObj.info.role}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.bowling && (
+                            <tr>
+                                <td className="navod">Bowling:</td>
+                                <td className="nameComm">{dataObj.info.bowling}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.batting && (
+                            <tr>
+                                <td className="navod">Batting:</td>
+                                <td className="nameComm">{dataObj.info.batting}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.last_odi && (
+                            <tr>
+                                <td className="navod">Last odi:</td>
+                                <td className="nameComm">{dataObj.info.last_odi}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.last_test && (
+                            <tr>
+                                <td className="navod">Last test:</td>
+                                <td className="nameComm">{dataObj.info.last_test}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.ryder_type && (
+                            <tr>
+                                <td className="navod">Rider type:</td>
+                                <td className="nameComm">{dataObj.info.ryder_type}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.earned_run_average && (
+                            <tr>
+                                <td className="navod">Earned run average:</td>
+                                <td className="nameComm">{dataObj.info.earned_run_average}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.strikeouts && (
+                            <tr>
+                                <td className="navod">Strikeouts:</td>
+                                <td className="nameComm">{dataObj.info.strikeouts}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.saves && (
+                            <tr>
+                                <td className="navod">Saves:</td>
+                                <td className="nameComm">{dataObj.info.saves}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["win-loss_record"] && (
+                            <tr>
+                                <td className="navod">Win-loss record:</td>
+                                <td className="nameComm">{dataObj.info["win-loss_record"]}</td>
+                            </tr>
+                        )}
+
+                        {dataObj.info.buildings && (
+                            Array.isArray(dataObj.info.buildings) ? (
                                 <tr>
-                                    <td className="navod">Occupations:</td>
+                                    <td className="navod">Buildings:</td>
                                     <td className="nameComm">
                                         <ul>
-                                            {dataObj.info.occupations.map((occupation, id) => (
-                                                <li key={id}>{occupation}</li>
+                                            {dataObj.info.buildings.map((builing, id) => (
+                                                <li key={id}>{builing}</li>
                                             ))}
                                         </ul>
                                     </td>
                                 </tr>
                             ) : (
                                 <tr>
-                                    <td className="navod">Occupations:</td>
+                                    <td className="navod">Buildings:</td>
                                     <td className="nameComm">
-                                        {dataObj.info.occupations}
+                                        {dataObj.info.buildings}
                                     </td>
                                 </tr>
                             )
                         )}
-                        {dataObj.info.occupation && (
-                            Array.isArray(dataObj.info.occupation) ? (
+                        {dataObj.info.practice && (
+                            Array.isArray(dataObj.info.practice) ? (
                                 <tr>
-                                    <td className="navod">Occupation:</td>
+                                    <td className="navod">Practice:</td>
                                     <td className="nameComm">
                                         <ul>
-                                            {dataObj.info.occupation.map((occup, id) => (
-                                                <li key={id}>{occup}</li>
+                                            {dataObj.info.practice.map((practice, id) => (
+                                                <li key={id}>{practice}</li>
                                             ))}
                                         </ul>
                                     </td>
                                 </tr>
                             ) : (
                                 <tr>
-                                    <td className="navod">Occupation:</td>
+                                    <td className="navod">Practice:</td>
                                     <td className="nameComm">
-                                        {dataObj.info.occupation}
+                                        {dataObj.info.practice}
                                     </td>
                                 </tr>
                             )
@@ -1189,6 +2251,31 @@ const DetailsPerson = (props) => {
                                 >{dataObj.info.trainer}</td>
                             </tr>
                         )}
+                        {dataObj.info.trained_by && (
+                            Array.isArray(dataObj.info.trained_by) ? (
+                                <tr>
+                                    <td className="navod">Trained by:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.trained_by.map((trained, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(trained)}
+                                                >{trained}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Trained by:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.trained_by)}
+                                    >
+                                        {dataObj.info.trained_by}
+                                    </td>
+                                </tr>
+                            )
+                        )}
 
                         {dataObj.info.division && (
                             <tr>
@@ -1250,6 +2337,12 @@ const DetailsPerson = (props) => {
                                 <td className="nameComm">{dataObj.info.country_sports}</td>
                             </tr>
                         )}
+                        {dataObj.info.professional && (
+                            <tr>
+                                <td className="navod">Professional:</td>
+                                <td className="nameComm">{dataObj.info.professional}</td>
+                            </tr>
+                        )}
                         {dataObj.info.plays && (
                             <tr>
                                 <td className="navod">Plays:</td>
@@ -1262,6 +2355,22 @@ const DetailsPerson = (props) => {
                                 <td className="nameLink"
                                     onClick={() => handleClick(dataObj.info.coach)}
                                 >{dataObj.info.coach}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.coached_by && (
+                            <tr>
+                                <td className="navod">Coached by:</td>
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.coached_by)}
+                                >{dataObj.info.coached_by}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.club && (
+                            <tr>
+                                <td className="navod">Club:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.club}
+                                </td>
                             </tr>
                         )}
                         {dataObj.info.career_records && (
@@ -1293,6 +2402,119 @@ const DetailsPerson = (props) => {
                                 <td className="navod">Highest ranking:</td>
                                 <td className="nameComm">{dataObj.info.highest_ranking}</td>
                             </tr>
+                        )}
+                        {dataObj.info.ranking && (
+                            <tr>
+                                <td className="navod">Ranking:</td>
+                                <td className="nameComm">{dataObj.info.ranking}</td>
+                            </tr>
+                        )}
+                        {dataObj.info["non-ranking"] && (
+                            <tr>
+                                <td className="navod">Non-ranking:</td>
+                                <td className="nameComm">{dataObj.info["non-ranking"]}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.nhl_draft && (
+                            <tr>
+                                <td className="navod">NHL draft:</td>
+                                <td className="nameComm">{dataObj.info.nhl_draft}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.wha_draft && (
+                            <tr>
+                                <td className="navod">WHA draft:</td>
+                                <td className="nameComm">{dataObj.info.wha_draft}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.century_breaks && (
+                            <tr>
+                                <td className="navod">Century breaks:</td>
+                                <td className="nameComm">{dataObj.info.century_breaks}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.maximum_breaks && (
+                            <tr>
+                                <td className="navod">Maximum breaks:</td>
+                                <td className="nameComm">{dataObj.info.maximum_breaks}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.regional_finals && (
+                            Array.isArray(dataObj.info.regional_finals) ? (
+                                <tr>
+                                    <td className="navod">Regional finals:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.regional_finals.map((final, id) => (
+                                                <li key={id}>{final}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Regional finals:</td>
+                                    <td className="nameComm">{dataObj.info.regional_finals}</td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.world_champion && (
+                            Array.isArray(dataObj.info.world_champion) ? (
+                                <tr>
+                                    <td className="navod">World champion:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.world_champion.map((world, id) => (
+                                                <li key={id}>{world}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">World champion:</td>
+                                    <td className="nameComm">{dataObj.info.world_champion}</td>
+                                </tr>
+                            )
+                        )}
+
+                        {dataObj.info.olympic_finals && (
+                            Array.isArray(dataObj.info.olympic_finals) ? (
+                                <tr>
+                                    <td className="navod">Olympic finals:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.olympic_finals.map((final, id) => (
+                                                <li key={id}>{final}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Olympic finals:</td>
+                                    <td className="nameComm">{dataObj.info.olympic_finals}</td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.world_finals && (
+                            Array.isArray(dataObj.info.world_finals) ? (
+                                <tr>
+                                    <td className="navod">World finals:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.world_finals.map((final, id) => (
+                                                <li key={id}>{final}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">World finals:</td>
+                                    <td className="nameComm">{dataObj.info.world_finals}</td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.australian_open && (
                             <tr>
@@ -1433,6 +2655,27 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+                        {dataObj.info.employer && (
+                            Array.isArray(dataObj.info.employer) ? (
+                                <tr>
+                                    <td className="navod">Employer:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.employer.map((employ, id) => (
+                                                <li key={id}>{employ}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Employer:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.employer}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.patrons && (
                             Array.isArray(dataObj.info.patrons) ? (
                                 <tr>
@@ -1539,12 +2782,6 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
-                        {dataObj.info.nationality && (
-                            <tr>
-                                <td className="navod">Nationality:</td>
-                                <td className="nameComm">{dataObj.info.nationality}</td>
-                            </tr>
-                        )}
                         {dataObj.info.allegiance && (
                             Array.isArray(dataObj.info.allegiance) ? (
                                 <tr>
@@ -1646,6 +2883,12 @@ const DetailsPerson = (props) => {
                                 <td className="nameComm">{dataObj.info.buried}</td>
                             </tr>
                         )}
+                        {dataObj.info.burial_place && (
+                            <tr>
+                                <td className="navod">Burial place:</td>
+                                <td className="nameComm">{dataObj.info.burial_place}</td>
+                            </tr>
+                        )}
                         {dataObj.info.origin && (
                             <tr>
                                 <td className="navod">Origin:</td>
@@ -1732,6 +2975,12 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Weight:</td>
                                 <td className="nameComm"> {dataObj.info.weight}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.listed_weight && (
+                            <tr>
+                                <td className="navod">Listed weight:</td>
+                                <td className="nameComm">{dataObj.info.listed_weight}</td>
                             </tr>
                         )}
                         {dataObj.info.awards && (
@@ -1853,7 +3102,7 @@ const DetailsPerson = (props) => {
                             Array.isArray(dataObj.info.convictions) ? (
                                 <tr>
                                     <td className="navod">Convictions:</td>
-                                    <td className="nameCom">
+                                    <td className="nameComm">
                                         <ul>
                                             {dataObj.info.convictions.map((convict, id) => (
                                                 <li key={id}>{convict}</li>
@@ -1864,7 +3113,7 @@ const DetailsPerson = (props) => {
                             ) : (
                                 <tr>
                                     <td className="navod">Convictions:</td>
-                                    <td className="nameCom">{dataObj.info.convictions}</td>
+                                    <td className="nameComm">{dataObj.info.convictions}</td>
                                 </tr>
                             )
                         )}
@@ -1890,12 +3139,26 @@ const DetailsPerson = (props) => {
                             )
                         )}
                         {dataObj.info.constituency && (
-                            <tr>
-                                <td className="navod">Constituency:</td>
-                                <td className="nameComm">
-                                    {dataObj.info.constituency}
-                                </td>
-                            </tr>
+                            Array.isArray(dataObj.info.constituency) ? (
+                                <tr>
+                                    <td className="navod">Constituency:</td>
+                                    <td className="nameComm">
+                                        <ul>
+
+                                            {dataObj.info.constituency.map((constit, id) => (
+                                                <li key={id}>{constit}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Constituency:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.constituency}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.other_politicalaffiliations && (
                             Array.isArray(dataObj.info.other_politicalaffiliations) ? (
@@ -1903,7 +3166,6 @@ const DetailsPerson = (props) => {
                                     <td className="navod">Other political affiliations:</td>
                                     <td className="nameComm">
                                         <ul>
-
                                             {dataObj.info.other_politicalaffiliations.map((other, id) => (
                                                 <li key={id}>{other}</li>
                                             ))}
@@ -1949,6 +3211,14 @@ const DetailsPerson = (props) => {
                                 </td>
                             </tr>
                         )}
+                        {dataObj.info.patronage && (
+                            <tr>
+                                <td className="navod">Patronage:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.patronage}
+                                </td>
+                            </tr>
+                        )}
                         {dataObj.info.major_shrine && (
                             <tr>
                                 <td className="navod">Major shrine:</td>
@@ -1986,6 +3256,38 @@ const DetailsPerson = (props) => {
                                 <td className="navod">Church:</td>
                                 <td className="nameComm">
                                     {dataObj.info.church}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.denomination && (
+                            <tr>
+                                <td className="navod">Denomination:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.denomination}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.diocese && (
+                            <tr>
+                                <td className="navod">Diocese:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.diocese}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.installed && (
+                            <tr>
+                                <td className="navod">Installed:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.installed}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.post && (
+                            <tr>
+                                <td className="navod">Post:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.post}
                                 </td>
                             </tr>
                         )}
@@ -2051,12 +3353,25 @@ const DetailsPerson = (props) => {
                             )
                         )}
                         {dataObj.info.alma_mater && (
-                            <tr>
-                                <td className="navod">Alma mater:</td>
-                                <td className="nameComm">
-                                    {dataObj.info.alma_mater}
-                                </td>
-                            </tr>
+                            Array.isArray(dataObj.info.alma_mater) ? (
+                                <tr>
+                                    <td className="navod">Alma mater:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.alma_mater.map((alma, id) => (
+                                                <li key={id}>{alma}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Alma mater:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.alma_mater}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.university && (
                             <tr>
@@ -2089,6 +3404,32 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+
+                        {dataObj.info.academic_advisors && (
+                            Array.isArray(dataObj.info.academic_advisors) ? (
+                                <tr>
+                                    <td className="navod">Academic advisors:</td>
+                                    <td >
+                                        <ul>
+                                            {dataObj.info.academic_advisors.map((student, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(student)}
+                                                >{student}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Academic advisors:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.academic_advisors)}
+                                    >
+                                        {dataObj.info.academic_advisors}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.doctoral_advisor && (
                             Array.isArray(dataObj.info.doctoral_advisor) ? (
                                 <tr>
@@ -2116,28 +3457,183 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+                        {dataObj.info.doctoral_advisors && (
+                            Array.isArray(dataObj.info.doctoral_advisors) ? (
+                                <tr>
+                                    <td className="navod">Doctoral advisors:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.doctoral_advisors.map((advisor, id) => (
+
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(advisor)}
+                                                >{advisor}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Doctoral advisors:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.doctoral_advisors)}
+                                    >
+                                        {dataObj.info.doctoral_advisors}
+
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.doctoral_students && (
-                            <tr>
-                                <td className="navod">Doctoral students:</td>
-                                <td className="nameComm">
-                                    {dataObj.info.doctoral_students}
-                                </td>
-                            </tr>
-                        )}
+                            Array.isArray(dataObj.info.doctoral_students) ? (
+                                <tr>
+                                    <td className="navod">Doctoral students:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.doctoral_students.map((students, id) => (
 
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(students)}
+                                                >{students}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Doctoral students:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.doctoral_students)}>
+                                        {dataObj.info.doctoral_students}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.notable_students && (
+                            Array.isArray(dataObj.info.notable_students) ? (
+                                <tr>
+                                    <td className="navod">Notable students:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.notable_students.map((student, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(student)}
+                                                >{student}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Notable students:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.notable_students)}
+                                    >
+                                        {dataObj.info.notable_students}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.other_academic_advisors && (
+                            Array.isArray(dataObj.info.other_academic_advisors) ? (
+                                <tr>
+                                    <td className="navod">Other academic advisors:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.other_academic_advisors.map((advisor, id) => (
+
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(advisor)}
+                                                >{advisor}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Other academic advisors:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.other_academic_advisors)}
+                                    >
+                                        {dataObj.info.other_academic_advisors}
+
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.other_notable_students && (
+                            Array.isArray(dataObj.info.other_notable_students) ? (
+                                <tr>
+                                    <td className="navod">Other notable students:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.other_notable_students.map((student, id) => (
+
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(student)}
+                                                >{student}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Other notable students:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.other_notable_students)}
+                                    >
+                                        {dataObj.info.other_notable_students}
+
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.wars && (
-                            <tr>
-                                <td className="navod">Wars:</td>
-                                <td className="nameComm">
-                                    {dataObj.info.wars}
-                                </td>
-                            </tr>
+                            Array.isArray(dataObj.info.wars) ? (
+                                <tr>
+                                    <td className="navod">War:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.wars.map((war, id) => (
+                                                <li key={id}>{war}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Wars:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.wars}
+                                    </td>
+                                </tr>
+                            )
                         )}
-
+                        {dataObj.info.service && (
+                            Array.isArray(dataObj.info.service) ? (
+                                <tr>
+                                    <td className="navod">Service:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.service.map((serv, id) => (
+                                                <li key={id}>{serv}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Service:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.service}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info["battles/wars"] && (
                             Array.isArray(dataObj.info["battles/wars"]) ? (
                                 <tr>
-                                    <td className="navod">War :</td>
+                                    <td className="navod">Wars:</td>
                                     <td className="nameComm">
                                         <ul>
                                             {dataObj.info["battles/wars"].map((war, id) => (
@@ -2148,7 +3644,7 @@ const DetailsPerson = (props) => {
                                 </tr>
                             ) : (
                                 <tr>
-                                    <td className="navod">War :</td>
+                                    <td className="navod">Wars:</td>
                                     <td className="nameComm">
                                         {dataObj.info["battles/wars"]}
                                     </td>
@@ -2243,17 +3739,175 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
-
                         {dataObj.info.commands && (
-                            <tr>
-                                <td className="navod">Commands:</td>
-                                <td className="nameComm">{dataObj.info.commands}</td>
-                            </tr>
+                            Array.isArray(dataObj.info.commands) ? (
+                                <tr>
+                                    <td className="navod">Commands:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.commands.map((command, id) => (
+                                                <li key={id}>{command}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Commands:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.commands}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.rank && (
+                            Array.isArray(dataObj.info.rank) ? (
+                                <tr>
+                                    <td className="navod">Rank:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.rank.map((rank, id) => (
+                                                <li key={id}>{rank}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Rank:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.rank}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.commands_held && (
+                            Array.isArray(dataObj.info.commands_held) ? (
+                                <tr>
+                                    <td className="navod">Commands held:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.commands_held.map((held, id) => (
+                                                <li key={id}>{held}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Commands held:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.commands_held}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.years_of_active_service && (
+                            Array.isArray(dataObj.info.years_of_active_service) ? (
+                                <tr>
+                                    <td className="navod">Years of active service:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.years_of_active_service.map((service, id) => (
+                                                <li key={id}>{service}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Years of active service:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.years_of_active_service}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.retirement && (
                             <tr>
-                                <td className="navod">Rank:</td>
-                                <td className="nameComm">{dataObj.info.rank}</td>
+                                <td className="navod">Retirement:</td>
+                                <td className="nameComm">{dataObj.info.retirement}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.archdiocese && (
+                            <tr>
+                                <td className="navod">Archdiocese:</td>
+                                <td className="nameComm">{dataObj.info.archdiocese}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.see && (
+                            <tr>
+                                <td className="navod">See:</td>
+                                <td className="nameComm">{dataObj.info.see}</td>
+                            </tr>
+                        )}
+                        {dataObj.info.previous_posts && (
+                            Array.isArray(dataObj.info.previous_posts) ? (
+                                <tr>
+                                    <td className="navod">Previous posts:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.previous_posts.map((post, id) => (
+                                                <li key={id}>{post}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Previous posts:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.previous_posts}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.ordination && (
+                            <tr>
+                                <td className="navod">Ordination:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.ordination}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.consecration && (
+                            <tr>
+                                <td className="navod">Consecration:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.consecration}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.motto && (
+                            <tr>
+                                <td className="navod">Motto:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.motto}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.appointed && (
+                            <tr>
+                                <td className="navod">Appointed:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.appointed}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.created_cardinal && (
+                            <tr>
+                                <td className="navod">Created cardinal:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.created_cardinal}
+                                </td>
+                            </tr>
+                        )}
+                        {dataObj.info.term_ended && (
+                            <tr>
+                                <td className="navod">Term ended:</td>
+                                <td className="nameComm">
+                                    {dataObj.info.term_ended}
+                                </td>
                             </tr>
                         )}
 
@@ -2274,20 +3928,36 @@ const DetailsPerson = (props) => {
                             </tr>
                         )}
                         {dataObj.info.years_of_service && (
-                            <tr>
-                                <td className="navod">Years of service:</td>
-                                <td className="nameComm">{dataObj.info.years_of_service}</td>
-                            </tr>
+                            Array.isArray(dataObj.info.years_of_service) ? (
+                                <tr>
+                                    <td className="navod">Years of service:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.years_of_service.map((service, id) => (
+                                                <li key={id}>{service}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Years of service:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.years_of_service}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.spouse && (
                             Array.isArray(dataObj.info.spouse) ? (
                                 <tr>
-                                    <td className="navod">Spouses:</td>
-                                    <td className="nameComm">
+                                    <td className="navod">Spouse:</td>
+                                    <td>
                                         <ul>
                                             {dataObj.info.spouse.map((spouse, id) => (
-
-                                                <li key={id}>{spouse}</li>
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(spouse)}
+                                                >{spouse}</li>
                                             ))}
                                         </ul>
                                     </td>
@@ -2295,24 +3965,25 @@ const DetailsPerson = (props) => {
                             ) : (
                                 <tr>
                                     <td className="navod">Spouse:</td>
-                                    <td className="nameComm">
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.spouse)}
+                                    >
                                         {dataObj.info.spouse}
-
                                     </td>
                                 </tr>
                             )
                         )}
-
-
                         {dataObj.info.spouses && (
                             Array.isArray(dataObj.info.spouses) ? (
                                 <tr>
                                     <td className="navod">Spouses:</td>
-                                    <td className="nameComm">
+                                    <td>
                                         <ul>
                                             {dataObj.info.spouses.map((spouse, id) => (
 
-                                                <li key={id}>{spouse}</li>
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(spouse)}
+                                                >{spouse}</li>
                                             ))}
                                         </ul>
                                     </td>
@@ -2320,7 +3991,9 @@ const DetailsPerson = (props) => {
                             ) : (
                                 <tr>
                                     <td className="navod">Spouses:</td>
-                                    <td className="nameComm">
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.spouses)}
+                                    >
                                         {dataObj.info.spouses}
 
                                     </td>
@@ -2389,7 +4062,9 @@ const DetailsPerson = (props) => {
                         {dataObj.info.father && (
                             <tr>
                                 <td className="navod">Father:</td>
-                                <td className="nameComm">
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.father)}
+                                >
                                     {dataObj.info.father}
                                 </td>
                             </tr>
@@ -2397,7 +4072,9 @@ const DetailsPerson = (props) => {
                         {dataObj.info.mother && (
                             <tr>
                                 <td className="navod">Mother:</td>
-                                <td className="nameComm">
+                                <td className="nameLink"
+                                    onClick={() => handleClick(dataObj.info.mother)}
+                                >
                                     {dataObj.info.mother}
                                 </td>
                             </tr>
@@ -2470,50 +4147,6 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
-                        {dataObj.info.notable_students && (
-                            Array.isArray(dataObj.info.notable_students) ? (
-                                <tr>
-                                    <td className="navod">Notable students:</td>
-                                    <td>
-                                        <ul>
-                                            {dataObj.info.notable_students.map((student, id) => (
-                                                <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(student)}
-                                                >{student}</li>
-                                            ))}
-                                        </ul>
-                                    </td>
-                                </tr>
-                            ) : (
-                                <tr>
-                                    <td className="navod">Notable students:</td>
-                                    <td className="nameComm">
-                                        {dataObj.info.notable_students}
-                                    </td>
-                                </tr>
-                            )
-                        )}
-                        {dataObj.info.academic_advisors && (
-                            Array.isArray(dataObj.info.academic_advisors) ? (
-                                <tr>
-                                    <td className="navod">Academic advisors:</td>
-                                    <td className="nameComm">
-                                        <ul>
-                                            {dataObj.info.academic_advisors.map((student, id) => (
-                                                <li key={id}>{student}</li>
-                                            ))}
-                                        </ul>
-                                    </td>
-                                </tr>
-                            ) : (
-                                <tr>
-                                    <td className="navod">Academic advisors:</td>
-                                    <td className="nameComm">
-                                        {dataObj.info.academic_advisors}
-                                    </td>
-                                </tr>
-                            )
-                        )}
                         {dataObj.info.family && (
                             Array.isArray(dataObj.info.family) ? (
                                 <tr>
@@ -2535,11 +4168,78 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+                        {dataObj.info.relations && (
+                            Array.isArray(dataObj.info.relations) ? (
+                                <tr>
+                                    <td className="navod">Relations:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.relations.map((relation, id) => (
+                                                <li key={id}>{relation}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Relations:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.relations}
+                                    </td>
+                                </tr>
+                            )
+                        )}
+
                         {dataObj.info.issue && (
-                            <tr>
-                                <td className="navod">Issue:</td>
-                                <td className="nameComm">{dataObj.info.issue}</td>
-                            </tr>
+                            Array.isArray(dataObj.info.issue) ? (
+                                <tr>
+                                    <td className="navod">Issue:</td>
+                                    <td >
+                                        <ul>
+                                            {dataObj.info.issue.map((iss, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(iss)}
+                                                >
+                                                    {iss}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Issue:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.issue)}
+                                    >{dataObj.info.issue}</td>
+                                </tr>
+                            )
+                        )}
+                        {dataObj.info.issuedetail && (
+                            Array.isArray(dataObj.info.issuedetail) ? (
+                                <tr>
+                                    <td className="navod">Issue detail:</td>
+                                    <td>
+                                        <ul>
+                                            {dataObj.info.issuedetail.map((detail, id) => (
+                                                <li key={id} className="nameLink"
+                                                    onClick={() => handleClick(detail)}
+
+                                                >{detail}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Issue detail:</td>
+                                    <td className="nameLink"
+                                        onClick={() => handleClick(dataObj.info.issuedetail)}
+                                    >
+                                        {dataObj.info.issuedetail}
+                                    </td>
+                                </tr>
+                            )
                         )}
                         {dataObj.info.years_active && (
                             <tr>
@@ -2554,14 +4254,6 @@ const DetailsPerson = (props) => {
                                 <td className="navod">Years Active:</td>
                                 <td className="nameComm">
                                     {dataObj.info.active_years}
-                                </td>
-                            </tr>
-                        )}
-                        {dataObj.info.reign && (
-                            <tr>
-                                <td className="navod">Reign:</td>
-                                <td className="nameComm">
-                                    {dataObj.info.reign}
                                 </td>
                             </tr>
                         )}
@@ -2586,6 +4278,27 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
+                        {dataObj.info.channels && (
+                            Array.isArray(dataObj.info.channels) ? (
+                                <tr>
+                                    <td className="navod">Channels:</td>
+                                    <td className="nameComm">
+                                        <ul>
+                                            {dataObj.info.channels.map((channel, id) => (
+                                                <li key={id}>{channel}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr>
+                                    <td className="navod">Channels:</td>
+                                    <td className="nameComm">
+                                        {dataObj.info.channels}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                         {dataObj.info.subscribers && (
                             <tr>
                                 <td className="navod">Subscribers:</td>
@@ -2605,15 +4318,16 @@ const DetailsPerson = (props) => {
                         {dataObj.info.official_website && (
                             <tr>
                                 <td className="navod">Official website:</td>
-                                <td className="nameComm">
-                                    <a href={`https://www.${dataObj.info.official_website}`} target="_blank">
-                                        {dataObj.info.official_website}
-                                    </a>
+                                <td>
+                                    <div className="link">
+                                        <a href={`https://www.${dataObj.info.official_website}`} target="_blank" className="link">
+                                            {dataObj.info.official_website}
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         )}
                         {dataObj.info.website && (
-
                             <DetailsPersonUrl web={dataObj.info.website} />
                         )}
 
@@ -2621,7 +4335,6 @@ const DetailsPerson = (props) => {
                             <td colSpan={2}>
                                 <hr></hr>
                             </td>
-
                         </tr>
                     </tbody>
                 ))}

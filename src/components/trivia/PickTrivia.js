@@ -19,85 +19,66 @@ const PickTrivia = () => {
 
 
     const handleRidle = () => {
-        console.log("klik na ridles");
         const LinkTo = '/ridles';
         navigate(LinkTo);
     }
 
     const handleGeneral = () => {
-
         const LinkTo = '/general';
         navigate(LinkTo);
     }
     const handleArt = () => {
-        console.log("klik na Art Literature");
         const LinkTo = '/art';
         navigate(LinkTo);
     }
     const handleFood = () => {
-
         const LinkTo = '/food';
         navigate(LinkTo);
     }
     const handleScience = () => {
-        console.log("klik na Science");
         const LinkTo = '/science';
         navigate(LinkTo);
     }
     const handlePeople = () => {
-
         const LinkTo = '/people';
         navigate(LinkTo);
     }
     const handleHistory = () => {
-
         const LinkTo = '/holidays';
         navigate(LinkTo);
     }
     const handleGeography = () => {
-
         const LinkTo = '/geography';
         navigate(LinkTo);
     }
     const handleEntertainment = () => {
-
         const LinkTo = '/entertainment';
         navigate(LinkTo);
     }
     const handleToys = () => {
-
         const LinkTo = '/toys';
         navigate(LinkTo);
     }
     const handleMusic = () => {
-
         const LinkTo = '/music';
         navigate(LinkTo);
     }
     const handleLanguage = () => {
-
         const LinkTo = '/language';
         navigate(LinkTo);
     }
     const handleReligion = () => {
-
         const LinkTo = '/religion';
         navigate(LinkTo);
     }
     const handleSport = () => {
-
         const LinkTo = '/sport';
         navigate(LinkTo);
     }
-
     const handleMathematics = () => {
-
         const LinkTo = '/mathematics';
         navigate(LinkTo);
     }
-
-
-
 
     return (
         <>
@@ -172,7 +153,7 @@ const PickTrivia = () => {
                 </div>
             </div>
             <div className="place"></div>
-            </>
+        </>
     )
 }
 export default PickTrivia;

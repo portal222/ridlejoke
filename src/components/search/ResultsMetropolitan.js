@@ -82,15 +82,12 @@ const ResultsMetropolitan = () => {
                         <tr>
                             <th colSpan={2}>
                                 <h2 className="history">Nothing found</h2>
-
                             </th>
                         </tr>
                     </thead>
                 </table>
                 <div className="place"></div>
             </>
-
-
         )
     }
 

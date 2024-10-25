@@ -26,13 +26,10 @@ const ChukNorris = () => {
             );
             const data = response.data;
             setFacts(data);
-            console.log("chucknorris podaci", data);
 
         } catch (err) {
             setError(err);
-
         }
-
     };
 
     const name = Math.random();
@@ -40,13 +37,10 @@ const ChukNorris = () => {
     const getRobot = async () => {
         const url = `https://robohash.org/set_set1/${name}.png`
 
-
         try {
             const response = await axios.get(url);
             const data = response;
-            console.log("robot randum slike", name)
             setRobot(url)
-
         } catch (err) {
             setError(err);
         }
@@ -55,13 +49,13 @@ const ChukNorris = () => {
     return (
         <>
             <div className="dadJokes">
-                        <div className="titleJoke">
-                           CHUCK NORRIS JOKE
-                        </div>
-                        <div className="border">{facts.joke}</div>
-                        <div>
-                            <img src={robot}></img>
-                        </div>
+                <div className="titleJoke">
+                    CHUCK NORRIS JOKE
+                </div>
+                <div className="border">{facts.joke}</div>
+                <div>
+                    <img src={robot}></img>
+                </div>
             </div>
         </>
     )

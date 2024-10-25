@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { lime, purple, teal, green } from '@mui/material/colors';
+import { teal, green } from '@mui/material/colors';
 import Button from '@mui/material/Button';
 import { Routes, Route, NavLink, HashRouter } from 'react-router-dom';
 import Home from "./Home";
@@ -41,12 +41,8 @@ import PokJson from "./pokemons/PokJson";
 import SearchResutsNYT from "./search/SearchResultsNYT";
 import ResultsMetro from "./metropolitan/ResultsMetro";
 import ResultsClickPerson from "./search/ResultsClickPerson";
-
-
-
-
-
-
+import ClickMetro from "./metropolitan/ClickMetro";
+import ClickMetro2 from "./metropolitan/ClickMetro2";
 
 const theme = createTheme({
   palette: {
@@ -55,29 +51,14 @@ const theme = createTheme({
   },
 });
 
-
-
 const Navigation = () => {
 
-
-
-
-
-
-
-
-
   return (
-
     <>
-
-
       <HashRouter basename="/">
         <div className="tabelaZemlje">
           <ThemeProvider
-
             theme={theme}>
-
             <NavLink to="/">
               <Button variant="contained">Home</Button>
             </NavLink>
@@ -97,7 +78,6 @@ const Navigation = () => {
             </NavLink>
           </ThemeProvider>
         </div>
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPlace />} />
@@ -110,6 +90,8 @@ const Navigation = () => {
           <Route path="/historyEvents" element={<ResultsHistoryEvents />} />
           <Route path="/historyPerson" element={<ResultsPerson />} />
           <Route path="/linkPerson/:linkName" element={<ResultsClickPerson />} />
+          <Route path="/linkMetro/:linkName" element={<ClickMetro />} />
+          <Route path="/linkMetro2/:linkName" element={<ClickMetro2 />} />
           <Route path="/historyPerson/:personName" element={<DetailsPerson />} />
           <Route path="/trivia/:triviaCat" element={<Trivia />} />
           <Route path="/advice" element={<ResultsAdvice />} />
@@ -129,7 +111,6 @@ const Navigation = () => {
           <Route path="/religion" element={<TriviaReligion />} />
           <Route path="/sport" element={<TriviaSport />} />
           <Route path="/mathematics" element={<TriviaMathematics />} />
-          {/* <Route path="/metropolitan" element={<ResultsMetropolitan />} /> */}
           <Route path="/metro" element={<ResultsMetro />} />
           <Route path="/nyTimes" element={<SearchResutsNYT />} />
           <Route path="/colors" element={<ResultsColors />} />
@@ -138,21 +119,10 @@ const Navigation = () => {
           <Route path="/pokemonSearch" element={<SearchRes />} />
           <Route path="/:numId" element={<PokemonPage />} />
           <Route path="/pokJson" element={<PokJson />} />
-
-
-
-
         </Routes>
-
       </HashRouter>
-
-
       <Footers />
-
-
-
     </>
   )
-
 }
 export default Navigation;

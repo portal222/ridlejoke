@@ -7,6 +7,7 @@ import Pokemon from "./Pokemon";
 import PokJson from "./PokJson";
 import BackToTop from "../BackToTop";
 import PokemonImg from "./PokemonImg";
+import Loader from "../Loader";
 
 
 const SearchRes = () => {
@@ -15,6 +16,7 @@ const SearchRes = () => {
     const [pokemon, setPokemon] = useState([]);
     const [error, setError] = useState(null);
     const [results, setResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const globalCtx = useContext(GlobalContext);
@@ -44,10 +46,7 @@ const SearchRes = () => {
 
             setPokemon(data);
             setResults(data.length);
-
-
-
-
+            setIsLoading(false);
 
         } catch (err) {
             setError(err);
@@ -59,11 +58,12 @@ const SearchRes = () => {
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
-
-    if (results == 0) {
+    if (isLoading) {
+        return <Loader />
+    } else if (results == 0) {
         return (
             <>
-                <div className="pokemon" style={{textAlign: "center"}}>
+                <div className="pokemon" style={{ textAlign: "center" }}>
                     {searchStringValue} was not found but there are other POKEMON
                 </div>
                 <Pokemon />
@@ -75,7 +75,7 @@ const SearchRes = () => {
             <Box>
                 {paginatedPosts.length > 1 && (
                     <Box mt={2} display="flex" justifyContent="center" className="pagination"
-                    margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                        margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
                         <Pagination
                             count={paginatedPosts.length}
                             page={currentPage}
@@ -87,7 +87,7 @@ const SearchRes = () => {
                     {currentPosts &&
                         currentPosts.map((post) => (
 
-                            <PokemonImg post={post}/>
+                            <PokemonImg post={post} />
 
                         ))}
                 </div>

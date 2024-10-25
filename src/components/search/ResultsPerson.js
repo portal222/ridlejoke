@@ -1,18 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import SearchPerson from "./SearchPerson";
 import BackToTop from "../BackToTop";
-
-
-
-
-
-
-
 
 const ResultsPerson = () => {
     const [error, setError] = useState(null);
@@ -24,16 +16,12 @@ const ResultsPerson = () => {
 
     const navigate = useNavigate();
 
-
-
-
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
 
     useEffect(() => {
         getPerson(searchStringValue);
     }, [searchStringValue]);
-    console.log("iz resultPerson searchStringValue:", searchStringValue)
 
     const getPerson = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${searchStringValue}`;
@@ -57,32 +45,21 @@ const ResultsPerson = () => {
             const data = response.data;
             const dataCel = responseCel.data;
 
-
-
-
-            console.log("rezultat poznatih", data)
             setPersons(data);
             setResults(data.length);
             setCelebs(dataCel);
             setResultsCel(dataCel.length);
             setIsLoading(false);
-            console.log("broj licnosti", results);
 
         } catch (err) {
             setError(err);
-
         }
-
     };
 
-
     const handleClick = (personName) => {
-
         const LinkTo = `/historyPerson/${personName}`;
         navigate(LinkTo);
     }
-
-
 
     if (isLoading) {
         return (
@@ -103,7 +80,6 @@ const ResultsPerson = () => {
 
     } else if (results == 0) {
 
-
         return (
             <>
 
@@ -122,18 +98,15 @@ const ResultsPerson = () => {
                                 <td className="historyPerson"
                                     onClick={() => handleClick(dataObj.name)}
                                 >{dataObj.name}</td>
-
                             </tr>
                             <tr>
                                 <td className="navod">Gender:</td>
                                 <td className="nameComm">{dataObj.gender}</td>
-
                             </tr>
                             <tr>
                                 <td colSpan={2}
                                     className="more"
                                     onClick={() => handleClick(dataObj.name)}>
-
                                     more...
                                 </td>
                             </tr>
@@ -148,8 +121,6 @@ const ResultsPerson = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                
                     <tr>
                         <th className="history"
                             colSpan={2}>
@@ -177,7 +148,6 @@ const ResultsPerson = () => {
                             <td colSpan={2}
                                 className="more"
                                 onClick={() => handleClick(dataObj.name)}>
-
                                 more...
                             </td>
                         </tr>
@@ -203,20 +173,17 @@ const ResultsPerson = () => {
                             <td className="historyPerson"
                                 onClick={() => handleClick(dataObj.name)}
                             >{dataObj.name}</td>
-
                         </tr>
                         {dataObj.occupation && (
                             <tr>
                                 <td className="navod">Title:</td>
-                                <td className="nameComm">{dataObj.occupation?.[0]}</td>
-
+                                <td className="nameComm">{dataObj.occupation?.[0]?.replace(/_/g, ' ')}</td>
                             </tr>
                         )}
                         <tr>
                             <td colSpan={2}
                                 className="more"
                                 onClick={() => handleClick(dataObj.name)}>
-
                                 more...
                             </td>
                         </tr>

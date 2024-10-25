@@ -1,20 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
-
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import SearchPerson from "./SearchPerson";
 import BackToTop from "../BackToTop";
 import { useParams } from "react-router-dom";
-
-
-
-
-
-
-
-
 
 const ResultsClickPerson = () => {
     const [error, setError] = useState(null);
@@ -24,9 +14,7 @@ const ResultsClickPerson = () => {
     const [celebs, setCelebs] = useState([]);
     const [resultsCel, setResultsCel] = useState([]);
 
-
     const navigate = useNavigate();
-
 
     const params = useParams()
     const linkName = params.linkName;
@@ -35,7 +23,6 @@ const ResultsClickPerson = () => {
     useEffect(() => {
         getPerson();
     }, []);
-    console.log("iz resultClickPerson linkname:", linkName)
 
     const getPerson = async () => {
         const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${linkName}`;
@@ -59,32 +46,21 @@ const ResultsClickPerson = () => {
             const data = response.data;
             const dataCel = responseCel.data;
 
-
-
-
-            console.log("rezultat poznatih", data)
             setPersons(data);
             setResults(data.length);
             setCelebs(dataCel);
             setResultsCel(dataCel.length);
             setIsLoading(false);
-            console.log("broj licnosti", results);
 
         } catch (err) {
             setError(err);
-
         }
-
     };
 
-
     const handleClick = (personName) => {
-
         const LinkTo = `/historyPerson/${personName}`;
         navigate(LinkTo);
     }
-
-
 
     if (isLoading) {
         return (
@@ -94,7 +70,6 @@ const ResultsClickPerson = () => {
             <>
                 <div className="pickTrivia">
                     <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
-
                 </div>
                 <div className="tabelaZemlje">
                     <div className="results">Nothing found</div>
@@ -105,13 +80,10 @@ const ResultsClickPerson = () => {
 
     } else if (results == 0) {
 
-
         return (
             <>
-                <div>
-                    <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
-
-                    <h2 className="history">Nothing found in history</h2>
+                <div className="tabelaZemlje">
+                    <div className="results">Nothing found</div>
                 </div>
                 <table className="tabelaZemlje">
                     {celebs.map((dataObj, id) => (
@@ -121,18 +93,15 @@ const ResultsClickPerson = () => {
                                 <td className="historyPerson"
                                     onClick={() => handleClick(dataObj.name)}
                                 >{dataObj.name}</td>
-
                             </tr>
                             <tr>
                                 <td className="navod">Gender:</td>
                                 <td className="nameComm">{dataObj.gender}</td>
-
                             </tr>
                             <tr>
                                 <td colSpan={2}
                                     className="more"
                                     onClick={() => handleClick(dataObj.name)}>
-
                                     more...
                                 </td>
                             </tr>
@@ -147,12 +116,6 @@ const ResultsClickPerson = () => {
         <>
             <table className="tabelaZemlje">
                 <thead >
-
-                    <tr>
-                        <th colSpan={2}>
-                            <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
-                        </th>
-                    </tr>
                     <tr>
                         <th className="history"
                             colSpan={2}>
@@ -180,7 +143,6 @@ const ResultsClickPerson = () => {
                             <td colSpan={2}
                                 className="more"
                                 onClick={() => handleClick(dataObj.name)}>
-
                                 more...
                             </td>
                         </tr>
@@ -206,20 +168,17 @@ const ResultsClickPerson = () => {
                             <td className="historyPerson"
                                 onClick={() => handleClick(dataObj.name)}
                             >{dataObj.name}</td>
-
                         </tr>
                         {dataObj.occupation && (
                             <tr>
                                 <td className="navod">Title:</td>
                                 <td className="nameComm">{dataObj.occupation?.[0]}</td>
-
                             </tr>
                         )}
                         <tr>
                             <td colSpan={2}
                                 className="more"
                                 onClick={() => handleClick(dataObj.name)}>
-
                                 more...
                             </td>
                         </tr>

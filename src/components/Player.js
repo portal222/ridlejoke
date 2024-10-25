@@ -1,6 +1,4 @@
 
-
-
 import React, { useState, useEffect } from "react";
 
 const useAudio = url => {
@@ -28,7 +26,6 @@ const useAudio = url => {
 const Player = ({ url }) => {
   const [playing, toggle] = useAudio(url);
 
-
   if (url == '') {
     return (
       <>
@@ -47,8 +44,6 @@ const Player = ({ url }) => {
         <button onClick={toggle} className="button">{playing ? "Pause" : "Play Sound"}</button>
       </td>
     </tr>
-
-
   );
 };
 

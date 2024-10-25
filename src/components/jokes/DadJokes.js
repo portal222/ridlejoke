@@ -16,7 +16,6 @@ const DadJokes = () => {
 
         const url = 'https://api.api-ninjas.com/v1/dadjokes'
 
-
         try {
             const response = await axios.get(url,
                 {
@@ -45,13 +44,10 @@ const DadJokes = () => {
                 });
             const data = response.data;
             setJoke(data);
-            console.log("novi dad joke", data);
         } catch (err) {
             setError(err);
         }
     }
-
-
 
     return (
         <>
@@ -69,7 +65,6 @@ const DadJokes = () => {
                     {joke.joke}
                 </div>
             </div>
-
         </>
     )
 }

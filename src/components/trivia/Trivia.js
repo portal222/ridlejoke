@@ -53,7 +53,6 @@ const Trivia = (props) => {
             setAnswer(data);
             setAnswer2(data2);
             setAnswer3(data3);
-            console.log("podaci iz  art trivia", data);
             setIsLoading(false);
 
         } catch (err) {
@@ -72,37 +71,37 @@ const Trivia = (props) => {
 
     return (
         <>
-        <div className="trivia" >
-            <div className="categ">Art & Literature</div>
+            <div className="trivia" >
+                <div className="categ">Art & Literature</div>
 
-            <Collapse
-                size="large"
-                items={[{
-                    label: <p className="triviaAnswer">{answer.question}</p>,
-                    children: <p className="triviaAns">{text}</p>,
-                    showArrow: false,
-                }]} />
-            <div className="categ"></div>
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer.question}</p>,
+                        children: <p className="triviaAns">{text}</p>,
+                        showArrow: false,
+                    }]} />
+                <div className="categ"></div>
 
-            <Collapse
-                size="large"
-                items={[{
-                    label: <p className="triviaAnswer">{answer2.question}</p>,
-                    children: <p className="triviaAns">{text2}</p>,
-                    showArrow: false,
-                }]} />
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer2.question}</p>,
+                        children: <p className="triviaAns">{text2}</p>,
+                        showArrow: false,
+                    }]} />
 
-            <div className="categ"></div>
+                <div className="categ"></div>
 
-            <Collapse
-                size="large"
-                items={[{
-                    label: <p className="triviaAnswer">{answer3.question}</p>,
-                    children: <p className="triviaAns">{text3}</p>,
-                    showArrow: false,
-                }]} />
-        </div>
-        <div className="place"></div>
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="triviaAnswer">{answer3.question}</p>,
+                        children: <p className="triviaAns">{text3}</p>,
+                        showArrow: false,
+                    }]} />
+            </div>
+            <div className="place"></div>
         </>
     )
 }
