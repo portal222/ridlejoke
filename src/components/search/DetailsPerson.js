@@ -80,6 +80,7 @@ const DetailsPerson = (props) => {
     } else if (resHis == 0) {
         return (
             <>
+         
                 <table className="tabelaZemlje">
                     <thead >
                         <tr className="results">
@@ -91,6 +92,7 @@ const DetailsPerson = (props) => {
                 </table>
                 <ResultsCelebs celebs={celebs} results={results} />
                 <NyTimes news={nytPerson} />
+                <BackToTop />
             </>
         )
     }

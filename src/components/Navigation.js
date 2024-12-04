@@ -13,7 +13,6 @@ import ResultsHistoryEvents from "./search/ResultsHistoryEvents";
 import ResultsPerson from "./search/ResultsPerson";
 import DetailsPerson from "./search/DetailsPerson";
 import PickTrivia from "./trivia/PickTrivia";
-import ResultsAdvice from "./search/ResultsAdvice";
 import Ridles from "./trivia/Ridles";
 import JokePlace from "./jokes/JokePlace";
 import SearchPlace from "./search/SearchPlace";
@@ -43,6 +42,8 @@ import ResultsMetro from "./metropolitan/ResultsMetro";
 import ResultsClickPerson from "./search/ResultsClickPerson";
 import ClickMetro from "./metropolitan/ClickMetro";
 import ClickMetro2 from "./metropolitan/ClickMetro2";
+import Books from "./search/Books";
+import Video from "./search/Video";
 
 const theme = createTheme({
   palette: {
@@ -56,27 +57,29 @@ const Navigation = () => {
   return (
     <>
       <HashRouter basename="/">
-        <div className="tabelaZemlje">
+        <div className="navigator">
+          <div className="fixed">
           <ThemeProvider
             theme={theme}>
             <NavLink to="/">
               <Button variant="contained">Home</Button>
-            </NavLink>
-            <NavLink to="/search">
-              <Button variant="contained" color="secondary" sx={{ ml: 1 }} >
-                Search</Button>
-            </NavLink>
-            <NavLink to="/jokes">
-              <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
-                Jokes
-              </Button>
             </NavLink>
             <NavLink to="/pickTrivia">
               <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
                 Quiz
               </Button>
             </NavLink>
+            <NavLink to="/jokes">
+              <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
+                Jokes
+              </Button>
+            </NavLink>
+            <NavLink to="/search">
+              <Button variant="contained" color="secondary" sx={{ ml: 1 }} >
+                Search</Button>
+            </NavLink>
           </ThemeProvider>
+          </div>
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -94,7 +97,6 @@ const Navigation = () => {
           <Route path="/linkMetro2/:linkName" element={<ClickMetro2 />} />
           <Route path="/historyPerson/:personName" element={<DetailsPerson />} />
           <Route path="/trivia/:triviaCat" element={<Trivia />} />
-          <Route path="/advice" element={<ResultsAdvice />} />
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/ridles" element={<Ridles />} />
           <Route path="/art" element={<Trivia />} />
@@ -119,6 +121,8 @@ const Navigation = () => {
           <Route path="/pokemonSearch" element={<SearchRes />} />
           <Route path="/:numId" element={<PokemonPage />} />
           <Route path="/pokJson" element={<PokJson />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/video" element={<Video />} />
         </Routes>
       </HashRouter>
       <Footers />

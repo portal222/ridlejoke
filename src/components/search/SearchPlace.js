@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import SearchPoke from "../pokemons/SearchPoke";
 import SearchNYT from "./SearchNYT";
 import SearchMetro from "../metropolitan/SearchMetro";
+import SearchImage from "./SearchImage";
 
 
 
@@ -31,8 +32,11 @@ const SearchPlace = () => {
                 <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
                 <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                 <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
-                <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
-                <SearchAdvice placeholder={'Advice'} linkTo={'/advice'} />
+                <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
+            
+                <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} /> 
+                <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />  
+
                 <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'}/>
                 
                 <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />

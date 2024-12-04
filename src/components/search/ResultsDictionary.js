@@ -6,6 +6,7 @@ import Dictionary from "./Dictionary";
 import TableRowDictionary from "./TableRowDictionary";
 import TableRowDictionary2 from "./TableRowDictionary2";
 import BackToTop from "../BackToTop";
+// import Loader from "../Loader";
 
 
 
@@ -18,6 +19,9 @@ const ResultsDictionary = () => {
     const [dictionary2, setDictionary2] = useState([]);
     const [results, setResults] = useState([]);
     const [results2, setResults2] = useState([]);
+    const [advice, setAdvice] = useState({});
+    const [resultsAd, setResultsAd] = useState([]);
+
     // const [isLoading, setIsLoading] = useState(true);
 
 
@@ -34,6 +38,7 @@ const ResultsDictionary = () => {
     const getDictionary = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/dictionary?word=${searchStringValue}`;
         const url2 = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchStringValue}`;
+        const urlAd = `https://api.adviceslip.com/advice/search/${searchStringValue}`;
 
 
         try {
@@ -45,24 +50,38 @@ const ResultsDictionary = () => {
                 }
             );
             const response2 = await axios.get(url2);
+            const responseAd = await axios.get(urlAd);
 
             const data = response.data;
-            const data2 = response2.data
+            const data2 = response2.data;
+            const dataAd = responseAd.data.slips;
 
-            console.log("rezultat recnika", data)
-            console.log("rezultat drugo recnika", data2)
+            console.log("rezultat recnika", data);
+            console.log("rezultat drugo recnika", data2);
+            console.log("advice podaci", dataAd);
+
             setDictionary(data);
             setDictionary2(data2);
+            setAdvice(dataAd)
             setResults(data.length);
             setResults2(data2.length);
+            setResultsAd(dataAd.length);
+            // setIsLoading(false);
 
-            console.log("prvi niz", results)
-            console.log("drugi niz", results2)
+
+            console.log("prvi niz", results);
+            console.log("drugi niz", results2);
         } catch (err) {
             setError(err);
         }
     };
-    if (results == 0 && results2 == 0) {
+
+    // if (isLoading) {
+    //     return (
+    //         <Loader />
+    //     )
+    // } else 
+    if (results == 0 && results2 == 0 && resultsAd == 0) {
         return (
             <>
                 <div className="pickTrivia">
@@ -82,7 +101,7 @@ const ResultsDictionary = () => {
             <table className="tabelaZemlje">
                 <thead >
                     <tr>
-                        <th className="results">Word {searchStringValue}</th>
+                        <th className="results"> Word {searchStringValue}</th>
                     </tr>
 
 
@@ -96,6 +115,42 @@ const ResultsDictionary = () => {
                     ))}
                 </tbody>
             </table >
+            <table className="tabelaZemlje">
+                <thead >
+                    <tr>
+                        <th className="celebrity"
+                            colSpan={2}>
+                            {searchStringValue} Advice
+                        </th>
+                    </tr>
+                    <tr className="results">
+                        <th>Number of Advice: {resultsAd}</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                {advice && (
+                    <>
+                {advice.map((dataAdv) => (
+                    <tbody key={dataAdv.id}>
+                        <tr>
+                            <td className="celebrity">{dataAdv.advice}</td>
+                        </tr>
+                        <tr>
+                            <td className="nameComm">{dataAdv.date}</td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <hr></hr>
+                            </td>
+                        </tr>
+                    </tbody>
+                ))}
+                </>
+            )}
+            </table >
+            <div className="place"></div>
             <BackToTop />
         </>
     );

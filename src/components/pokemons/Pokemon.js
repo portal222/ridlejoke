@@ -14,21 +14,17 @@ const Pokemon = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [style, setStyle] = useState("large");
 
-
     useEffect(() => {
         axios.get(`https://api.pokemontcg.io/v2/cards?page=1`).then(res => {
             const data = res.data;
             setPokemon(data.data);
-            console.log("iz pokemona podaci", data.data)
             setIsLoading(false);
         });
-
     }, [])
 
     const pageSize = 12;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
-
 
     if (isLoading) {
         return <Loader />
@@ -61,7 +57,5 @@ const Pokemon = () => {
             <BackToTop />
         </>
     );
-
 }
-
 export default Pokemon;
