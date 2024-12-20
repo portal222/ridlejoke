@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import SearchPlace from "./SearchPlace";
 import GlobalContext from "../GlobalContext";
 import Loader from "../Loader";
 import SearchHistory from "./searchHistory";
@@ -18,7 +17,6 @@ const ResultsHistory = () => {
     useEffect(() => {
         getHistory(searchStringValue);
     }, [searchStringValue]);
-    console.log("iz resulthistory searchStringValue:", searchStringValue)
 
     const getHistory = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/historicalevents?year=${searchStringValue}`;
@@ -33,7 +31,6 @@ const ResultsHistory = () => {
             );
             const data = response.data;
 
-            console.log("rezultat recnika", data)
             setHistory(data);
             setResults(data.length);
             setIsLoading(false);

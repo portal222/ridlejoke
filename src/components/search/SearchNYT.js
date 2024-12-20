@@ -20,8 +20,6 @@ const SearchNYT = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("pretraga nyTimes", searchString)
     };
 
     const handleKeyDown = (e) => {

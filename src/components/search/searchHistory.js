@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { HistoryOutlined } from "@ant-design/icons";
@@ -21,7 +19,6 @@ const SearchHistory = (props) => {
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
         
-        console.log("SearchHistory pretraga", searchString)
     };
 
     const handleKeyDown = (e) => {

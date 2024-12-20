@@ -37,13 +37,12 @@ body {
     }
 
     .welcom {
-        color: rgba(0, 130, 104, 0.305);
+        color: rgb(70, 146, 131);
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 42px;
         font-weight: bold;
-        // text-shadow: 1px 1px 2px #006064;
-        top: -200px;
-        position: relative;
+        text-align: center;
+        text-shadow: 1px 1px 2px #00292a;
     }
 
 
@@ -465,6 +464,48 @@ body {
     hr {
         margin: 0;
     }
+
+    .moreCovers {
+        cursor: pointer;
+        font-size: 22px;
+        padding: 5px;
+        color: #014780;
+
+        &:hover {
+            color: #64b5f6;
+        }
+    }
+
+    .cover {
+        display: none;
+    }
+
+    .coverOpen {
+        width: 900px;
+        padding: 6px;
+        border: 2px solid #014780;
+        background-color: aliceblue;
+        display: grid;
+        gap: 6px;
+        grid-template-columns: auto auto auto auto auto;
+        // grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
+
+        .imgContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        &:empty {
+            display: none;
+        }
+    }
+       
+        .imgCovers {      
+            width: 153px;
+            height: auto;
+ 
+        }
+    }
 }
 
 .listVideo {
@@ -478,6 +519,7 @@ body {
         width: 450px;
         text-align: center;
         padding: 15px;
+
         img {
             width: 420px;
         }
@@ -491,7 +533,7 @@ body {
         .link {
             font-size: 18px;
             text-align: right;
-            
+
             a {
                 text-decoration: none;
                 color: #014780;
@@ -617,6 +659,7 @@ body {
         font-weight: 500;
         color: #014780;
         cursor: pointer;
+
         &:hover {
             color: #64b5f6;
         }
@@ -1286,6 +1329,30 @@ body {
             padding: 4px 15px;
             font-size: 8px;
         }
+
+        .moreCovers {
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px;
+        }
+
+        .cover {
+            display: none;
+        }
+
+        .coverOpen {
+            width: 358px;
+            padding: 4px;
+            border: 1px solid #014780;
+
+            display: grid;
+            gap: 4px;
+            grid-template-columns: auto auto auto;
+
+            .imgCovers {
+                width: 114px;
+            }
+        }
     }
 
     .listVideo {
@@ -1295,6 +1362,7 @@ body {
         .content {
             width: 358px;
             padding: 10px;
+
             img {
                 width: 338px;
             }
@@ -1303,6 +1371,7 @@ body {
                 font-size: 18px;
                 padding: 10px;
             }
+
             .link {
                 font-size: 14px;
             }

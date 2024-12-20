@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { ReadOutlined } from "@ant-design/icons";
@@ -20,8 +18,6 @@ const SearchHistoryEvents = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("SearchHistoryEvents pretraga", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -40,14 +36,12 @@ const SearchHistoryEvents = (props) => {
         
             autoFocus
             placeholder={props.placeholder}
-            // inputProps={{ 'ariel-label': 'search' }}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
             <IconButton 
             type='button'
             onClick={handleClickSearch}
-            // sx={{ p: '10px'}}
             aria-label='search'
             >
             <ReadOutlined />

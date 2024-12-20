@@ -2,24 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import axios from "axios";
 import BackToTop from "../BackToTop";
-import Loader from "../Loader";
-// import NyTimes from "./NyTimes";
 
 const SearchResutsNYT = () => {
 
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
     const [nyTimes, setNyTimes] = useState([]);
-    const [totalNyt, setTotalNyt] = useState(1);
     const [total, setTotal] = useState(0);
     const [pageNyt, setPageNyt] = useState(1);
 
-
-
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
-
-    console.log("trazi se u NYT", searchStringValue)
 
     useEffect(() => {
         getTimes(searchStringValue, pageNyt);
@@ -33,12 +25,9 @@ const SearchResutsNYT = () => {
             const data = response.data;
             const dataHits = response.data.response.meta.hits;
 
-            console.log("NOVI podaci NYT", data);
-            console.log("broj hitova NYT", dataHits);
             setTotal(dataHits);
             setNyTimes(data.response.docs);
             setResults(data.response.docs.length);
-            // setIsLoading(false);
 
         } catch (err) {
             setError(err);
@@ -49,11 +38,6 @@ const SearchResutsNYT = () => {
 
     return (
         <>
-            {/* <div>
-
-            <NyTimes name={searchStringValue} news={nyTimes} number={totalNyt} />
-        </div> */}
-
             <div className="nytFont">
                 <div>The New York Times</div>
                 <div className="archive">{total} hits for {searchStringValue} in archive</div>

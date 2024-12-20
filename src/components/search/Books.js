@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import BackToTop from "../BackToTop";
 import Loader from "../Loader";
 import SearchHistoryEvents from "./searchHistoryEvents";
+import BooksCover from "./BooksCover";
 
 const Books = () => {
 
@@ -33,9 +34,8 @@ const Books = () => {
         const urlA = `https://openlibrary.org/search.json?author=${searchStringValue}&page=${pageBookA}&limit=5`
 
         try {
-            const response = await axios.get(url);
-            const responseA = await axios.get(urlA);
-
+            const [response, responseA] = await Promise.all([axios.get(url), axios.get(urlA)]);
+            
             const data = response.data
             const dataA = responseA.data
 
@@ -59,9 +59,7 @@ const Books = () => {
     }
 
     if (isLoading) {
-        return (
-            <Loader />
-        )
+        return <Loader />;
     } else if (totalBook == 0 && totalBookA == 0) {
         return (
             <>
@@ -78,7 +76,9 @@ const Books = () => {
     return (
         <>
             <div className="mainBook">
-                <div className="total"> {totalBook} books by title {searchStringValue}</div>
+                <div className="total">
+                     {totalBook} books by title {searchStringValue}
+                     </div>
                 <div>
                     {books.map((b, id) => (
                         <div key={id}>
@@ -109,6 +109,9 @@ const Books = () => {
                                 <div className="imgBook">
                                     <img src={`https://covers.openlibrary.org/b/olid/${b.cover_edition_key}-L.jpg`} alt=" " />
                                 </div>
+                            )}
+                            {b.edition_key && (
+                                <BooksCover covers={b.edition_key} />
                             )}
                             {b.first_sentence && (
                                 <div className="sentence">{b.first_sentence}</div>
@@ -215,6 +218,9 @@ const Books = () => {
                                 <div className="imgBook">
                                     <img src={`https://covers.openlibrary.org/b/olid/${b.cover_edition_key}-L.jpg`} alt=" " />
                                 </div>
+                            )}
+                               {b.edition_key && (
+                                <BooksCover covers={b.edition_key} />
                             )}
                             {b.first_sentence && (
                                 <div className="sentence">{b.first_sentence}</div>

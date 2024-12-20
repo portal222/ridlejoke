@@ -50,7 +50,6 @@ const DetailsPerson = (props) => {
             const data = response.data;
             const dataCel = responseCel.data;
 
-            console.log("detalji istorijske persone", data)
             setPersons(data);
             setCelebs(dataCel);
             setIsLoading(false);

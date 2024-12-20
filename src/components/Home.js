@@ -9,8 +9,8 @@ const Home = () => {
       <div className="home">
         <div className="imgHold">
           <img className="imgHome" src="https://picsum.photos/358/477" alt="city" />
-          <div className="welcom">WELCOME</div>
         </div>
+          <div className="welcom">WELCOME</div>
         <RandomFact />
         <Quotes />
       </div>
