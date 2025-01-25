@@ -136,7 +136,10 @@ const ClickMetro2 = () => {
                                 <Pagination
                                     count={paginatedPosts.length}
                                     page={currentPage}
-                                    onChange={(_, newPage) => setCurrentPage(newPage)}
+                                    onChange={(_, newPage) => {
+                                        setCurrentPage(newPage);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 />
                             </Box>
                         )}

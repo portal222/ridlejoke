@@ -107,11 +107,15 @@ const ResultsMetro = () => {
                             <Pagination
                                 count={paginatedPosts.length}
                                 page={currentPage}
-                                onChange={(_, newPage) => setCurrentPage(newPage)}
+                                onChange={(_, newPage) => {
+                                    setCurrentPage(newPage);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
                             />
                         </Box>
                     )}
                 </Box>
+                <div className="videoTop"></div>
                 <div className="results"> Results: {results}, by title  </div>
                 <Box>
                     {paginatedPosts2.length > 1 && (
@@ -137,7 +141,10 @@ const ResultsMetro = () => {
                             <Pagination
                                 count={paginatedPosts2.length}
                                 page={currentPage2}
-                                onChange={(_, newPage) => setCurrentPage2(newPage)}
+                                onChange={(_, newPage) => {
+                                    setCurrentPage2(newPage);
+                                    document.querySelector('.videoTop').scrollIntoView({ behavior: 'smooth' });
+                                }}
                             />
                         </Box>
                     )}
@@ -155,57 +162,60 @@ const ResultsMetro = () => {
 
         return (
             <>
-            <table className="metropolitanMain">
-                <thead>
-                    <tr>
-                        <th className="titleMetro">
-                            <h1>
-                                METROPOLITAN MUSEUM
-                            </h1>
-                            <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                        </th>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <th >
-                            <h2 className="results">  Results: {results2}, by artist, medium or culture </h2>
-                        </th>
-                    </tr>
-                </thead>
-                <Box>
-                    {paginatedPosts.length > 1 && (
-                        <Box mt={2} display="flex" justifyContent="center"
-                            margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
-                            <Pagination
-                                count={paginatedPosts.length}
-                                page={currentPage}
-                                onChange={(_, newPage) => setCurrentPage(newPage)}
-                            />
-                        </Box>
-                    )}
-                    <div>
-                        {currentPosts &&
-                            currentPosts.map((metroId) => (
+                <table className="metropolitanMain">
+                    <thead>
+                        <tr>
+                            <th className="titleMetro">
+                                <h1>
+                                    METROPOLITAN MUSEUM
+                                </h1>
+                                <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
+                            </th>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <th >
+                                <h2 className="results">  Results: {results2}, by artist, medium or culture </h2>
+                            </th>
+                        </tr>
+                    </thead>
+                    <Box>
+                        {paginatedPosts.length > 1 && (
+                            <Box mt={2} display="flex" justifyContent="center"
+                                margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                                <Pagination
+                                    count={paginatedPosts.length}
+                                    page={currentPage}
+                                    onChange={(_, newPage) => setCurrentPage(newPage)}
+                                />
+                            </Box>
+                        )}
+                        <div>
+                            {currentPosts &&
+                                currentPosts.map((metroId) => (
 
-                                <MetroID key={metroId} metropolitan={metroId} />
-                            ))}
-                    </div>
-                    {paginatedPosts.length > 1 && (
-                        <Box mt={2} display="flex" justifyContent="center"
-                            margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
-                            <Pagination
-                                count={paginatedPosts.length}
-                                page={currentPage}
-                                onChange={(_, newPage) => setCurrentPage(newPage)}
-                            />
-                        </Box>
-                    )}
-                </Box>
-                <BackToTop />
-            </table>
+                                    <MetroID key={metroId} metropolitan={metroId} />
+                                ))}
+                        </div>
+                        {paginatedPosts.length > 1 && (
+                            <Box mt={2} display="flex" justifyContent="center"
+                                margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                                <Pagination
+                                    count={paginatedPosts.length}
+                                    page={currentPage}
+                                    onChange={(_, newPage) => {
+                                        setCurrentPage(newPage);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                />
+                            </Box>
+                        )}
+                    </Box>
+                    <BackToTop />
+                </table>
                 <div className="place"></div>
-</>
+            </>
         )
     }
     if (results !== 0) {
@@ -215,57 +225,60 @@ const ResultsMetro = () => {
 
         return (
             <>
-            <table className="metropolitanMain">
-                <thead>
-                    <tr>
-                        <th className="titleMetro">
-                            <h1>
-                                METROPOLITAN MUSEUM
-                            </h1>
-                            <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                        </th>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <th >
-                            <h2 className="results">Results: {results}, by title </h2>
+                <table className="metropolitanMain">
+                    <thead>
+                        <tr>
+                            <th className="titleMetro">
+                                <h1>
+                                    METROPOLITAN MUSEUM
+                                </h1>
+                                <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
+                            </th>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <th >
+                                <h2 className="results">Results: {results}, by title </h2>
 
-                        </th>
-                    </tr>
-                </thead>
-                <Box>
-                    {paginatedPosts2.length > 1 && (
-                        <Box mt={2} display="flex" justifyContent="center"
-                            margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
-                            <Pagination
-                                count={paginatedPosts2.length}
-                                page={currentPage2}
-                                onChange={(_, newPage) => setCurrentPage2(newPage)}
-                            />
-                        </Box>
-                    )}
-                    <div>
-                        {currentPosts2 &&
-                            currentPosts2.map((metroId) => (
-                                <MetroID2 key={metroId} metropolitan2={metroId} />
-                            ))}
-                    </div>
-                    {paginatedPosts2.length > 1 && (
-                        <Box mt={2} display="flex" justifyContent="center"
-                            margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
-                            <Pagination
-                                count={paginatedPosts2.length}
-                                page={currentPage2}
-                                onChange={(_, newPage) => setCurrentPage2(newPage)}
-                            />
-                        </Box>
-                    )}
-                    <BackToTop />
-                </Box>
-            </table>
+                            </th>
+                        </tr>
+                    </thead>
+                    <Box>
+                        {paginatedPosts2.length > 1 && (
+                            <Box mt={2} display="flex" justifyContent="center"
+                                margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                                <Pagination
+                                    count={paginatedPosts2.length}
+                                    page={currentPage2}
+                                    onChange={(_, newPage) => setCurrentPage2(newPage)}
+                                />
+                            </Box>
+                        )}
+                        <div>
+                            {currentPosts2 &&
+                                currentPosts2.map((metroId) => (
+                                    <MetroID2 key={metroId} metropolitan2={metroId} />
+                                ))}
+                        </div>
+                        {paginatedPosts2.length > 1 && (
+                            <Box mt={2} display="flex" justifyContent="center"
+                                margin="auto" height="60px" backgroundColor="rgb(241, 241, 225)" paddingTop="20px">
+                                <Pagination
+                                    count={paginatedPosts2.length}
+                                    page={currentPage2}
+                                    onChange={(_, newPage) => {
+                                        setCurrentPage2(newPage);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                />
+                            </Box>
+                        )}
+                        <BackToTop />
+                    </Box>
+                </table>
                 <div className="place"></div>
-</>
+            </>
         )
     }
 

@@ -96,7 +96,10 @@ const ResultsPerson = () => {
                             <tr>
                                 <td className="navod">Name:</td>
                                 <td className="historyPerson"
-                                    onClick={() => handleClick(dataObj.name)}
+                                    onClick={() => {
+                                        handleClick(dataObj.name);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.name}</td>
                             </tr>
                             <tr>
@@ -106,7 +109,10 @@ const ResultsPerson = () => {
                             <tr>
                                 <td colSpan={2}
                                     className="more"
-                                    onClick={() => handleClick(dataObj.name)}>
+                                    onClick={() => {
+                                        handleClick(dataObj.name);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}>
                                     more...
                                 </td>
                             </tr>
@@ -135,7 +141,10 @@ const ResultsPerson = () => {
                         <tr>
                             <td className="navod">Name:</td>
                             <td className="historyPerson"
-                                onClick={() => handleClick(dataObj.name)}>
+                                onClick={() => {
+                                    handleClick(dataObj.name);
+                                    window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}>
                                 {dataObj.name}</td>
                         </tr>
                         {dataObj.title && (
@@ -147,7 +156,10 @@ const ResultsPerson = () => {
                         <tr>
                             <td colSpan={2}
                                 className="more"
-                                onClick={() => handleClick(dataObj.name)}>
+                                onClick={() => {
+                                    handleClick(dataObj.name);
+                                    window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}>
                                 more...
                             </td>
                         </tr>
@@ -171,7 +183,10 @@ const ResultsPerson = () => {
                         <tr>
                             <td className="navod">Name:</td>
                             <td className="historyPerson"
-                                onClick={() => handleClick(dataObj.name)}
+                                onClick={() => {
+                                    handleClick(dataObj.name);
+                                    window.scrollTo({ top: 0, behavior: 'smooth'});
+                                }}
                             >{dataObj.name}</td>
                         </tr>
                         {dataObj.occupation && (
@@ -183,7 +198,10 @@ const ResultsPerson = () => {
                         <tr>
                             <td colSpan={2}
                                 className="more"
-                                onClick={() => handleClick(dataObj.name)}>
+                                onClick={() => {
+                                    handleClick(dataObj.name);
+                                    window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}>
                                 more...
                             </td>
                         </tr>

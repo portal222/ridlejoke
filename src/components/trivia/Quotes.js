@@ -80,22 +80,30 @@ const Quotes = () => {
                     <p className="category">{random.category}</p>
                     <p>{random.quote}</p>
                     <p className="author"
-                        onClick={() => handleClick(random.author)}>
-
+                        onClick={() => {
+                           handleClick(random.author);
+                           window.scrollTo({ top: 0, behavior: 'smooth'});
+                        }}>
                         {random.author}</p>
                 </div>
                 <div className="table">
                     <p className="category">{random2.category}</p>
                     <p>{random2.quote}</p>
                     <p className="author"
-                        onClick={() => handleClick(random2.author)}>
+                        onClick={() => {
+                            handleClick(random2.author);
+                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                        }}>
                         {random2.author}</p>
                 </div>
                 <div className="table">
                     <p className="category">{random3.category}</p>
                     <p>{random3.quote}</p>
                     <p className="author"
-                        onClick={() => handleClick(random3.author)}>
+                        onClick={() => {
+                            handleClick(random3.author);
+                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                            }}>
                         {random3.author}</p>
                     <hr></hr>
                 </div>

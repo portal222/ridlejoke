@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import axios from "axios";
+import Loader from "../Loader";
 import BackToTop from "../BackToTop";
 
 const SearchResutsNYT = () => {
@@ -9,6 +10,7 @@ const SearchResutsNYT = () => {
     const [nyTimes, setNyTimes] = useState([]);
     const [total, setTotal] = useState(0);
     const [pageNyt, setPageNyt] = useState(1);
+    
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
@@ -68,7 +70,10 @@ const SearchResutsNYT = () => {
                 {Array.from({ length: totalPagesNyt }, (_, i) => (
                     <div className={pageNyt === i + 1 ? 'numbActIm' : 'numbIm'}
                         key={i + 1}
-                        onClick={() => setPageNyt(i + 1)}
+                        onClick={() => {
+                            setPageNyt(i + 1);
+                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                        }}
                         disabled={i + 1 === pageNyt}
                     >
                         {i + 1}

@@ -380,6 +380,10 @@ body {
     }
 }
 
+.videoTop {
+    height: 40px;
+}
+
 .mainBook {
     margin: auto;
     width: 900px;
@@ -393,12 +397,14 @@ body {
 
     .tags {
         display: flex;
+
         width: 900px;
         justify-content: center;
         font-size: 18px;
         gap: 10px;
         margin: auto;
         padding-bottom: 10px;
+        overflow: hidden;
     }
 
     .total {
@@ -494,16 +500,16 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-        
-        &:empty {
-            display: none;
+
+            &:empty {
+                display: none;
+            }
         }
-    }
-       
-        .imgCovers {      
+
+        .imgCovers {
             width: 153px;
             height: auto;
- 
+
         }
     }
 }

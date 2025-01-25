@@ -88,67 +88,12 @@ const PickTrivia = () => {
                         className="category">
                         Riddles
                     </div>
-                    <div onClick={() => handleGeneral()}
-                        className="category">
-                        General
-                    </div>
-                    <div onClick={() => handleLanguage()}
-                        className="category">
-                        Language
-                    </div>
-                    <div onClick={() => handleArt()}
-                        className="category">
-                        Art & Literature
-                    </div>
-                    <div onClick={() => handleScience()}
-                        className="category">
-                        Science & Nature
-                    </div>
-                    <div onClick={() => handleFood()}
-                        className="category">
-                        Food & Drink
-                    </div>
-                    <div onClick={() => handlePeople()}
-                        className="category">
-                        People & Place
-                    </div>
-                    <div onClick={() => handleHistory()}
-                        className="category">
-                        History & Holidays
-                    </div>
+                  
                 </div>
                 <div>
                     <div onClick={() => handleGeography()}
                         className="category">
-                        Geography
-                    </div>
-                    <div onClick={() => handleEntertainment()}
-                        className="category">
-                        Entertainment
-                    </div>
-                    <div onClick={() => handleToys()}
-                        className="category">
-                        Toys & Games
-                    </div>
-                    <div onClick={() => handleMusic()}
-                        className="category">
-                        Music
-                    </div>
-                    <div onClick={() => handleLanguage()}
-                        className="category">
-                        Language
-                    </div>
-                    <div onClick={() => handleReligion()}
-                        className="category">
-                        Religion & Mythology
-                    </div>
-                    <div onClick={() => handleSport()}
-                        className="category">
-                        Sports & Leisure
-                    </div>
-                    <div onClick={() => handleMathematics()}
-                        className="category">
-                        Mathematicss
+                        Quiz
                     </div>
                 </div>
             </div>

@@ -77,7 +77,7 @@ const Video = () => {
                         </div>
                         <div className="tags">
                             <p>Tags:</p>
-                            {object.tags.map((tag, id) => (
+                            {object.tags.slice(0, 5).map((tag, id) => (
                                 <p key={id}>
                                     {tag}
                                 </p>
@@ -90,13 +90,17 @@ const Video = () => {
                 {Array.from({ length: totalPages }, (_, i) => (
                     <div className={page === i + 1 ? 'numbActIm' : 'numbIm'}
                         key={i + 1}
-                        onClick={() => setPage(i + 1)}
+                        onClick={() => {
+                            setPage(i + 1);
+                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                        }}
                         disabled={i + 1 === page}
                     >
                         {i + 1}
                     </div>
                 ))}
             </div>
+            <div className="videoTop"></div>
             <div className="mainBook">
             <div className="titleBook">Video for {searchStringValue}</div>
             </div>
@@ -116,7 +120,10 @@ const Video = () => {
                 {Array.from({ length: totalPagesVid }, (_, i) => (
                     <div className={pageVid === i + 1 ? 'numbActIm' : 'numbIm'}
                         key={i + 1}
-                        onClick={() => setPageVid(i + 1)}
+                        onClick={() => {
+                            setPageVid(i + 1);
+                        document.querySelector('.videoTop').scrollIntoView({ behavior: 'smooth' });
+                        }}
                         disabled={i + 1 === pageVid}
                     >
                         {i + 1}

@@ -35,7 +35,7 @@ const Books = () => {
 
         try {
             const [response, responseA] = await Promise.all([axios.get(url), axios.get(urlA)]);
-            
+
             const data = response.data
             const dataA = responseA.data
 
@@ -77,8 +77,8 @@ const Books = () => {
         <>
             <div className="mainBook">
                 <div className="total">
-                     {totalBook} books by title {searchStringValue}
-                     </div>
+                    {totalBook} books by title {searchStringValue}
+                </div>
                 <div>
                     {books.map((b, id) => (
                         <div key={id}>
@@ -88,13 +88,19 @@ const Books = () => {
                                         {b.author_name.map((author, id) => (
                                             <p key={id}
                                                 className="author"
-                                                onClick={() => handleClick(author)}
+                                                onClick={() => {
+                                                    handleClick(author);
+                                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                }}
                                             >{author}</p>
                                         ))}
                                     </div>
                                 ) : (
                                     <div className="author"
-                                        onClick={() => handleClick(author)}>
+                                        onClick={() => {
+                                            handleClick(author);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}>
                                         {b.author_name}
                                     </div>
                                 )
@@ -175,13 +181,17 @@ const Books = () => {
                 {Array.from({ length: totalPagesBook }, (_, i) => (
                     <div className={pageBook === i + 1 ? 'numbActIm' : 'numbIm'}
                         key={i + 1}
-                        onClick={() => setPageBook(i + 1)}
+                        onClick={() => {
+                            setPageBook(i + 1);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
                         disabled={i + 1 === pageBook}
                     >
                         {i + 1}
                     </div>
                 ))}
             </div>
+            <div className="videoTop"></div>
 
             <div className="mainBook">
                 <div className="total"> {totalBookA} books by Author {searchStringValue}</div>
@@ -195,13 +205,19 @@ const Books = () => {
                                         {b.author_name.map((author, id) => (
                                             <p key={id}
                                                 className="author"
-                                                onClick={() => handleClick(author)}
+                                                onClick={() => {
+                                                    handleClick(author);
+                                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                }}
                                             >{author}</p>
                                         ))}
                                     </div>
                                 ) : (
                                     <div className="author"
-                                        onClick={() => handleClick(author)}>
+                                        onClick={() => {
+                                            handleClick(author);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}>
 
                                         {b.author_name}
 
@@ -219,7 +235,7 @@ const Books = () => {
                                     <img src={`https://covers.openlibrary.org/b/olid/${b.cover_edition_key}-L.jpg`} alt=" " />
                                 </div>
                             )}
-                               {b.edition_key && (
+                            {b.edition_key && (
                                 <BooksCover covers={b.edition_key} />
                             )}
                             {b.first_sentence && (
@@ -285,7 +301,10 @@ const Books = () => {
                 {Array.from({ length: totalPagesBookA }, (_, i) => (
                     <div className={pageBookA === i + 1 ? 'numbActIm' : 'numbIm'}
                         key={i + 1}
-                        onClick={() => setPageBookA(i + 1)}
+                        onClick={() => {
+                            setPageBookA(i + 1);
+                            document.querySelector('.videoTop').scrollIntoView({ behavior: 'smooth' });
+                        }}
                         disabled={i + 1 === pageBookA}
                     >
                         {i + 1}

@@ -51,7 +51,7 @@ const BooksCover = ({ covers = [] }) => {
                         <div key={id} className="imgContainer">
                             <img
                                 src={img}
-                                alt="no image"
+                                alt=""
                                 className="imgCovers"
                                 loader={<div>Loading...</div>} unloader={<div style={{ width: '143px', height: '200px', backgroundColor: 'lightgray'}}>No Image</div>}            
                             />

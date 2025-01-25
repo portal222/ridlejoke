@@ -24,9 +24,9 @@ const Trivia = (props) => {
     }, []);
 
     const getAnswer = async () => {
-        const url = `https://api.api-ninjas.com/v1/trivia?category=geography`;
-        const url2 = `https://api.api-ninjas.com/v1/trivia?category=geography`;
-        const url3 = `https://api.api-ninjas.com/v1/trivia?category=geography`;
+        const url = `https://api.api-ninjas.com/v1/trivia`;
+        const url2 = `https://api.api-ninjas.com/v1/trivia`;
+        const url3 = `https://api.api-ninjas.com/v1/trivia`;
 
         try {
             const response = await axios.get(url,
@@ -54,6 +54,7 @@ const Trivia = (props) => {
             setAnswer2(data2);
             setAnswer3(data3);
             setIsLoading(false);
+            console.log("geography data", response)
 
         } catch (err) {
             setError(err);
@@ -73,7 +74,7 @@ const Trivia = (props) => {
     return (
         <>
             <div className="trivia" >
-                <div className="categ">Geography</div>
+                <div className="categ">Quiz</div>
 
                 <Collapse
                     size="large"

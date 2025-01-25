@@ -48,6 +48,7 @@ const Trivia = (props) => {
             setAnswer2(data2);
             setAnswer3(data3);
             setIsLoading(false);
+            console.log("history podaci", response)
 
         } catch (err) {
             setError(err);

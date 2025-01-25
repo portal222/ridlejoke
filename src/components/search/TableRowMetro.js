@@ -14,14 +14,6 @@ import MetropolitanCollapsable from "./MetropolitanCollapsable";
 import { useNavigate } from "react-router-dom";
 
 
-
-
-
-
-
-// import BackToTop from "./BackToTop";
-
-
 const TableRowMetro = (props) => {
     const [error, setError] = useState(null);
     const [countries, setCountries] = useState([]);
