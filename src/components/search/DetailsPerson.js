@@ -79,7 +79,7 @@ const DetailsPerson = (props) => {
     } else if (resHis == 0) {
         return (
             <>
-         
+
                 <table className="tabelaZemlje">
                     <thead >
                         <tr className="results">
@@ -593,7 +593,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Predecessor:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.predecessor)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.predecessor);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.predecessor}</td>
                             </tr>
                         )}
@@ -601,7 +604,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Preceded by:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.preceded_by)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.preceded_by);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.preceded_by}</td>
                             </tr>
                         )}
@@ -609,7 +615,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Successor:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.successor)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.successor);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >
                                     {dataObj.info.successor}</td>
                             </tr>
@@ -618,7 +627,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Succeeded by:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.succeeded_by)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.succeeded_by);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.succeeded_by}</td>
                             </tr>
                         )}
@@ -626,7 +638,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Monarch:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.monarch)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.monarch);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.monarch}</td>
                             </tr>
                         )}
@@ -638,7 +653,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info["co-rulers"].map((ruler, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(ruler)}
+                                                    onClick={() => {
+                                                        handleClick(ruler);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{ruler}</li>
                                             ))}
                                         </ul>
@@ -648,7 +666,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Co-rulers:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info["co-rulers"])}
+                                        onClick={() => {
+                                            handleClick(dataObj.info["co-rulers"]);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info["co-rulers"]}
                                     </td>
@@ -659,7 +680,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">President:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.president)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.president);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.president}</td>
                             </tr>
                         )}
@@ -667,7 +691,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Vice president:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.vice_president)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.vice_president);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.vice_president}</td>
                             </tr>
                         )}
@@ -675,7 +702,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Premier:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.premier)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.premier);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.premier}</td>
                             </tr>
                         )}
@@ -683,7 +713,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Governor:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.governor)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.governor);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.governor}</td>
                             </tr>
                         )}
@@ -691,7 +724,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Governor general:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.governor_general)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.governor_general);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.governor_general}</td>
                             </tr>
                         )}
@@ -699,7 +735,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Lieutenant governor:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.lieutenant_governor)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.lieutenant_governor);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.lieutenant_governor}</td>
                             </tr>
                         )}
@@ -711,7 +750,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.prime_minister.map((minist, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(minist)}
+                                                    onClick={() => {
+                                                        handleClick(minist);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{minist}</li>
                                             ))}
                                         </ul>
@@ -721,7 +763,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Prime minister:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.prime_minister)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.prime_minister);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.prime_minister}
                                     </td>
@@ -736,7 +781,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.minister.map((minist, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(minist)}
+                                                    onClick={() => {
+                                                        handleClick(minist);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{minist}</li>
                                             ))}
                                         </ul>
@@ -746,7 +794,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Minister:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.minister)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.minister);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.minister}
                                     </td>
@@ -761,7 +812,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.leader.map((lead, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(lead)}
+                                                    onClick={() => {
+                                                        handleClick(lead);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{lead}</li>
                                             ))}
                                         </ul>
@@ -771,7 +825,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Leader:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.leader)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.leader);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.leader}
                                     </td>
@@ -782,7 +839,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Appointed by:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.appointed_by)}>
+                                    onClick={() => {
+                                        handleClick(dataObj.info.appointed_by);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}>
                                     {dataObj.info.appointed_by}</td>
                             </tr>
                         )}
@@ -798,7 +858,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Deputy:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.deputy)}>
+                                    onClick={() => {
+                                        handleClick(dataObj.info.deputy);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}>
                                     {dataObj.info.deputy}</td>
                             </tr>
                         )}
@@ -810,7 +873,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.lieutenant.map((lieuten, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(lieuten)}
+                                                    onClick={() => {
+                                                        handleClick(lieuten);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{lieuten}</li>
                                             ))}
                                         </ul>
@@ -820,7 +886,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Lieutenant:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.lieutenant)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.lieutenant);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.lieutenant}
                                     </td>
@@ -835,7 +904,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.general_secretary.map((secret, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(secret)}
+                                                    onClick={() => {
+                                                        handleClick(secret);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{secret}</li>
                                             ))}
                                         </ul>
@@ -845,7 +917,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">General secretary:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.general_secretary)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.general_secretary);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.general_secretary}
                                     </td>
@@ -860,7 +935,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.first_secretary.map((first, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(first)}
+                                                    onClick={() => {
+                                                        handleClick(first);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{first}</li>
                                             ))}
                                         </ul>
@@ -870,7 +948,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">First secretary:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.first_secretary)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.first_secretary);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.first_secretary}
                                     </td>
@@ -885,7 +966,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.chair.map((chair, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(chair)}
+                                                    onClick={() => {
+                                                        handleClick(chair);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{chair}</li>
                                             ))}
                                         </ul>
@@ -895,7 +979,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Chair:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.chair)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.chair);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.chair}
                                     </td>
@@ -910,7 +997,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info["sec._of_state"].map((state, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(state)}
+                                                    onClick={() => {
+                                                        handleClick(state);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{state}</li>
                                             ))}
                                         </ul>
@@ -920,7 +1010,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Secretary of state:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info["sec._of_state"])}
+                                        onClick={() => {
+                                            handleClick(dataObj.info["sec._of_state"]);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info["sec._of_state"]}
                                     </td>
@@ -935,7 +1028,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.shadowing.map((shadow, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(shadow)}
+                                                    onClick={() => {
+                                                        handleClick(shadow);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{shadow}</li>
                                             ))}
                                         </ul>
@@ -945,7 +1041,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Shadowing:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.shadowing)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.shadowing);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.shadowing}
                                     </td>
@@ -1055,7 +1154,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.influences.map((influ, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(influ)}
+                                                    onClick={() => {
+                                                        handleClick(influ);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{influ}</li>
                                             ))}
                                         </ul>
@@ -1065,7 +1167,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Influences:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.influences)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.influences);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.influences}
                                     </td>
@@ -1080,7 +1185,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.influenced.map((influ, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(influ)}
+                                                    onClick={() => {
+                                                        handleClick(influ);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                                 >{influ}</li>
                                             ))}
                                         </ul>
@@ -1090,7 +1198,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Influenced:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.influenced)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.influenced);
+                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        }}
                                     >
                                         {dataObj.info.influenced}
                                     </td>
@@ -2240,7 +2351,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Teachers:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.teachers)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.teachers);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.teachers}</td>
                             </tr>
                         )}
@@ -2248,7 +2362,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Trainer:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.trainer)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.trainer);
+                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    }}
                                 >{dataObj.info.trainer}</td>
                             </tr>
                         )}
@@ -2260,7 +2377,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.trained_by.map((trained, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(trained)}
+                                                    onClick={() => {
+                                                        handleClick(trained);
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                    }}
                                                 >{trained}</li>
                                             ))}
                                         </ul>
@@ -2270,7 +2390,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Trained by:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.trained_by)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.trained_by);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                     >
                                         {dataObj.info.trained_by}
                                     </td>
@@ -2354,7 +2477,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Coach:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.coach)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.coach);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
                                 >{dataObj.info.coach}</td>
                             </tr>
                         )}
@@ -2362,7 +2488,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Coached by:</td>
                                 <td className="nameLink"
-                                    onClick={() => handleClick(dataObj.info.coached_by)}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.coached_by);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
                                 >{dataObj.info.coached_by}</td>
                             </tr>
                         )}
@@ -3416,7 +3545,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(student);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{student}</li>
                                             ))}
@@ -3429,7 +3558,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.academic_advisors);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.academic_advisors}
@@ -3448,7 +3577,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(advisor);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{advisor}</li>
                                             ))}
@@ -3461,7 +3590,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.doctoral_advisor);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.doctoral_advisor}
@@ -3481,7 +3610,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(advisor);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{advisor}</li>
                                             ))}
@@ -3494,7 +3623,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.doctoral_advisors);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.doctoral_advisors}
@@ -3514,7 +3643,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(students);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{students}</li>
                                             ))}
@@ -3527,8 +3656,8 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.doctoral_students);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
-                                            }}>
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}>
                                         {dataObj.info.doctoral_students}
                                     </td>
                                 </tr>
@@ -3544,7 +3673,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(student);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{student}</li>
                                             ))}
@@ -3557,7 +3686,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.notable_students);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.notable_students}
@@ -3576,7 +3705,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(advisor);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{advisor}</li>
                                             ))}
@@ -3589,7 +3718,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.other_academic_advisors);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.other_academic_advisors}
@@ -3609,7 +3738,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(student);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{student}</li>
                                             ))}
@@ -3620,9 +3749,9 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Other notable students:</td>
                                     <td className="nameLink"
-                                        onClick={() =>{
+                                        onClick={() => {
                                             handleClick(dataObj.info.other_notable_students);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.other_notable_students}
@@ -4000,7 +4129,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(spouse.split('(')[0]);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{spouse}</li>
                                             ))}
@@ -4012,8 +4141,8 @@ const DetailsPerson = (props) => {
                                     <td className="navod">Spouse:</td>
                                     <td className="nameLink"
                                         onClick={() => {
-                                           handleClick(dataObj.info.spouse.split('(')[0]);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            handleClick(dataObj.info.spouse.split('(')[0]);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.spouse}
@@ -4032,7 +4161,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(spouse.split('(')[0]);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{spouse}</li>
                                             ))}
@@ -4045,7 +4174,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.spouses.split('(')[0]);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.spouses}
@@ -4065,7 +4194,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(partner.split('(')[0]);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{partner}</li>
                                             ))}
@@ -4078,7 +4207,7 @@ const DetailsPerson = (props) => {
                                     <td className="nameLink"
                                         onClick={() => {
                                             handleClick(dataObj.info.partners.split('(')[0]);
-                                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
                                     >
                                         {dataObj.info.partners}
@@ -4090,10 +4219,10 @@ const DetailsPerson = (props) => {
                             <tr>
                                 <td className="navod">Partner:</td>
                                 <td className="nameLink"
-                                 onClick={() => {
-                                    handleClick(dataObj.info.partner.split('(')[0]);
-                                    window.scrollTo({ top: 0, behavior: 'smooth'});
-                                }}
+                                    onClick={() => {
+                                        handleClick(dataObj.info.partner.split('(')[0]);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
                                 >
                                     {dataObj.info.partner}
                                 </td>
@@ -4110,7 +4239,7 @@ const DetailsPerson = (props) => {
                                                 <li key={id} className="nameLink"
                                                     onClick={() => {
                                                         handleClick(parent.split('(')[0]);
-                                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                                     }}
                                                 >{parent}</li>
                                             ))}
@@ -4133,7 +4262,7 @@ const DetailsPerson = (props) => {
                                 <td className="nameLink"
                                     onClick={() => {
                                         handleClick(dataObj.info.father.split('(')[0]);
-                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                     }}
                                 >
                                     {dataObj.info.father}
@@ -4146,7 +4275,7 @@ const DetailsPerson = (props) => {
                                 <td className="nameLink"
                                     onClick={() => {
                                         handleClick(dataObj.info.mother.split('(')[0]);
-                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                     }}
                                 >
                                     {dataObj.info.mother}
@@ -4272,7 +4401,11 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.issue.map((iss, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(iss)}
+                                                    onClick={() => {
+                                                        handleClick(iss);
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                                                    }}
                                                 >
                                                     {iss}
                                                 </li>
@@ -4284,7 +4417,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Issue:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.issue)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.issue);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                     >{dataObj.info.issue}</td>
                                 </tr>
                             )
@@ -4297,7 +4433,10 @@ const DetailsPerson = (props) => {
                                         <ul>
                                             {dataObj.info.issuedetail.map((detail, id) => (
                                                 <li key={id} className="nameLink"
-                                                    onClick={() => handleClick(detail)}
+                                                    onClick={() => {
+                                                        handleClick(detail);
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                    }}
 
                                                 >{detail}</li>
                                             ))}
@@ -4308,7 +4447,10 @@ const DetailsPerson = (props) => {
                                 <tr>
                                     <td className="navod">Issue detail:</td>
                                     <td className="nameLink"
-                                        onClick={() => handleClick(dataObj.info.issuedetail)}
+                                        onClick={() => {
+                                            handleClick(dataObj.info.issuedetail);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                     >
                                         {dataObj.info.issuedetail}
                                     </td>

@@ -4,6 +4,9 @@ import Quotes from "./trivia/Quotes";
 
 const Home = () => {
 
+  window.scrollTo({ top: 0, behavior: 'smooth'});
+
+
   return (
     <>
       <div className="home">
