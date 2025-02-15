@@ -9,7 +9,7 @@ import JokesOne from "./JokesOne";
 
 const JokePlace = () => {
 
-    const [error, setError] = useState(null);
+    window.scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
         <>

@@ -44,6 +44,7 @@ import ClickMetro from "./metropolitan/ClickMetro";
 import ClickMetro2 from "./metropolitan/ClickMetro2";
 import Books from "./search/Books";
 import Video from "./search/Video";
+import BooksClick from "./search/BooksClick";
 
 const theme = createTheme({
   palette: {
@@ -122,6 +123,7 @@ const Navigation = () => {
           <Route path="/:numId" element={<PokemonPage />} />
           <Route path="/pokJson" element={<PokJson />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/linkBooks/:works" element={<BooksClick />} />
           <Route path="/video" element={<Video />} />
         </Routes>
       </HashRouter>

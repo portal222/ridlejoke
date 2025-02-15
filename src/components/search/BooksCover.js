@@ -18,7 +18,8 @@ const BooksCover = ({ covers = [] }) => {
             }
 
             const promises = limitedCovers.map(async (img) => {
-                const url = `https://covers.openlibrary.org/b/olid/${img}-L.jpg`;
+                // const url = `https://covers.openlibrary.org/b/olid/${img}-L.jpg`;
+                const url = `https://covers.openlibrary.org/b/isbn/${img}-S.jpg`;
                 try {
                     const response = await fetch(url);
                     if (response.ok) {

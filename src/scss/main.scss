@@ -434,6 +434,12 @@ body {
         padding: 15px 20px;
     }
 
+    .bornDate {
+        display: flex;
+        font-size: 22px;
+        padding: 10px 20px 0px 20px;
+    }
+
     .imgBook {
         margin: auto;
         width: 800px;
@@ -458,6 +464,22 @@ body {
             width: 220px;
             padding: 2px 10px;
             overflow: hidden;
+            text-align: left;
+        }
+
+        .work {
+            margin: 0;
+            width: 220px;
+            padding: 2px 10px;
+            text-align: left;
+            color: #014780;
+            cursor: pointer;
+
+            &:hover {
+                color: #64b5f6;
+            }
+
+
         }
     }
 
@@ -1309,6 +1331,12 @@ body {
             padding: 10px 15px;
         }
 
+        .bornDate {
+
+            font-size: 16px;
+            padding: 8px 15px 0px 15px;
+        }
+
         .imgBook {
             width: 350px;
         }
@@ -1326,6 +1354,12 @@ body {
             font-size: 12px;
 
             p {
+                width: 170px;
+                padding: 2px 5px;
+            }
+
+            .work {
+                margin: 0;
                 width: 170px;
                 padding: 2px 5px;
             }

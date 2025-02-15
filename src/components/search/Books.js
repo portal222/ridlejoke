@@ -2,10 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Box, Pagination } from "@mui/material";
 import BackToTop from "../BackToTop";
 import Loader from "../Loader";
 import SearchHistoryEvents from "./searchHistoryEvents";
-import BooksCover from "./BooksCover";
+import BooksDetails from "./BooksDetails";
+// import BooksAuthors from "./BooksAuthors";
+import BookWriter from "./BookWriter";
+import PaginateBook from "./PaginationBook";
 
 const Books = () => {
 
@@ -17,6 +21,8 @@ const Books = () => {
     const [pageBookA, setPageBookA] = useState(1);
     const [totalBookA, setTotalBookA] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+
 
     const navigate = useNavigate();
 
@@ -31,7 +37,8 @@ const Books = () => {
 
     const getBook = async (searchStringValue, pageBook, pageBookA) => {
         const url = `https://openlibrary.org/search.json?q=${searchStringValue}&page=${pageBook}&limit=5`
-        const urlA = `https://openlibrary.org/search.json?author=${searchStringValue}&page=${pageBookA}&limit=5`
+        const urlA = `https://openlibrary.org/search/authors.json?q=${searchStringValue}&limit=5000`
+        
 
         try {
             const [response, responseA] = await Promise.all([axios.get(url), axios.get(urlA)]);
@@ -45,10 +52,14 @@ const Books = () => {
             setTotalBookA(dataA.numFound)
             setIsLoading(false);
 
+            console.log("podaci o knjigama", data);
+            console.log("autor podaci", dataA);
+
         } catch (err) {
             setError(err);
         }
     }
+
 
     const totalPagesBook = Math.ceil(totalBook / limitBook);
     const totalPagesBookA = Math.ceil(totalBookA / limitBook);
@@ -57,6 +68,10 @@ const Books = () => {
         const LinkTo = `/historyPerson/${personName}`;
         navigate(LinkTo);
     }
+
+    const pageSize = 5;
+    const paginatedPosts = PaginateBook(bookAuthor, pageSize);
+    const currentPosts = paginatedPosts[currentPage - 1];
 
     if (isLoading) {
         return <Loader />;
@@ -82,6 +97,11 @@ const Books = () => {
                 <div>
                     {books.map((b, id) => (
                         <div key={id}>
+                              {b.author_key && (
+                                <div className="imgBook" style={{paddingTop: "10px"}}>
+                                    <img src={`https://covers.openlibrary.org/a/olid/${b.author_key}-L.jpg`} alt=" " />
+                                </div>
+                            )}
                             {b.author_name && (
                                 Array.isArray(b.author_name) ? (
                                     <div >
@@ -105,70 +125,16 @@ const Books = () => {
                                     </div>
                                 )
                             )}
-                            {b.author_key && (
-                                <div className="imgBook">
-                                    <img src={`https://covers.openlibrary.org/a/olid/${b.author_key}-L.jpg`} alt=" " />
-                                </div>
-                            )}
-                            <div className="titleBook">{b.title + " " + "(" + b.first_publish_year + ")"} </div>
-                            {b.cover_edition_key && (
+                                   {b.cover_edition_key && (
                                 <div className="imgBook">
                                     <img src={`https://covers.openlibrary.org/b/olid/${b.cover_edition_key}-L.jpg`} alt=" " />
                                 </div>
                             )}
-                            {b.edition_key && (
-                                <BooksCover covers={b.edition_key} />
-                            )}
-                            {b.first_sentence && (
-                                <div className="sentence">{b.first_sentence}</div>
-                            )}
-                            {b.person && (
-                                <div className="subject">
-                                    <p>PERSON:</p>
-                                    {b.person.map((per, id) => (
-                                        <p key={id}>{per}</p>
-                                    ))}
-                                </div>
-                            )}
-                            {b.subject && (
-                                Array.isArray(b.subject) ? (
-                                    <div
-                                        className="subject">
-                                        <p>SUBJECT:</p>
-                                        {b.subject.map((sub, id) => (
-                                            <p key={id}>
-                                                {sub}
-                                            </p>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div className="subject">
-                                        SUBJECT: {b.subject}
-                                    </div>
-                                )
-                            )}
-                            {b.place && (
-                                Array.isArray(b.place) ? (
-                                    <div className="subject">
-                                        <p>PLACE:</p>
-                                        {b.place.map((pla, id) => (
-                                            <p key={id}>
-                                                {pla}
-                                            </p>
-                                        ))}</div>
-                                ) : (
-                                    <div className="subject">
-                                        PLACE: {b.place}
-                                    </div>
-                                )
-                            )}
-                            <div className="publisher">
-                                <p>
-                                    PUBLISHER: {b.publisher + ", "}
-                                </p>
-                                {b.publish_place && (
-                                    <p>{b.publish_place + ", "}</p>
-                                )}
+                            <div className="titleBook">{b.title + " " + "(" + b.first_publish_year + ")"} </div>
+                          
+
+                            <div>
+                                <BooksDetails edition={b.key} />
                             </div>
                             <div>
                                 <hr></hr>
@@ -191,126 +157,36 @@ const Books = () => {
                     </div>
                 ))}
             </div>
+
+
             <div className="videoTop"></div>
 
             <div className="mainBook">
-                <div className="total"> {totalBookA} books by Author {searchStringValue}</div>
-                <div>
-                    {bookAuthor.map((b, id) => (
-                        <div key={id}>
-                            {b.author_name && (
-                                Array.isArray(b.author_name) ? (
-
-                                    <div >
-                                        {b.author_name.map((author, id) => (
-                                            <p key={id}
-                                                className="author"
-                                                onClick={() => {
-                                                    handleClick(author);
-                                                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                                                }}
-                                            >{author}</p>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div className="author"
-                                        onClick={() => {
-                                            handleClick(author);
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }}>
-
-                                        {b.author_name}
-
-                                    </div>
-                                )
-                            )}
-                            {b.author_key && (
-                                <div className="imgBook">
-                                    <img src={`https://covers.openlibrary.org/a/olid/${b.author_key}-L.jpg`} alt=" " />
-                                </div>
-                            )}
-                            <div className="titleBook">{b.title + " " + "(" + b.first_publish_year + ")"} </div>
-                            {b.cover_edition_key && (
-                                <div className="imgBook">
-                                    <img src={`https://covers.openlibrary.org/b/olid/${b.cover_edition_key}-L.jpg`} alt=" " />
-                                </div>
-                            )}
-                            {b.edition_key && (
-                                <BooksCover covers={b.edition_key} />
-                            )}
-                            {b.first_sentence && (
-                                <div className="sentence">{b.first_sentence}</div>
-                            )}
-                            {b.person && (
-                                <div className="subject">
-                                    <p>PERSON:</p>
-                                    {b.person.map((per, id) => (
-                                        <p key={id}>{per}</p>
-                                    ))}
-                                </div>
-                            )}
-                            {b.subject && (
-                                Array.isArray(b.subject) ? (
-                                    <div
-                                        className="subject">
-                                        <p>SUBJECT:</p>
-                                        {b.subject.map((sub, id) => (
-                                            <p key={id}>
-                                                {sub}
-                                            </p>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div className="subject">
-                                        SUBJECT: {b.subject}
-                                    </div>
-                                )
-                            )}
-                            {b.place && (
-                                Array.isArray(b.place) ? (
-                                    <div className="subject">
-                                        <p>PLACE:</p>
-                                        {b.place.map((pla, id) => (
-                                            <p key={id}>
-                                                {pla}
-                                            </p>
-                                        ))}</div>
-                                ) : (
-                                    <div className="subject">
-                                        PLACE: {b.place}
-                                    </div>
-                                )
-                            )}
-                            <div className="publisher">
-                                <p>
-                                    PUBLISHER: {b.publisher + ", "}
-                                </p>
-                                {b.publish_place && (
-                                    <p>{b.publish_place + ", "}</p>
-                                )}
-                            </div>
-                            <div>
-                                <hr></hr>
-                            </div>
-
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="imageNum">
-                {Array.from({ length: totalPagesBookA }, (_, i) => (
-                    <div className={pageBookA === i + 1 ? 'numbActIm' : 'numbIm'}
-                        key={i + 1}
-                        onClick={() => {
-                            setPageBookA(i + 1);
-                            document.querySelector('.videoTop').scrollIntoView({ behavior: 'smooth' });
-                        }}
-                        disabled={i + 1 === pageBookA}
-                    >
-                        {i + 1}
+                <div className="total"> {totalBookA} results for author {searchStringValue}</div>
+                <Box>
+                    <div>
+                        {currentPosts &&
+                            currentPosts.map((book) => (
+                                <BookWriter b={book} />
+                            ))}
                     </div>
-                ))}
+                    {paginatedPosts.length > 1 && (
+                        <Box mt={2} display="flex" justifyContent="center" className="pagination"
+                            margin="auto" height="60px" backgroundColor="rgb(140, 188, 237)" paddingTop="20px">
+                            <Pagination
+                                count={paginatedPosts.length}
+                                page={currentPage}
+                                onChange={(_, newPage) => {
+                                    setCurrentPage(newPage),
+                                    document.querySelector('.videoTop').scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            />
+                        </Box>
+                    )}
+
+                </Box>
             </div>
+        
             <BackToTop />
         </>
     )
