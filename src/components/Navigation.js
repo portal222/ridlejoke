@@ -45,6 +45,7 @@ import ClickMetro2 from "./metropolitan/ClickMetro2";
 import Books from "./search/Books";
 import Video from "./search/Video";
 import BooksClick from "./search/BooksClick";
+import AnimalsResults from "./animals/AnimalsResults";
 
 const theme = createTheme({
   palette: {
@@ -125,6 +126,7 @@ const Navigation = () => {
           <Route path="/books" element={<Books />} />
           <Route path="/linkBooks/:works" element={<BooksClick />} />
           <Route path="/video" element={<Video />} />
+          <Route path="/animals" element={<AnimalsResults />} />
         </Routes>
       </HashRouter>
       <Footers />

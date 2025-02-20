@@ -1,8 +1,6 @@
 import React from "react";
 
-
 const ResultsCelebs = (props) => {
-
 
     if (props.results == 0) {
         return (
@@ -15,7 +13,6 @@ const ResultsCelebs = (props) => {
                     </tr>
                 </thead>
             </table>
-
         )
     }
     return (
@@ -28,8 +25,6 @@ const ResultsCelebs = (props) => {
                         </th>
                     </tr>
                 </thead>
-
-
                 {props.celebs.map((celeb, id) => (
                     <tbody key={id}>
                         {celeb.name && (

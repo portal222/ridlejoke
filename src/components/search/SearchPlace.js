@@ -9,6 +9,7 @@ import SearchPoke from "../pokemons/SearchPoke";
 import SearchNYT from "./SearchNYT";
 import SearchMetro from "../metropolitan/SearchMetro";
 import SearchImage from "./SearchImage";
+import SearchAnimals from "./SearchAnimals";
 
 const SearchPlace = () => {
 
@@ -26,6 +27,7 @@ const SearchPlace = () => {
                 <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />  
                 <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'}/>
                 <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
+                <SearchAnimals placeholder={'Animals'} linkTo={'/animals'}/>
                 <SearchPoke placeholder={'Pokemon'} linkTo={'/pokemonSearch'} />
             </div>
             <div>

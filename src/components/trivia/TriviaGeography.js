@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import axios from 'axios';
 import { Collapse } from "antd";
 import Loader from "../Loader";
-
-
 
 const Trivia = (props) => {
 
@@ -14,7 +11,6 @@ const Trivia = (props) => {
     const [answer3, setAnswer3] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-
 
     const params = useParams();
     const triviaCat = params.triviaCat;
@@ -54,7 +50,6 @@ const Trivia = (props) => {
             setAnswer2(data2);
             setAnswer3(data3);
             setIsLoading(false);
-            console.log("geography data", response)
 
         } catch (err) {
             setError(err);
@@ -75,7 +70,6 @@ const Trivia = (props) => {
         <>
             <div className="trivia" >
                 <div className="categ">Quiz</div>
-
                 <Collapse
                     size="large"
                     items={[{
@@ -84,7 +78,6 @@ const Trivia = (props) => {
                         showArrow: false,
                     }]} />
                 <div className="categ"></div>
-
                 <Collapse
                     size="large"
                     items={[{
@@ -93,7 +86,6 @@ const Trivia = (props) => {
                         showArrow: false,
                     }]} />
                 <div className="categ"></div>
-
                 <Collapse
                     size="large"
                     items={[{

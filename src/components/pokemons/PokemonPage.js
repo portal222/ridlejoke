@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PaginatePok from "./PaginationPok";
-import { Box, Typography, Pagination, TableRow } from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import Loader from "../Loader";
-
-
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import BackToTop from "../BackToTop";
 import PokemonImg from "./PokemonImg";
-
 
 const PokemonPage = () => {
 
@@ -16,8 +13,6 @@ const PokemonPage = () => {
     const [error, setError] = useState(null);
     const [pokemon, setPokemon] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-
 
     const navigate = useNavigate();
 
@@ -34,7 +29,7 @@ const PokemonPage = () => {
         try {
             const response = await axios.get(url)
             const data = response.data;
-            console.log("iz pokemonPage", data.data)
+    
             setPokemon(data.data);
             setIsLoading(false);
         } catch (err) {
@@ -51,12 +46,10 @@ const PokemonPage = () => {
     const paginatedPosts = PaginatePok(pokemon, pageSize);
     const currentPosts = paginatedPosts[currentPage - 1];
 
-
     if (isLoading) {
         return <Loader />
     }
     return (
-
         <>
             <Box>
                 {paginatedPosts.length > 1 && (
@@ -77,18 +70,13 @@ const PokemonPage = () => {
                    <PokemonImg post={post}/>
 
                         ))}
-
                 </div>
-
             </Box>
             <div className="main">
                 <div className="button" onClick={() => clickHandle()}>More...</div>
             </div>
             <BackToTop />
         </>
-
     );
-
 }
-
 export default PokemonPage;

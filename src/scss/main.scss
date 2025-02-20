@@ -191,6 +191,7 @@ body {
         height: 40px;
         padding: 10px;
         font-size: 22px;
+        width: 800px;
 
         th {
             padding: 15px;
@@ -205,6 +206,27 @@ body {
         width: 250px;
         padding-left: 15px;
         padding-top: 8px;
+    }
+
+    .statement {
+        font-size: 22px;
+        color: gray;
+        text-align: left;
+        max-width: 350px;
+        padding: 8px 15px;
+
+    }
+
+    .statement1 {
+        font-size: 22px;
+        color: gray;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .imgAnimals {
+        padding-top: 10px;
+        text-align: center;
     }
 
     .nameComm,
@@ -228,7 +250,7 @@ body {
     }
 
     .nameComm {
-
+       vertical-align: top;
 
         ul {
             li {
@@ -237,6 +259,18 @@ body {
             }
         }
     }
+
+    .nameComm2 {
+        font-size: 28px;
+        padding-top: 8px;
+        max-width: 650px;
+        min-width: 650px;
+        padding-left: 10px;
+        padding-right: 15px;
+        vertical-align: bottom;
+        overflow: hidden;
+    }
+ 
 
     .link {
         overflow: hidden;
@@ -284,6 +318,13 @@ body {
     .networth {
         font-weight: bold;
         font-size: 28px;
+
+    }
+
+    .location {
+        width: 250px;
+        font-size: 22px;
+        padding: 10px 15px;
     }
 
     .networth {
@@ -1213,7 +1254,8 @@ body {
 
 
         .celebrity {
-            font-size: 22px;
+            font-size: 18px;
+            padding: 5px 0px;
             padding-left: 8px;
         }
 
@@ -1244,16 +1286,46 @@ body {
         .more {
             padding-left: 10px;
             font-size: 14px;
-            width: 95px;
+            width: 105px;
+        }
+
+        .statement {
+            font-size: 16px;
+          max-width: 60px;
+            padding: 5px 10px;
+        }
+
+        .statement1 {
+            font-size: 16px;
+         
+            padding: 5px;
+        
         }
 
         .nameComm,
         .nameLink {
             padding-left: 4px;
-            font-size: 18px;
+            font-size: 16px;
             padding-right: 15px;
-            width: 245px;
+            width: 250px;
             overflow: hidden;
+        }
+
+        .nameComm2 {
+            font-size: 16px;
+            padding-top: 8px;
+            max-width: 250px;
+            min-width: 250px;
+            padding-left: 4px;
+            padding-right: 15px;
+            vertical-align: bottom;
+            overflow: hidden;
+        }
+
+        .location {
+            width: 80px;
+            font-size: 14px;
+            padding: 5px 10px 3px 5px;
         }
 
         .nameLink {
@@ -1298,6 +1370,7 @@ body {
 
         .results {
             font-size: 16px;
+            width: 320px;
         }
     }
 

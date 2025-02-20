@@ -19,7 +19,6 @@ const ResultsClickPerson = () => {
     const params = useParams()
     const linkName = params.linkName;
 
-
     useEffect(() => {
         getPerson();
     }, []);
@@ -77,9 +76,7 @@ const ResultsClickPerson = () => {
                 <div className="place"></div>
             </>
         )
-
     } else if (results == 0) {
-
         return (
             <>
                 <div className="tabelaZemlje">
@@ -166,7 +163,6 @@ const ResultsClickPerson = () => {
                     </tbody>
                 ))}
             </table >
-
             <table className="tabelaZemlje">
                 <thead>
                     <tr className="results">

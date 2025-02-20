@@ -77,12 +77,9 @@ const ResultsPerson = () => {
                 <div className="place"></div>
             </>
         )
-
     } else if (results == 0) {
-
         return (
             <>
-
                 <table className="tabelaZemlje">
                     <thead>
                         <tr className="results">

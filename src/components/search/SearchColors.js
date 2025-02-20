@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { BgColorsOutlined  } from "@ant-design/icons";
@@ -20,8 +18,6 @@ const SearchColors = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("pretraga boja", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -34,24 +30,19 @@ const SearchColors = (props) => {
     return (
         <Paper className="paper"
         component = 'form'
- 
         >
             <InputBase className="base"
-        
             autoFocus
             placeholder={props.placeholder}
-          
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
             <IconButton 
             type='button'
             onClick={handleClickSearch}
-         
             aria-label='search'
             >
             <BgColorsOutlined />
-       
             </IconButton>
         </Paper>
     );

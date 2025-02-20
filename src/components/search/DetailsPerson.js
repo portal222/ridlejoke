@@ -19,7 +19,6 @@ const DetailsPerson = (props) => {
 
     const navigate = useNavigate();
 
-
     const params = useParams()
     const personName = params.personName;
 
@@ -79,7 +78,6 @@ const DetailsPerson = (props) => {
     } else if (resHis == 0) {
         return (
             <>
-
                 <table className="tabelaZemlje">
                     <thead >
                         <tr className="results">
@@ -105,7 +103,6 @@ const DetailsPerson = (props) => {
                         </th>
                     </tr>
                 </thead>
-
                 {persons.map((dataObj, id) => (
                     <tbody key={id} >
                         <tr>
@@ -199,7 +196,6 @@ const DetailsPerson = (props) => {
                                 </tr>
                             )
                         )}
-
                         {dataObj.info.ring_names && (
                             Array.isArray(dataObj.info.ring_names) ? (
                                 <tr>

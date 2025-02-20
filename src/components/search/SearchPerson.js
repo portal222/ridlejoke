@@ -21,7 +21,6 @@ const SearchPerson = (props) => {
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
         
-        console.log("pretraga istoriskih licnosti", searchString)
     };
 
     const handleKeyDown = (e) => {
