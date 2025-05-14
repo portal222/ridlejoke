@@ -12,21 +12,21 @@ const TableRowDictionary2 = (props) => {
                     )}
                 </td>
             </tr>
-            {props.dictRow2.phonetics.map((phone) => (
+            {props.dictRow2.phonetics.map((phone, id) => (
                 <>
-                    <div style={{ paddingLeft: "30px" }}>
-                        <Player url={phone.audio} />
-                    </div>
+                   
+                        <Player key={id} url={phone.audio} />
+                 
                 </>
             ))}
             {props.dictRow2.meanings.map((mean, id) => (
                 <>
                     {mean.antonyms && (
-                        <tr>
+                        <tr key={id}>
                             <td className="nameComm">
                                 <ul style={{ paddingLeft: "25px" }}>
                                     {mean.antonyms.map((anto, id) => (
-                                        <li key={id}>{anto}</li>
+                                        <li>{anto}</li>
                                     ))}
                                 </ul>
                             </td>

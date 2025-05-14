@@ -31,9 +31,11 @@ const NyTimes = (props) => {
                         <div className="nytTitle"> {details.headline.main} </div>
                         <div className="nytAbs">{details.abstract} </div>
                         <div className="nytPar">{details.lead_paragraph} </div>
-                        {details.multimedia[0]?.url && (
+                        {details.multimedia.default.url && (
                             <div className="imgHold">
-                                <img className="nytImg" src={`https://www.nytimes.com/${details.multimedia[0]?.url}`} alt="no picture" />
+                               
+                            <img className="nytImg" src={details.multimedia.default.url} alt="no picture" />
+
                             </div>
                         )}
                         <div className="nytDate">

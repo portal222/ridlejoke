@@ -10,7 +10,7 @@ const SearchResutsNYT = () => {
     const [nyTimes, setNyTimes] = useState([]);
     const [total, setTotal] = useState(0);
     const [pageNyt, setPageNyt] = useState(1);
-    
+    const [results, setResults] = useState();
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
@@ -19,21 +19,18 @@ const SearchResutsNYT = () => {
         getTimes(searchStringValue, pageNyt);
     }, [searchStringValue, pageNyt]);
 
-    const getTimes = async (searchStringValue, pageNyt) => {
+    const getTimes = async () => {
         const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchStringValue}&page=${pageNyt}&api-key=GmsdDOX2JjxHcopan54o6M2dgET0H2hp`
 
-        try {
-            const response = await axios.get(url);
-            const data = response.data;
-            const dataHits = response.data.response.meta.hits;
+        const response = await fetch(url);
+        const data = await response.json();
+        const dataHits = data.response.metadata.hits;
 
-            setTotal(dataHits);
-            setNyTimes(data.response.docs);
-            setResults(data.response.docs.length);
+        setTotal(dataHits);
+        setNyTimes(data.response.docs);
+        setResults(data.response.docs.length);
 
-        } catch (err) {
-            setError(err);
-        }
+        console.log("NYT rezultat", data)
     };
 
     const totalPagesNyt = Math.ceil(total / 10);
@@ -51,9 +48,9 @@ const SearchResutsNYT = () => {
                         <div className="nytTitle"> {details.headline.main} </div>
                         <div className="nytAbs">{details.abstract} </div>
                         <div className="nytPar">{details.lead_paragraph} </div>
-                        {details.multimedia[0]?.url && (
+                        {details.multimedia.default.url && (
                             <div className="imgHold">
-                                <img className="nytImg" src={`https://www.nytimes.com/${details.multimedia[0]?.url}`} alt="no picture" />
+                                <img className="nytImg" src={details.multimedia.default.url} alt="no picture" />
                             </div>
                         )}
                         <div className="nytDate">
@@ -72,7 +69,7 @@ const SearchResutsNYT = () => {
                         key={i + 1}
                         onClick={() => {
                             setPageNyt(i + 1);
-                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                         disabled={i + 1 === pageNyt}
                     >

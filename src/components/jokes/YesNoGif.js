@@ -5,11 +5,11 @@ const CatProb = () => {
 
     const [error, setError] = useState(null);
     const [jokes, setJokes] = useState([]);
-    const [punapi, setPunapi] = useState([]);
+
 
     useEffect(() => {
         getJokes();
-        getPunapi();
+     
     }, []);
 
     const getJokes = async () => {
@@ -20,18 +20,6 @@ const CatProb = () => {
             const response = await axios.get(url);
             const data = response.data;
             setJokes(data);
-        } catch (err) {
-            setError(err);
-        }
-    };
-
-    const getPunapi = async () => {
-
-        const url = "https://www.punapi.rest/api/pun";
-        try {
-            const response = await axios.get(url);
-            const data = response.data;
-            setPunapi(data);
         } catch (err) {
             setError(err);
         }
@@ -49,9 +37,7 @@ const CatProb = () => {
                 <div className="type">
                     {jokes.answer}
                 </div>
-                <div>
-                    {punapi.pun}
-                </div>
+             
             </div>
         </>
     )

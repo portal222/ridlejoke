@@ -66,6 +66,8 @@ const DetailsPerson = (props) => {
         const response = await fetch(url);
         const data = await response.json();
         setNytPerson(data.response.docs);
+
+        console.log("NYT iz persona", data)
     }
 
     const handleClick = (linkName) => {

@@ -74,7 +74,7 @@ const Books = () => {
     const currentPosts = paginatedPosts[currentPage - 1];
 
     if (isLoading) {
-        return <Loader />;
+        return <Loader />
     } else if (totalBook == 0 && totalBookA == 0) {
         return (
             <>
