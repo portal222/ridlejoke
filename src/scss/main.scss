@@ -1,6 +1,11 @@
 @import '../scss/cssreset';
 @import '../scss/_pokemons.scss';
 
+@font-face {
+    font-family: horos;
+    src: url("../../public/assets/Barlow-Light.ttf");
+}
+
 
 body {
     padding: 0px;
@@ -58,6 +63,55 @@ body {
     font-size: 30px;
     text-shadow: 3px 3px 15px black;
     font-weight: bold;
+
+    .horoscope {
+        padding: 20px;
+        margin: auto;
+        margin-top: 20px;
+        width: 750px;
+        background-color: #fff8d3;
+        border-radius: 10px;
+        padding: 10px;
+        color: #006064;
+        display: flex;
+        font-family: horos;
+        font-weight: normal;
+        text-shadow: 3px 3px 15px transparent;
+
+        h2 {
+            margin: auto;
+            font-weight: bold;
+            color: #006064;
+        }
+
+
+        .sign {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+
+            .signImg {
+                width: 150px;
+            }
+
+            p {
+                font-weight: bold;
+                padding: 10px;
+                width: 200px;
+                text-align: center;
+
+            }
+        }
+
+        .text {
+            padding: 20px;
+            text-align: justify;
+
+        }
+
+    }
 
     .table {
         padding: 20px;
@@ -250,7 +304,7 @@ body {
     }
 
     .nameComm {
-       vertical-align: top;
+        vertical-align: top;
 
         ul {
             li {
@@ -270,7 +324,7 @@ body {
         vertical-align: bottom;
         overflow: hidden;
     }
- 
+
 
     .link {
         overflow: hidden;
@@ -1202,6 +1256,48 @@ body {
         font-size: 18px;
         text-shadow: 1px 1px 3px black;
 
+        .horoscope {
+            padding: 15px;
+
+            margin-top: 15px;
+            width: 338px;
+            border-radius: 8px;
+            padding: 10px;
+
+            h2 {
+                margin: auto;
+                font-weight: bold;
+                color: #006064;
+            }
+
+
+            .sign {
+
+                padding: 10px;
+
+                .signImg {
+                    width: 70px;
+                }
+
+                p {
+                    font-weight: bold;
+                    padding: 10px;
+                    width: 85px;
+
+
+                }
+            }
+
+            .text {
+                padding: 12px;
+                font-size: 14px;
+
+            }
+
+
+        }
+
+
         .table {
             width: 310px;
 
@@ -1291,15 +1387,15 @@ body {
 
         .statement {
             font-size: 16px;
-          max-width: 60px;
+            max-width: 60px;
             padding: 5px 10px;
         }
 
         .statement1 {
             font-size: 16px;
-         
+
             padding: 5px;
-        
+
         }
 
         .nameComm,

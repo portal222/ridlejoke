@@ -67,10 +67,8 @@ const Quotes = () => {
 
     if (isLoading) {
         return (
-
             <Loader />)
     }
-
 
     return (
         <>
