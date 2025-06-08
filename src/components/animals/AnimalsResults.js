@@ -32,6 +32,7 @@ const AnimalsResults = () => {
         const urlDog = `https://api.api-ninjas.com/v1/dogs?name=${searchStringValue}`;
         const urlCat = `https://api.api-ninjas.com/v1/cats?name=${searchStringValue}`;
 
+
         try {
             const response = await axios.get(url,
                 {
@@ -54,10 +55,13 @@ const AnimalsResults = () => {
                     }
                 }
             );
+        
+
             const data = response.data;
             const dataCat = responseCat.data;
             const dataDog = responseDog.data;
 
+     
             setResults(data.length);
             setResultsCat(dataCat.length);
             setResultsDog(dataDog.length);
@@ -70,6 +74,8 @@ const AnimalsResults = () => {
             setError(err);
         }
     };
+
+   
 
     if (isLoading) {
         return <Loader />

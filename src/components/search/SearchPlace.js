@@ -10,6 +10,8 @@ import SearchNYT from "./SearchNYT";
 import SearchMetro from "../metropolitan/SearchMetro";
 import SearchImage from "./SearchImage";
 import SearchAnimals from "./SearchAnimals";
+import SearchAiGen from "./SearchAiGen";
+import SearchMp3 from "./SearchMp3";
 
 const SearchPlace = () => {
 
@@ -28,7 +30,9 @@ const SearchPlace = () => {
                 <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'}/>
                 <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
                 <SearchAnimals placeholder={'Animals'} linkTo={'/animals'}/>
+                <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'}/>
                 <SearchPoke placeholder={'Pokemon'} linkTo={'/pokemonSearch'} />
+                <SearchAiGen placeholder={'Ai generator text & img'} linkTo={'/aiGenerator'} />
             </div>
             <div>
             <div className="history">Search History</div>

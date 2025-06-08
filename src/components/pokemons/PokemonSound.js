@@ -22,6 +22,7 @@ const PokemonSound = (props) => {
 
             setPokemon(data);
             setResults(data.length);
+            console.log("zvuci pokemona", data);
 
 
         } catch (err) {

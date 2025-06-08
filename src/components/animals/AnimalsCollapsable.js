@@ -14,6 +14,7 @@ const AnimalsCollapsable = (props) => {
     const getAnimals = async () => {
         const url = `https://api.api-ninjas.com/v1/animals?name=${props.animalId}`;
         const urlImg = `https://list.ly/api/v4/search/image?q=${props.animalId}`;
+   
 
 
         try {
@@ -32,8 +33,13 @@ const AnimalsCollapsable = (props) => {
                     }
                 }
             );
+          
+
             const data = response.data;
             const dataImg = responseImg.data;
+        
+
+         
 
             console.log("rezultat collapsable pojedine  zivotinjе", data);
             console.log("rezultat slike za zivotinje", dataImg);

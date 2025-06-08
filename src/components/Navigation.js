@@ -46,6 +46,8 @@ import Books from "./search/Books";
 import Video from "./search/Video";
 import BooksClick from "./search/BooksClick";
 import AnimalsResults from "./animals/AnimalsResults";
+import Aigenerator from "./search/Aigenerator";
+import AnimalsMp3 from "./animals/AnimalsMp3";
 
 const theme = createTheme({
   palette: {
@@ -127,6 +129,8 @@ const Navigation = () => {
           <Route path="/linkBooks/:works" element={<BooksClick />} />
           <Route path="/video" element={<Video />} />
           <Route path="/animals" element={<AnimalsResults />} />
+          <Route path="/animalsMp3" element={<AnimalsMp3 />} />
+          <Route path="/aiGenerator" element={<Aigenerator />} />
         </Routes>
       </HashRouter>
       <Footers />

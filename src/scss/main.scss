@@ -629,6 +629,23 @@ body {
 
         }
     }
+    .imgMp3 {
+        display: flex;
+        padding: 20px;
+        p {
+            font-size: 18px;
+            vertical-align: bottom;
+            padding: 0px 10px;
+        }
+        .country {
+            font-weight: bold;
+            font-size: 24px;
+            padding-right: 20px;
+        }
+    }
+    .aiImg {
+        width: 800px;
+    }
 }
 
 .listVideo {
@@ -1562,6 +1579,21 @@ body {
                 width: 114px;
             }
         }
+           .imgMp3 {
+        display: block;
+        padding: 10px;
+
+        p {
+            font-size: 14px;
+        }
+        .country {
+            font-size: 16px;
+        }
+
+    }
+    .aiImg {
+        width: 358px;
+    }
     }
 
     .listVideo {
