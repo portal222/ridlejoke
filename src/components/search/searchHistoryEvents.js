@@ -7,7 +7,6 @@ import { ReadOutlined } from "@ant-design/icons";
 const SearchHistoryEvents = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -30,11 +29,8 @@ const SearchHistoryEvents = (props) => {
     return (
         <Paper className="paper"
         component = 'form'
-
         >
             <InputBase className="base"
-        
-            autoFocus
             placeholder={props.placeholder}
             inputRef={searchString}
             onKeyDown={handleKeyDown}

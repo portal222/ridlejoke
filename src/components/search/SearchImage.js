@@ -1,10 +1,7 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-
 import { VideoCameraOutlined } from "@ant-design/icons";
 
 const SearchImage = (props) => {
@@ -21,8 +18,6 @@ const SearchImage = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("pretraga istoriskih licnosti", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -38,21 +33,16 @@ const SearchImage = (props) => {
  
         >
             <InputBase className="base"
-        
-            autoFocus
             placeholder={props.placeholder}
-          
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
             <IconButton 
             type='button'
             onClick={handleClickSearch}
-         
             aria-label='search'
             >
                      <VideoCameraOutlined />
-
             </IconButton>
         </Paper>
     );

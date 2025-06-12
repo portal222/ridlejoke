@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
+import AnimalsMp3Click from "./AnimalsMp3Click";
 
 const AnimalsCollapsable = (props) => {
     const [error, setError] = useState(null);
@@ -64,6 +65,7 @@ const AnimalsCollapsable = (props) => {
                                     <img src={img.image} alt=" " />
                                 </p>
                             ))}
+                            <p style={{fontSize: "12px"}}>ilustrated photo</p>
                         </td>
                     </tr>
                     {animals.characteristics?.common_name && (
@@ -388,12 +390,13 @@ const AnimalsCollapsable = (props) => {
                         <tr>
                             <td className="statement">Top speed:</td>
                             <td className="nameComm">
-                                {animals.characteristics?.top_speed + " - " + animals.characteristics?.top_speed.split('m')[0] * 1.6 + " kmph"}
+                                {animals.characteristics?.top_speed + " - " + (animals.characteristics?.top_speed.split('m')[0] * 1.6).toFixed(1) + " kmph"}
                             </td>
                         </tr>
                     )}
                 </tbody>
             </table >
+            <AnimalsMp3Click name={props.animalId}/>
         </>
     );
 };

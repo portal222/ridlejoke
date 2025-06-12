@@ -2,6 +2,7 @@ import React from "react";
 import RandomFact from "./trivia/RandomFact";
 import Quotes from "./trivia/Quotes";
 import Horoscope from "./trivia/Horoscope";
+import ExtinctAnimal from "./animals/ExtinctAnimal";
 
 const Home = () => {
 
@@ -17,6 +18,7 @@ const Home = () => {
           <div className="welcom">WELCOME</div>
         <RandomFact />
         <Quotes />
+        <ExtinctAnimal />
         <Horoscope />
       </div>
       <div className="place"></div>

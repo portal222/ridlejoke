@@ -3,6 +3,7 @@ import axios from 'axios';
 import GlobalContext from "../GlobalContext";
 import Loader from "../Loader";
 import Player from "../Player";
+import SearchMp3 from "../search/SearchMp3";
 
 
 
@@ -26,12 +27,11 @@ const AnimalsMp3 = () => {
     }, [searchStringValue]);
 
     const getAnimals = async () => {
-        const urlMp3 = `//xeno-canto.org/api/3/recordings?query=en:${searchStringValue}&key=90da96a903a18674ef2ca9ac1790d828cc60705d`;
+        const urlMp3 = `//xeno-canto.org/api/3/recordings?query=en:"${searchStringValue}"&key=90da96a903a18674ef2ca9ac1790d828cc60705d`;
 
         try {
             const responseMp3 = await axios.get(urlMp3);
             const dataMp3 = responseMp3.data.recordings;
-            // const lengthMp3 = responseMp3.data.numRecordings;
             const lengthMp3 = responseMp3.data.recordings.length;
 
             console.log("zvuci mp3", dataMp3);
@@ -59,6 +59,7 @@ const AnimalsMp3 = () => {
             <>
                 <div className="mainBook">
                     <p className="titleBook">{searchStringValue} not found</p>
+                    <SearchMp3 />
                 </div>
                 <div className="place"></div>
                 <div className="place"></div>
@@ -68,7 +69,9 @@ const AnimalsMp3 = () => {
     return (
         <>
             <div className="mainBook">
-              
+                    <SearchMp3 />
+
+
                 {animals.slice((page - 1) * limit, page * limit).map((animal, id) => {
                     // Izdvajanje identifikatora iz oscilogram slike
                     const match = animal.osci.small.match(/uploaded\/([^\/]+)\/wave/);
@@ -77,12 +80,14 @@ const AnimalsMp3 = () => {
                     return (
 
                         <div key={id}>
-                            <p className="titleBook">{animal.en}</p>
-                            <p>{animal?.also[0]}</p>
-                            <p>{animal.gen}</p>
-                            <p>{animal.grp}</p>
-                            <div className="imgMp3">
-                                <p className="country">{animal.cnt}</p>
+                            <div className="soundAnim">
+                                <p className="titleAnim">{animal.en}</p>
+
+                                <p>{animal.gen}</p>
+                                <p>{animal.grp}</p>
+                            </div>
+                            <div className="soundAnim">
+                                <p className="titleAnim">{animal.cnt}</p>
                                 <p>{animal.loc} </p>
                             </div>
                             <table>
@@ -90,16 +95,25 @@ const AnimalsMp3 = () => {
                                     <Player url={`//xeno-canto.org/sounds/uploaded/${identifier}/${animal["file-name"]}`} />
                                 </tbody>
                             </table>
-                            <div className="imgMp3">
-                                <p >{animal.dvc}</p>
+                            <div className="soundAnim">
+                                <p >{animal.rec}</p>
+                                <p >{animal.method}</p>
+                            </div>
+                             <div className="soundAnim">
+                                <p >{animal.length}</p>
                                 <p >{animal.type}</p>
 
                                 <p>{animal.date + " " + animal.time} </p>
-                            
+
                                 <a href={animal.file} target="_blank">download </a>
                             </div>
+                            <div className="soundAnim">
+                                <p className="mark2">{animal.dvc + " " + animal.smp + " Hz "}</p>
+                                <p className="mark">{animal.rmk}</p>
+                            </div>
+                           
 
-                            <div className="imgMp3">
+                            <div className="soundAnim2">
                                 <img src={animal.osci.small} alt="" />
                                 <img src={animal.sono.small} alt="" />
                             </div>

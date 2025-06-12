@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { CopyrightOutlined } from "@ant-design/icons";
@@ -9,7 +7,6 @@ import { CopyrightOutlined } from "@ant-design/icons";
 const SearchBox = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -20,8 +17,6 @@ const SearchBox = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("logo pretraga", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -34,20 +29,15 @@ const SearchBox = (props) => {
     return (
         <Paper className="paper"
         component = 'form'
-  
         >
             <InputBase className="base"
-      
-            autoFocus
-            placeholder={props.placeholder}
-          
+            placeholder={props.placeholder}  
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
             <IconButton 
             type='button'
             onClick={handleClickSearch}
-       
             aria-label='search'
             >
             <CopyrightOutlined />

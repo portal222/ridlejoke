@@ -7,7 +7,6 @@ import { AndroidOutlined  } from "@ant-design/icons";
 const SearchAiGen = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -32,7 +31,6 @@ const SearchAiGen = (props) => {
         component = 'form'
         >
             <InputBase className="base"
-            autoFocus
             placeholder={props.placeholder}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
@@ -41,8 +39,7 @@ const SearchAiGen = (props) => {
             type='button'
             onClick={handleClickSearch}
             aria-label='search'
-            >
-          
+            > 
             <AndroidOutlined />
             </IconButton>
         </Paper>

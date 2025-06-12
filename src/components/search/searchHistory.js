@@ -7,7 +7,6 @@ import { HistoryOutlined } from "@ant-design/icons";
 const SearchHistory = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -34,17 +33,13 @@ const SearchHistory = (props) => {
    
         >
             <InputBase className="base"
-      
-            autoFocus
             placeholder={props.placeholder}
-            // inputProps={{ 'ariel-label': 'search' }}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
             <IconButton 
             type='button'
             onClick={handleClickSearch}
-        
             aria-label='search'
             >
         <HistoryOutlined />

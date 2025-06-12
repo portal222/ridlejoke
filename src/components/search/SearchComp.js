@@ -1,21 +1,12 @@
 import * as React from 'react';
-
 import SearchPlace from './SearchPlace';
 
-
-const SearchComp = () =>
-
- {
+const SearchComp = () => {
   return (
     <div>
       <div >
         <SearchPlace />
- </div>
-       
-     
-
-     
- 
+      </div>
     </div>
   );
 }

@@ -9,10 +9,8 @@ import { PictureOutlined } from "@ant-design/icons";
 const SearchMetropolitan = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
-
     const handleClickSearch = () => {
         if (searchString.current.value.trim().length === 0) {
             return false;
@@ -20,8 +18,6 @@ const SearchMetropolitan = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("pretraga metropolitan", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -44,10 +40,7 @@ const SearchMetropolitan = (props) => {
         }}
         >
             <InputBase className="base"
-            // sx={{ ml:1, flex: 1 }}
-            autoFocus
             placeholder={props.placeholder}
-            // inputProps={{ 'ariel-label': 'search' }}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />

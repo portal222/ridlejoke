@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { PicLeftOutlined } from "@ant-design/icons";
@@ -35,10 +33,7 @@ const SearchNYT = (props) => {
  
         >
             <InputBase className="base"
-        
-            autoFocus
-            placeholder={props.placeholder}
-          
+            placeholder={props.placeholder} 
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
@@ -49,7 +44,6 @@ const SearchNYT = (props) => {
             aria-label='search'
             >
                     <PicLeftOutlined />
-
             </IconButton>
         </Paper>
     );

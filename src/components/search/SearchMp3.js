@@ -1,16 +1,12 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { NotificationOutlined } from "@ant-design/icons";
 
-
 const SearchMp3 = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -44,10 +40,7 @@ const SearchMp3 = (props) => {
         }}
         >
             <InputBase className="base"
-            // sx={{ ml:1, flex: 1 }}
-            autoFocus
             placeholder={props.placeholder}
-            // inputProps={{ 'ariel-label': 'search' }}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
@@ -57,8 +50,7 @@ const SearchMp3 = (props) => {
             sx={{ p: '10px'}}
             aria-label='search'
             >
-           <NotificationOutlined />
-         
+           <NotificationOutlined />   
             </IconButton>
         </Paper>
     );

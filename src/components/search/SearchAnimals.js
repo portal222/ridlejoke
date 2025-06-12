@@ -1,16 +1,12 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-// import { DiscordOutlined } from "@ant-design/icons";
 import FlutterDashOutlinedIcon from '@mui/icons-material/FlutterDashOutlined';
 
 const SearchAnimals = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -21,8 +17,6 @@ const SearchAnimals = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("pretraga metropolitan", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -45,10 +39,7 @@ const SearchAnimals = (props) => {
         }}
         >
             <InputBase className="base"
-            // sx={{ ml:1, flex: 1 }}
-            autoFocus
             placeholder={props.placeholder}
-            // inputProps={{ 'ariel-label': 'search' }}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
@@ -59,7 +50,6 @@ const SearchAnimals = (props) => {
             aria-label='search'
             >
                <FlutterDashOutlinedIcon />
-         
             </IconButton>
         </Paper>
     );

@@ -6,6 +6,10 @@
     src: url("../../public/assets/Barlow-Light.ttf");
 }
 
+@font-face {
+    font-family: extinct;
+    src: url("../../public/assets/AnticSlab-Regular.ttf");
+}
 
 body {
     padding: 0px;
@@ -50,7 +54,55 @@ body {
         text-shadow: 1px 1px 2px #00292a;
     }
 
+    .extinct {
+        display: flex;
+        font-family: extinct;
+        color: #ffffef;
+        padding: 10px 50px;
+        font-size: 26px;
+        text-align: justify;
 
+        h1 {
+            margin: auto;
+            background-color: #6bac61;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .extName {
+            font-weight: bold;
+            font-size: 32px;
+            padding: 5px 10px;
+        }
+
+        .extBioname {
+            font-size: 32px;
+            font-style: italic;
+            padding: 5px 10px;
+            vertical-align: middle;
+        }
+
+        .records {
+            font-size: 20px;
+            padding: 5px 10px;
+        }
+
+
+
+    }
+
+    .imgPlace {
+
+        justify-items: center;
+        text-align: center;
+        padding: 10px 10px;
+
+        .imgExt {
+
+            width: 700px;
+
+        }
+    }
 }
 
 .facts {
@@ -164,7 +216,8 @@ body {
     width: 800px;
 }
 
-.loader {
+.loader,
+.loaderScale {
     margin: auto;
     // padding-top: 250px;
     display: flex;
@@ -175,6 +228,10 @@ body {
     height: 850px;
 
 
+}
+
+.loaderScale {
+    height: 100px;
 }
 
 .history {
@@ -272,7 +329,7 @@ body {
     }
 
     .statement1 {
-        font-size: 22px;
+        font-size: 20px;
         color: gray;
         padding: 10px;
         text-align: left;
@@ -285,7 +342,7 @@ body {
 
     .nameComm,
     .nameLink {
-        font-size: 28px;
+        font-size: 24px;
         padding-top: 8px;
         width: 650px;
         padding-left: 10px;
@@ -294,7 +351,7 @@ body {
     }
 
     .nameLink {
-        font-size: 28px;
+        font-size: 24px;
         cursor: pointer;
         color: #276aad;
 
@@ -315,7 +372,7 @@ body {
     }
 
     .nameComm2 {
-        font-size: 28px;
+        font-size: 24px;
         padding-top: 8px;
         max-width: 650px;
         min-width: 650px;
@@ -336,7 +393,7 @@ body {
         a {
             text-decoration: none;
             color: #276aad;
-            font-size: 28px;
+            font-size: 24px;
             vertical-align: text-bottom;
 
             &:hover {
@@ -346,7 +403,7 @@ body {
     }
 
     .history {
-        font-size: 28px;
+        font-size: 24px;
         text-align: center;
         height: 60px;
         padding: 10px;
@@ -365,19 +422,19 @@ body {
         text-align: left;
         padding: 10px 25px;
         font-weight: bold;
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .celebrity,
     .networth {
         font-weight: bold;
-        font-size: 28px;
+        font-size: 24px;
 
     }
 
     .location {
         width: 250px;
-        font-size: 22px;
+        font-size: 20px;
         padding: 10px 15px;
     }
 
@@ -389,7 +446,7 @@ body {
         text-transform: capitalize;
         font-weight: bold;
         color: #014780;
-        font-size: 30px;
+        font-size: 28px;
         cursor: pointer;
         padding-right: 15px;
 
@@ -416,7 +473,7 @@ body {
 
     .dictionary {
         width: 800px;
-        font-size: 28px;
+        font-size: 24px;
         padding: 5px 20px
     }
 
@@ -448,7 +505,7 @@ body {
     }
 
     td {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .colorHex {
@@ -503,7 +560,7 @@ body {
     }
 
     .total {
-        font-size: 24px;
+        font-size: 22px;
         text-align: center;
         padding: 30px;
         background-image: linear-gradient(rgb(118, 169, 220), #bbdefb);
@@ -513,7 +570,7 @@ body {
         text-transform: capitalize;
         font-weight: bold;
         color: #014780;
-        font-size: 30px;
+        font-size: 28px;
         cursor: pointer;
         text-align: center;
         padding: 20px;
@@ -524,7 +581,7 @@ body {
     }
 
     .titleBook {
-        font-size: 30px;
+        font-size: 28px;
         text-align: center;
         padding: 15px 20px;
     }
@@ -629,22 +686,73 @@ body {
 
         }
     }
+
     .imgMp3 {
         display: flex;
         padding: 20px;
+
         p {
             font-size: 18px;
             vertical-align: bottom;
             padding: 0px 10px;
         }
+
         .country {
             font-weight: bold;
             font-size: 24px;
             padding-right: 20px;
         }
     }
+
     .aiImg {
         width: 800px;
+    }
+
+    .soundAnim,
+    .soundAmin2 {
+        display: flex;
+        font-size: 20px;
+        padding: 0px 15px;
+
+        .moreSound {
+            margin-left: 20px;
+            cursor: pointer;
+            background-color: #1de9b6;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 5px 20px;
+
+            &:hover {
+                background-color: #1bc59b;
+            }
+        }
+
+        .mark,
+        .mark2 {
+            text-align: justify;
+            font-size: 16px;
+        }
+        .mark2 {
+            min-width:180px;
+        }
+        .titleAnim {
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        p {
+            padding: 5px 10px;
+        }
+
+        a {
+            padding: 5px 10px;
+            font-size: 20px;
+
+        }
+        img {
+            padding: 10px 10px;
+        }
     }
 }
 
@@ -1147,6 +1255,8 @@ body {
     }
 }
 
+
+
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -1181,9 +1291,57 @@ body {
         .imgHold {
             width: 358px;
         }
+
+        .extinct {
+            display: block;
+            padding: 10px 20px;
+            font-size: 20px;
+            text-align: justify;
+
+            h1 {
+
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px;
+            }
+
+            .extName {
+
+                font-size: 22px;
+                padding: 3px 10px;
+            }
+
+            .extBioname {
+                font-size: 22px;
+
+                padding: 3px 10px;
+
+            }
+
+            .records {
+                font-size: 15px;
+                padding: 5px 10px;
+            }
+
+
+
+        }
+
+        .imgPlace {
+
+
+            padding: 10px 0px;
+
+            .imgExt {
+
+                width: 358px;
+
+            }
+        }
     }
 
-    .loader {
+    .loader,
+    .loaderScale {
         width: 358px;
     }
 
@@ -1579,20 +1737,72 @@ body {
                 width: 114px;
             }
         }
-           .imgMp3 {
-        display: block;
-        padding: 10px;
 
-        p {
+        .imgMp3 {
+            display: block;
+            padding: 10px;
+
+
+
+            p {
+                font-size: 16px;
+            }
+
+            .country {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            a {
+                font-size: 16px;
+            }
+        }
+
+        .aiImg {
+            width: 358px;
+        }
+        .soundAnim,
+        .sounAnim2 {
+    
+        font-size: 16px;
+        padding: 0px 15px;
+
+        .moreSound {
+            margin-left: 10px;
+
+            font-size: 14px;
+            padding: 3px 15px;
+
+        }
+
+        .mark,
+        .mark2 {
+            text-align: justify;
             font-size: 14px;
         }
-        .country {
-            font-size: 16px;
+        .mark2 {
+            min-width:90px;
+        }
+        .titleAnim {
+            font-weight: bold;
+            padding: 5px 10px;
         }
 
+        p {
+            padding: 5px 10px;
+        }
+
+        a {
+            padding: 5px 10px;
+            font-size: 16px;
+
+        }
+        img {
+            padding: 10px 10px;
+        }
     }
-    .aiImg {
-        width: 358px;
+    .soundAmin2 {
+        display: block;
     }
     }
 

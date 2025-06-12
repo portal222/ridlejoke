@@ -7,7 +7,6 @@ import { BgColorsOutlined  } from "@ant-design/icons";
 const SearchColors = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -32,7 +31,6 @@ const SearchColors = (props) => {
         component = 'form'
         >
             <InputBase className="base"
-            autoFocus
             placeholder={props.placeholder}
             inputRef={searchString}
             onKeyDown={handleKeyDown}

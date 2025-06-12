@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { TeamOutlined  } from "@ant-design/icons";
@@ -9,7 +7,6 @@ import { TeamOutlined  } from "@ant-design/icons";
 const SearchPerson = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -33,13 +30,9 @@ const SearchPerson = (props) => {
     return (
         <Paper className="paper"
         component = 'form'
- 
         >
             <InputBase className="base"
-        
-            autoFocus
-            placeholder={props.placeholder}
-          
+            placeholder={props.placeholder}   
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
@@ -50,7 +43,6 @@ const SearchPerson = (props) => {
             aria-label='search'
             >
                      <TeamOutlined />
-
             </IconButton>
         </Paper>
     );

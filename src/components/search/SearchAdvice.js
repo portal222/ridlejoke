@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
-
-
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { QuestionCircleOutlined } from "@ant-design/icons";
@@ -9,7 +7,6 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 const SearchAdvice = (props) => {
 
     const globalCtx = useContext(GlobalContext);
-
     const navigate = useNavigate();
     const searchString = useRef();
 
@@ -17,11 +14,9 @@ const SearchAdvice = (props) => {
         if (searchString.current.value.trim().length === 0) {
             return false;
         }
-
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
         
-        console.log("pretraga saveta", searchString)
     };
 
     const handleKeyDown = (e) => {
@@ -44,10 +39,7 @@ const SearchAdvice = (props) => {
         }}
         >
             <InputBase className="base"
-            // sx={{ ml:1, flex: 1 }}
-            autoFocus
             placeholder={props.placeholder}
-            // inputProps={{ 'ariel-label': 'search' }}
             inputRef={searchString}
             onKeyDown={handleKeyDown}
             />
