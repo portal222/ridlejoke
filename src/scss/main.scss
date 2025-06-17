@@ -561,8 +561,8 @@ body {
 
     .total {
         font-size: 22px;
-        text-align: center;
-        padding: 30px;
+        text-align: justify;
+        padding: 40px;
         background-image: linear-gradient(rgb(118, 169, 220), #bbdefb);
     }
 
@@ -705,7 +705,7 @@ body {
     }
 
     .aiImg {
-        width: 800px;
+        width: 768px;
     }
 
     .soundAnim,
@@ -753,6 +753,10 @@ body {
         img {
             padding: 10px 10px;
         }
+    }
+    .animalAiImg {
+        width: 220px;
+   
     }
 }
 

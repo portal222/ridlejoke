@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import GlobalContext from "../GlobalContext";
+
 import Loader from "../Loader";
 import Player from "../Player";
 import SearchMp3 from "../search/SearchMp3";
+
+
 
 
 
@@ -15,6 +18,7 @@ const AnimalsMp3 = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [totalMp3, setTotalMp3] = useState(0);
     const [page, setPage] = useState(1);
+
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
@@ -40,8 +44,6 @@ const AnimalsMp3 = () => {
 
             setAnimals(dataMp3);
             setTotalMp3(lengthMp3);
-
-
 
         } catch (err) {
             setError(err);
@@ -69,8 +71,7 @@ const AnimalsMp3 = () => {
     return (
         <>
             <div className="mainBook">
-                    <SearchMp3 />
-
+                <SearchMp3 />
 
                 {animals.slice((page - 1) * limit, page * limit).map((animal, id) => {
                     // Izdvajanje identifikatora iz oscilogram slike
@@ -78,11 +79,9 @@ const AnimalsMp3 = () => {
                     const identifier = match ? match[1] : null;
 
                     return (
-
                         <div key={id}>
                             <div className="soundAnim">
                                 <p className="titleAnim">{animal.en}</p>
-
                                 <p>{animal.gen}</p>
                                 <p>{animal.grp}</p>
                             </div>
@@ -99,24 +98,21 @@ const AnimalsMp3 = () => {
                                 <p >{animal.rec}</p>
                                 <p >{animal.method}</p>
                             </div>
-                             <div className="soundAnim">
+                            <div className="soundAnim">
                                 <p >{animal.length}</p>
                                 <p >{animal.type}</p>
-
                                 <p>{animal.date + " " + animal.time} </p>
-
                                 <a href={animal.file} target="_blank">download </a>
                             </div>
                             <div className="soundAnim">
                                 <p className="mark2">{animal.dvc + " " + animal.smp + " Hz "}</p>
                                 <p className="mark">{animal.rmk}</p>
                             </div>
-                           
-
                             <div className="soundAnim2">
                                 <img src={animal.osci.small} alt="" />
                                 <img src={animal.sono.small} alt="" />
                             </div>
+                            <br></br>
                             <hr></hr>
                         </div>
                     )

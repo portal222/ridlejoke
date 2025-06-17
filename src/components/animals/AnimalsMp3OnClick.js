@@ -10,6 +10,9 @@ import SearchMp3 from "../search/SearchMp3";
 
 
 
+
+
+
 const AnimalsMp3OnClick = () => {
     const [error, setError] = useState(null);
 
@@ -34,7 +37,6 @@ const AnimalsMp3OnClick = () => {
         try {
             const responseMp3 = await axios.get(urlMp3);
             const dataMp3 = responseMp3.data.recordings;
-            // const lengthMp3 = responseMp3.data.numRecordings;
             const lengthMp3 = responseMp3.data.recordings.length;
 
             console.log("zvuci mp3ONClick", dataMp3);
@@ -82,11 +84,11 @@ const AnimalsMp3OnClick = () => {
 
                         <div key={id}>
                             <div className="soundAnim">
-                                <p className="titleAnim">{animal.en}</p>
-
+                                <p className="titleAnim">{animal.en}</p> 
                                 <p>{animal.gen}</p>
                                 <p>{animal.grp}</p>
                             </div>
+                         
                             <div className="soundAnim">
                                 <p className="titleAnim">{animal.cnt}</p>
                                 <p>{animal.loc} </p>
@@ -100,7 +102,7 @@ const AnimalsMp3OnClick = () => {
                                 <p >{animal.rec}</p>
                                 <p >{animal.method}</p>
                             </div>
-                              <div className="soundAnim">
+                            <div className="soundAnim">
                                 <p >{animal.length}</p>
                                 <p >{animal.type}</p>
 
@@ -112,7 +114,7 @@ const AnimalsMp3OnClick = () => {
                                 <p className="mark2">{animal.dvc + " " + animal.smp + " Hz "}</p>
                                 <p className="mark">{animal.rmk}</p>
                             </div>
-                          
+
 
                             <div className="soundAnim2">
                                 <img src={animal.osci.small} alt="" />

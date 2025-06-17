@@ -39,7 +39,6 @@ const SearchPoke = (props) => {
         }}
         >
             <InputBase className="base"
-            autoFocus
             placeholder={props.placeholder}
             inputRef={searchString}
             onKeyDown={handleKeyDown}

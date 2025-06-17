@@ -9,7 +9,6 @@ import BackToTop from "../BackToTop";
 import PokemonImg from "./PokemonImg";
 import Loader from "../Loader";
 
-
 const SearchRes = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,11 +17,8 @@ const SearchRes = () => {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
-
-    console.log("trazeno ime", searchStringValue)
 
     useEffect(() => {
         getWanted(searchStringValue);
@@ -41,9 +37,6 @@ const SearchRes = () => {
                 response.data.data ||
                 response2.data.data
 
-
-            console.log("novi pokusaj", data);
-
             setPokemon(data);
             setResults(data.length);
             setIsLoading(false);
@@ -52,7 +45,6 @@ const SearchRes = () => {
             setError(err);
         }
     }
-
 
     const pageSize = 12;
     const paginatedPosts = PaginatePok(pokemon, pageSize);
@@ -86,18 +78,13 @@ const SearchRes = () => {
                 <div className="pokemon">
                     {currentPosts &&
                         currentPosts.map((post) => (
-
                             <PokemonImg post={post} />
-
                         ))}
                 </div>
             </Box>
             <PokJson />
             <BackToTop />
         </>
-
     );
-
 }
-
 export default SearchRes;
