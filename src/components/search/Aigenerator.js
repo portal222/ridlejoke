@@ -71,6 +71,8 @@ const Aigenerator = () => {
                     <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
                 </div>
             </div>
+                <div className="place"></div>
+
         </>
     )
 }

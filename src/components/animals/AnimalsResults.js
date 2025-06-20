@@ -55,13 +55,13 @@ const AnimalsResults = () => {
                     }
                 }
             );
-        
+
 
             const data = response.data;
             const dataCat = responseCat.data;
             const dataDog = responseDog.data;
 
-     
+
             setResults(data.length);
             setResultsCat(dataCat.length);
             setResultsDog(dataDog.length);
@@ -75,7 +75,7 @@ const AnimalsResults = () => {
         }
     };
 
-   
+
 
     if (isLoading) {
         return <Loader />
@@ -105,6 +105,12 @@ const AnimalsResults = () => {
         return (
             <>
                 <Dog dog={dog} results={resultsDog} />
+                <div className="tabelaZemlje">
+                    <div style={{ padding: "20px" }}>
+                        <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                    </div>
+                </div>
+
                 <div className="place"></div>
                 <BackToTop />
             </>
@@ -113,6 +119,11 @@ const AnimalsResults = () => {
         return (
             <>
                 <Cat cat={cat} results={resultsCat} />
+                <div className="tabelaZemlje">
+                    <div style={{ padding: "20px" }}>
+                        <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                    </div>
+                </div>
                 <div className="place"></div>
                 <BackToTop />
             </>
@@ -121,6 +132,11 @@ const AnimalsResults = () => {
         return (
             <>
                 <Animals animals={animals} results={results} />
+                <div className="tabelaZemlje">
+                    <div style={{ padding: "20px" }}>
+                        <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                    </div>
+                </div>
                 <div className="place"></div>
                 <BackToTop />
             </>
@@ -130,6 +146,11 @@ const AnimalsResults = () => {
             <>
                 <Animals animals={animals} results={results} />
                 <Dog dog={dog} results={resultsDog} />
+                <div className="tabelaZemlje">
+                    <div style={{ padding: "20px" }}>
+                        <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                    </div>
+                </div>
                 <div className="place"></div>
                 <BackToTop />
             </>
@@ -139,6 +160,11 @@ const AnimalsResults = () => {
             <>
                 <Animals animals={animals} results={results} />
                 <Cat cat={cat} results={resultsCat} />
+                <div className="tabelaZemlje">
+                    <div style={{ padding: "20px" }}>
+                        <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                    </div>
+                </div>
                 <div className="place"></div>
                 <BackToTop />
             </>
@@ -148,6 +174,11 @@ const AnimalsResults = () => {
             <>
                 <Cat cat={cat} results={resultsCat} />
                 <Dog dog={dog} results={resultsDog} />
+                <div className="tabelaZemlje">
+                    <div style={{ padding: "20px" }}>
+                        <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                    </div>
+                </div>
                 <div className="place"></div>
                 <BackToTop />
             </>
@@ -158,6 +189,12 @@ const AnimalsResults = () => {
             <Animals animals={animals} results={results} />
             <Cat cat={cat} results={resultsCat} />
             <Dog dog={dog} results={resultsDog} />
+            <div className="tabelaZemlje">
+                <div style={{ padding: "20px" }}>
+                    <SearchAnimals placeholder={'Animals'} linkTo={'/animals'} />
+                </div>
+            </div>
+
             <div className="place"></div>
             <BackToTop />
         </>

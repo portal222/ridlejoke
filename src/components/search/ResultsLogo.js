@@ -123,6 +123,9 @@ const ResultsCelebs = () => {
                     </tbody>
                 ))}
             </table >
+            <div className="pickTrivia">
+                <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
+            </div>
             <BackToTop />
         </>
     );

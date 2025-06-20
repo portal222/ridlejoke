@@ -5,7 +5,6 @@ import Dictionary from "./Dictionary";
 import TableRowDictionary from "./TableRowDictionary";
 import TableRowDictionary2 from "./TableRowDictionary2";
 import BackToTop from "../BackToTop";
-import Loader from "../Loader";
 
 const ResultsDictionary = () => {
     const [error, setError] = useState(null);
@@ -15,7 +14,6 @@ const ResultsDictionary = () => {
     const [results2, setResults2] = useState([]);
     const [advice, setAdvice] = useState({});
     const [resultsAd, setResultsAd] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
 
     const globalCtx = useContext(GlobalContext);
@@ -53,17 +51,14 @@ const ResultsDictionary = () => {
             setResults(data.length);
             setResults2(data2.length);
             setResultsAd(dataAd);
-            setIsLoading(false);
 
         } catch (err) {
             setError(err);
         }
     };
 
-    if (isLoading) {
-        return <Loader />
-    }
-    else if (results == 0 && results2 == 0 && resultsAd == 0) {
+
+    if (results == 0 && results2 == 0 && resultsAd == 0) {
         return (
             <>
                 <div className="pickTrivia">
