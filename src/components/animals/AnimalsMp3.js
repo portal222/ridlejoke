@@ -61,7 +61,9 @@ const AnimalsMp3 = () => {
             <>
                 <div className="mainBook">
                     <p className="titleBook">{searchStringValue} not found</p>
-                    <SearchMp3 />
+                    <div style={{ padding: "20px" }}>
+                        <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'} />
+                    </div>
                 </div>
                 <div className="place"></div>
                 <div className="place"></div>
@@ -71,7 +73,12 @@ const AnimalsMp3 = () => {
     return (
         <>
             <div className="mainBook">
-                <SearchMp3 />
+
+                <div style={{ padding: "20px" }}>
+                    <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'} />
+                </div>
+
+
 
                 {animals.slice((page - 1) * limit, page * limit).map((animal, id) => {
                     // Izdvajanje identifikatora iz oscilogram slike

@@ -5,6 +5,7 @@ import Dictionary from "./Dictionary";
 import TableRowDictionary from "./TableRowDictionary";
 import TableRowDictionary2 from "./TableRowDictionary2";
 import BackToTop from "../BackToTop";
+import Loader from "../Loader";
 
 const ResultsDictionary = () => {
     const [error, setError] = useState(null);
@@ -14,6 +15,8 @@ const ResultsDictionary = () => {
     const [results2, setResults2] = useState([]);
     const [advice, setAdvice] = useState({});
     const [resultsAd, setResultsAd] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
@@ -22,7 +25,6 @@ const ResultsDictionary = () => {
         getDictionary(searchStringValue);
 
     }, [searchStringValue]);
-    console.log("iz resultDictionary searchStringValue:", searchStringValue)
 
     const getDictionary = async (searchStringValue) => {
         const url = `https://api.api-ninjas.com/v1/dictionary?word=${searchStringValue}`;
@@ -43,39 +45,37 @@ const ResultsDictionary = () => {
 
             const data = response.data;
             const data2 = response2.data;
-            const dataAd = responseAd.data.slips;
-
-            console.log("rezultat recnika", data);
-            console.log("rezultat drugo recnika", data2);
-            console.log("advice podaci", dataAd);
+            const dataAd = responseAd.data;
 
             setDictionary(data);
             setDictionary2(data2);
             setAdvice(dataAd)
             setResults(data.length);
             setResults2(data2.length);
-            setResultsAd(dataAd.length);
-  
-            console.log("prvi niz", results);
-            console.log("drugi niz", results2);
+            setResultsAd(dataAd);
+            setIsLoading(false);
+
         } catch (err) {
             setError(err);
         }
     };
 
-    if (results == 0 && results2 == 0 && resultsAd == 0) {
+    if (isLoading) {
+        return <Loader />
+    }
+    else if (results == 0 && results2 == 0 && resultsAd == 0) {
         return (
             <>
                 <div className="pickTrivia">
-                <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
-                  </div> 
-                  <div className="tabelaZemlje">   
+                    <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
+                </div>
+                <div className="tabelaZemlje">
                     <div className="results">Nothing found</div>
-                    </div>  
+                </div>
                 <div className="place"></div>
             </>
         )
-    } 
+    }
     return (
         <>
             <table className="tabelaZemlje">
@@ -85,7 +85,7 @@ const ResultsDictionary = () => {
                     </tr>
                 </thead>
                 <tbody>
-                        <TableRowDictionary  dictRow={dictionary} />            
+                    <TableRowDictionary dictRow={dictionary} />
                     {dictionary2.map((dict2, id) => (
                         <TableRowDictionary2 key={id} dictRow2={dict2} />
                     ))}
@@ -100,31 +100,33 @@ const ResultsDictionary = () => {
                         </th>
                     </tr>
                     <tr className="results">
-                        <th>Number of Advice: {resultsAd}</th>
+                        {resultsAd?.message?.text && (
+                            <th> {resultsAd?.message?.text}</th>
+                        )}
                     </tr>
                     <tr>
                         <th></th>
                     </tr>
                 </thead>
-                {advice && (
+                {advice.slips && (
                     <>
-                {advice.map((dataAdv) => (
-                    <tbody key={dataAdv.id}>
-                        <tr>
-                            <td className="celebrity">{dataAdv.advice}</td>
-                        </tr>
-                        <tr>
-                            <td className="nameComm">{dataAdv.date}</td>
-                        </tr>
-                        <tr>
-                            <td >
-                                <hr></hr>
-                            </td>
-                        </tr>
-                    </tbody>
-                ))}
-                </>
-            )}
+                        {advice.slips.map((dataAdv, id) => (
+                            <tbody key={id}>
+                                <tr>
+                                    <td className="celebrity">{dataAdv.advice}</td>
+                                </tr>
+                                <tr>
+                                    <td className="nameComm">{dataAdv.date}</td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <hr></hr>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        ))}
+                    </>
+                )}
             </table >
             <div className="place"></div>
             <BackToTop />

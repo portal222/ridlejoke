@@ -1,7 +1,5 @@
 import React, { useRef, useContext } from "react";
-import { Paper,InputBase,IconButton } from "@mui/material";
-
-
+import { Paper, InputBase, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
 import { TranslationOutlined } from "@ant-design/icons";
@@ -20,8 +18,7 @@ const Dictionary = (props) => {
 
         globalCtx.setSearchStringFn(searchString.current.value.trim());
         navigate(props.linkTo);
-        
-        console.log("dictionary pretraga", searchString)
+
     };
 
     const handleKeyDown = (e) => {
@@ -33,24 +30,22 @@ const Dictionary = (props) => {
 
     return (
         <Paper className="paper"
-        component = 'form'
-  
+            component='form'
+
         >
             <InputBase className="base"
-        
-            autoFocus
-            placeholder={props.placeholder}
-           
-            inputRef={searchString}
-            onKeyDown={handleKeyDown}
+                placeholder={props.placeholder}
+
+                inputRef={searchString}
+                onKeyDown={handleKeyDown}
             />
-            <IconButton 
-            type='button'
-            onClick={handleClickSearch}
-          
-            aria-label='search'
+            <IconButton
+                type='button'
+                onClick={handleClickSearch}
+
+                aria-label='search'
             >
-       <TranslationOutlined />
+                <TranslationOutlined />
             </IconButton>
         </Paper>
     );

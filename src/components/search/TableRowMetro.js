@@ -16,38 +16,24 @@ import { useNavigate } from "react-router-dom";
 
 const TableRowMetro = (props) => {
     const [error, setError] = useState(null);
-    const [countries, setCountries] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+
     const [open, setOpen] = useState(false);
 
 
-    const [prikaz, setPrikaz] = useState([]);
-
     const navigate = useNavigate();
-
-
-
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
 
-
-
-
-const handleId = (metroId) => {
-    console.log("Id metropolitan klik", metroId);
-    const linkTo = `/metroId/${metroId}`;
-    navigate(linkTo);
-}
-
-
-
+    const handleId = (metroId) => {
+        const linkTo = `/metroId/${metroId}`;
+        navigate(linkTo);
+    }
 
     return (
-     <tbody>
+        <tbody>
             <tr>
                 <td className="tableRow" >
-               
                     <IconButton
                         aria-label='expand row'
                         size='small'
@@ -55,23 +41,18 @@ const handleId = (metroId) => {
                     >
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
-               
-                    { "  " + props.metropolitan}</td>
-             
-             
-            </tr>
-           
-                    <Collapse in={open} timeout='auto' unmountOnExit>
-                        <Box sx={{ margin: 0 }}>
-                            <MetropolitanCollapsable
-                                metropolitan={props?.metropolitan}
-                            />
-                        
-                        </Box>
-                    </Collapse>
-         
-      </tbody>
 
+                    {"  " + props.metropolitan}</td>
+            </tr>
+            <Collapse in={open} timeout='auto' unmountOnExit>
+                <Box sx={{ margin: 0 }}>
+                    <MetropolitanCollapsable
+                        metropolitan={props?.metropolitan}
+                    />
+
+                </Box>
+            </Collapse>
+        </tbody>
     );
 };
 export default TableRowMetro;

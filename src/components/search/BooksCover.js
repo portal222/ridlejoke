@@ -47,14 +47,13 @@ const BooksCover = ({ covers = [] }) => {
                 {validCovers.length === 0 ? (
                     <p>No valid covers found</p>
                 ) : (
-
                     validCovers.map((img, id) => (
                         <div key={id} className="imgContainer">
                             <img
                                 src={img}
                                 alt=""
                                 className="imgCovers"
-                                loader={<div>Loading...</div>} unloader={<div style={{ width: '143px', height: '200px', backgroundColor: 'lightgray'}}>No Image</div>}            
+                                loader={<div>Loading...</div>} unloader={<div style={{ width: '143px', height: '200px', backgroundColor: 'lightgray' }}>No Image</div>}
                             />
                         </div>
                     ))

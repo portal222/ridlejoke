@@ -3,6 +3,7 @@ import GlobalContext from "../GlobalContext";
 import axios from "axios";
 import Loader from "../Loader";
 import BackToTop from "../BackToTop";
+import SearchNYT from "./SearchNYT";
 
 const SearchResutsNYT = () => {
 
@@ -30,7 +31,6 @@ const SearchResutsNYT = () => {
         setNyTimes(data.response.docs);
         setResults(data.response.docs.length);
 
-        console.log("NYT rezultat", data)
     };
 
     const totalPagesNyt = Math.ceil(total / 10);
@@ -40,6 +40,10 @@ const SearchResutsNYT = () => {
             <div className="nytFont">
                 <div>The New York Times</div>
                 <div className="archive">{total} hits for {searchStringValue} in archive</div>
+                <div style={{ padding: "20px" }}>
+                    <SearchNYT placeholder={'Search archive NYT'} linkTo={'/nyTimes'} />
+                </div>
+
                 <hr></hr>
             </div>
             <div className="tableNYT">

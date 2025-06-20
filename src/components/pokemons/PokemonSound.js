@@ -22,15 +22,11 @@ const PokemonSound = (props) => {
 
             setPokemon(data);
             setResults(data.length);
-            console.log("zvuci pokemona", data);
-
 
         } catch (err) {
             setError(err);
         }
     }
-
-
 
     if (results == 0) {
         return (
@@ -50,9 +46,6 @@ const PokemonSound = (props) => {
                 </div>
             )}
         </>
-
     );
-
 }
-
 export default PokemonSound;

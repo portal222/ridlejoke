@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import datas from "../../../public/number.json";
-
 
 const PokJson = () => {
 
@@ -13,10 +11,7 @@ const PokJson = () => {
         navigate(LinkTo);
     }
 
-
-
     return (
-
         <div className="main">
             <div className="gridNum">
 
@@ -28,6 +23,5 @@ const PokJson = () => {
             </div>
         </div>
     )
-
 }
 export default PokJson;

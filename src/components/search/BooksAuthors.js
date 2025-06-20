@@ -9,10 +9,7 @@ const BooksAuthors = (props) => {
     const [works, setWorks] = useState([]);
 
     const navigate = useNavigate();
-
     const author = props.author
-
-    console.log("props podaci", author);
 
     useEffect(() => {
         getAuthor()
@@ -28,11 +25,7 @@ const BooksAuthors = (props) => {
             const dataA = responseA.data
 
             setBiographi(data);
-
             setWorks(dataA.entries);
-
-            console.log("author detalji", data);
-            console.log("dela autora", dataA);
 
         } catch (err) {
             setError(err);
@@ -56,17 +49,16 @@ const BooksAuthors = (props) => {
                     <p>WORKS:</p>
                     {works.map((work, id) => (
                         <p key={id}
-                        className="work"
-                        onClick={() => {
-                            handleClick(work.title);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
+                            className="work"
+                            onClick={() => {
+                                handleClick(work.title);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
                         >{work.title}</p>
                     ))}
                 </div>
             )}
         </>
     )
-
 }
 export default BooksAuthors;

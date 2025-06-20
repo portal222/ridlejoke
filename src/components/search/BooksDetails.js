@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import BooksCoverImg from "./BooksCoverImg";
 
 const BooksDetails = (props) => {
 
@@ -8,8 +7,6 @@ const BooksDetails = (props) => {
     const [book, setBook] = useState([]);
 
     const edition = props.edition
-
-    console.log("props podaci bookdetails", edition);
 
     useEffect(() => {
         getBooks()
@@ -23,7 +20,6 @@ const BooksDetails = (props) => {
             const data = response.data
             setBook(data);
 
-            console.log("detalji knjige po keyu", data);
         } catch (err) {
             setError(err);
         }

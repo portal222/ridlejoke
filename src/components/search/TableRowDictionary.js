@@ -1,12 +1,10 @@
 import React from "react";
 
-
-
 const TableRowDictionary = (props) => {
 
     return (
         <>
-    
+
                         <tr>
                            
                             <td className="celebrity">{props.dictRow.word}</td>

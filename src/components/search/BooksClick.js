@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
-
 import BackToTop from "../BackToTop";
 import Loader from "../Loader";
 import SearchHistoryEvents from "./searchHistoryEvents";
@@ -23,8 +20,8 @@ const BooksClick = () => {
 
     const navigate = useNavigate();
 
-        const params = useParams()
-        const works = params.works;
+    const params = useParams()
+    const works = params.works;
 
     const limitBook = 5;
 
@@ -34,17 +31,14 @@ const BooksClick = () => {
 
     const getBook = async (works, pageBook) => {
         const url = `https://openlibrary.org/search.json?q=${works}&page=${pageBook}&limit=5`
-    
+
         try {
             const response = await axios.get(url);
             const data = response.data
-      
+
             setBooks(data.docs);
             setTotalBook(data.numFound)
             setIsLoading(false);
-
-            console.log("podaci o knjigama iz bookClick", data);
-      
 
         } catch (err) {
             setError(err);
@@ -60,7 +54,7 @@ const BooksClick = () => {
 
     if (isLoading) {
         return <Loader />;
-    } else if (totalBook == 0 ) {
+    } else if (totalBook == 0) {
         return (
             <>
                 <div className="mainBook">
@@ -82,8 +76,8 @@ const BooksClick = () => {
                 <div>
                     {books.map((b, id) => (
                         <div key={id}>
-                              {b.author_key && (
-                                <div className="imgBook" style={{paddingTop: "10px"}}>
+                            {b.author_key && (
+                                <div className="imgBook" style={{ paddingTop: "10px" }}>
                                     <img src={`https://covers.openlibrary.org/a/olid/${b.author_key}-L.jpg`} alt=" " />
                                 </div>
                             )}
@@ -110,7 +104,7 @@ const BooksClick = () => {
                                     </div>
                                 )
                             )}
-                                   {b.cover_edition_key && (
+                            {b.cover_edition_key && (
                                 <div className="imgBook">
                                     <img src={`https://covers.openlibrary.org/b/olid/${b.cover_edition_key}-L.jpg`} alt=" " />
                                 </div>
@@ -119,7 +113,6 @@ const BooksClick = () => {
                             {b.edition_key && (
                                 <BooksCover covers={b.edition_key} />
                             )}
-
                             <div>
                                 <BooksDetails edition={b.key} />
                             </div>

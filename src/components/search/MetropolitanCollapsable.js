@@ -20,7 +20,6 @@ const MetropolitanCollapsable = (props) => {
 
             const response = await axios.get(url);
             const data = response.data;
-            console.log("rezultat metropolitan", data)
             setMetro(data);
 
         } catch (err) {

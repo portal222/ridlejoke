@@ -2,14 +2,14 @@ import React, { useEffect, useState, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import SearchAiGen from "./SearchAiGen";
 import { usePollinationsImage } from "@pollinations/react";
-
-
-
+import Loader from "../Loader";
 import axios from "axios";
 
 const Aigenerator = () => {
 
     const [aitext, setAitext] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
 
 
 
@@ -25,7 +25,7 @@ const Aigenerator = () => {
 
 
     const imageUrl2 = usePollinationsImage(searchStringValue, {
-        seed: 35,
+        seed: 75,
         model: 'turbo'
     });
 
@@ -42,21 +42,23 @@ const Aigenerator = () => {
             const response = await axios.get(url);
             const data = response.data
 
-            console.log("podaci ai genrator", data)
             setAitext(data);
-       
+            setIsLoading(false);
         } catch (err) {
             setError(err);
         }
     }
-   
+
+    if (isLoading) {
+        return <Loader />
+    }
     return (
         <>
             <div className="mainBook">
                 <div >
                     {aitext ? <div className="total">{aitext} </div> : <p>Loadin text...</p>}
                 </div>
-                <h1 style={{padding: "20px"}}>Ai generated text and images for {searchStringValue}</h1>
+                <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
                 <div>
                     {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loadin image...</p>}
                 </div>
@@ -66,15 +68,10 @@ const Aigenerator = () => {
                 </div>
                 <br></br>
                 <div style={{ padding: "30px" }}>
-
-                    < SearchAiGen />
+                    <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
                 </div>
             </div>
         </>
     )
-
-
-
-
 }
 export default Aigenerator;

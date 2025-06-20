@@ -73,6 +73,7 @@ body {
             font-weight: bold;
             font-size: 32px;
             padding: 5px 10px;
+            text-align: left;
         }
 
         .extBioname {
@@ -80,6 +81,7 @@ body {
             font-style: italic;
             padding: 5px 10px;
             vertical-align: middle;
+            text-align: right;
         }
 
         .records {
@@ -474,7 +476,8 @@ body {
     .dictionary {
         width: 800px;
         font-size: 24px;
-        padding: 5px 20px
+        padding: 5px 20px;
+        text-align: justify;
     }
 
     .more {
@@ -970,6 +973,7 @@ body {
             font-size: 24px;
             font-weight: 700;
             color: #013441;
+         
         }
 
         .border {

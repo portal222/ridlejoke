@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-// import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -25,10 +24,9 @@ export default function BackToTop() {
         <span>
           <div onClick={handleScrollOnTop} className='back-to-top'>
             <div className='arrowup'>
-              
               <KeyboardArrowUpIcon />
             </div>
-          
+
           </div>
         </span>
       )}
