@@ -162,7 +162,6 @@ const Horoscope = () => {
             setHoros12(data12);
             setIsLoading(false);
 
-            console.log("horoskop", data);
         } catch (err) {
             setError(err);
         }

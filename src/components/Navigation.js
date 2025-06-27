@@ -49,6 +49,7 @@ import AnimalsResults from "./animals/AnimalsResults";
 import Aigenerator from "./search/Aigenerator";
 import AnimalsMp3 from "./animals/AnimalsMp3";
 import AnimalsMp3OnClick from "./animals/AnimalsMp3OnClick";
+import Quiz from "./trivia/Quiz";
 
 const theme = createTheme({
   palette: {
@@ -133,6 +134,7 @@ const Navigation = () => {
           <Route path="/animalsMp3" element={<AnimalsMp3 />} />
           <Route path="/aiGenerator" element={<Aigenerator />} />
           <Route path="/animalMp3/:animalName" element={<AnimalsMp3OnClick />} />
+          <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </HashRouter>
       <Footers />

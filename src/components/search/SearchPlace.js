@@ -12,35 +12,44 @@ import SearchImage from "./SearchImage";
 import SearchAnimals from "./SearchAnimals";
 import SearchAiGen from "./SearchAiGen";
 import SearchMp3 from "./SearchMp3";
+import ExtinctAnimal from "../animals/ExtinctAnimal";
 
 const SearchPlace = () => {
 
-    window.scrollTo({ top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     return (
-     <>
-        <div className="pickTrivia">
-            <div>
-                <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
-                <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
-                <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
-                <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
-                <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} /> 
-                <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />  
-                <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'}/>
-                <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                <SearchAnimals placeholder={'Animals'} linkTo={'/animals'}/>
-                <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'}/>
-                <SearchPoke placeholder={'Pokemon'} linkTo={'/pokemonSearch'} />
-                <SearchAiGen placeholder={'Ai generator text & img'} linkTo={'/aiGenerator'} />
+        <>
+            <div className="pickTrivia">
+                <div>
+                    <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
+                    <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
+                    <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
+                    <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
+                    <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} />
+                    <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />
+                    <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
+                    <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
+                    <div className="history2">Test Ai, for each prompt you get two images </div>
+                    <SearchAiGen placeholder={'Ai generator text & img'} linkTo={'/aiGenerator'} />
+                </div>
+                <div>
+                    <div className="history">Search History</div>
+                    <SearchHistory placeholder={'Year'} linkTo={'/history'} />
+                    <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
+                    <div className="history">Search Animals</div>
+                    <SearchAnimals placeholder={'Animals Cat and Dog'} linkTo={'/animals'} />
+                    <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'} />
+                    <SearchPoke placeholder={'Pokemons cards'} linkTo={'/pokemonSearch'} />
+
+                </div>
             </div>
-            <div>
-            <div className="history">Search History</div>
-                <SearchHistory placeholder={'Year'} linkTo={'/history'} />
-                <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />      
+            <div className="home">
+
+                <ExtinctAnimal />
             </div>
-        </div>
-        <div className="place"></div>
+            <div className="place"></div>
+
         </>
     )
 }

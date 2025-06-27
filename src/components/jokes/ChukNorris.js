@@ -28,6 +28,7 @@ const ChukNorris = () => {
             const data = response.data;
             setFacts(data);
 
+
         } catch (err) {
             setError(err);
         }
@@ -45,7 +46,6 @@ const ChukNorris = () => {
             const data = response;
             const dataC = responseC;
 
-            console.log("vicevi novi chuck", dataC)
             setChuck2(dataC.data)
             setRobot(url)
         } catch (err) {

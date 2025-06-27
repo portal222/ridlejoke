@@ -2,31 +2,34 @@ import React, { useEffect, useState, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import SearchAiGen from "./SearchAiGen";
 import { usePollinationsImage } from "@pollinations/react";
-import Loader from "../Loader";
 import axios from "axios";
 
 const Aigenerator = () => {
 
     const [aitext, setAitext] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-
-
-
     const [error, setError] = useState(null);
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
 
+    const number = Math.floor(Math.random() * 99)
+    console.log("nasumicni broj", number);
+
     const imageUrl = usePollinationsImage(searchStringValue, {
-        seed: 12,
-        model: 'flux'
+        seed: { number },
+        model: 'flux',
+        enhance: true,
+        width: 1280,
+        height: 1280
     });
 
 
     const imageUrl2 = usePollinationsImage(searchStringValue, {
-        seed: 75,
-        model: 'turbo'
+        seed: { number },
+        model: 'turbo',
+        enhance: true,
+        width: 1280,
+        height: 1280
     });
 
 
@@ -40,38 +43,65 @@ const Aigenerator = () => {
 
         try {
             const response = await axios.get(url);
-            const data = response.data
-
+            const data = response
             setAitext(data);
-            setIsLoading(false);
+         
         } catch (err) {
             setError(err);
         }
     }
 
-    if (isLoading) {
-        return <Loader />
+
+     if (aitext.status === 400) {
+        return (
+            <>
+                <div className="mainBook">
+                    <div className="polli">Pollinations Ai</div>
+                    <div >
+                        <div className="total">There is no answer to this query. </div>
+                    </div>
+                    <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
+                    <div>
+                        {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loading image...</p>}
+                    </div>
+                    <p className="model">Flux model</p>
+                    <br></br>
+                    <div>
+                        {imageUrl2 ? <img src={imageUrl2} alt="" className="aiImg" /> : <p>Loadin image...</p>}
+                    </div>
+                    <p className="model">Turbo model</p>
+                    <br></br>
+                    <div style={{ padding: "30px" }}>
+                        <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
+                    </div>
+                </div>
+                <div className="place"></div>
+            </>
+        )
     }
     return (
         <>
             <div className="mainBook">
+                <div className="polli">Pollinations Ai</div>
                 <div >
-                    {aitext ? <div className="total">{aitext} </div> : <p>Loadin text...</p>}
+                    {aitext.data ? <div className="total">{aitext.data} </div> : <p>Loading text...</p>}
                 </div>
                 <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
                 <div>
-                    {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loadin image...</p>}
+                    {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loading image...</p>}
                 </div>
+                <p className="model">Flux model</p>
                 <br></br>
                 <div>
-                    {imageUrl2 ? <img src={imageUrl2} alt="" className="aiImg" /> : <p>Loadin image...</p>}
+                    {imageUrl2 ? <img src={imageUrl2} alt="" className="aiImg" /> : <p>Loading image...</p>}
                 </div>
+                <p className="model">Turbo model</p>
                 <br></br>
                 <div style={{ padding: "30px" }}>
                     <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
                 </div>
             </div>
-                <div className="place"></div>
+            <div className="place"></div>
 
         </>
     )

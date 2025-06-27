@@ -1,5 +1,6 @@
-@import '../scss/cssreset';
+@import '../scss/cssreset.scss';
 @import '../scss/_pokemons.scss';
+@import '../scss/_quiz.scss';
 
 @font-face {
     font-family: horos;
@@ -61,6 +62,7 @@ body {
         padding: 10px 50px;
         font-size: 26px;
         text-align: justify;
+        background-color: #457ba8;
 
         h1 {
             margin: auto;
@@ -98,12 +100,75 @@ body {
         justify-items: center;
         text-align: center;
         padding: 10px 10px;
+        background-color: #457ba8;
+
 
         .imgExt {
 
             width: 700px;
 
         }
+    }
+
+    .wonders {
+        display: flex;
+        flex-direction: column;
+        font-family: horos;
+
+        color: #ffffef;
+        padding: 10px 60px;
+
+        h1 {
+            text-align: center;
+            width: 100%;
+            font-size: 26px;
+            display: block;
+            padding: 10px;
+            background-color: #0b7477;
+        }
+
+        .imgWon {
+            min-width: 650px;
+        }
+
+        .titleWon {
+
+            text-align: center;
+            padding: 20px;
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        .locWon {
+            text-align: left;
+            padding: 10px 20px;
+            font-size: 22px;
+        }
+
+        .summWon {
+            text-align: justify;
+            padding: 10px 20px;
+            font-size: 24px;
+
+
+        }
+
+        .mapWon {
+            padding: 10px 20px;
+            text-align: right;
+
+
+            a {
+                color: #9fefd6;
+                text-decoration: none;
+                font-size: 20px;
+
+                &:hover {
+                    color: rgb(255, 221, 86);
+                }
+            }
+        }
+
     }
 }
 
@@ -242,7 +307,8 @@ body {
     height: 80px;
 }
 
-.paper {
+.paper,
+.paperAi {
     display: flex;
     flex-basis: auto;
     margin-top: 8px;
@@ -250,7 +316,8 @@ body {
     justify-items: center;
     width: 300px;
 
-    .base {
+    .base,
+    .baseAi {
         justify-items: center;
         height: 30px;
         padding-top: 11px;
@@ -259,6 +326,14 @@ body {
         color: dodgerblue;
 
     }
+
+    .baseAi {
+        height: 90px;
+    }
+}
+
+.paperAi {
+    height: 90px;
 }
 
 
@@ -736,9 +811,11 @@ body {
             text-align: justify;
             font-size: 16px;
         }
+
         .mark2 {
-            min-width:180px;
+            min-width: 180px;
         }
+
         .titleAnim {
             font-weight: bold;
             padding: 5px 10px;
@@ -753,13 +830,30 @@ body {
             font-size: 20px;
 
         }
+
         img {
             padding: 10px 10px;
         }
     }
+
     .animalAiImg {
         width: 220px;
-   
+
+    }
+
+    .model {
+        padding: 5px 10px 5px 66px;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    .polli {
+        text-align: center;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: 600;
+        background-color: rgb(118, 169, 220);
+        text-shadow: 2px 2px 3px #bbdefb;
     }
 }
 
@@ -973,7 +1067,7 @@ body {
             font-size: 24px;
             font-weight: 700;
             color: #013441;
-         
+
         }
 
         .border {
@@ -1058,13 +1152,24 @@ body {
     background-color: #bdd8ee;
     padding: 30px 15px;
 
-    .history {
+    .description {
+        width: 50%;
+        text-align: justify;
+        font-size: 22px;
+    }
+
+    .history,
+    .history2 {
         text-align: left;
-        height: 20px;
-        padding: 30px 0px;
+        height: 40px;
+        padding: 20px 0px 10px 0px;
         font-size: 24px;
         font-weight: bold;
         color: #014780;
+        width: 300px;
+    }
+    .history2 {
+        height: 70px;
     }
 
     .category {
@@ -1075,6 +1180,7 @@ body {
         border-radius: 7px;
         font-size: 24px;
         padding: 5px 15px;
+        text-align: center;
         cursor: pointer;
 
         &:hover {
@@ -1094,7 +1200,7 @@ body {
 
     .categ {
         font-size: 28px;
-        font-weight: 600;
+        font-weight: 500;
         padding: 20px;
         text-align: center;
     }
@@ -1107,7 +1213,7 @@ body {
 
     .triviaAnswer,
     .triviaAns {
-        font-weight: bold;
+        font-weight: 500;
         font-size: 28px;
         color: #1a237e;
     }
@@ -1284,6 +1390,8 @@ body {
     }
 }
 
+
+
 @media screen and (max-width: 500px) {
     .navigator {
         width: 358px;
@@ -1346,6 +1454,53 @@ body {
 
             }
         }
+           .wonders {
+    
+
+        color: #ffffef;
+        padding: 10px 0px;
+
+
+        .imgWon {
+            min-width: 358px;
+        }
+
+        .titleWon {
+
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        .locWon {
+            text-align: left;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+        .summWon {
+            text-align: justify;
+            padding: 10px 20px;
+            font-size: 20px;
+
+
+        }
+
+        .mapWon {
+            padding: 10px 10px;
+            text-align: right;
+
+
+            a {
+              
+                font-size: 16px;
+
+            }
+        }
+
+    }
+
     }
 
     .loader,
@@ -1404,7 +1559,14 @@ body {
         width: 358px;
         justify-content: start;
 
-        .history {
+        .description {
+            width: 90%;
+            text-align: justify;
+            font-size: 20px;
+        }
+
+        .history,
+        .history2 {
 
             font-size: 20px;
         }
@@ -1769,49 +1931,67 @@ body {
         .aiImg {
             width: 358px;
         }
+
         .soundAnim,
         .sounAnim2 {
-    
-        font-size: 16px;
-        padding: 0px 15px;
 
-        .moreSound {
-            margin-left: 10px;
-
-            font-size: 14px;
-            padding: 3px 15px;
-
-        }
-
-        .mark,
-        .mark2 {
-            text-align: justify;
-            font-size: 14px;
-        }
-        .mark2 {
-            min-width:90px;
-        }
-        .titleAnim {
-            font-weight: bold;
-            padding: 5px 10px;
-        }
-
-        p {
-            padding: 5px 10px;
-        }
-
-        a {
-            padding: 5px 10px;
             font-size: 16px;
+            padding: 0px 15px;
+
+            .moreSound {
+                margin-left: 10px;
+
+                font-size: 14px;
+                padding: 3px 15px;
+
+            }
+
+            .mark,
+            .mark2 {
+                text-align: justify;
+                font-size: 14px;
+            }
+
+            .mark2 {
+                min-width: 90px;
+            }
+
+            .titleAnim {
+                font-weight: bold;
+                padding: 5px 10px;
+            }
+
+            p {
+                padding: 5px 10px;
+            }
+
+            a {
+                padding: 5px 10px;
+                font-size: 16px;
+
+            }
+
+            img {
+                padding: 10px 10px;
+            }
+        }
+
+        .soundAmin2 {
+            display: block;
+        }
+
+        .model {
+            padding: 5px 10px 5px 30px;
+
+            font-size: 14px;
+        }
+
+        .polli {
+
+            font-size: 18px;
+            font-weight: 400;
 
         }
-        img {
-            padding: 10px 10px;
-        }
-    }
-    .soundAmin2 {
-        display: block;
-    }
     }
 
     .listVideo {

@@ -15,7 +15,6 @@ const Quotes = () => {
     useEffect(() => {
         getDomain();
     }, []);
-    console.log("quotes")
 
     const getDomain = async () => {
 

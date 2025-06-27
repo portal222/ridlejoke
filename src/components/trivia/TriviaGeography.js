@@ -11,6 +11,7 @@ const Trivia = (props) => {
     const [answer3, setAnswer3] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [brisi, setBrisi] = useState([]);
 
     const params = useParams();
     const triviaCat = params.triviaCat;
@@ -23,6 +24,9 @@ const Trivia = (props) => {
         const url = `https://api.api-ninjas.com/v1/trivia`;
         const url2 = `https://api.api-ninjas.com/v1/trivia`;
         const url3 = `https://api.api-ninjas.com/v1/trivia`;
+        // const urlTriv = `https://api.sampleapis.com/cartoons/cartoons3D`
+        // const urlTriv = `https://api.tronalddump.io/random/quote`;
+        // const urlTriv = `https://corporatebs-generator.sameerkumar.website/`;
 
         try {
             const response = await axios.get(url,
@@ -43,6 +47,7 @@ const Trivia = (props) => {
                         'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
                     }
                 });
+
             const data = response.data[0];
             const data2 = response2.data[0];
             const data3 = response3.data[0];
@@ -50,6 +55,8 @@ const Trivia = (props) => {
             setAnswer2(data2);
             setAnswer3(data3);
             setIsLoading(false);
+           
+
 
         } catch (err) {
             setError(err);
@@ -69,7 +76,7 @@ const Trivia = (props) => {
     return (
         <>
             <div className="trivia" >
-                <div className="categ">Quiz</div>
+                <div className="categ">Trivia</div>
                 <Collapse
                     size="large"
                     items={[{
@@ -93,6 +100,9 @@ const Trivia = (props) => {
                         children: <p className="triviaAns">{text3}</p>,
                         showArrow: false,
                     }]} />
+           
+       
+
             </div>
             <div className="place"></div>
         </>

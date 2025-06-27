@@ -113,7 +113,8 @@ const AnimalsMp3 = () => {
                             </div>
                             <div className="soundAnim">
                                 <p className="mark2">{animal.dvc + " " + animal.smp + " Hz "}</p>
-                                <p className="mark">{animal.rmk}</p>
+                                <p className="mark"
+                                    dangerouslySetInnerHTML={{ __html: animal.rmk }}></p>
                             </div>
                             <div className="soundAnim2">
                                 <img src={animal.osci.small} alt="" />

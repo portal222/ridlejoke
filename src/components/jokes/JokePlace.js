@@ -7,9 +7,10 @@ import JokesOfficial from "./JokesOfficial";
 import RandomJoke from "./RandomJoke";
 import JokesOne from "./JokesOne";
 
+
 const JokePlace = () => {
 
-    window.scrollTo({ top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     return (
         <>
@@ -19,6 +20,7 @@ const JokePlace = () => {
                     {<JokesOfficial />}
                     {<YesNoGif />}
                     {<JokesOne />}
+                
                 </div>
                 <div>
                     {<DadJokes />}
@@ -26,6 +28,7 @@ const JokePlace = () => {
                     {<ChukNorris />}
                 </div>
             </div>
+            <div className="place"></div>
         </>
     )
 }

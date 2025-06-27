@@ -1,8 +1,8 @@
 import React, { useRef, useContext } from "react";
-import { Paper,InputBase,IconButton } from "@mui/material";
+import { Paper, InputBase, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-import { AndroidOutlined  } from "@ant-design/icons";
+import { AndroidOutlined } from "@ant-design/icons";
 
 const SearchAiGen = (props) => {
 
@@ -28,19 +28,19 @@ const SearchAiGen = (props) => {
 
     return (
         <Paper className="paper"
-        component = 'form'
+            component='form'
         >
             <InputBase className="base"
-            placeholder={props.placeholder}
-            inputRef={searchString}
-            onKeyDown={handleKeyDown}
+                placeholder={props.placeholder}
+                inputRef={searchString}
+                onKeyDown={handleKeyDown}
             />
-            <IconButton 
-            type='button'
-            onClick={handleClickSearch}
-            aria-label='search'
-            > 
-            <AndroidOutlined />
+            <IconButton
+                type='button'
+                onClick={handleClickSearch}
+                aria-label='search'
+            >
+                <AndroidOutlined />
             </IconButton>
         </Paper>
     );

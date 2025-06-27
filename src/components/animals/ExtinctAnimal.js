@@ -26,7 +26,7 @@ const ExtinctAnimal = () => {
     return (
         <>
             <div className="extinct">
-                <h1>EXTINCT ANIMAL</h1>
+                <h1>Extinct Animal</h1>
             </div>
             {extinct.map((anim, id) => (
                 <>
@@ -51,7 +51,6 @@ const ExtinctAnimal = () => {
                         <div className="extinct">
                             {anim.shortDesc}
                         </div>
-                        <hr></hr>
                     </div>
                 </>
             ))

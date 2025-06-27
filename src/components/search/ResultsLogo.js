@@ -97,8 +97,8 @@ const ResultsCelebs = () => {
                         </tr>
                     </tbody>
                 ))}
-                {logo2.map((dataObj2) => (
-                    <tbody>
+                {logo2.map((dataObj2, id) => (
+                    <tbody key={id}>
                         <tr>
                             <td className="celebrity">
                                 {dataObj2.name}

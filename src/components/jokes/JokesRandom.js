@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Collapse } from "antd";
+import Loader from "../Loader";
+
 
 const JokesRandom = () => {
 
     const [error, setError] = useState(null);
     const [randumJokes, setRandumJokes] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     useEffect(() => {
         getRandumJokes();
@@ -20,12 +24,21 @@ const JokesRandom = () => {
             const data = response.data;
 
             setRandumJokes(data);
+            setIsLoading(false);
+
         } catch (err) {
             setError(err);
         }
     };
 
     const text = randumJokes.delivery
+
+
+    if (isLoading) {
+        return (
+            <Loader />
+        )
+    }
 
     return (
         <>
