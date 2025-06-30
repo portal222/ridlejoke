@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+
 import YesNoGif from "./YesNoGif";
 import DadJokes from "./DadJokes";
 import ChukNorris from "./ChukNorris";
 import JokesRandom from "./JokesRandom";
 import JokesOfficial from "./JokesOfficial";
 import RandomJoke from "./RandomJoke";
-import JokesOne from "./JokesOne";
-
 
 const JokePlace = () => {
 
@@ -19,8 +17,6 @@ const JokePlace = () => {
                     {<JokesRandom />}
                     {<JokesOfficial />}
                     {<YesNoGif />}
-                    {<JokesOne />}
-                
                 </div>
                 <div>
                     {<DadJokes />}

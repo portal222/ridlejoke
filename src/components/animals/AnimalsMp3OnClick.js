@@ -39,8 +39,6 @@ const AnimalsMp3OnClick = () => {
             const dataMp3 = responseMp3.data.recordings;
             const lengthMp3 = responseMp3.data.recordings.length;
 
-            console.log("zvuci mp3ONClick", dataMp3);
-            console.log("zvuci duzina niza mp3OnClick", lengthMp3);
             setIsLoading(false);
 
             setAnimals(dataMp3);
@@ -55,7 +53,7 @@ const AnimalsMp3OnClick = () => {
     };
 
     const totalPages = Math.ceil(totalMp3 / limit);
-    console.log("totalPages za mp3OnClick je ovoliko", totalPages);
+ 
 
     if (isLoading) {
         return <Loader />

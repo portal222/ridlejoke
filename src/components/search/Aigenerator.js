@@ -13,7 +13,6 @@ const Aigenerator = () => {
     const searchStringValue = globalCtx.searchStringValue;
 
     const number = Math.floor(Math.random() * 99)
-    console.log("nasumicni broj", number);
 
     const imageUrl = usePollinationsImage(searchStringValue, {
         seed: { number },
@@ -22,7 +21,6 @@ const Aigenerator = () => {
         width: 1280,
         height: 1280
     });
-
 
     const imageUrl2 = usePollinationsImage(searchStringValue, {
         seed: { number },
@@ -45,32 +43,24 @@ const Aigenerator = () => {
             const response = await axios.get(url);
             const data = response
             setAitext(data);
-         
+      
         } catch (err) {
             setError(err);
+           
         }
     }
 
 
-     if (aitext.status === 400) {
+     if (error?.status === 400) {
         return (
             <>
                 <div className="mainBook">
                     <div className="polli">Pollinations Ai</div>
                     <div >
-                        <div className="total">There is no answer to this query. </div>
+                        <div className="total">The prompt contains inappropriate words, so your request cannot be fulfilled. </div>
                     </div>
                     <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
-                    <div>
-                        {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loading image...</p>}
-                    </div>
-                    <p className="model">Flux model</p>
-                    <br></br>
-                    <div>
-                        {imageUrl2 ? <img src={imageUrl2} alt="" className="aiImg" /> : <p>Loadin image...</p>}
-                    </div>
-                    <p className="model">Turbo model</p>
-                    <br></br>
+                
                     <div style={{ padding: "30px" }}>
                         <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
                     </div>
@@ -85,6 +75,9 @@ const Aigenerator = () => {
                 <div className="polli">Pollinations Ai</div>
                 <div >
                     {aitext.data ? <div className="total">{aitext.data} </div> : <p>Loading text...</p>}
+                </div>
+                <div>
+                    {error?.AxiosError?.status}
                 </div>
                 <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
                 <div>

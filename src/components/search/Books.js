@@ -157,8 +157,8 @@ const Books = () => {
                 <Box>
                     <div>
                         {currentPosts &&
-                            currentPosts.map((book) => (
-                                <BookWriter b={book} />
+                            currentPosts.map((book, id) => (
+                                <BookWriter b={book} key={id} />
                             ))}
                     </div>
                     {paginatedPosts.length > 1 && (
