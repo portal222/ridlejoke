@@ -8,6 +8,7 @@ const Quotes = () => {
     const [random, setRandom] = useState([]);
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
+    const [buda, setBuda] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Quotes = () => {
         const url = `https://api.api-ninjas.com/v1/quotes?all`;
         const url2 = `https://api.api-ninjas.com/v1/quotes?all`;
         const url3 = `https://api.api-ninjas.com/v1/quotes?all`;
+        const urlB = `https://buddha-api.com/api/random`
 
         try {
             const response = await axios.get(url,
@@ -44,13 +46,17 @@ const Quotes = () => {
                     }
                 }
             );
+            const responseB = await axios.get(urlB);
+
             const data = response.data;
             const data2 = response2.data;
             const data3 = response3.data;
+            const dataB = responseB.data
 
             setRandom(data[0]);
             setRandom2(data2[0]);
             setRandom3(data3[0]);
+            setBuda(dataB);
             setIsLoading(false);
 
         } catch (err) {
@@ -102,6 +108,18 @@ const Quotes = () => {
                             window.scrollTo({ top: 0, behavior: 'smooth'});
                             }}>
                         {random3.author}</p>
+                    <hr></hr>
+                </div>
+                 <div className="table">
+                    <p >
+                        <img src={buda.byImage} style={{width: "350px", paddingBottom: "15px" }}/></p>
+                    <p>{buda.text}</p>
+                    <p className="author"
+                        onClick={() => {
+                            handleClick(buda.byName);
+                            window.scrollTo({ top: 0, behavior: 'smooth'});
+                            }}>
+                        {buda.byName}</p>
                     <hr></hr>
                 </div>
             </div>

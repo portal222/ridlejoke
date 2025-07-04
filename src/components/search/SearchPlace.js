@@ -30,7 +30,7 @@ const SearchPlace = () => {
                     <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />
                     <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
                     <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                    <div className="history2">Test Ai, for each prompt you get two images </div>
+                    <div className="history2">Test Pollinations Ai, for each prompt you get three images </div>
                     <SearchAiGen placeholder={'Ai generator text & img'} linkTo={'/aiGenerator'} />
                 </div>
                 <div>
