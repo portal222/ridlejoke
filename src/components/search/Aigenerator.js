@@ -34,8 +34,8 @@ const Aigenerator = () => {
         seed: { number },
         model: 'kontext',
         enhance: true,
-        width: 1280,
-        height: 1280
+        width: 768,
+        height: 768
     });
 
     useEffect(() => {
@@ -84,7 +84,7 @@ const Aigenerator = () => {
                 <div>
                     {error?.AxiosError?.status}
                 </div>
-                <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
+                <h1 style={{ padding: "20px 40px" }}>Ai generated text and images for {searchStringValue}</h1>
                 <div>
                     {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loading image...</p>}
                 </div>
@@ -98,7 +98,7 @@ const Aigenerator = () => {
                 <div>
                     {imageUrl3 ? <img src={imageUrl3} alt="" className="aiImg" /> : <p>Loading image...</p>}
                 </div>
-                <p className="model">Kontext model</p>
+                <p className="model">Kontext model, he needs more time, but sometimes it doesn't create a picture</p>
                    <br></br>
                 <div style={{ padding: "30px" }}>
                     <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />

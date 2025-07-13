@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import Loader from "../Loader";
 import { useNavigate } from "react-router-dom";
 
 const Quotes = () => {
@@ -9,7 +8,7 @@ const Quotes = () => {
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
     const [buda, setBuda] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+   
 
     const navigate = useNavigate();
 
@@ -57,7 +56,7 @@ const Quotes = () => {
             setRandom2(data2[0]);
             setRandom3(data3[0]);
             setBuda(dataB);
-            setIsLoading(false);
+         
 
         } catch (err) {
             setError(err);
@@ -68,11 +67,6 @@ const Quotes = () => {
         const LinkTo = `/historyPerson/${personName}`;
 
         navigate(LinkTo);
-    }
-
-    if (isLoading) {
-        return (
-            <Loader />)
     }
 
     return (
