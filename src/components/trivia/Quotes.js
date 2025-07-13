@@ -8,20 +8,21 @@ const Quotes = () => {
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
     const [buda, setBuda] = useState([]);
-   
+
 
     const navigate = useNavigate();
 
     useEffect(() => {
         getDomain();
+        getBuda();
     }, []);
 
     const getDomain = async () => {
 
         const url = `https://api.api-ninjas.com/v1/quotes?all`;
         const url2 = `https://api.api-ninjas.com/v1/quotes?all`;
-        const url3 = `https://api.api-ninjas.com/v1/quotes?all`;
-        const urlB = `https://buddha-api.com/api/random`
+
+
 
         try {
             const response = await axios.get(url,
@@ -38,30 +39,37 @@ const Quotes = () => {
                     }
                 }
             );
-            const response3 = await axios.get(url3,
-                {
-                    headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
-                    }
-                }
-            );
-            const responseB = await axios.get(urlB);
+
 
             const data = response.data;
             const data2 = response2.data;
-            const data3 = response3.data;
-            const dataB = responseB.data
+
 
             setRandom(data[0]);
             setRandom2(data2[0]);
-            setRandom3(data3[0]);
-            setBuda(dataB);
-         
+
+
 
         } catch (err) {
             setError(err);
         }
     };
+
+    const getBuda = async () => {
+        const urlB = `https://buddha-api.com/api/random`
+        try {
+            const responseB = await axios.get(urlB);
+            const dataB = responseB.data
+
+            setBuda(dataB);
+
+
+        } catch (err) {
+            setError(err);
+        }
+
+
+    }
 
     const handleClick = (personName) => {
         const LinkTo = `/historyPerson/${personName}`;
@@ -78,8 +86,8 @@ const Quotes = () => {
                     <p>{random.quote}</p>
                     <p className="author"
                         onClick={() => {
-                           handleClick(random.author);
-                           window.scrollTo({ top: 0, behavior: 'smooth'});
+                            handleClick(random.author);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}>
                         {random.author}</p>
                 </div>
@@ -89,30 +97,20 @@ const Quotes = () => {
                     <p className="author"
                         onClick={() => {
                             handleClick(random2.author);
-                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}>
                         {random2.author}</p>
                 </div>
+
                 <div className="table">
-                    <p className="category">{random3.category}</p>
-                    <p>{random3.quote}</p>
-                    <p className="author"
-                        onClick={() => {
-                            handleClick(random3.author);
-                            window.scrollTo({ top: 0, behavior: 'smooth'});
-                            }}>
-                        {random3.author}</p>
-                    <hr></hr>
-                </div>
-                 <div className="table">
                     <p >
-                        <img src={buda.byImage} style={{width: "350px", paddingBottom: "15px" }}/></p>
+                        <img src={buda.byImage} style={{ width: "350px", paddingBottom: "15px" }} /></p>
                     <p>{buda.text}</p>
                     <p className="author"
                         onClick={() => {
                             handleClick(buda.byName);
-                            window.scrollTo({ top: 0, behavior: 'smooth'});
-                            }}>
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>
                         {buda.byName}</p>
                     <hr></hr>
                 </div>
