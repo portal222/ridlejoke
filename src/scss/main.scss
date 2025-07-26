@@ -418,13 +418,62 @@ body {
     }
 
     .nameComm,
-    .nameLink {
+    .nameLink,
+    .quotes {
         font-size: 24px;
         padding-top: 8px;
         width: 650px;
         padding-left: 10px;
         padding-right: 15px;
         vertical-align: bottom;
+    }
+
+    .synonyms {
+        padding: 5px 10px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: auto auto auto auto;
+        font-size: 24px;
+
+        .syn {
+            color: gray;
+            padding: 8px 10px;
+        }
+
+        .nyms {
+            padding: 8px;
+            width: 210px;
+            background-color: #f3fffc;
+
+        }
+    }
+
+    .forms {
+        display: grid;
+        gap: 10px;
+        padding: 5px 10px;
+        grid-template-columns: auto auto auto;
+        font-size: 24px;
+
+        .form {
+            color: gray;
+            padding: 8px 10px;
+        }
+
+        .wordMain {
+            padding: 8px;
+            background-color: #e4f7f9;
+
+            .word {
+                font-weight: bold;
+                font-size: 25px;
+                padding: 10px 5px;
+            }
+        }
+    }
+
+    .quotes {
+        background-color: rgb(206, 237, 248);
     }
 
     .nameLink {
@@ -1164,10 +1213,11 @@ body {
         height: 40px;
         padding: 20px 0px 10px 0px;
         font-size: 22px;
-  
+
         color: #014780;
         width: 300px;
     }
+
     .history2 {
         height: 70px;
     }
@@ -1454,52 +1504,53 @@ body {
 
             }
         }
-           .wonders {
-    
 
-        color: #ffffef;
-        padding: 10px 0px;
+        .wonders {
 
 
-        .imgWon {
-            min-width: 358px;
-        }
-
-        .titleWon {
-
-            text-align: center;
-            padding: 20px;
-            font-weight: 600;
-            font-size: 24px;
-        }
-
-        .locWon {
-            text-align: left;
-            padding: 10px 20px;
-            font-size: 18px;
-        }
-
-        .summWon {
-            text-align: justify;
-            padding: 10px 20px;
-            font-size: 20px;
+            color: #ffffef;
+            padding: 10px 0px;
 
 
-        }
+            .imgWon {
+                min-width: 358px;
+            }
 
-        .mapWon {
-            padding: 10px 10px;
-            text-align: right;
+            .titleWon {
 
+                text-align: center;
+                padding: 20px;
+                font-weight: 600;
+                font-size: 24px;
+            }
 
-            a {
-              
-                font-size: 16px;
+            .locWon {
+                text-align: left;
+                padding: 10px 20px;
+                font-size: 18px;
+            }
+
+            .summWon {
+                text-align: justify;
+                padding: 10px 20px;
+                font-size: 20px;
+
 
             }
-        }
 
-    }
+            .mapWon {
+                padding: 10px 10px;
+                text-align: right;
+
+
+                a {
+
+                    font-size: 16px;
+
+                }
+            }
+
+        }
 
     }
 
@@ -1712,7 +1763,7 @@ body {
 
         .dictionary {
             padding: 3px 15px;
-            font-size: 20px;
+            font-size: 16px;
         }
 
         img {
@@ -1744,12 +1795,57 @@ body {
         }
 
         .nameComm,
-        .nameLink {
+        .nameLink,
+        .quotes {
             padding-left: 4px;
             font-size: 16px;
             padding-right: 15px;
             width: 250px;
             overflow: hidden;
+        }
+
+        .synonyms {
+            padding: 5px 8px;
+
+            gap: 8px;
+            grid-template-columns: auto auto;
+            font-size: 16px;
+
+            .syn {
+
+                padding: 8px 8px;
+            }
+
+            .nyms {
+                padding: 8px;
+                width: 160px;
+
+
+            }
+        }
+
+        .forms {
+
+            gap: 8px;
+            padding: 5px 10px;
+            grid-template-columns: auto auto;
+            font-size: 16px;
+
+            .form {
+
+                padding: 8px8px;
+            }
+
+            .wordMain {
+                padding: 8px;
+
+
+                .word {
+
+                    font-size: 17px;
+                    padding: 8px 5px;
+                }
+            }
         }
 
         .nameComm2 {
@@ -1812,6 +1908,9 @@ body {
         .results {
             font-size: 16px;
             width: 358px;
+        }
+        .buttonS {
+            font-size: 14px;
         }
     }
 

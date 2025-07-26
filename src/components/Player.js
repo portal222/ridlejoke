@@ -41,7 +41,7 @@ const Player = ({ url }) => {
   return (
     <tr>
       <td style={{ padding: "2px 2px 2px 20px" }} >
-        <button onClick={toggle} className="button">{playing ? "Pause" : "Play Sound"}</button>
+        <button onClick={toggle} className="buttonS">{playing ? "Pause" : "Play Sound"}</button>
       </td>
     </tr>
   );

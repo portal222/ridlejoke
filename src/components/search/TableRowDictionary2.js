@@ -14,9 +14,9 @@ const TableRowDictionary2 = (props) => {
             </tr>
             {props.dictRow2.phonetics.map((phone, id) => (
                 <>
-                   
-                        <Player key={id} url={phone.audio} />
-                 
+
+                    <Player key={id} url={phone.audio} />
+
                 </>
             ))}
             {props.dictRow2.meanings.map((mean, id) => (
@@ -26,7 +26,7 @@ const TableRowDictionary2 = (props) => {
                             <td className="nameComm">
                                 <ul style={{ paddingLeft: "25px" }}>
                                     {mean.antonyms.map((anto, id) => (
-                                        <li>{anto}</li>
+                                        <li key={id}>{anto}</li>
                                     ))}
                                 </ul>
                             </td>
@@ -40,12 +40,16 @@ const TableRowDictionary2 = (props) => {
                     ))}
                     {mean.synonyms && (
                         <tr>
-                            <td key={id} className="nameComm" >
-                                <ul style={{ paddingLeft: "25px" }}>
-                                    {mean.synonyms.map((syno, id) => (
-                                        <li key={id}>{syno}</li>
+                            <td >
+                                <div className="synonyms">
+                                    <p className="syn">synonyms</p>
+
+                                    {mean.synonyms.map((syn, id) => (
+                                        <p key={id} className="nyms">
+                                            {syn}
+                                        </p>
                                     ))}
-                                </ul>
+                                </div>
                             </td>
                         </tr>
                     )}

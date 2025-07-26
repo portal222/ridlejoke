@@ -34,6 +34,8 @@ const ResultsHistoryEvents = () => {
             setResults(data.length);
             setIsLoading(false);
 
+            console.log("dogadjaji", data)
+
         } catch (err) {
             setError(err);
         }

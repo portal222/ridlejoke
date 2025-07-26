@@ -7,6 +7,7 @@ const Quotes = () => {
     const [random, setRandom] = useState([]);
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
+    const [stoic, setStoic] = useState([]);
     const [buda, setBuda] = useState([]);
 
 
@@ -21,6 +22,7 @@ const Quotes = () => {
 
         const url = `https://api.api-ninjas.com/v1/quotes?all`;
         const url2 = `https://api.api-ninjas.com/v1/quotes?all`;
+        const urlQ = `https://stoic.tekloon.net/stoic-quote`;
 
 
 
@@ -39,14 +41,18 @@ const Quotes = () => {
                     }
                 }
             );
+            const responseQ = await axios.get(urlQ);
+
 
 
             const data = response.data;
             const data2 = response2.data;
+            const dataQ = responseQ.data.data;
 
 
             setRandom(data[0]);
             setRandom2(data2[0]);
+            setStoic(dataQ);
 
 
 
@@ -100,6 +106,16 @@ const Quotes = () => {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}>
                         {random2.author}</p>
+                </div>
+                <div className="table">
+
+                    <p>{stoic.quote}</p>
+                    <p className="author"
+                        onClick={() => {
+                            handleClick(stoic.author);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>
+                        {stoic.author}</p>
                 </div>
 
                 <div className="table">

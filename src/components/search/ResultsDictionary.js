@@ -5,6 +5,8 @@ import Dictionary from "./Dictionary";
 import TableRowDictionary from "./TableRowDictionary";
 import TableRowDictionary2 from "./TableRowDictionary2";
 import BackToTop from "../BackToTop";
+import FreeDictionary from "./FreeDictionary";
+import FreeDictionarySr from "./FreeDictionarySr";
 
 const ResultsDictionary = () => {
     const [error, setError] = useState(null);
@@ -67,12 +69,17 @@ const ResultsDictionary = () => {
                 <div className="tabelaZemlje">
                     <div className="results">Nothing found</div>
                 </div>
+                <FreeDictionary dictionary={searchStringValue} />
+                <FreeDictionarySr dictionary={searchStringValue} />
                 <div className="place"></div>
             </>
         )
     }
     return (
         <>
+            <div className="pickTrivia">
+                <Dictionary placeholder={'Word'} linkTo={'/dictionary'} />
+            </div>
             <table className="tabelaZemlje">
                 <thead >
                     <tr>
@@ -86,6 +93,11 @@ const ResultsDictionary = () => {
                     ))}
                 </tbody>
             </table >
+            <FreeDictionary dictionary={searchStringValue} />
+            <FreeDictionarySr dictionary={searchStringValue} />
+            <div className="tabelaZemlje">
+                <hr></hr>
+            </div>
             <table className="tabelaZemlje">
                 <thead >
                     <tr>
@@ -124,6 +136,7 @@ const ResultsDictionary = () => {
                 )}
             </table >
             <div className="place"></div>
+
             <BackToTop />
         </>
     );
