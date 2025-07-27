@@ -657,6 +657,17 @@ body {
             color: #64b5f6;
         }
     }
+      .results {
+            font-size: 20px;
+            width: 358px;
+        }
+        .buttonS {
+            font-size: 18px;
+        }
+        .noSound {
+            padding: 3px 5px 3px 20px ;
+            font-size: 18px;
+        }
 }
 
 .videoTop {
@@ -1748,13 +1759,13 @@ body {
         .celebrity {
             font-size: 18px;
             padding: 5px 0px;
-            padding-left: 8px;
+            padding-left: 15px;
         }
 
         .phon {
-            font-size: 22px;
+            font-size: 18px;
             padding: 5px 0px;
-            padding-left: 8px;
+            padding-left: 15px;
         }
 
         .logoImg {
@@ -1910,6 +1921,10 @@ body {
             width: 358px;
         }
         .buttonS {
+            font-size: 14px;
+        }
+        .noSound {
+            padding: 3px 5px 3px 20px ;
             font-size: 14px;
         }
     }

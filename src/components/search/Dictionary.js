@@ -12,11 +12,14 @@ const Dictionary = (props) => {
     const searchString = useRef();
 
     const handleClickSearch = () => {
-        if (searchString.current.value.trim().length === 0) {
-            return false;
-        }
+    const rawInput = searchString.current.value.trim();
+    if (rawInput.length === 0) {
+        return false;
+    }
 
-        globalCtx.setSearchStringFn(searchString.current.value.trim());
+    const lowercaseInput = rawInput.toLowerCase();
+
+        globalCtx.setSearchStringFn(lowercaseInput);
         navigate(props.linkTo);
 
     };
