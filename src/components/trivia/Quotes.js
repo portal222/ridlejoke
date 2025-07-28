@@ -10,21 +10,18 @@ const Quotes = () => {
     const [stoic, setStoic] = useState([]);
     const [buda, setBuda] = useState([]);
 
-
     const navigate = useNavigate();
 
     useEffect(() => {
         getDomain();
         getBuda();
+        getStoic();
     }, []);
 
     const getDomain = async () => {
 
         const url = `https://api.api-ninjas.com/v1/quotes?all`;
         const url2 = `https://api.api-ninjas.com/v1/quotes?all`;
-        const urlQ = `https://stoic.tekloon.net/stoic-quote`;
-
-
 
         try {
             const response = await axios.get(url,
@@ -41,40 +38,41 @@ const Quotes = () => {
                     }
                 }
             );
-            const responseQ = await axios.get(urlQ);
-
-
 
             const data = response.data;
             const data2 = response2.data;
-            const dataQ = responseQ.data.data;
-
 
             setRandom(data[0]);
             setRandom2(data2[0]);
-            setStoic(dataQ);
-
-
-
         } catch (err) {
             setError(err);
         }
     };
 
+    const getStoic = async () => {
+        const urlQ = `https://stoic.tekloon.net/stoic-quote`;
+
+        try {
+            const responseQ = await axios.get(urlQ);
+            const dataQ = responseQ.data.data;
+
+            setStoic(dataQ);
+        } catch (err) {
+            setError(err);
+        }
+    }
+
     const getBuda = async () => {
         const urlB = `https://buddha-api.com/api/random`
+
         try {
             const responseB = await axios.get(urlB);
             const dataB = responseB.data
 
             setBuda(dataB);
-
-
         } catch (err) {
             setError(err);
         }
-
-
     }
 
     const handleClick = (personName) => {

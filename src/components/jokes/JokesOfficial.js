@@ -7,6 +7,7 @@ const JokesOfficial = () => {
     const [error, setError] = useState(null);
     const [jokes, setJokes] = useState([]);
     const [fox, setFox] = useState([]);
+    const [teehee, setTeehee] = useState([]);
 
     useEffect(() => {
         getJokes();
@@ -16,12 +17,16 @@ const JokesOfficial = () => {
     const getJokes = async () => {
 
         const url = "https://official-joke-api.appspot.com/random_joke";
+        const urlT = "https://teehee.dev/api/joke"
 
         try {
             const response = await axios.get(url);
+            const responseT = await axios.get(urlT);
             const data = response.data;
+            const dataT = responseT.data;
 
             setJokes(data);
+            setTeehee(dataT);
         } catch (err) {
             setError(err);
         }
@@ -52,6 +57,14 @@ const JokesOfficial = () => {
                     items={[{
                         label: <p className="jokeAnswer">{jokes.setup}</p>,
                         children: <p className="jokeAns">{text}</p>,
+                        showArrow: false,
+                    }]} />
+                      <div className="type">Teehee joke type: {teehee.id}</div>
+                <Collapse
+                    size="large"
+                    items={[{
+                        label: <p className="jokeAnswer">{teehee.question}</p>,
+                        children: <p className="jokeAns">{teehee.answer}</p>,
                         showArrow: false,
                     }]} />
                 <div>
