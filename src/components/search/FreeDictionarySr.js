@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const FreeDictionarySr = (props) => {
 
     const [letter, setLetter] = useState([]);
@@ -15,15 +14,13 @@ const FreeDictionarySr = (props) => {
 
     const getDictionary = async () => {
         const url = `https://freedictionaryapi.com/api/v1/entries/sh/${word}`;
-    
 
         try {
             const response = await axios.get(url);
-
             const data = response.data.entries;
             setLetter(data);
             setResults(data.length);
-      
+
         } catch (err) {
             setError(err);
         }
@@ -32,20 +29,14 @@ const FreeDictionarySr = (props) => {
     if (results == 0) {
         return (
             <div className="tabelaZemlje">
-
-
-
             </div>
         )
-
     }
 
     return (
         <>
             <div className="tabelaZemlje">
-
                 <p className="results">FREE dictionari for {word}</p>
-
             </div>
             {letter.map((lett, id) => (
                 <>
@@ -64,12 +55,11 @@ const FreeDictionarySr = (props) => {
                                             <td className="navod">
                                                 exaples
                                             </td>
-                                            <td className="nameComm">
+                                            <td className="example">
                                                 {l.examples?.[0]}
                                             </td>
                                         </tr>
                                     )}
-
                                     {l.quotes && (
                                         <>
                                             {l.quotes.map((q, id) => (
@@ -86,7 +76,7 @@ const FreeDictionarySr = (props) => {
                                                         <td className="navod">
                                                             reference
                                                         </td>
-                                                        <td className="quotes">
+                                                        <td className="quotes2">
                                                             {q.reference}
                                                         </td>
                                                     </tr>
@@ -99,7 +89,7 @@ const FreeDictionarySr = (props) => {
                             <>
                                 <tr>
                                     <td colSpan={2}>
-                                        {lett.synonyms && (
+                                        {lett.synonyms && lett.synonyms > 0 && (
                                             <div className="synonyms">
                                                 <p className="syn">synonyms</p>
 

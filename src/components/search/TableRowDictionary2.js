@@ -38,7 +38,7 @@ const TableRowDictionary2 = (props) => {
                                 {defin.definition}         </td>
                         </tr>
                     ))}
-                    {mean.synonyms && (
+                    {mean.synonyms && mean.synonyims > 0 && (
                         <tr>
                             <td >
                                 <div className="synonyms">

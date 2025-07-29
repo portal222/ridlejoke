@@ -12,10 +12,19 @@
     src: url("../../public/assets/AnticSlab-Regular.ttf");
 }
 
+$quotes: #f1f8e9;
+$example: #fff8e1;
+$word: #e0f2f1;
+
 body {
     padding: 0px;
     margin: 0px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.average {
+    color: transparent;
+    display: none;
 }
 
 .navigator {
@@ -419,13 +428,27 @@ body {
 
     .nameComm,
     .nameLink,
-    .quotes {
+    .example,
+    .quotes,
+    .quotes2 {
         font-size: 24px;
-        padding-top: 8px;
+        padding: 10px 15px;
         width: 650px;
-        padding-left: 10px;
-        padding-right: 15px;
+
         vertical-align: bottom;
+    }
+
+    .quotes,
+    .quotes2 {
+        background-color: $quotes;
+    }
+
+    .example {
+        background-color: $example;
+    }
+
+    .quotes2 {
+        border-bottom: 1px solid grey;
     }
 
     .synonyms {
@@ -461,8 +484,9 @@ body {
         }
 
         .wordMain {
-            padding: 8px;
-            background-color: #e4f7f9;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: $word;
 
             .word {
                 font-weight: bold;
@@ -472,9 +496,7 @@ body {
         }
     }
 
-    .quotes {
-        background-color: rgb(206, 237, 248);
-    }
+
 
     .nameLink {
         font-size: 24px;
@@ -657,17 +679,29 @@ body {
             color: #64b5f6;
         }
     }
-      .results {
-            font-size: 20px;
-            width: 358px;
+
+    .results {
+        font-size: 20px;
+        width: 358px;
+    }
+
+    .buttonS {
+        font-size: 18px;
+        background-image: linear-gradient($example, $word);
+        border: 1px solid grey;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+                   background-image: linear-gradient($example, gray);
+
         }
-        .buttonS {
-            font-size: 18px;
-        }
-        .noSound {
-            padding: 3px 5px 3px 20px ;
-            font-size: 18px;
-        }
+    }
+
+    .noSound {
+        padding: 3px 5px 3px 20px;
+        font-size: 18px;
+    }
 }
 
 .videoTop {
@@ -1807,7 +1841,9 @@ body {
 
         .nameComm,
         .nameLink,
-        .quotes {
+        .example,
+        .quotes,
+        .quotes2 {
             padding-left: 4px;
             font-size: 16px;
             padding-right: 15px;
@@ -1920,11 +1956,13 @@ body {
             font-size: 16px;
             width: 358px;
         }
+
         .buttonS {
             font-size: 14px;
         }
+
         .noSound {
-            padding: 3px 5px 3px 20px ;
+            padding: 3px 5px 3px 20px;
             font-size: 14px;
         }
     }

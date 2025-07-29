@@ -18,7 +18,6 @@ const FreeDictionary = (props) => {
 
         try {
             const response = await axios.get(url);
-
             const data = response.data.entries;
             setLetter(data);
             setResults(data.length);
@@ -55,7 +54,7 @@ const FreeDictionary = (props) => {
                                             <td className="navod">
                                                 exaples
                                             </td>
-                                            <td className="nameComm">
+                                            <td className="example">
                                                 {l.examples?.[0]}
                                             </td>
                                         </tr>
@@ -76,7 +75,7 @@ const FreeDictionary = (props) => {
                                                         <td className="navod">
                                                             reference
                                                         </td>
-                                                        <td className="quotes">
+                                                        <td className="quotes2">
                                                             {q.reference}
                                                         </td>
                                                     </tr>
@@ -89,7 +88,7 @@ const FreeDictionary = (props) => {
                             <>
                                 <tr>
                                     <td colSpan={2}>
-                                        {lett.synonyms && (
+                                        {lett.synonyms && lett.synonyms > 0 && (
                                             <div className="synonyms">
                                                 <p className="syn">synonyms</p>
 
