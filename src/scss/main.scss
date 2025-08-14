@@ -12,9 +12,20 @@
     src: url("../../public/assets/AnticSlab-Regular.ttf");
 }
 
+@font-face {
+    font-family: nobelFont;
+    src: url("../../public/assets/Antic-Regular.ttf");
+}
+
 $quotes: #f1f8e9;
 $example: #fff8e1;
 $word: #e0f2f1;
+$nobel: rgb(15, 102, 72);
+$nobel2: rgb(68, 211, 161);
+$nobel3: rgb(19, 59, 45);
+$nobelButt1: #26a69a;
+$nobelButt2: #00897b;
+$nobelBack: #b2dfdb;
 
 body {
     padding: 0px;
@@ -51,7 +62,6 @@ body {
 
     .imgHold {
         text-align: center;
-
         width: 900px;
     }
 
@@ -99,23 +109,16 @@ body {
             font-size: 20px;
             padding: 5px 10px;
         }
-
-
-
     }
 
     .imgPlace {
-
         justify-items: center;
         text-align: center;
         padding: 10px 10px;
         background-color: #457ba8;
 
-
         .imgExt {
-
             width: 700px;
-
         }
     }
 
@@ -123,7 +126,6 @@ body {
         display: flex;
         flex-direction: column;
         font-family: horos;
-
         color: #ffffef;
         padding: 10px 60px;
 
@@ -141,7 +143,6 @@ body {
         }
 
         .titleWon {
-
             text-align: center;
             padding: 20px;
             font-weight: 700;
@@ -158,14 +159,11 @@ body {
             text-align: justify;
             padding: 10px 20px;
             font-size: 24px;
-
-
         }
 
         .mapWon {
             padding: 10px 20px;
             text-align: right;
-
 
             a {
                 color: #9fefd6;
@@ -177,7 +175,34 @@ body {
                 }
             }
         }
+    }
 
+    .nobelPlace {
+        display: flex;
+        padding: 10px 60px;
+        justify-content: space-between;
+
+        .nobelWinn {
+            font-size: 22px;
+            color: $word;
+        }
+
+        .nobelButt {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 22px;
+            color: $word;
+            background-image: linear-gradient($nobelButt1, $nobelButt2);
+
+            &:hover {
+                background-image: linear-gradient($nobelButt1, $nobel3);
+            }
+        }
     }
 }
 
@@ -229,16 +254,13 @@ body {
                 padding: 10px;
                 width: 200px;
                 text-align: center;
-
             }
         }
 
         .text {
             padding: 20px;
             text-align: justify;
-
         }
-
     }
 
     .table {
@@ -277,7 +299,6 @@ body {
                 text-shadow: 2px 2px 8px black;
             }
         }
-
     }
 
     hr {
@@ -693,7 +714,7 @@ body {
         cursor: pointer;
 
         &:hover {
-                   background-image: linear-gradient($example, gray);
+            background-image: linear-gradient($example, gray);
 
         }
     }
@@ -1464,7 +1485,94 @@ body {
     }
 }
 
+.nobelGrid,
+.buttPlace {
+    margin: auto;
+    width: 900px;
+    gap: 10px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: $nobelBack;
+    color: $word;
+    font-family: nobelFont;
 
+    .nobel {
+        width: 430px;
+        background-color: $nobel3;
+        border-radius: 8px;
+
+        .nobYear {
+            margin: 20px;
+            padding: 10px;
+            font-size: 22px;
+            border-radius: 10px;
+            background-color: $nobelButt2;
+            color: #fdc714;
+        }
+
+        .nobCat {
+            text-align: left;
+            width: 80%;
+            padding: 30px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #fdc714;
+
+        }
+
+
+        .nobelName {
+            font-size: 28px;
+            font-weight: 500;
+            color: $nobelBack;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                color: $nobelButt2;
+            }
+
+
+        }
+
+        .motivation {
+            text-align: justify;
+            font-size: 22px;
+            padding: 20px;
+
+        }
+
+        .prize {
+            font-size: 16px;
+            padding: 5px 20px 20px 20px;
+        }
+    }
+}
+
+.buttPlace {
+
+    display: flex;
+    padding: 20px 200px;
+    justify-content: space-between;
+
+    .nobutt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        padding: 5px 10px;
+
+        font-size: 22px;
+        background-image: linear-gradient($nobelButt1, $nobelButt2);
+        cursor: pointer;
+
+        &:hover {
+            background-image: linear-gradient($nobelButt1, $nobel3);
+
+        }
+    }
+}
 
 .back-to-top {
     position: fixed;
@@ -1551,18 +1659,14 @@ body {
         }
 
         .wonders {
-
-
             color: #ffffef;
             padding: 10px 0px;
-
 
             .imgWon {
                 min-width: 358px;
             }
 
             .titleWon {
-
                 text-align: center;
                 padding: 20px;
                 font-weight: 600;
@@ -1579,24 +1683,33 @@ body {
                 text-align: justify;
                 padding: 10px 20px;
                 font-size: 20px;
-
-
             }
 
             .mapWon {
                 padding: 10px 10px;
                 text-align: right;
 
-
                 a {
-
                     font-size: 16px;
-
                 }
             }
-
         }
 
+        .nobelPlace {
+            display: flex;
+            padding: 10px 20px;
+
+
+            .nobelWinn {
+                font-size: 16px;
+            }
+
+            .nobelButt {
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 16px;
+            }
+        }
     }
 
     .loader,
@@ -2372,8 +2485,75 @@ body {
         }
     }
 
+    .nobelGrid,
+    .buttPlace {
+        margin: auto;
+        width: 355px;
+        gap: 10px;
+        padding: 15px;
+        display: grid;
+        grid-template-columns: auto;
+
+
+
+
+        .nobel {
+            width: 325px;
+
+
+            .nobYear {
+                margin: 15px;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 10px;
+
+            }
+
+            .nobCat {
+                text-align: left;
+                width: 80%;
+                padding: 20px;
+                font-size: 20px;
+                font-weight: 500;
+
+            }
+
+
+            .nobelName {
+                font-size: 22px;
+                font-weight: 500;
+
+            }
+
+            .motivation {
+                text-align: justify;
+                font-size: 20px;
+                padding: 15px;
+
+            }
+
+            .prize {
+                font-size: 12px;
+                padding: 5px 15px 15px 15px;
+            }
+        }
+    }
+
+    .buttPlace {
+
+        display: flex;
+        padding: 15px 20px;
+        justify-content: space-between;
+
+        .nobutt {
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+
     .back-to-top {
         right: 20px;
     }
-
 }

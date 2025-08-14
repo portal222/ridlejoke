@@ -88,7 +88,7 @@ const DetailsPerson = (props) => {
                     </thead>
                 </table>
                 <ResultsCelebs celebs={celebs} results={results} />
-                <NyTimes news={nytPerson} />
+                <NyTimes  name={personName} news={nytPerson} />
                 <BackToTop />
             </>
         )

@@ -7,21 +7,18 @@ const Quotes = () => {
     const [random, setRandom] = useState([]);
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
-    const [stoic, setStoic] = useState([]);
-    const [buda, setBuda] = useState([]);
-
+   
     const navigate = useNavigate();
 
     useEffect(() => {
         getDomain();
-        getBuda();
-        getStoic();
     }, []);
 
     const getDomain = async () => {
 
         const url = `https://api.api-ninjas.com/v1/quotes?all`;
         const url2 = `https://api.api-ninjas.com/v1/quotes?all`;
+        const url3 = `https://api.api-ninjas.com/v1/quotes?all`;
 
         try {
             const response = await axios.get(url,
@@ -38,46 +35,28 @@ const Quotes = () => {
                     }
                 }
             );
+              const response3 = await axios.get(url3,
+                {
+                    headers: {
+                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                    }
+                }
+            );
 
             const data = response.data;
             const data2 = response2.data;
+            const data3 = response3.data;
 
             setRandom(data[0]);
             setRandom2(data2[0]);
+            setRandom3(data3[0]);
         } catch (err) {
             setError(err);
         }
     };
 
-    const getStoic = async () => {
-        const urlQ = `https://stoic.tekloon.net/stoic-quote`;
-
-        try {
-            const responseQ = await axios.get(urlQ);
-            const dataQ = responseQ.data.data;
-
-            setStoic(dataQ);
-        } catch (err) {
-            setError(err);
-        }
-    }
-
-    const getBuda = async () => {
-        const urlB = `https://buddha-api.com/api/random`
-
-        try {
-            const responseB = await axios.get(urlB);
-            const dataB = responseB.data
-
-            setBuda(dataB);
-        } catch (err) {
-            setError(err);
-        }
-    }
-
     const handleClick = (personName) => {
         const LinkTo = `/historyPerson/${personName}`;
-
         navigate(LinkTo);
     }
 
@@ -105,28 +84,15 @@ const Quotes = () => {
                         }}>
                         {random2.author}</p>
                 </div>
-                <div className="table">
-
-                    <p>{stoic.quote}</p>
+                 <div className="table">
+                    <p className="category">{random3.category}</p>
+                    <p>{random3.quote}</p>
                     <p className="author"
                         onClick={() => {
-                            handleClick(stoic.author);
+                            handleClick(random3.author);
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}>
-                        {stoic.author}</p>
-                </div>
-
-                <div className="table">
-                    <p >
-                        <img src={buda.byImage} style={{ width: "350px", paddingBottom: "15px" }} /></p>
-                    <p>{buda.text}</p>
-                    <p className="author"
-                        onClick={() => {
-                            handleClick(buda.byName);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}>
-                        {buda.byName}</p>
-                    <hr></hr>
+                        {random3.author}</p>
                 </div>
             </div>
         </>

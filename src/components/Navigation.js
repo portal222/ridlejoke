@@ -50,6 +50,8 @@ import Aigenerator from "./search/Aigenerator";
 import AnimalsMp3 from "./animals/AnimalsMp3";
 import AnimalsMp3OnClick from "./animals/AnimalsMp3OnClick";
 import Quiz from "./trivia/Quiz";
+import NobelPrizes from "./nobel/NobelPrizes";
+import NobelPrizesNext from "./nobel/NobelPrizesNext";
 
 const theme = createTheme({
   palette: {
@@ -65,26 +67,26 @@ const Navigation = () => {
       <HashRouter basename="/">
         <div className="navigator">
           <div className="fixed">
-          <ThemeProvider
-            theme={theme}>
-            <NavLink to="/">
-              <Button variant="contained">Home</Button>
-            </NavLink>
-            <NavLink to="/pickTrivia">
-              <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
-                Quiz
-              </Button>
-            </NavLink>
-            <NavLink to="/jokes">
-              <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
-                Jokes
-              </Button>
-            </NavLink>
-            <NavLink to="/search">
-              <Button variant="contained" color="secondary" sx={{ ml: 1 }} >
-                Search</Button>
-            </NavLink>
-          </ThemeProvider>
+            <ThemeProvider
+              theme={theme}>
+              <NavLink to="/">
+                <Button variant="contained">Home</Button>
+              </NavLink>
+              <NavLink to="/pickTrivia">
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
+                  Quiz
+                </Button>
+              </NavLink>
+              <NavLink to="/jokes">
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
+                  Jokes
+                </Button>
+              </NavLink>
+              <NavLink to="/search">
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }} >
+                  Search</Button>
+              </NavLink>
+            </ThemeProvider>
           </div>
         </div>
         <Routes>
@@ -135,6 +137,8 @@ const Navigation = () => {
           <Route path="/aiGenerator" element={<Aigenerator />} />
           <Route path="/animalMp3/:animalName" element={<AnimalsMp3OnClick />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/nobel" element={<NobelPrizes />} />
+          <Route path="/nobelNext/:link" element={<NobelPrizesNext />} />
         </Routes>
       </HashRouter>
       <Footers />
