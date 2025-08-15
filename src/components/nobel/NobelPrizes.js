@@ -25,7 +25,7 @@ const NobelPrizes = () => {
 
 
 
-        const url = `http://api.nobelprize.org/2.1/nobelPrizes?offset=0&limit=10`;
+        const url = `https://api.nobelprize.org/2.1/nobelPrizes?offset=0&limit=10`;
 
 
 
@@ -37,9 +37,6 @@ const NobelPrizes = () => {
 
             setNobel(data);
             setLinks(dataLink.links)
-
-
-            console.log("probe nobel", dataLink);
 
         } catch (err) {
             setError(err);

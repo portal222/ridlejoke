@@ -22,7 +22,7 @@ const NobelPrizesNext = () => {
 
     const getApi = async () => {
 
-        const url = `http://api.nobelprize.org/2.1/nobelPrizes?offset=${link}&limit=10`;
+        const url = `https://api.nobelprize.org/2.1/nobelPrizes?offset=${link}&limit=10`;
 
         try {
             const response = await axios.get(url);
