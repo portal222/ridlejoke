@@ -17,11 +17,11 @@ const JokePlace = () => {
                 <div>
                     {<JokesRandom />}
                     {<JokesOfficial />}
+                    {<RandomJoke />}
                     {<YesNoGif />}
                 </div>
                 <div>
                     {<DadJokes />}
-                    {<RandomJoke />}
                     {<ChukNorris />}
                 </div>
             </div>

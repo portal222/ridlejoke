@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import yomomma from '../../../public/yomomma.json';
 
 const DadJokes = () => {
 
     const [error, setError] = useState(null);
     const [dad, setDad] = useState([]);
     const [joke, setJoke] = useState([]);
+
+    const number = Math.floor(Math.random() * 977);
+    const number2 = Math.floor(Math.random() * 977);
+
+
 
     useEffect(() => {
         getDad();
@@ -63,6 +69,15 @@ const DadJokes = () => {
                 ))}
                 <div className="border">
                     {joke.joke}
+                </div>
+                <div className="titleJoke">
+                    YO MOMMA JOKE
+                </div>
+                <div className="border">
+                    {yomomma?.[number]?.text}
+                </div>
+                <div className="border">
+                    {yomomma?.[number2]?.text}
                 </div>
             </div>
         </>
