@@ -4,6 +4,7 @@ import axios from 'axios';
 const RandomJoke = () => {
     const [error, setError] = useState(null);
     const [jokes, setJokes] = useState([]);
+    const [geekJoke, setGeekJoke] = useState([]);
 
     const [foods, setFoods] = useState([]);
 
@@ -14,6 +15,7 @@ const RandomJoke = () => {
 
     const getJokes = async () => {
         const url = `https://api.api-ninjas.com/v1/jokes`;
+        const urlG = 'https://geek-jokes.sameerkumar.website/api?format=json'
 
         try {
             const response = await axios.get(url,
@@ -23,8 +25,12 @@ const RandomJoke = () => {
                     }
                 }
             );
+            const responseG = await axios.get(urlG);
             const data = response.data
+            const dataG = responseG.data
             setJokes(data);
+            setGeekJoke(dataG);
+          
 
         } catch (err) {
             setError(err);
@@ -38,7 +44,7 @@ const RandomJoke = () => {
 
     return (
         <>
-            <div className="dadJokes">
+            <div className="dadJokes2">
               
                 <div className="titleJoke">
                     RANDOM JOKE
@@ -49,9 +55,15 @@ const RandomJoke = () => {
                         {dataObj.joke}
                     </div>
                 ))}
-
-         
             </div >
+            <div className="dadJokes2">
+                <div className="titleJoke">
+                    GEEK JOKE
+                </div>
+                <div className="border">
+                    {geekJoke.joke}
+                </div>
+            </div>
         </>
     );
 };

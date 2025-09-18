@@ -7,6 +7,7 @@ const DadJokes = () => {
     const [error, setError] = useState(null);
     const [dad, setDad] = useState([]);
     const [joke, setJoke] = useState([]);
+    const [cat, setCat] = useState([]);
 
     const number = Math.floor(Math.random() * 977);
     const number2 = Math.floor(Math.random() * 977);
@@ -40,6 +41,7 @@ const DadJokes = () => {
 
     const getJoke = async () => {
         const url = "https://icanhazdadjoke.com/"
+        const urlB = "https://cataas.com/cat/gif"
 
         try {
             const response = await axios.get(url,
@@ -48,8 +50,12 @@ const DadJokes = () => {
                         'Accept': 'application/json'
                     }
                 });
+                const responseB = await axios.get(urlB);
             const data = response.data;
+            const dataB = responseB.data;
             setJoke(data);
+            setCat(dataB);
+
         } catch (err) {
             setError(err);
         }
@@ -70,6 +76,9 @@ const DadJokes = () => {
                 <div className="border">
                     {joke.joke}
                 </div>
+                <div >
+                    <img src={cat.url} alt="no picture"/>
+                    </div>
                 <div className="titleJoke">
                     YO MOMMA JOKE
                 </div>

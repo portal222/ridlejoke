@@ -1171,8 +1171,10 @@ body {
     display: flex;
     margin: auto;
     width: 900px;
+      background-color: #f9fbe7;
 
-    .dadJokes {
+    .dadJokes,
+    .dadJokes2 {
         background-color: #c8e6c9;
         width: 450px;
 
@@ -1196,6 +1198,10 @@ body {
             width: 450px;
             text-align: center;
         }
+    }
+
+    .dadJokes2 {
+        background-color: #f9fbe7;
     }
 }
 
@@ -1743,7 +1749,8 @@ body {
         display: block;
         width: 358px;
 
-        .dadJokes {
+        .dadJokes,
+        .dadJokes2 {
             width: 358px;
 
             .titleJoke {

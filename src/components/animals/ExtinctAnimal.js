@@ -28,9 +28,9 @@ const ExtinctAnimal = () => {
             <div className="extinct">
                 <h1>Extinct Animal</h1>
             </div>
-            {extinct.map((anim) => (
+            {extinct.map((anim, id) => (
                 <>
-                    <div key={anim.binomialName}>
+                    <div key={id}>
                         <div className="extinct">
                             <div className="extName">
                                 {anim.commonName}

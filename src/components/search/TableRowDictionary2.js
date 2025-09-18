@@ -25,15 +25,15 @@ const TableRowDictionary2 = (props) => {
                         <tr key={id}>
                             <td className="nameComm">
                                 <ul style={{ paddingLeft: "25px" }}>
-                                    {mean.antonyms.map((anto, id) => (
-                                        <li key={id}>{anto}</li>
+                                    {mean.antonyms.map((anto, idx) => (
+                                        <li key={idx}>{anto}</li>
                                     ))}
                                 </ul>
                             </td>
                         </tr>
                     )}
-                    {mean.definitions.map((defin, id) => (
-                        <tr key={id}>
+                    {mean.definitions.map((defin, idx) => (
+                        <tr key={idx}>
                             <td className="dictionary">
                                 {defin.definition}         </td>
                         </tr>
@@ -44,8 +44,8 @@ const TableRowDictionary2 = (props) => {
                                 <div className="synonyms">
                                     <p className="syn">synonyms</p>
 
-                                    {mean.synonyms.map((syn, id) => (
-                                        <p key={id} className="nyms">
+                                    {mean.synonyms.map((syn, idx) => (
+                                        <p key={idx} className="nyms">
                                             {syn}
                                         </p>
                                     ))}

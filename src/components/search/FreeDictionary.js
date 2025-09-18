@@ -61,7 +61,7 @@ const FreeDictionary = (props) => {
                                     )}
                                     {l.quotes && (
                                         <>
-                                            {l.quotes.map((q, id) => (
+                                            {l.quotes.map((q, id, idx) => (
                                                 <>
                                                     <tr key={id}>
                                                         <td className="navod">
@@ -71,7 +71,7 @@ const FreeDictionary = (props) => {
                                                             {q.text}
                                                         </td>
                                                     </tr>
-                                                    <tr key={id}>
+                                                    <tr key={idx}>
                                                         <td className="navod">
                                                             reference
                                                         </td>
@@ -110,11 +110,11 @@ const FreeDictionary = (props) => {
                                 <p className="form">forms</p>
                                 {lett.forms.map((f, id) => (
                                     <>
-                                        <div className="wordMain">
-                                            {f.tags.map((t, id) => (
-                                                <p key={id}>{t}</p>
+                                        <div className="wordMain" key={id} >
+                                            {f.tags.map((t, idx) => (
+                                                <p key={idx}>{t}</p>
                                             ))}
-                                            <p key={id}
+                                            <p
                                                 className="word">
                                                 {f.word}</p>
                                         </div>
