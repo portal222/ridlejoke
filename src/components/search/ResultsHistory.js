@@ -34,6 +34,7 @@ const ResultsHistory = () => {
             setHistory(data);
             setResults(data.length);
             setIsLoading(false);
+           console.log("detalji istorije",response);
 
         } catch (err) {
             setError(err);

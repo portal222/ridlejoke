@@ -1,51 +1,43 @@
 import React, { useEffect, useState, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import SearchAiGen from "./SearchAiGen";
-import { usePollinationsImage } from "@pollinations/react";
+// import { usePollinationsImage } from "@pollinations/react";
 import axios from "axios";
+
+
+
+
 
 const Aigenerator = () => {
 
     const [aitext, setAitext] = useState([]);
+    const [aitextM, setAitextM] = useState([]);
+    const [aitextPer, setAitextPer] = useState([]);
+    const [aitextLar, setAitextLar] = useState([]);
+    // const [searchStringValue3, setSearchStringValue3] = useState("");
+    const [imageUrl, setImageUrl] = useState(null);
+
     const [error, setError] = useState(null);
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
 
-    const number = Math.floor(Math.random() * 99)
 
-    const imageUrl = usePollinationsImage(searchStringValue, {
-        seed: { number },
-        model: 'flux',
-        enhance: true,
-        width: 1280,
-        height: 1280
-    });
 
-    const imageUrl2 = usePollinationsImage(searchStringValue, {
-        seed: { number },
-        model: 'turbo',
-        enhance: true,
-        width: 1280,
-        height: 1280
-    });
+  
 
-    const imageUrl3 = usePollinationsImage(searchStringValue, {
-        seed: { number },
-        model: 'kontext',
-        enhance: true,
-        width: 768,
-        height: 768
-    });
+
 
     useEffect(() => {
         getText(searchStringValue);
+        getAmazon(searchStringValue);
+        getPerple(searchStringValue);
+        getLarge(searchStringValue);
     }, [searchStringValue]);
 
-    const getText = async () => {
-
-        const url = `https://text.pollinations.ai/${searchStringValue}`
-
+    const getText = async (searchStringValue) => {
+        const url = `https://gen.pollinations.ai/text/${searchStringValue}?model=mistral&key=pk_N3F6nCawqxWe8khl`
+   
         try {
             const response = await axios.get(url);
             const data = response
@@ -56,52 +48,83 @@ const Aigenerator = () => {
         }
     }
 
-    if (error?.status === 400) {
-        return (
-            <>
-                <div className="mainBook">
-                    <div className="polli">Pollinations Ai</div>
-                    <div >
-                        <div className="total">The prompt contains inappropriate words, so your request cannot be fulfilled. </div>
-                    </div>
-                    <h1 style={{ padding: "20px" }}>Ai generated text and images for {searchStringValue}</h1>
+    const getAmazon = async (searchStringValue) => {
 
-                    <div style={{ padding: "30px" }}>
-                        <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
-                    </div>
-                </div>
-                <div className="place"></div>
-            </>
-        )
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=nova-micro&key=pk_N3F6nCawqxWe8khl`
+
+        try {
+            const responseM = await axios.get(urlM);
+            const dataM = responseM
+            setAitextM(dataM);
+        
+
+        } catch (err) {
+            setError(err);
+        }
     }
+
+    const getPerple = async (searchStringValue) => {
+
+
+        const urlPer = `https://gen.pollinations.ai/text/${searchStringValue}?model=perplexity-fast&key=pk_N3F6nCawqxWe8khl`
+
+        try {
+            const responsePer = await axios.get(urlPer);
+            const dataPer = responsePer
+            setAitextPer(dataPer);
+
+        } catch (err) {
+            setError(err);
+        }
+    }
+
+    const getLarge = async (searchStringValue) => {
+        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=openai-large&key=pk_N3F6nCawqxWe8khl`
+        try {
+            const responseLar = await axios.get(urlLar);
+            const dataLar = responseLar
+            setAitextLar(dataLar);
+
+        } catch (err) {
+            setError(err);
+        }
+    }
+
+     
+
     return (
         <>
             <div className="mainBook">
-                <div className="polli">Pollinations Ai</div>
+                <h1 style={{ padding: "20px 40px" }}>Ai generated text  for {searchStringValue}</h1>
+
+                <div className="polli">Mistral</div>
                 <div >
                     {aitext.data ? <div className="total">{aitext.data} </div> : <p>Loading text...</p>}
                 </div>
-                <div>
-                    {error?.AxiosError?.status}
+      
+
+                <div className="polli">Amazon nova micro</div>
+                <div >
+                    {aitextM.data ? <div className="total">{aitextM.data} </div> : <p>Loading text...</p>}
                 </div>
-                <h1 style={{ padding: "20px 40px" }}>Ai generated text and images for {searchStringValue}</h1>
-                <div>
-                    {imageUrl ? <img src={imageUrl} alt="" className="aiImg" /> : <p>Loading image...</p>}
+          
+
+                <div className="polli">Perplexity fast</div>
+                <div >
+                    {aitextPer.data ? <div className="total">{aitextPer.data} </div> : <p>Loading text...</p>}
                 </div>
-                <p className="model">Flux model</p>
+
+                <div className="polli">GPT 5.2</div>
+                <div >
+                    {aitextLar.data ? <div className="total">{aitextLar.data} </div> : <p>Loading text...</p>}
+                </div>
+
                 <br></br>
-                <div>
-                    {imageUrl2 ? <img src={imageUrl2} alt="" className="aiImg" /> : <p>Loading image...</p>}
-                </div>
-                <p className="model">Turbo model</p>
-                <br></br>
-                <div>
-                    {imageUrl3 ? <img src={imageUrl3} alt="" className="aiImg" /> : <p>Loading image...</p>}
-                </div>
-                <p className="model">Kontext model, he needs more time, but sometimes it doesn't create a picture</p>
-                   <br></br>
                 <div style={{ padding: "30px" }}>
                     <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
+                </div>
+                <div style={{ height: "20px" }}>
+
                 </div>
             </div>
             <div className="place"></div>
