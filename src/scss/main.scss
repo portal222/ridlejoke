@@ -752,11 +752,49 @@ body {
         overflow: hidden;
     }
 
+    .aiTitle {
+        background-image: linear-gradient(rgb(118, 220, 178), #bbdefb);
+        padding: 40px;
+        display: flex;
+
+        p {
+            padding: 15px 10px;
+            font-size: 16px;
+            min-width: 180px;
+            text-align: right;
+        }
+
+        .aiSearch {
+            padding: 10px;
+            font-size: 24px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+    }
+
     .total {
         font-size: 22px;
         text-align: justify;
         padding: 40px;
         background-image: linear-gradient(rgb(118, 169, 220), #bbdefb);
+    }
+
+    .totalPer {
+        font-size: 22px;
+        text-align: justify;
+        padding: 40px;
+        background-image: linear-gradient(rgb(118, 169, 220), #bbdefb);
+        overflow: hidden;
+
+        a {
+            text-decoration: none;
+            color: rgb(27, 27, 251);
+        }
+
+        a:hover {
+            color: #013441;
+        }
     }
 
     .author {
@@ -1123,7 +1161,7 @@ body {
         font-weight: 500;
         color: #014780;
         cursor: pointer;
-        
+
 
         &:hover {
             color: #64b5f6;
@@ -1172,7 +1210,7 @@ body {
     display: flex;
     margin: auto;
     width: 900px;
-      background-color: #f9fbe7;
+    background-color: #f9fbe7;
 
     .dadJokes,
     .dadJokes2 {
@@ -2103,10 +2141,38 @@ body {
             padding-bottom: 7px;
         }
 
+         .aiTitle {
+        background-image: linear-gradient(rgb(118, 220, 178), #bbdefb);
+        padding: 40px;
+        display: block;
+
+        p {
+            padding: 10px 10px;
+            font-size: 16px;
+            width: 200px;
+            text-align: left;
+        }
+
+        .aiSearch {
+            padding: 5px;
+            font-size: 20px;
+            text-align: justify;
+            font-weight: 400;
+        }
+
+    }
+
         .total {
             font-size: 20px;
             padding: 15px;
         }
+
+          .totalPer {
+        font-size: 20px;
+        text-align: justify;
+        padding: 15px;
+      
+          }
 
         .author {
             font-size: 22px;

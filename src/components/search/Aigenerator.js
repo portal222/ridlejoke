@@ -3,8 +3,7 @@ import GlobalContext from "../GlobalContext";
 import SearchAiGen from "./SearchAiGen";
 // import { usePollinationsImage } from "@pollinations/react";
 import axios from "axios";
-
-
+import BackToTop from "../BackToTop";
 
 
 
@@ -14,7 +13,8 @@ const Aigenerator = () => {
     const [aitextM, setAitextM] = useState([]);
     const [aitextPer, setAitextPer] = useState([]);
     const [aitextLar, setAitextLar] = useState([]);
-    // const [searchStringValue3, setSearchStringValue3] = useState("");
+    const [aitextQwen, setAitextQwen] = useState([]);
+
     const [imageUrl, setImageUrl] = useState(null);
 
     const [error, setError] = useState(null);
@@ -24,20 +24,35 @@ const Aigenerator = () => {
 
 
 
-  
+
 
 
 
     useEffect(() => {
+        getModels();
         getText(searchStringValue);
         getAmazon(searchStringValue);
         getPerple(searchStringValue);
         getLarge(searchStringValue);
+        getQwen(searchStringValue);
     }, [searchStringValue]);
+
+    const getModels = async () => {
+        const urlM = `https://gen.pollinations.ai/text/models?key=pk_N3F6nCawqxWe8khl`
+
+        try {
+            const response = await axios.get(urlM);
+            const data = response
+            console.log("ai modeli teksta", data);
+
+        } catch (err) {
+            setError(err);
+        }
+    }
 
     const getText = async (searchStringValue) => {
         const url = `https://gen.pollinations.ai/text/${searchStringValue}?model=mistral&key=pk_N3F6nCawqxWe8khl`
-   
+
         try {
             const response = await axios.get(url);
             const data = response
@@ -56,7 +71,7 @@ const Aigenerator = () => {
             const responseM = await axios.get(urlM);
             const dataM = responseM
             setAitextM(dataM);
-        
+
 
         } catch (err) {
             setError(err);
@@ -90,44 +105,99 @@ const Aigenerator = () => {
         }
     }
 
-     
+    const getQwen = async (searchStringValue) => {
+        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=qwen-coder&key=pk_N3F6nCawqxWe8khl`
+        try {
+            const responseQ = await axios.get(urlQ);
+            const dataQ = responseQ
+            setAitextQwen(dataQ);
+
+        } catch (err) {
+            setError(err);
+        }
+    }
+
+
+
+    function makeLinks(text) {
+        return text.replace(
+            /(https?:\/\/[^\s]+)/g,
+            (url) => {
+                try {
+                    const domain = new URL(url).hostname; // izdvajamo samo domen
+                    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${domain}</a>`;
+                } catch {
+                    return url; // fallback ako URL nije validan
+                }
+            }
+        );
+    }
+
+
 
     return (
         <>
             <div className="mainBook">
-                <h1 style={{ padding: "20px 40px" }}>Ai generated text  for {searchStringValue}</h1>
+                <div className="aiTitle" >
+                    <p>Ai generated text for</p>
+                    <div className="aiSearch">
+                        {searchStringValue}
+                    </div>
+                    <div style={{ padding: "5px" }}>
+                        <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
+                    </div>
+                </div>
 
                 <div className="polli">Mistral</div>
                 <div >
-                    {aitext.data ? <div className="total">{aitext.data} </div> : <p>Loading text...</p>}
+                    {aitext.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitext.data) }}
+                    >
+                    </div>
+                        : <p>Loading text...</p>}
                 </div>
-      
 
                 <div className="polli">Amazon nova micro</div>
                 <div >
-                    {aitextM.data ? <div className="total">{aitextM.data} </div> : <p>Loading text...</p>}
+                    {aitextM.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextM.data) }}
+                    >
+                    </div>
+                        : <p>Loading text...</p>}
                 </div>
-          
-
                 <div className="polli">Perplexity fast</div>
                 <div >
-                    {aitextPer.data ? <div className="total">{aitextPer.data} </div> : <p>Loading text...</p>}
+                    {aitextPer.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextPer.data) }}
+                    >
+                    </div>
+                        : <p>Loading text...</p>}
                 </div>
-
                 <div className="polli">GPT 5.2</div>
                 <div >
-                    {aitextLar.data ? <div className="total">{aitextLar.data} </div> : <p>Loading text...</p>}
+                    {aitextLar.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextLar.data) }}
+                    >
+                    </div>
+                        : <p>Loading text...</p>}
+                </div>
+                <div className="polli">Qwen-Coder</div>
+                <div >
+                    {aitextQwen.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}
+                    >
+                    </div>
+                        : <p>Loading text...</p>}
                 </div>
 
                 <br></br>
-                <div style={{ padding: "30px" }}>
-                    <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
-                </div>
+
                 <div style={{ height: "20px" }}>
 
                 </div>
             </div>
             <div className="place"></div>
+            <BackToTop />
 
         </>
     )
