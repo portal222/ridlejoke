@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import GlobalContext from "../GlobalContext";
 import SearchAiGen from "./SearchAiGen";
-// import { usePollinationsImage } from "@pollinations/react";
 import axios from "axios";
 import BackToTop from "../BackToTop";
+import { ofetch } from 'ofetch'
+import ChatWithHistory from "./ChatWithHistory";
+
 
 
 
@@ -21,10 +23,6 @@ const Aigenerator = () => {
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
-
-
-
-
 
 
 
@@ -106,7 +104,7 @@ const Aigenerator = () => {
     }
 
     const getQwen = async (searchStringValue) => {
-        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=qwen-coder&key=pk_N3F6nCawqxWe8khl`
+        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=kimi&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseQ = await axios.get(urlQ);
             const dataQ = responseQ
@@ -181,7 +179,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Qwen-Coder</div>
+                <div className="polli">Kimi</div>
                 <div >
                     {aitextQwen.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}
@@ -196,6 +194,7 @@ const Aigenerator = () => {
 
                 </div>
             </div>
+                <ChatWithHistory />
             <div className="place"></div>
             <BackToTop />
 
