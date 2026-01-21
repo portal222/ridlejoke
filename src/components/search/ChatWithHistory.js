@@ -9,7 +9,6 @@ export default function ChatWithHistory() {
   const sendQuery = async () => {
     if (!query.trim()) return;
 
-    // dodaj korisničku poruku u istoriju
     const newMessages = [...messages, { role: "user", content: query }];
     setMessages(newMessages);
     setQuery("");
@@ -27,7 +26,7 @@ export default function ChatWithHistory() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv" // zameni sa pravim tokenom
+            Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv" 
           }
         }
       );
@@ -64,7 +63,7 @@ export default function ChatWithHistory() {
         {messages.map((msg, idx) => (
           <div key={idx} style={{ marginBottom: "8px" }}>
             <strong>{msg.role === "user" ? "You:" : "AI:"}</strong>{" "}
-            <span>{renderWithLinks(msg.content)}</span>
+            <span   dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
       </div>
@@ -75,6 +74,7 @@ export default function ChatWithHistory() {
         placeholder="Enter your query..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+
       />
       <button onClick={sendQuery} disabled={loading}>
         {loading ? "Sending..." : "Send"}
