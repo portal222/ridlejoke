@@ -70,20 +70,32 @@ const Navigation = () => {
             <ThemeProvider
               theme={theme}>
               <NavLink to="/">
-                <Button variant="contained">Home</Button>
+                <Button variant="contained"
+                   onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>Home</Button>
               </NavLink>
               <NavLink to="/pickTrivia">
-                <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }}
+                  onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>
                   Quiz
                 </Button>
               </NavLink>
               <NavLink to="/jokes">
-                <Button variant="contained" color="secondary" sx={{ ml: 1 }}>
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }}
+                  onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>
                   Jokes
                 </Button>
               </NavLink>
               <NavLink to="/search">
-                <Button variant="contained" color="secondary" sx={{ ml: 1 }} >
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }} 
+                  onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>
                   Search</Button>
               </NavLink>
             </ThemeProvider>

@@ -76,8 +76,16 @@ export default function ChatWithHistory() {
         onChange={(e) => setQuery(e.target.value)}
 
       />
-      <button onClick={sendQuery} disabled={loading}>
-        {loading ? "Sending..." : "Send"}
+      <button 
+      onClick={sendQuery} 
+      disabled={loading}>
+        {loading ?  (
+    <>
+      <div className="spinner"></div> Sending...
+    </>
+  ) : (
+    "Send"
+  )}
       </button>
     </div>
   );
