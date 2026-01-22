@@ -19,7 +19,7 @@ export default function AiPictures() {
                     headers: {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
-                    params: { model: "flux" },
+                    params: { model: "zimage" },
                 }
             );
 
@@ -56,7 +56,7 @@ export default function AiPictures() {
                 {loading ? "Generating..." : "Generate Image"}
             </button>
             <br />
-            {loading && <div style={{marginTop: "15px"}}>
+            {loading && <div style={{ marginTop: "15px" }}>
                 <div className="spinner"></div>
                 ... Please wait, the image is being generated.</div>}
 
