@@ -5,6 +5,7 @@ import axios from "axios";
 import BackToTop from "../BackToTop";
 import { ofetch } from 'ofetch'
 import ChatWithHistory from "./ChatWithHistory";
+import AiPictures from "./AiPictures";
 
 
 
@@ -41,7 +42,7 @@ const Aigenerator = () => {
         try {
             const response = await axios.get(urlM);
             const data = response
-            console.log("ai modeli teksta", data);
+       
 
         } catch (err) {
             setError(err);
@@ -195,6 +196,7 @@ const Aigenerator = () => {
                 </div>
             </div>
                 <ChatWithHistory />
+                <AiPictures />
             <div className="place"></div>
             <BackToTop />
 

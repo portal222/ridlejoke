@@ -5,6 +5,7 @@ export default function ChatWithHistory() {
   const [messages, setMessages] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
+  const [totalTok, setTotalTok] = useState(0);
 
   const sendQuery = async () => {
     if (!query.trim()) return;
@@ -20,22 +21,25 @@ export default function ChatWithHistory() {
         {
           model: "qwen-coder",
           messages: newMessages,
-          max_tokens:  8192,
+          max_tokens: 8192,
           temperature: 1
         },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv" 
+            Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv"
           }
         }
       );
 
-      const answer = data.choices?.[0]?.message?.content || "Nema odgovora.";
+      const answer = data.choices?.[0]?.message?.content || "No answer.";
+      const tokens = data.usage.total_tokens;
+      console.log("odgovora vestackog", data);
+      setTotalTok(tokens);
 
       setMessages([...newMessages, { role: "assistant", content: answer }]);
     } catch (error) {
-      setMessages([...newMessages, { role: "assistant", content: "Greška: " + error.message }]);
+      setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {
       setLoading(false);
     }
@@ -59,34 +63,38 @@ export default function ChatWithHistory() {
     <div className="mainBook">
       <div className="polli">Chat with Qwen from Alibaba</div>
 
-      <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px"}} className="total">
+      <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }} className="total">
         {messages.map((msg, idx) => (
           <div key={idx} style={{ marginBottom: "8px" }}>
             <strong>{msg.role === "user" ? "You:" : "AI:"}</strong>{" "}
-            <span   dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
+            <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
       </div>
 
       <textarea
         rows="3"
-        style={{ width: "70%", padding: "10px", margin: "10px"}}
+        style={{ width: "70%", padding: "10px", margin: "10px" }}
         placeholder="Enter your query..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-
       />
-      <button 
-      onClick={sendQuery} 
-      disabled={loading}>
-        {loading ?  (
-    <>
-      <div className="spinner"></div> Sending...
-    </>
-  ) : (
-    "Send"
-  )}
+      <br />
+      <button
+        onClick={sendQuery}
+        disabled={loading}>
+        {loading ? (
+          <>
+            <div className="spinner"></div> Sending...
+          </>
+        ) : (
+          "Send"
+        )}
       </button>
+       <br />
+      <div style={{ fontSize: "10px", padding: "10px" }}>
+        total tokens {totalTok} from a maximum of 8192
+      </div>
     </div>
   );
 }
