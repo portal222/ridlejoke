@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function ChatWithHistory() {
@@ -6,6 +6,8 @@ export default function ChatWithHistory() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [totalTok, setTotalTok] = useState(0);
+  const [aiModels, setAiModels] = useState([]);
+  const [selectedModel, setSelectedModel] = useState("gemini");
 
   const sendQuery = async () => {
     if (!query.trim()) return;
@@ -19,7 +21,7 @@ export default function ChatWithHistory() {
       const { data } = await axios.post(
         "https://gen.pollinations.ai/v1/chat/completions",
         {
-          model: "qwen-coder",
+          model: selectedModel,
           messages: newMessages,
           max_tokens: 8192,
           temperature: 1
@@ -34,7 +36,7 @@ export default function ChatWithHistory() {
 
       const answer = data.choices?.[0]?.message?.content || "No answer.";
       const tokens = data.usage.total_tokens;
-      console.log("odgovora vestackog", data);
+
       setTotalTok(tokens);
 
       setMessages([...newMessages, { role: "assistant", content: answer }]);
@@ -44,6 +46,25 @@ export default function ChatWithHistory() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    getModels();
+  }, []);
+
+
+  const getModels = async () => {
+    const urlM = `https://gen.pollinations.ai/text/models?key=pk_N3F6nCawqxWe8khl`
+
+    try {
+      const response = await axios.get(urlM);
+      const data = response.data
+
+      setAiModels(data);
+
+    } catch (err) {
+      setError(err);
+    }
+  }
 
   const renderWithLinks = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -61,7 +82,23 @@ export default function ChatWithHistory() {
 
   return (
     <div className="mainBook">
-      <div className="polli">Chat with Qwen from Alibaba</div>
+      <div className="polli">Chat with {selectedModel} 
+  
+      </div>
+      <div className="polli2">
+        Or choose another model, some don't work for some reason
+      </div>
+      <div className="aiGrid">
+        {aiModels.map((mod, id) => (
+          <div key={id} className="aiButt"><a
+            onClick={() => setSelectedModel(mod.name)}
+          >{mod.name}</a>
+            <p>
+              {mod.description}
+            </p>
+          </div>
+        ))}
+      </div>
 
       <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }} className="total">
         {messages.map((msg, idx) => (
@@ -91,7 +128,7 @@ export default function ChatWithHistory() {
           "Send"
         )}
       </button>
-       <br />
+      <br />
       <div style={{ fontSize: "10px", padding: "10px" }}>
         total tokens {totalTok} from a maximum of 8192
       </div>

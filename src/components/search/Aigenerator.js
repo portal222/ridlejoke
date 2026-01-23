@@ -37,13 +37,13 @@ const Aigenerator = () => {
     }, [searchStringValue]);
 
     const getModels = async () => {
-        const urlM = `https://gen.pollinations.ai/image/models?key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/models?key=pk_N3F6nCawqxWe8khl`
 
         try {
             const response = await axios.get(urlM);
             const data = response
        
-          
+          console.log("modeli teksta", data);
 
         } catch (err) {
             setError(err);
