@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import modelsJson from "../../../public/models.json";
 
 export default function ChatWithHistory() {
   const [messages, setMessages] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [totalTok, setTotalTok] = useState(0);
-  const [aiModels, setAiModels] = useState([]);
-  const [selectedModel, setSelectedModel] = useState("gemini");
+  const [selectedModel, setSelectedModel] = useState("gemini-fast");
+  const [selectedDescription, setSelectedDescription] = useState("Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective");
+
 
   const sendQuery = async () => {
     if (!query.trim()) return;
@@ -47,24 +49,6 @@ export default function ChatWithHistory() {
     }
   };
 
-  useEffect(() => {
-    getModels();
-  }, []);
-
-
-  const getModels = async () => {
-    const urlM = `https://gen.pollinations.ai/text/models?key=pk_N3F6nCawqxWe8khl`
-
-    try {
-      const response = await axios.get(urlM);
-      const data = response.data
-
-      setAiModels(data);
-
-    } catch (err) {
-      setError(err);
-    }
-  }
 
   const renderWithLinks = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -82,20 +66,24 @@ export default function ChatWithHistory() {
 
   return (
     <div className="mainBook">
-      <div className="polli">Chat with {selectedModel} 
-  
+      <div className="polli">Chat with {selectedModel}
+
       </div>
       <div className="polli2">
-        Or choose another model, some don't work for some reason
+        {selectedDescription}
+      </div>
+      <div className="polli2">
+        Or choose another model
       </div>
       <div className="aiGrid">
-        {aiModels.map((mod, id) => (
+        {modelsJson.map((mod, id) => (
           <div key={id} className="aiButt"><a
-            onClick={() => setSelectedModel(mod.name)}
+            onClick={() => {
+              setSelectedModel(mod.name);
+              setSelectedDescription(mod.description);
+            }}
           >{mod.name}</a>
-            <p>
-              {mod.description}
-            </p>
+
           </div>
         ))}
       </div>
@@ -130,7 +118,7 @@ export default function ChatWithHistory() {
       </button>
       <br />
       <div style={{ fontSize: "10px", padding: "10px" }}>
-        total tokens {totalTok} from a maximum of 8192
+        total tokens {totalTok}
       </div>
     </div>
   );

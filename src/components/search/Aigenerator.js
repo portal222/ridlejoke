@@ -42,8 +42,6 @@ const Aigenerator = () => {
         try {
             const response = await axios.get(urlM);
             const data = response
-       
-          console.log("modeli teksta", data);
 
         } catch (err) {
             setError(err);
@@ -196,8 +194,8 @@ const Aigenerator = () => {
 
                 </div>
             </div>
-                <ChatWithHistory />
-                <AiPictures />
+            <ChatWithHistory />
+            <AiPictures />
             <div className="place"></div>
             <BackToTop />
 

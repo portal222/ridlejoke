@@ -1053,17 +1053,20 @@ body {
         gap: 15px;
 
         .aiButt {
-            background-color: #91afc8;
+            background-color: #c0d3e3;
             border-radius: 10px;
             padding: 10px;
+            border: 1px solid #014780;
 
             a {
                 font-size: 20px;
+                font-weight: bold;
                 cursor: pointer;
                 color: #014780;
 
+
                 &:hover {
-                    color: #1de9b6;
+                    color: #64b5f6;
                 }
 
             }
@@ -2406,7 +2409,7 @@ body {
         .aiGrid {
             padding: 10px;
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: auto auto;
             gap: 10px;
 
             .aiButt {

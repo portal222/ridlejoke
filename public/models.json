@@ -1,0 +1,42 @@
+[
+    {
+        "description": "Amazon Nova Micro - Ultra Fast & Ultra Cheap",
+        "name": "nova-fast"
+    },
+    {
+        "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
+        "name": "gemini-fast"
+    },
+    {
+        "description": "Mistral Small 3.2 24B - Efficient & Cost-Effective",
+        "name": "mistral"
+    },
+    {
+        "description": "Qwen3 Coder 30B - Specialized for Code Generation",
+        "name": "qwen-coder"
+    },
+    {
+        "description": "xAI Grok 4 Fast - High Speed & Real-Time",
+        "name": "grok"
+    },
+    {
+        "description": "OpenAI GPT-5 Mini - Fast & Balanced",
+        "name": "openai"
+    },
+    {
+        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
+        "name": "nomnom"
+    },
+    {
+        "description": "Perplexity Sonar - Fast & Affordable with Web Search",
+        "name": "perplexity-fast"
+    },
+    {
+        "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
+        "name": "chickytutor"
+    },
+    {
+        "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
+        "name": "kimi"
+    }
+]
