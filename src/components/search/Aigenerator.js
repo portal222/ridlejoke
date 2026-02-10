@@ -6,6 +6,7 @@ import BackToTop from "../BackToTop";
 import { ofetch } from 'ofetch'
 import ChatWithHistory from "./ChatWithHistory";
 import AiPictures from "./AiPictures";
+import ChatWithHistoryAir from "./ChatWithHistoryAir";
 
 
 
@@ -195,6 +196,7 @@ const Aigenerator = () => {
                 </div>
             </div>
             <ChatWithHistory />
+            <ChatWithHistoryAir />
             <AiPictures />
             <div className="place"></div>
             <BackToTop />
