@@ -13,11 +13,11 @@ export default function AiPictures() {
 
         try {
             const response = await axios.get(
-                `https://gen.pollinations.ai/image/${encodeURIComponent(prompt)}`,
+                `https://api.airforce/v1/images/${encodeURIComponent(prompt)}`,
                 {
                     responseType: "blob",
                     headers: {
-                        Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
+                        Authorization: "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY",
                     },
                     params: { model: "zimage" },
                 }
@@ -40,6 +40,13 @@ export default function AiPictures() {
         };
     }, [image]);
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            generateImage();
+        }
+    };
+
     return (
         <div className="mainBook">
             <div className="polli">AI Picture Generator</div>
@@ -50,6 +57,8 @@ export default function AiPictures() {
                 placeholder="Enter prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
+                onKeyDown={handleKeyDown}
+
             />
             <br />
             <button onClick={generateImage} disabled={loading}>

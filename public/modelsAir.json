@@ -7,10 +7,7 @@
         "description": "AirForce, international team of freelancers",
         "name": "char-v2"
     },
-        {
-        "description": "Inception, part of Inception’s team led by Stefano Ermon (co‑inventor of diffusion models, flash attention, and DPO), Aditya Grover (co‑inventor of node2vec and decision transformers), and Volodymyr Kuleshov (former co‑founder and CTO of Afresh Technologies). Our engineers come from Google DeepMind, Meta AI, Microsoft AI, and OpenAI, and we are currently deploying these models at Fortune 500 companies.",
-        "name": "mercury-coder"
-    },
+       
           {
         "description": "Airfоrce LLaMA",
         "name": "plutotext-r3-emotional"
@@ -22,6 +19,10 @@
             {
         "description": "META company, trained until August 2023",
         "name": "llama-4-maverick"
+    },
+     {
+        "description": "Inception, part of Inception’s team led by Stefano Ermon (co‑inventor of diffusion models, flash attention, and DPO), Aditya Grover (co‑inventor of node2vec and decision transformers), and Volodymyr Kuleshov (former co‑founder and CTO of Afresh Technologies). Our engineers come from Google DeepMind, Meta AI, Microsoft AI, and OpenAI, and we are currently deploying these models at Fortune 500 companies.",
+        "name": "mercury-coder"
     },
     {
         "description": "ByteDance (Bejing), trained until September 2023",

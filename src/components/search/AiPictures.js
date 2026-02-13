@@ -4,6 +4,7 @@ import axios from "axios";
 export default function AiPictures() {
     const [prompt, setPrompt] = useState("");
     const [image, setImage] = useState(null);
+    const [image2, setImage2] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const generateImage = async () => {
@@ -13,18 +14,48 @@ export default function AiPictures() {
 
         try {
             const response = await axios.get(
-                `https://api.airforce/v1/images/${encodeURIComponent(prompt)}`,
+                `https://gen.pollinations.ai/image/${encodeURIComponent(prompt)}`,
                 {
                     responseType: "blob",
                     headers: {
-                        Authorization: "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY",
+                        Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
-                    params: { model: "imagen-4" },
+                    params: { model: "gptimage" },
                 }
             );
 
             const imageUrl = URL.createObjectURL(response.data);
             setImage(imageUrl);
+            console.log("slike broj 1", response)
+
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+     const generateImage2 = async () => {
+        if (!prompt.trim()) return;
+        setLoading(true);
+        setImage(null);
+
+        
+        try {
+            const response = await axios.get(
+                `https://gen.pollinations.ai/image/${encodeURIComponent(prompt)}`,
+                {
+                    responseType: "blob",
+                    headers: {
+                        Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
+                    },
+                    params: { model: "imagen-4" },
+                }
+            );
+            
+            const imageUrl = URL.createObjectURL(response.data);
+            setImage2(imageUrl);
+            console.log("slike broj 2", response)
         } catch (error) {
             console.error(error);
         } finally {
@@ -40,6 +71,22 @@ export default function AiPictures() {
         };
     }, [image]);
 
+        useEffect(() => {
+        return () => {
+            if (image2) {
+                URL.revokeObjectURL(image2);
+            }
+        };
+    }, [image2]);
+
+        const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            generateImage();
+            generateImage2();
+        }
+    };
+
     return (
         <div className="mainBook">
             <div className="polli">AI Picture Generator</div>
@@ -50,6 +97,8 @@ export default function AiPictures() {
                 placeholder="Enter prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
+                onKeyDown={handleKeyDown}
+
             />
             <br />
             <button onClick={generateImage} disabled={loading}>
@@ -69,6 +118,29 @@ export default function AiPictures() {
                     />
                 </div>
             )}
+            <p style={{textAlign: "right",
+                padding: "10px",
+                fontSize: "16px",
+                color: "gray"
+            }}>
+                GPT Image 1 Mini
+            </p>
+                    {image2 && (
+                <div style={{ marginTop: "20px" }}>
+                    <img
+                        src={image2}
+                        alt="Generated"
+                        style={{ maxWidth: "100%", borderRadius: "8px" }}
+                    />
+                </div>
+            )}
+               <p style={{textAlign: "right",
+                padding: "10px",
+                fontSize: "16px",
+                color: "gray"
+            }}>
+                Imagen 4 (alpha)
+            </p>
         </div>
     );
 }
