@@ -1,10 +1,10 @@
 [
        {
-        "description": "step-3.5-flash:free",
+        "description": "StepFun 阶跃星辰(China) platform llmplayground.net, trained until March 2024",
         "name": "step-3.5-flash:free"
     },
       {
-        "description": "AirForce",
+        "description": "AirForce, international team of freelancers",
         "name": "char-v2"
     },
         {
@@ -16,27 +16,27 @@
         "name": "plutotext-r3-emotional"
     },
            {
-        "description": "cohere",
+        "description": "Cohere (Canada, LLM) trained until March 2024",
         "name": "command-roleplay"
     },
             {
-        "description": "META company",
+        "description": "META company, trained until August 2023",
         "name": "llama-4-maverick"
     },
     {
-        "description": "openrouter",
-        "name": "pony-alpha:free"
+        "description": "ByteDance (Bejing), trained until September 2023",
+        "name": "seed-rp"
     },
         {
-        "description": "AirForce",
-        "name": "meowgpt"
+        "description": "SalesForce, Anthropic (Palo Alto USA) ",
+        "name": "moirai-agent"
     },
         {
-        "description": "google meibi",
+        "description": "google maybe",
         "name": "bard"
     },
       {
-        "description": "Xiaomi",
+        "description": "Xiaomi, cloud",
         "name": "mimo-v2-flash"
     }
 ]

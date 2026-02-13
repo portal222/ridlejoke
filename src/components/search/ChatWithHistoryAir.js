@@ -8,9 +8,10 @@ export default function ChatWithHistoryAir() {
   const [loading, setLoading] = useState(false);
   const [totalTok, setTotalTok] = useState(0);
   const [selectedModel, setSelectedModel] = useState("step-3.5-flash:free");
-  const [selectedDescription, setSelectedDescription] = useState("Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective");
+  const [selectedDescription, setSelectedDescription] = useState("StepFun 阶跃星辰(China) platform llmplayground.net");
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
+  const [timestamp, setTimestamp] = useState();
 
   useEffect(() => {
     let interval;
@@ -51,15 +52,19 @@ export default function ChatWithHistoryAir() {
         }
       );
 
+
+
+
       const answer = data.choices?.[0]?.message?.content || "No answer.";
       const tokens = data.usage.total_tokens;
 
       setTotalTok(tokens);
 
       setMessages([...newMessages, { role: "assistant", content: answer }]);
-
+      console.log("odgovora air force", data);
       setSeconds(0);
       setTimerActive(true);
+      setTimestamp(data.created)
 
 
     } catch (error) {
@@ -69,6 +74,15 @@ export default function ChatWithHistoryAir() {
     }
 
 
+  };
+
+  const date = new Date(timestamp * 1000);
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendQuery();
+    }
   };
 
 
@@ -93,6 +107,7 @@ export default function ChatWithHistoryAir() {
       </div>
       <div className="polli2">
         {selectedDescription}
+
       </div>
       <div className="polli2">
         Or choose another model
@@ -117,6 +132,10 @@ export default function ChatWithHistoryAir() {
             <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
+        {date && (
+          <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
+        )}
+
       </div>
 
       <textarea
@@ -125,6 +144,7 @@ export default function ChatWithHistoryAir() {
         placeholder="Enter your query..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <br />
       <button
@@ -146,7 +166,7 @@ export default function ChatWithHistoryAir() {
         </p>
         {timerActive && (
           <p style={{ fontSize: "18px", margin: "10px" }}>
-            ⏱ {seconds}
+            ⏱ {seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
           </p>
         )}
       </div>

@@ -48,8 +48,8 @@
         "name": "minimax"
     },
         {
-        "description": "MIDIjourney",
-        "name": "midijourney"
+        "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
+        "name": "openai-large"
     },
            {
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",

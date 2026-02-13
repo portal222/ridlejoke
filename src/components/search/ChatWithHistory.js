@@ -9,6 +9,7 @@ export default function ChatWithHistory() {
   const [totalTok, setTotalTok] = useState(0);
   const [selectedModel, setSelectedModel] = useState("gemini-fast");
   const [selectedDescription, setSelectedDescription] = useState("Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective");
+  const [timestamp, setTimestamp] = useState();
 
 
   const sendQuery = async () => {
@@ -42,10 +43,22 @@ export default function ChatWithHistory() {
       setTotalTok(tokens);
 
       setMessages([...newMessages, { role: "assistant", content: answer }]);
+      setTimestamp(data.created)
+
+
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const date = new Date(timestamp * 1000);
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendQuery();
     }
   };
 
@@ -95,6 +108,8 @@ export default function ChatWithHistory() {
             <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
+        <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
+
       </div>
 
       <textarea
@@ -103,6 +118,7 @@ export default function ChatWithHistory() {
         placeholder="Enter your query..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <br />
       <button
