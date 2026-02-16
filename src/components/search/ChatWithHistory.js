@@ -45,7 +45,6 @@ export default function ChatWithHistory() {
       setMessages([...newMessages, { role: "assistant", content: answer }]);
       setTimestamp(data.created)
 
-
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {
@@ -61,7 +60,6 @@ export default function ChatWithHistory() {
       sendQuery();
     }
   };
-
 
   const renderWithLinks = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;

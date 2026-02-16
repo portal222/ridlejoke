@@ -15,6 +15,11 @@
         "description": "Qwen3 Coder 30B - Specialized for Code Generation",
         "name": "qwen-coder"
     },
+      {
+        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
+        "name": "nomnom"
+    },
+      
     {
         "description": "xAI Grok 4 Fast - High Speed & Real-Time",
         "name": "grok"

@@ -6,6 +6,7 @@ export default function AiPictures() {
     const [image, setImage] = useState(null);
     const [image2, setImage2] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [loading2, setLoading2] = useState(false);
 
     const generateImage = async () => {
         if (!prompt.trim()) return;
@@ -20,13 +21,12 @@ export default function AiPictures() {
                     headers: {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
-                    params: { model: "gptimage" },
+                    params: { model: "imagen-4" },
                 }
             );
 
             const imageUrl = URL.createObjectURL(response.data);
             setImage(imageUrl);
-            console.log("slike broj 1", response)
 
         } catch (error) {
             console.error(error);
@@ -35,12 +35,12 @@ export default function AiPictures() {
         }
     };
 
-     const generateImage2 = async () => {
+    const generateImage2 = async () => {
         if (!prompt.trim()) return;
-        setLoading(true);
-        setImage(null);
+        setLoading2(true);
+        setImage2(null);
 
-        
+
         try {
             const response = await axios.get(
                 `https://gen.pollinations.ai/image/${encodeURIComponent(prompt)}`,
@@ -49,17 +49,17 @@ export default function AiPictures() {
                     headers: {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
-                    params: { model: "imagen-4" },
+                    params: { model: "gptimage" },
                 }
             );
-            
+
             const imageUrl = URL.createObjectURL(response.data);
             setImage2(imageUrl);
-            console.log("slike broj 2", response)
+       
         } catch (error) {
             console.error(error);
         } finally {
-            setLoading(false);
+            setLoading2(false);
         }
     };
 
@@ -71,7 +71,7 @@ export default function AiPictures() {
         };
     }, [image]);
 
-        useEffect(() => {
+    useEffect(() => {
         return () => {
             if (image2) {
                 URL.revokeObjectURL(image2);
@@ -79,7 +79,7 @@ export default function AiPictures() {
         };
     }, [image2]);
 
-        const handleKeyDown = (e) => {
+    const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
             generateImage();
@@ -107,7 +107,9 @@ export default function AiPictures() {
             <br />
             {loading && <div style={{ marginTop: "15px" }}>
                 <div className="spinner"></div>
-                ... Please wait, the image is being generated.</div>}
+                ... Please wait, the image is being generated.
+                <br/>
+                 This version is still under development so it sometimes doesn't give an answer..</div>}
 
             {image && (
                 <div style={{ marginTop: "20px" }}>
@@ -118,14 +120,22 @@ export default function AiPictures() {
                     />
                 </div>
             )}
-            <p style={{textAlign: "right",
+            <p style={{
+                textAlign: "right",
                 padding: "10px",
                 fontSize: "16px",
                 color: "gray"
             }}>
-                GPT Image 1 Mini
+                  Imagen 4 (alpha)
+             
             </p>
-                    {image2 && (
+
+             <br />
+            {loading2 && <div style={{ marginTop: "15px" }}>
+                <div className="spinner"></div>
+                ... Please wait, the image two is being generated.</div>}
+      
+            {image2 && (
                 <div style={{ marginTop: "20px" }}>
                     <img
                         src={image2}
@@ -134,12 +144,13 @@ export default function AiPictures() {
                     />
                 </div>
             )}
-               <p style={{textAlign: "right",
+            <p style={{
+                textAlign: "right",
                 padding: "10px",
                 fontSize: "16px",
                 color: "gray"
             }}>
-                Imagen 4 (alpha)
+                  GPT Image 1 Mini
             </p>
         </div>
     );

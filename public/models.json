@@ -7,7 +7,7 @@
         "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
         "name": "gemini-fast"
     },
-       {
+    {
         "description": "Google Gemini 3 Flash",
         "name": "gemini-search"
     },
@@ -24,14 +24,14 @@
         "name": "openai"
     },
     {
-        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
-        "name": "nomnom"
+        "description": "OpenAI GPT-5 Nano, trained until June 2024",
+        "name": "openai-fast"
     },
     {
         "description": "Perplexity Sonar - Fast & Affordable with Web Search",
         "name": "perplexity-fast"
     },
-        {
+    {
         "description": "Z.ai GLM-4.7",
         "name": "glm"
     },
@@ -43,15 +43,15 @@
         "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
         "name": "kimi"
     },
-      {
+    {
         "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
         "name": "minimax"
     },
-        {
+    {
         "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
         "name": "openai-large"
     },
-           {
+    {
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
         "name": "deepseek"
     },
@@ -59,5 +59,4 @@
         "description": "Anthropic Claude Haiku 4.5",
         "name": "claude-fast"
     }
-    
 ]
