@@ -13,33 +13,51 @@ export default function AiPictures() {
         setLoading(true);
         setImage(null);
 
-        try {
-            const response = await axios.get(
-                `https://gen.pollinations.ai/image/${encodeURIComponent(prompt)}`,
-                {
-                    responseType: "blob",
-                    headers: {
-                        Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
-                    },
-                    params: { model: "imagen-4" },
+        const response = await fetch("https://api.airforce/v1/images/generations", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "imagen-4",
+                prompt: prompt,
+                n: 1,
+                response_format: "url",
+                sse: true,
+            })
+        }).then(async response => {
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let accumulatedData = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                accumulatedData += decoder.decode(value, { stream: true });
+                const lines = accumulatedData.split('\n\n');
+                accumulatedData = lines.pop();
+
+                for (const line of lines) {
+                    if (line.startsWith('data: ')) {
+                        const dataStr = line.slice(6);
+                        if (dataStr === '[DONE]') continue;
+                        if (dataStr === ': keepalive') continue;
+
+                        const imageUrl = JSON.parse(dataStr)
+                        setImage(imageUrl.data?.[0].url)
+                        setLoading(false);
+                    }
                 }
-            );
-
-            const imageUrl = URL.createObjectURL(response.data);
-            setImage(imageUrl);
-
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
-    };
+            }
+        });
+    }
 
     const generateImage2 = async () => {
         if (!prompt.trim()) return;
         setLoading2(true);
         setImage2(null);
-
 
         try {
             const response = await axios.get(
@@ -55,7 +73,7 @@ export default function AiPictures() {
 
             const imageUrl = URL.createObjectURL(response.data);
             setImage2(imageUrl);
-       
+
         } catch (error) {
             console.error(error);
         } finally {
@@ -87,6 +105,15 @@ export default function AiPictures() {
         }
     };
 
+    const handleGenerate = () => {
+        generateImage();
+        generateImage2();
+    };
+
+    <button onClick={handleGenerate} disabled={loading}>
+        {loading ? "Generating..." : "Generate Image"}
+    </button>
+
     return (
         <div className="mainBook">
             <div className="polli">AI Picture Generator</div>
@@ -101,15 +128,15 @@ export default function AiPictures() {
 
             />
             <br />
-            <button onClick={generateImage} disabled={loading}>
+            <button onClick={handleGenerate} disabled={loading}>
                 {loading ? "Generating..." : "Generate Image"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>
                 <div className="spinner"></div>
                 ... Please wait, the image is being generated.
-                <br/>
-                 This version is still under development so it sometimes doesn't give an answer..</div>}
+                <br />
+                This version is still under development, so he needs more time and sometimes doesn't give an answer..</div>}
 
             {image && (
                 <div style={{ marginTop: "20px" }}>
@@ -126,15 +153,15 @@ export default function AiPictures() {
                 fontSize: "16px",
                 color: "gray"
             }}>
-                  Imagen 4 (alpha)
-             
+                Imagen 4 (alpha)
+
             </p>
 
-             <br />
+            <br />
             {loading2 && <div style={{ marginTop: "15px" }}>
                 <div className="spinner"></div>
                 ... Please wait, the image two is being generated.</div>}
-      
+
             {image2 && (
                 <div style={{ marginTop: "20px" }}>
                     <img
@@ -150,7 +177,7 @@ export default function AiPictures() {
                 fontSize: "16px",
                 color: "gray"
             }}>
-                  GPT Image 1 Mini
+                GPT Image 1 Mini
             </p>
         </div>
     );
