@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import JokePlace from "../jokes/JokePlace";
 
 const PickTrivia = () => {
 
@@ -65,7 +66,8 @@ const PickTrivia = () => {
                 </div>
 
             </div >
-            <div className="place"></div>
+
+            <JokePlace />
         </>
     )
 }

@@ -80,15 +80,15 @@ const Navigation = () => {
                   onClick={() => {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}>
-                  Quiz
+                  Q & J
                 </Button>
               </NavLink>
-              <NavLink to="/jokes">
+              <NavLink to="/aiGen">
                 <Button variant="contained" color="secondary" sx={{ ml: 1 }}
                   onClick={() => {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}>
-                  Jokes
+                  AI
                 </Button>
               </NavLink>
               <NavLink to="/search">
@@ -105,7 +105,7 @@ const Navigation = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPlace />} />
           <Route path="/poznati" element={<ResultsCelebs />} />
-          <Route path="/jokes" element={<JokePlace />} />
+          <Route path="/aiGen" element={<Aigenerator />} />
           <Route path="/pickTrivia" element={<PickTrivia />} />
           <Route path="/logo" element={<ResultsLogo />} />
           <Route path="/dictionary" element={<ResultsDictionary />} />

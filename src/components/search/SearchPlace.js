@@ -30,8 +30,6 @@ const SearchPlace = () => {
                     <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />
                     <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
                     <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                    <div className="history2">Test Pollinations Ai, For each query you get five answers, from various AI. The prompt can be in different languages. </div>
-                    <SearchAiGen placeholder={'Ai text generator'} linkTo={'/aiGenerator'} />
                 </div>
                 <div>
                     <div className="history">Search History</div>

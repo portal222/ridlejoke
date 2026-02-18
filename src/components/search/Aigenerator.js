@@ -3,14 +3,10 @@ import GlobalContext from "../GlobalContext";
 import SearchAiGen from "./SearchAiGen";
 import axios from "axios";
 import BackToTop from "../BackToTop";
-import { ofetch } from 'ofetch'
 import ChatWithHistory from "./ChatWithHistory";
 import AiPictures from "./AiPictures";
 import ChatWithHistoryAir from "./ChatWithHistoryAir";
 import AiVideo from "./AiVideo";
-
-
-
 
 const Aigenerator = () => {
 
@@ -19,15 +15,10 @@ const Aigenerator = () => {
     const [aitextPer, setAitextPer] = useState([]);
     const [aitextLar, setAitextLar] = useState([]);
     const [aitextQwen, setAitextQwen] = useState([]);
-
-    const [imageUrl, setImageUrl] = useState(null);
-
     const [error, setError] = useState(null);
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
-
-
 
     useEffect(() => {
         getModels();
@@ -117,23 +108,19 @@ const Aigenerator = () => {
         }
     }
 
-
-
     function makeLinks(text) {
         return text.replace(
             /(https?:\/\/[^\s]+)/g,
             (url) => {
                 try {
-                    const domain = new URL(url).hostname; // izdvajamo samo domen
+                    const domain = new URL(url).hostname; 
                     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${domain}</a>`;
                 } catch {
-                    return url; // fallback ako URL nije validan
+                    return url;
                 }
             }
         );
     }
-
-
 
     return (
         <>
@@ -189,20 +176,15 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-
                 <br></br>
-
                 <div style={{ height: "20px" }}>
-
                 </div>
             </div>
             <ChatWithHistory />
             <ChatWithHistoryAir />
             <AiPictures />
             <AiVideo />
-         
             <BackToTop />
-
         </>
     )
 }
