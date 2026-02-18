@@ -121,7 +121,7 @@ export default function AiPictures() {
             <textarea
                 rows="3"
                 style={{ width: "70%", padding: "10px", margin: "10px" }}
-                placeholder="Enter prompt"
+                placeholder="Enter prompt and wait for two images"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -129,7 +129,7 @@ export default function AiPictures() {
             />
             <br />
             <button onClick={handleGenerate} disabled={loading}>
-                {loading ? "Generating..." : "Generate Image"}
+                {loading ? "Generating..." : "Generate Images"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>

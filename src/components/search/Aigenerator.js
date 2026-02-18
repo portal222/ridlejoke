@@ -7,6 +7,7 @@ import ChatWithHistory from "./ChatWithHistory";
 import AiPictures from "./AiPictures";
 import ChatWithHistoryAir from "./ChatWithHistoryAir";
 import AiVideo from "./AiVideo";
+import AiPolliVid from "./AiPolliVid";
 
 const Aigenerator = () => {
 
@@ -113,7 +114,7 @@ const Aigenerator = () => {
             /(https?:\/\/[^\s]+)/g,
             (url) => {
                 try {
-                    const domain = new URL(url).hostname; 
+                    const domain = new URL(url).hostname;
                     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${domain}</a>`;
                 } catch {
                     return url;
@@ -126,12 +127,17 @@ const Aigenerator = () => {
         <>
             <div className="mainBook">
                 <div className="aiTitle" >
-                    <p>Ai generated text for</p>
+                    <p className="intro">Test various Artificial Intelligence models, get five answers for one query, or chat with them. You can use any language in the prompt.
+                        And generate images and video.
+                    </p>
                     <div className="aiSearch">
-                        {searchStringValue}
-                    </div>
-                    <div style={{ padding: "5px" }}>
-                        <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
+
+                        <div style={{ padding: "5px" }}>
+                            <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
+                        </div>
+                        <div style={{padding: "15px"}}>
+                            {searchStringValue}
+                        </div>
                     </div>
                 </div>
 
@@ -184,6 +190,7 @@ const Aigenerator = () => {
             <ChatWithHistoryAir />
             <AiPictures />
             <AiVideo />
+            <AiPolliVid />
             <BackToTop />
         </>
     )

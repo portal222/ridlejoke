@@ -21,11 +21,10 @@ function AiVideo() {
                 model: "grok-imagine-video",
                 prompt: prompt,
                 n: 1,
-                // size: "1024x1024",
+
                 response_format: "url",
                 sse: true,
-                // mode: "normal",
-                // aspectRatio: "3:2"
+
             })
         });
 
@@ -48,7 +47,7 @@ function AiVideo() {
                     if (dataStr === ": keepalive") continue;
 
                     const parsed = JSON.parse(dataStr);
-               
+
                     if (parsed.data && parsed.data[0]?.url) {
                         setVideoUrl(parsed.data[0].url);
                     }
@@ -63,7 +62,7 @@ function AiVideo() {
         if (e.key === 'Enter') {
             e.preventDefault();
             generateVideo();
-         
+
         }
     };
 
@@ -74,7 +73,7 @@ function AiVideo() {
             <textarea
                 rows="3"
                 style={{ width: "70%", padding: "10px", margin: "10px" }}
-                placeholder="Enter prompt"
+                placeholder="Еnter prompt"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -82,17 +81,21 @@ function AiVideo() {
             />
             <br />
             <button onClick={generateVideo} disabled={loading}>
-                {loading ? "Generating..." : "Generate Video"}
+                {loading ? "Generating..." : "Generate 6 sec Video"}
             </button>
-            <br/>
+            <br />
             {loading && <div style={{ marginTop: "15px" }}>
                 <div className="spinner"></div>
                 ... Please wait, the Video is being generated.</div>}
 
             {videoUrl && (
                 <div>
-                    <h3 style={{padding: "10px"}}>Generated Video:</h3>
-                    <video src={videoUrl} controls width="600" />
+                    <h3 style={{ padding: "10px" }}>Generated Video:</h3>
+                    <video
+                        src={videoUrl}
+                        controls
+                        style={{ maxWidth: "100%" }}
+                    />
                 </div>
             )}
         </div>
