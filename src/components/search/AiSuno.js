@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-function AiVideo() {
+function AiSuno() {
     const [prompt, setPrompt] = useState("");
-
     const [videoUrl, setVideoUrl] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -18,14 +17,11 @@ function AiVideo() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "grok-imagine-video",
-         
+                model: "suno-v5",
                 prompt: prompt,
                 n: 1,
-
                 response_format: "url",
                 sse: true,
-
             })
         });
 
@@ -51,6 +47,7 @@ function AiVideo() {
 
                     if (parsed.data && parsed.data[0]?.url) {
                         setVideoUrl(parsed.data[0].url);
+
                     }
                 }
             }
@@ -63,13 +60,12 @@ function AiVideo() {
         if (e.key === 'Enter') {
             e.preventDefault();
             generateVideo();
-
         }
     };
 
     return (
         <div className="mainBook">
-            <div className="polli">Grok Video Generator</div>
+            <div className="polli">Suno 5 Music Generator</div>
             <h2></h2>
             <textarea
                 rows="3"
@@ -82,16 +78,16 @@ function AiVideo() {
             />
             <br />
             <button onClick={generateVideo} disabled={loading}>
-                {loading ? "Generating..." : "Generate 6 sec Video"}
+                {loading ? "Generating..." : "Generate Music"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>
                 <div className="spinner"></div>
-                ... Please wait, the Video is being generated.</div>}
+                ... Please wait it takes a little longer, the Music is being generated.</div>}
 
             {videoUrl && (
                 <div>
-                    <h3 style={{ padding: "10px" }}>Generated Video:</h3>
+                    <h3 style={{ padding: "10px" }}>Generated Music:</h3>
                     <video
                         src={videoUrl}
                         controls
@@ -103,4 +99,4 @@ function AiVideo() {
     );
 }
 
-export default AiVideo;
+export default AiSuno;

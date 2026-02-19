@@ -20,7 +20,7 @@ export default function AiPictures() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "imagen-4",
+                model: "plutogen-o1",
                 prompt: prompt,
                 n: 1,
                 response_format: "url",
@@ -136,7 +136,7 @@ export default function AiPictures() {
                 <div className="spinner"></div>
                 ... Please wait, the image is being generated.
                 <br />
-                This version is still under development, so he needs more time and sometimes doesn't give an answer..</div>}
+                This version is still under development, so he needs more time.</div>}
 
             {image && (
                 <div style={{ marginTop: "20px" }}>
@@ -153,7 +153,7 @@ export default function AiPictures() {
                 fontSize: "16px",
                 color: "gray"
             }}>
-                Imagen 4 (alpha)
+                Plutogen-o1
 
             </p>
 

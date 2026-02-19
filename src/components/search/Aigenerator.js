@@ -8,6 +8,7 @@ import AiPictures from "./AiPictures";
 import ChatWithHistoryAir from "./ChatWithHistoryAir";
 import AiVideo from "./AiVideo";
 import AiPolliVid from "./AiPolliVid";
+import AiSuno from "./AiSuno";
 
 const Aigenerator = () => {
 
@@ -128,7 +129,7 @@ const Aigenerator = () => {
             <div className="mainBook">
                 <div className="aiTitle" >
                     <p className="intro">Test various Artificial Intelligence models, get five answers for one query, or chat with them. You can use any language in the prompt.
-                        And generate images and video.
+                        And generate images, video and music.
                     </p>
                     <div className="aiSearch">
 
@@ -191,6 +192,7 @@ const Aigenerator = () => {
             <AiPictures />
             <AiVideo />
             <AiPolliVid />
+            <AiSuno />
             <BackToTop />
         </>
     )
