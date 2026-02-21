@@ -21,7 +21,7 @@ export default function AiPolliVid() {
                     },
                     params: {
                         model: "seedance",
-                        duration: 4
+                        duration: 5
                     },
                 }
             );
@@ -69,7 +69,7 @@ export default function AiPolliVid() {
             />
             <br />
             <button onClick={handleGenerate} disabled={loading}>
-                {loading ? "Generating..." : "Generate 4 sec Video"}
+                {loading ? "Generating..." : "Generate 5 sec Video"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>

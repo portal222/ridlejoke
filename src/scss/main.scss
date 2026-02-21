@@ -1017,6 +1017,7 @@ body {
         font-weight: 600;
         background-color: rgb(118, 169, 220);
         text-shadow: 2px 2px 3px #bbdefb;
+        border-top: 2px solid rgb(79, 93, 135);
     }
 
     .polli2 {
@@ -1064,7 +1065,8 @@ body {
             background-color: #c0d3e3;
             border-radius: 10px;
             padding: 10px;
-            border: 1px solid #014780;
+            // border: 1px solid #014780;
+            box-shadow: 3px 3px 7px rgb(118, 169, 220);
 
             a {
                 font-size: 20px;

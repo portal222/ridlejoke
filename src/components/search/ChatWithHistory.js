@@ -11,6 +11,8 @@ export default function ChatWithHistory() {
   const [selectedDescription, setSelectedDescription] = useState("Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective");
   const [timestamp, setTimestamp] = useState();
 
+  const [aimisao, setAimisao] = useState([]);
+
 
   const sendQuery = async () => {
     if (!query.trim()) return;
@@ -40,6 +42,9 @@ export default function ChatWithHistory() {
       const answer = data.choices?.[0]?.message?.content || "No answer.";
       const tokens = data.usage.total_tokens;
 
+      const misao = data.choices?.[0]?.message?.reasoning_content
+      setAimisao(misao);
+  
       setTotalTok(tokens);
       setMessages([...newMessages, { role: "assistant", content: answer }]);
       setTimestamp(data.created)
@@ -106,6 +111,9 @@ export default function ChatWithHistory() {
           </div>
         ))}
         <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
+       {aimisao && (
+        <div style={{fontSize: "15px"}}>{aimisao}</div>
+        )}
       </div>
       <textarea
         rows="3"
