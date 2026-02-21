@@ -65,7 +65,6 @@ const Aigenerator = () => {
             const dataM = responseM
             setAitextM(dataM);
 
-
         } catch (err) {
             setError(err);
         }

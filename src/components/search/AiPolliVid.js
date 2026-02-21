@@ -19,7 +19,10 @@ export default function AiPolliVid() {
                     headers: {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
-                    params: { model: "seedance" },
+                    params: {
+                        model: "seedance",
+                        duration: 4
+                    },
                 }
             );
             const imageUrl = URL.createObjectURL(response.data);
@@ -66,7 +69,7 @@ export default function AiPolliVid() {
             />
             <br />
             <button onClick={handleGenerate} disabled={loading}>
-                {loading ? "Generating..." : "Generate 2 sec Video"}
+                {loading ? "Generating..." : "Generate 4 sec Video"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>
@@ -79,7 +82,7 @@ export default function AiPolliVid() {
                     <video
                         src={video}
                         controls
-                        style={{ maxWidth: "100%"}}
+                        style={{ maxWidth: "100%" }}
                     />
                 </div>
             )}

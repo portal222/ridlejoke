@@ -19,6 +19,7 @@ function AiVideo() {
             },
             body: JSON.stringify({
                 model: "grok-imagine-video",
+        
          
                 prompt: prompt,
                 n: 1,
@@ -51,6 +52,7 @@ function AiVideo() {
 
                     if (parsed.data && parsed.data[0]?.url) {
                         setVideoUrl(parsed.data[0].url);
+                        console.log("video generator podaci", parsed);
                     }
                 }
             }

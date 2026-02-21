@@ -65,7 +65,7 @@ function AiSuno() {
 
     return (
         <div className="mainBook">
-            <div className="polli">Suno 5 Music Generator</div>
+            <div className="polli">Suno v5 Music Generator</div>
             <h2></h2>
             <textarea
                 rows="3"

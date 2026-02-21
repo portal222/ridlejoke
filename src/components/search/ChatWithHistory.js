@@ -41,7 +41,6 @@ export default function ChatWithHistory() {
       const tokens = data.usage.total_tokens;
 
       setTotalTok(tokens);
-
       setMessages([...newMessages, { role: "assistant", content: answer }]);
       setTimestamp(data.created)
 
@@ -107,9 +106,7 @@ export default function ChatWithHistory() {
           </div>
         ))}
         <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
-
       </div>
-
       <textarea
         rows="3"
         style={{ width: "70%", padding: "10px", margin: "10px" }}
