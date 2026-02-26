@@ -24,6 +24,14 @@
         "description": "xAI Grok 4 Fast - High Speed & Real-Time",
         "name": "grok"
     },
+      {
+        "description": "Polly by @Itachi-1824 - coder",
+        "name": "polly"
+    },
+       {
+        "description": "OpenAI GPT-5 Nano, trained until June 2024",
+        "name": "openai-fast"
+    },
     {
         "description": "OpenAI GPT-5 Mini - Fast & Balanced",
         "name": "openai"

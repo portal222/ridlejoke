@@ -10,7 +10,9 @@ export default function ChatWithHistoryAir() {
   const [selectedModel, setSelectedModel] = useState("step-3.5-flash:free");
   const [selectedDescription, setSelectedDescription] = useState("StepFun 阶跃星辰(China) platform llmplayground.net");
   const [seconds, setSeconds] = useState(0);
+  const [secondsW, setSecondsW] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
+  const [timerActiveW, setTimerActiveW] = useState(false);
   const [timestamp, setTimestamp] = useState();
 
   useEffect(() => {
@@ -22,6 +24,16 @@ export default function ChatWithHistoryAir() {
     }
     return () => clearInterval(interval);
   }, [timerActive]);
+
+  useEffect(() => {
+    let interval;
+    if (timerActiveW) {
+      interval = setInterval(() => {
+        setSecondsW((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [timerActiveW]);
 
 
 
@@ -60,10 +72,12 @@ export default function ChatWithHistoryAir() {
 
       setTotalTok(tokens);
 
+
       setMessages([...newMessages, { role: "assistant", content: answer }]);
       console.log("odgovora air force", data);
       setSeconds(0);
       setTimerActive(true);
+      setTimerActiveW(false);
       setTimestamp(data.created)
 
 
@@ -82,7 +96,18 @@ export default function ChatWithHistoryAir() {
     if (e.key === 'Enter') {
       e.preventDefault();
       sendQuery();
+      setSecondsW(0);
+      setTimerActiveW(true);
+      setTimerActive(false);
+
     }
+  };
+
+  const handleClick = () => {
+    setSecondsW(0);
+    setTimerActiveW(true);
+    setTimerActive(false);
+    sendQuery();
   };
 
 
@@ -148,7 +173,7 @@ export default function ChatWithHistoryAir() {
       />
       <br />
       <button
-        onClick={sendQuery}
+        onClick={handleClick}
         disabled={loading}>
         {loading ? (
           <>
@@ -159,17 +184,20 @@ export default function ChatWithHistoryAir() {
         )}
       </button>
       <br />
-      <div style={{ display: "flex" }}>
-        <p style={{ fontSize: "18px", margin: "10px" }}>
-
-          wait at least a minute until the next question, time starts when the answer arrives
-        </p>
-        {timerActive && (
-          <p style={{ fontSize: "18px", margin: "10px" }}>
-            ⏱ {seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
+   
+     
+        {timerActiveW && (
+          <p style={{ fontSize: "20px", margin: "10px" }}>
+            ⏱ {"Answer generation time " + secondsW + " s or " + (secondsW / 60).toFixed(1) + " m"}
           </p>
         )}
-      </div>
+        {timerActive && (
+          <p style={{ fontSize: "20px", margin: "10px" }}>
+            ⏱ {"Wait at least a two minutes until the next question " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
+          </p>
+        )}
+
+  
 
 
       <div style={{ fontSize: "10px", padding: "10px 20px" }}>

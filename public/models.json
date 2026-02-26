@@ -11,6 +11,14 @@
         "description": "Google Gemini 3 Flash",
         "name": "gemini-search"
     },
+       {
+        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
+        "name": "nomnom"
+    },
+       {
+        "description": "Perplexity Sonar - Fast & Affordable with Web Search",
+        "name": "perplexity-fast"
+    },
     {
         "description": "Mistral Small 3.2 24B - Efficient & Cost-Effective",
         "name": "mistral"
@@ -18,18 +26,6 @@
     {
         "description": "Qwen3 Coder 30B - Specialized for Code Generation. Alibaba",
         "name": "qwen-coder"
-    },
-    {
-        "description": "OpenAI GPT-5 Mini - Fast & Balanced",
-        "name": "openai"
-    },
-    {
-        "description": "OpenAI GPT-5 Nano, trained until June 2024",
-        "name": "openai-fast"
-    },
-    {
-        "description": "Perplexity Sonar - Fast & Affordable with Web Search",
-        "name": "perplexity-fast"
     },
     {
         "description": "Z.ai GLM-4.7",
@@ -47,16 +43,20 @@
         "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
         "name": "minimax"
     },
+      {
+        "description": "OpenAI GPT-5 Mini - Fast & Balanced",
+        "name": "openai"
+    },
     {
         "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
         "name": "openai-large"
+    }, 
+    {
+        "description": "Anthropic Claude Haiku 4.5",
+        "name": "claude-fast"
     },
     {
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
         "name": "deepseek"
-    },
-    {
-        "description": "Anthropic Claude Haiku 4.5",
-        "name": "claude-fast"
     }
 ]

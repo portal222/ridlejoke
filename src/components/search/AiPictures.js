@@ -20,7 +20,9 @@ export default function AiPictures() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "plutogen-o1",
+                model: "grok-imagine",
+
+
                 prompt: prompt,
                 n: 1,
                 response_format: "url",
@@ -153,7 +155,7 @@ export default function AiPictures() {
                 fontSize: "16px",
                 color: "gray"
             }}>
-                Plutogen-o1
+                Grok imagine
 
             </p>
 

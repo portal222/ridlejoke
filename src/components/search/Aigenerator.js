@@ -8,7 +8,6 @@ import AiPictures from "./AiPictures";
 import ChatWithHistoryAir from "./ChatWithHistoryAir";
 import AiVideo from "./AiVideo";
 import AiPolliVid from "./AiPolliVid";
-import AiSuno from "./AiSuno";
 
 const Aigenerator = () => {
 
@@ -135,7 +134,7 @@ const Aigenerator = () => {
                         <div style={{ padding: "5px" }}>
                             <SearchAiGen placeholder={'write anything and wait'} linkTo={'/aiGenerator'} />
                         </div>
-                        <div style={{padding: "15px"}}>
+                        <div style={{ padding: "15px" }}>
                             {searchStringValue}
                         </div>
                     </div>
@@ -191,7 +190,6 @@ const Aigenerator = () => {
             <AiPictures />
             <AiVideo />
             <AiPolliVid />
-            <AiSuno />
             <BackToTop />
         </>
     )

@@ -49,6 +49,8 @@ export default function ChatWithHistory() {
       setMessages([...newMessages, { role: "assistant", content: answer }]);
       setTimestamp(data.created)
 
+      console.log("odgovori vestackih", data);
+
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {
