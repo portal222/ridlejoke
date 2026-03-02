@@ -11,12 +11,12 @@
         "description": "Google Gemini 3 Flash",
         "name": "gemini-search"
     },
-       {
+    {
         "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
         "name": "nomnom"
     },
-       {
-        "description": "Perplexity Sonar - Fast & Affordable with Web Search",
+    {
+        "description": "Perplexity Sonar - Fast & Affordable with Web Search and links",
         "name": "perplexity-fast"
     },
     {
@@ -32,31 +32,11 @@
         "name": "glm"
     },
     {
-        "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
-        "name": "chickytutor"
-    },
-    {
-        "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration (China)",
-        "name": "kimi"
-    },
-    {
-        "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
-        "name": "minimax"
-    },
-      {
-        "description": "OpenAI GPT-5 Mini - Fast & Balanced",
-        "name": "openai"
-    },
-    {
         "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
         "name": "openai-large"
-    }, 
+    },
     {
         "description": "Anthropic Claude Haiku 4.5",
         "name": "claude-fast"
-    },
-    {
-        "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
-        "name": "deepseek"
     }
 ]

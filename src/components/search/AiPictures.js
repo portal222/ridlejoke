@@ -1,65 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import picturePolli from "../../../public/pictureModelsPolli.json";
 
 export default function AiPictures() {
     const [prompt, setPrompt] = useState("");
     const [image, setImage] = useState(null);
-    const [image2, setImage2] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [loading2, setLoading2] = useState(false);
+    const [selectedModel, setSelectedModel] = useState("flux");
+    const [seconds, setSeconds] = useState(0);
+    const [timerActive, setTimerActive] = useState(false);
+
+    useEffect(() => {
+        let interval;
+        if (timerActive) {
+            interval = setInterval(() => {
+                if (timerActive) {
+                    setSeconds((prev) => prev + 1);
+                }
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [timerActive]);
+
+
 
     const generateImage = async () => {
         if (!prompt.trim()) return;
         setLoading(true);
         setImage(null);
-
-        const response = await fetch("https://api.airforce/v1/images/generations", {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                model: "grok-imagine",
-
-
-                prompt: prompt,
-                n: 1,
-                response_format: "url",
-                sse: true,
-            })
-        }).then(async response => {
-            const reader = response.body.getReader();
-            const decoder = new TextDecoder();
-            let accumulatedData = '';
-
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-
-                accumulatedData += decoder.decode(value, { stream: true });
-                const lines = accumulatedData.split('\n\n');
-                accumulatedData = lines.pop();
-
-                for (const line of lines) {
-                    if (line.startsWith('data: ')) {
-                        const dataStr = line.slice(6);
-                        if (dataStr === '[DONE]') continue;
-                        if (dataStr === ': keepalive') continue;
-
-                        const imageUrl = JSON.parse(dataStr)
-                        setImage(imageUrl.data?.[0].url)
-                        setLoading(false);
-                    }
-                }
-            }
-        });
-    }
-
-    const generateImage2 = async () => {
-        if (!prompt.trim()) return;
-        setLoading2(true);
-        setImage2(null);
 
         try {
             const response = await axios.get(
@@ -69,17 +37,23 @@ export default function AiPictures() {
                     headers: {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
-                    params: { model: "gptimage" },
+                    params: {
+
+                        model: selectedModel
+                    },
                 }
             );
 
             const imageUrl = URL.createObjectURL(response.data);
-            setImage2(imageUrl);
+            setImage(imageUrl);
 
         } catch (error) {
             console.error(error);
         } finally {
-            setLoading2(false);
+            setLoading(false);
+            setTimerActive(false);
+
+
         }
     };
 
@@ -91,25 +65,23 @@ export default function AiPictures() {
         };
     }, [image]);
 
-    useEffect(() => {
-        return () => {
-            if (image2) {
-                URL.revokeObjectURL(image2);
-            }
-        };
-    }, [image2]);
+
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
+            setSeconds(0);
+            setTimerActive(true);
             generateImage();
-            generateImage2();
+
         }
     };
 
     const handleGenerate = () => {
+        setSeconds(0);
+        setTimerActive(true);
         generateImage();
-        generateImage2();
+
     };
 
     <button onClick={handleGenerate} disabled={loading}>
@@ -118,12 +90,26 @@ export default function AiPictures() {
 
     return (
         <div className="mainBook">
-            <div className="polli">AI Picture Generator</div>
+            <div className="polli">{selectedModel} Picture Generator</div>
             <h2></h2>
+            <div className="polli2">
+                Or choose another Pollinations model
+            </div>
+            <div className="aiGrid">
+                {picturePolli.map((mod, id) => (
+                    <div key={id} className="aiButt"><a
+                        onClick={() => {
+                            setSelectedModel(mod.name);
+                        }}
+                    >{mod.name}</a>
+
+                    </div>
+                ))}
+            </div>
             <textarea
                 rows="3"
                 style={{ width: "70%", padding: "10px", margin: "10px" }}
-                placeholder="Enter prompt and wait for two images"
+                placeholder="Enter prompt and wait"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -138,7 +124,12 @@ export default function AiPictures() {
                 <div className="spinner"></div>
                 ... Please wait, the image is being generated.
                 <br />
-                This version is still under development, so he needs more time.</div>}
+            </div>}
+            {timerActive && (
+                <p style={{ fontSize: "20px", margin: "10px" }}>
+                    ⏱ Generation time {seconds} s ({(seconds / 60).toFixed(1)} m)
+                </p>
+            )}
 
             {image && (
                 <div style={{ marginTop: "20px" }}>
@@ -149,38 +140,6 @@ export default function AiPictures() {
                     />
                 </div>
             )}
-            <p style={{
-                textAlign: "right",
-                padding: "10px",
-                fontSize: "16px",
-                color: "gray"
-            }}>
-                Grok imagine
-
-            </p>
-
-            <br />
-            {loading2 && <div style={{ marginTop: "15px" }}>
-                <div className="spinner"></div>
-                ... Please wait, the image two is being generated.</div>}
-
-            {image2 && (
-                <div style={{ marginTop: "20px" }}>
-                    <img
-                        src={image2}
-                        alt="Generated"
-                        style={{ maxWidth: "100%", borderRadius: "8px" }}
-                    />
-                </div>
-            )}
-            <p style={{
-                textAlign: "right",
-                padding: "10px",
-                fontSize: "16px",
-                color: "gray"
-            }}>
-                GPT Image 1 Mini
-            </p>
         </div>
     );
 }

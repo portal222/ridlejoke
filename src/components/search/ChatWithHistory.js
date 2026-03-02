@@ -10,8 +10,21 @@ export default function ChatWithHistory() {
   const [selectedModel, setSelectedModel] = useState("gemini-fast");
   const [selectedDescription, setSelectedDescription] = useState("Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective");
   const [timestamp, setTimestamp] = useState();
+  const [seconds, setSeconds] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
+  const [answerLink, setAnswerLink] = useState([]);
 
   const [aimisao, setAimisao] = useState([]);
+
+  useEffect(() => {
+    let interval;
+    if (timerActive) {
+      interval = setInterval(() => {
+        setSeconds((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [timerActive]);
 
 
   const sendQuery = async () => {
@@ -44,17 +57,20 @@ export default function ChatWithHistory() {
 
       const misao = data.choices?.[0]?.message?.reasoning_content
       setAimisao(misao);
-  
+
       setTotalTok(tokens);
       setMessages([...newMessages, { role: "assistant", content: answer }]);
+      setAnswerLink(data.citations);
+      setSeconds(0);
+      setTimerActive(true);
       setTimestamp(data.created)
-
-      console.log("odgovori vestackih", data);
 
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {
       setLoading(false);
+      setTimerActive(false);
+
     }
   };
 
@@ -64,7 +80,15 @@ export default function ChatWithHistory() {
     if (e.key === 'Enter') {
       e.preventDefault();
       sendQuery();
+      setSeconds(0);
+      setTimerActive(true);
     }
+  };
+
+  const handleClick = () => {
+    sendQuery();
+    setSeconds(0);
+    setTimerActive(true);
   };
 
   const renderWithLinks = (text) => {
@@ -84,7 +108,6 @@ export default function ChatWithHistory() {
   return (
     <div className="mainBook">
       <div className="polli">Chat with {selectedModel}
-
       </div>
       <div className="polli2">
         {selectedDescription}
@@ -100,7 +123,6 @@ export default function ChatWithHistory() {
               setSelectedDescription(mod.description);
             }}
           >{mod.name}</a>
-
           </div>
         ))}
       </div>
@@ -112,9 +134,22 @@ export default function ChatWithHistory() {
             <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
+        {answerLink && (
+          <ol style={{ listStyleType: "decimal", marginLeft: "30px" }}
+>
+            {answerLink.map((ans, idx) => (
+              <li key={idx}>
+                <a href={ans} target="_blank" rel="noopener noreferrer" className="linkList">
+                  {ans.length > 32 ? ans.slice(0, 32) + "..." : ans}
+                </a>
+              </li>
+            ))}
+          </ol>
+        )}
+
         <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
-       {aimisao && (
-        <div style={{fontSize: "15px"}}>{aimisao}</div>
+        {aimisao && (
+          <div style={{ fontSize: "15px" }}>{aimisao}</div>
         )}
       </div>
       <textarea
@@ -127,7 +162,7 @@ export default function ChatWithHistory() {
       />
       <br />
       <button
-        onClick={sendQuery}
+        onClick={handleClick}
         disabled={loading}>
         {loading ? (
           <>
@@ -138,6 +173,11 @@ export default function ChatWithHistory() {
         )}
       </button>
       <br />
+      {timerActive && (
+        <p style={{ fontSize: "20px", margin: "10px" }}>
+          ⏱ {"Answer generation time " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
+        </p>
+      )}
       <div style={{ fontSize: "10px", padding: "10px" }}>
         total tokens {totalTok}
       </div>

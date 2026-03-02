@@ -6,8 +6,8 @@ import BackToTop from "../BackToTop";
 import ChatWithHistory from "./ChatWithHistory";
 import AiPictures from "./AiPictures";
 import ChatWithHistoryAir from "./ChatWithHistoryAir";
-import AiVideo from "./AiVideo";
 import AiPolliVid from "./AiPolliVid";
+import AiPicturesAF from "./AiPicturesAF";
 
 const Aigenerator = () => {
 
@@ -57,7 +57,7 @@ const Aigenerator = () => {
 
     const getAmazon = async (searchStringValue) => {
 
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=nova-micro&key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=gemini-search&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const responseM = await axios.get(urlM);
@@ -85,7 +85,7 @@ const Aigenerator = () => {
     }
 
     const getLarge = async (searchStringValue) => {
-        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=openai-large&key=pk_N3F6nCawqxWe8khl`
+        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=nomnom&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseLar = await axios.get(urlLar);
             const dataLar = responseLar
@@ -127,7 +127,7 @@ const Aigenerator = () => {
             <div className="mainBook">
                 <div className="aiTitle" >
                     <p className="intro">Test various Artificial Intelligence models, get five answers for one query, or chat with them. You can use any language in the prompt.
-                        And generate images, video and music.
+                        And generate images or video.
                     </p>
                     <div className="aiSearch">
 
@@ -149,7 +149,7 @@ const Aigenerator = () => {
                         : <p>Loading text...</p>}
                 </div>
 
-                <div className="polli">Nova-fast Amazon</div>
+                <div className="polli">Gemini search</div>
                 <div >
                     {aitextM.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextM.data) }}
@@ -165,7 +165,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">GPT 5.2</div>
+                <div className="polli">Nomnom</div>
                 <div >
                     {aitextLar.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextLar.data) }}
@@ -188,7 +188,7 @@ const Aigenerator = () => {
             <ChatWithHistory />
             <ChatWithHistoryAir />
             <AiPictures />
-            <AiVideo />
+            <AiPicturesAF />
             <AiPolliVid />
             <BackToTop />
         </>

@@ -19,6 +19,10 @@
         "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
         "name": "nomnom"
     },
+      {
+        "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
+        "name": "minimax"
+    },
       
     {
         "description": "xAI Grok 4 Fast - High Speed & Real-Time",
@@ -27,6 +31,10 @@
       {
         "description": "Polly by @Itachi-1824 - coder",
         "name": "polly"
+    },
+       {
+        "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
+        "name": "chickytutor"
     },
        {
         "description": "OpenAI GPT-5 Nano, trained until June 2024",
@@ -47,6 +55,10 @@
        {
         "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
         "name": "chickytutor"
+    },
+       {
+        "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
+        "name": "deepseek"
     },
     {
         "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",

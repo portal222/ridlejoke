@@ -74,7 +74,6 @@ export default function ChatWithHistoryAir() {
 
 
       setMessages([...newMessages, { role: "assistant", content: answer }]);
-      console.log("odgovora air force", data);
       setSeconds(0);
       setTimerActive(true);
       setTimerActiveW(false);

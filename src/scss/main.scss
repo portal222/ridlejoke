@@ -909,7 +909,6 @@ body {
         display: grid;
         gap: 6px;
         grid-template-columns: auto auto auto auto auto;
-        // grid-template-columns: repeat(auto-fill, minmax(143px, 1fr));
 
         .imgContainer {
             display: flex;
@@ -1065,7 +1064,6 @@ body {
             background-color: #c0d3e3;
             border-radius: 10px;
             padding: 10px;
-            // border: 1px solid #014780;
             box-shadow: 3px 3px 7px rgb(118, 169, 220);
 
             a {
@@ -1073,23 +1071,25 @@ body {
                 font-weight: bold;
                 cursor: pointer;
                 color: #014780;
-
-
                 &:hover {
                     color: #64b5f6;
                 }
-
             }
-
             p {
                 padding-top: 10px;
                 font-size: 12px;
                 text-align: left;
             }
-
-
         }
     }
+.linkList {
+    text-decoration: none;
+    color: #014780;
+
+        &:hover {
+            color: #64b5f6;
+        }
+}
 }
 
 .listVideo {
