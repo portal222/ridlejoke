@@ -8,6 +8,9 @@
           {
         "name": "grok-imagine"
     },
+              {
+        "name": "plutogen-o1"
+    },
           {
         "name": "flux-2-klein-9b"
     }

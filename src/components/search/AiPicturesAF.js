@@ -10,6 +10,7 @@ export default function AiPicturesAF() {
     const [secondsW, setSecondsW] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [timerActiveW, setTimerActiveW] = useState(false);
+   
 
     useEffect(() => {
         let interval;

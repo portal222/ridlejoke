@@ -1,8 +1,9 @@
 [
-    {
-        "description": "Amazon Nova Micro - Ultra Fast & Ultra Cheap",
-        "name": "nova-fast"
+        {
+        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
+        "name": "nomnom"
     },
+
     {
         "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
         "name": "gemini-fast"
@@ -11,17 +12,22 @@
         "description": "Google Gemini 3 Flash",
         "name": "gemini-search"
     },
-    {
-        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
-        "name": "nomnom"
-    },
+
     {
         "description": "Perplexity Sonar - Fast & Affordable with Web Search and links",
         "name": "perplexity-fast"
     },
+      {
+        "description": "Perplexity Sonar Reasoning",
+        "name": "perplexity-reasoning"
+    },
     {
         "description": "Mistral Small 3.2 24B - Efficient & Cost-Effective",
         "name": "mistral"
+    },
+        {
+        "description": "Amazon Nova Micro - Ultra Fast & Ultra Cheap",
+        "name": "nova-fast"
     },
     {
         "description": "Qwen3 Coder 30B - Specialized for Code Generation. Alibaba",
@@ -30,10 +36,6 @@
     {
         "description": "Z.ai GLM-4.7",
         "name": "glm"
-    },
-    {
-        "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
-        "name": "openai-large"
     },
     {
         "description": "Anthropic Claude Haiku 4.5",

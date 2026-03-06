@@ -60,6 +60,14 @@
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
         "name": "deepseek"
     },
+      {
+        "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
+        "name": "openai-large"
+    },
+        {
+        "description": "OpenAI GPT-4o Mini Audio",
+        "name": "openai-audio"
+    },
     {
         "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
         "name": "kimi"

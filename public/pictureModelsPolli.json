@@ -9,6 +9,9 @@
         "name": "klein"
     },
           {
+        "name": "klein-large"
+    },
+          {
         "name": "gptimage"
     }
 ]

@@ -6,8 +6,8 @@ import BackToTop from "../BackToTop";
 import ChatWithHistory from "./ChatWithHistory";
 import AiPictures from "./AiPictures";
 import ChatWithHistoryAir from "./ChatWithHistoryAir";
-import AiPolliVid from "./AiPolliVid";
 import AiPicturesAF from "./AiPicturesAF";
+import AiVideo from "./AiVideo";
 
 const Aigenerator = () => {
 
@@ -189,7 +189,7 @@ const Aigenerator = () => {
             <ChatWithHistoryAir />
             <AiPictures />
             <AiPicturesAF />
-            <AiPolliVid />
+            <AiVideo />
             <BackToTop />
         </>
     )
