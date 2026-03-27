@@ -5,9 +5,7 @@ import axios from "axios";
 import BackToTop from "../BackToTop";
 import ChatWithHistory from "./ChatWithHistory";
 import AiPictures from "./AiPictures";
-import ChatWithHistoryAir from "./ChatWithHistoryAir";
-import AiPicturesAF from "./AiPicturesAF";
-import AiVideo from "./AiVideo";
+import AiPolliVid from "./AiPolliVid";
 
 const Aigenerator = () => {
 
@@ -43,7 +41,7 @@ const Aigenerator = () => {
     }
 
     const getText = async (searchStringValue) => {
-        const url = `https://gen.pollinations.ai/text/${searchStringValue}?model=mistral&key=pk_N3F6nCawqxWe8khl`
+        const url = `https://gen.pollinations.ai/text/${searchStringValue}?model=glm&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const response = await axios.get(url);
@@ -57,7 +55,7 @@ const Aigenerator = () => {
 
     const getAmazon = async (searchStringValue) => {
 
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=gemini-search&key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=deepseek&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const responseM = await axios.get(urlM);
@@ -72,7 +70,7 @@ const Aigenerator = () => {
     const getPerple = async (searchStringValue) => {
 
 
-        const urlPer = `https://gen.pollinations.ai/text/${searchStringValue}?model=perplexity-fast&key=pk_N3F6nCawqxWe8khl`
+        const urlPer = `https://gen.pollinations.ai/text/${searchStringValue}?model=midijourney&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const responsePer = await axios.get(urlPer);
@@ -85,7 +83,7 @@ const Aigenerator = () => {
     }
 
     const getLarge = async (searchStringValue) => {
-        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=nomnom&key=pk_N3F6nCawqxWe8khl`
+        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=minimax&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseLar = await axios.get(urlLar);
             const dataLar = responseLar
@@ -140,7 +138,7 @@ const Aigenerator = () => {
                     </div>
                 </div>
 
-                <div className="polli">Mistral</div>
+                <div className="polli">GLM 5</div>
                 <div >
                     {aitext.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitext.data) }}
@@ -149,7 +147,7 @@ const Aigenerator = () => {
                         : <p>Loading text...</p>}
                 </div>
 
-                <div className="polli">Gemini search</div>
+                <div className="polli">Deepseek</div>
                 <div >
                     {aitextM.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextM.data) }}
@@ -157,7 +155,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Perplexity fast</div>
+                <div className="polli">Midijourney</div>
                 <div >
                     {aitextPer.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextPer.data) }}
@@ -165,7 +163,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Nomnom</div>
+                <div className="polli">Minimax</div>
                 <div >
                     {aitextLar.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextLar.data) }}
@@ -186,10 +184,8 @@ const Aigenerator = () => {
                 </div>
             </div>
             <ChatWithHistory />
-            <ChatWithHistoryAir />
             <AiPictures />
-            <AiPicturesAF />
-            <AiVideo />
+            <AiPolliVid />
             <BackToTop />
         </>
     )

@@ -40,9 +40,9 @@
         "description": "OpenAI GPT-5 Nano, trained until June 2024",
         "name": "openai-fast"
     },
-    {
-        "description": "OpenAI GPT-5 Mini - Fast & Balanced",
-        "name": "openai"
+   {
+        "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
+        "name": "minimax"
     },
     {
         "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
@@ -71,6 +71,25 @@
     {
         "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
         "name": "kimi"
+    },
+             {
+        "name": "klein-large"
+    },
+     {
+        "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
+        "name": "deepseek"
+    },
+     {
+        "description": "Z.ai GLM-4.7",
+        "name": "glm"
+    },
+     {
+        "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
+        "name": "kimi"
+    },
+      {
+        "description": "Xiaomi, cloud",
+        "name": "mimo-v2-flash"
     }
 ]
 

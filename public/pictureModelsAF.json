@@ -1,17 +1,14 @@
 [
-    {
-        "name": "dirtberry"
-    },
-      {
-        "name": "imagen-4"
-    },
-          {
-        "name": "grok-imagine"
-    },
-              {
-        "name": "plutogen-o1"
-    },
-          {
-        "name": "flux-2-klein-9b"
-    }
+  {
+    "name": "dirtberry"
+  },
+  {
+    "name": "imagen-4"
+  },
+  {
+    "name": "plutogen-o1"
+  },
+  {
+    "name": "flux-2-klein-9b"
+  }
 ]

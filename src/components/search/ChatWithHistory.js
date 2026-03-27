@@ -64,7 +64,6 @@ export default function ChatWithHistory() {
       setSeconds(0);
       setTimerActive(true);
       setTimestamp(data.created)
-      console.log("ai polination odgovor", data);
 
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);

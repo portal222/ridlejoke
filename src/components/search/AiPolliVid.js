@@ -32,8 +32,8 @@ export default function AiPolliVid() {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
                     params: {
-                        model: "seedance",
-                        duration: 7
+                        model: "wan-fast",
+                        duration: 5
                     },
                 }
             );
@@ -76,7 +76,7 @@ export default function AiPolliVid() {
 
     return (
         <div className="mainBook">
-            <div className="polli">Seedance Video Generator</div>
+            <div className="polli">Wan fast Video Generator</div>
             <h2></h2>
             <textarea
                 rows="3"
@@ -89,7 +89,7 @@ export default function AiPolliVid() {
             />
             <br />
             <button onClick={handleGenerate} disabled={loading}>
-                {loading ? "Generating..." : "Generate 7 sec Video"}
+                {loading ? "Generating..." : "Generate 5 sec Video"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>

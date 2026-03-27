@@ -1,9 +1,4 @@
 [
-        {
-        "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
-        "name": "nomnom"
-    },
-
     {
         "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
         "name": "gemini-fast"
@@ -12,12 +7,11 @@
         "description": "Google Gemini 3 Flash",
         "name": "gemini-search"
     },
-
     {
         "description": "Perplexity Sonar - Fast & Affordable with Web Search and links",
         "name": "perplexity-fast"
     },
-      {
+    {
         "description": "Perplexity Sonar Reasoning",
         "name": "perplexity-reasoning"
     },
@@ -25,7 +19,11 @@
         "description": "Mistral Small 3.2 24B - Efficient & Cost-Effective",
         "name": "mistral"
     },
-        {
+       {
+        "description": "OpenAI GPT-5 Mini - Fast & Balanced",
+        "name": "openai"
+    },
+    {
         "description": "Amazon Nova Micro - Ultra Fast & Ultra Cheap",
         "name": "nova-fast"
     },
@@ -34,8 +32,8 @@
         "name": "qwen-coder"
     },
     {
-        "description": "Z.ai GLM-4.7",
-        "name": "glm"
+        "description": "Qwen3 VL plus. Alibaba",
+        "name": "qwen-vision"
     },
     {
         "description": "Anthropic Claude Haiku 4.5",
