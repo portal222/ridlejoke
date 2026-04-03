@@ -11,10 +11,10 @@
               {
         "name": "qwen-image"
     },
-              {
-        "name": "grok-imagine"
-    },
           {
         "name": "gptimage"
+    },
+            {
+        "name": "wan-image"
     }
 ]

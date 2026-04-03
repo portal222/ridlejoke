@@ -32,8 +32,8 @@ export default function AiPolliVid() {
                         Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
                     },
                     params: {
-                        model: "wan-fast",
-                        duration: 5
+                        model: "ltx-2",
+                        duration: 10
                     },
                 }
             );
@@ -41,7 +41,7 @@ export default function AiPolliVid() {
             setVideo(imageUrl);
             setSeconds(0);
             setTimerActive(true);
-
+        
         } catch (error) {
             console.error(error);
         } finally {
@@ -76,7 +76,7 @@ export default function AiPolliVid() {
 
     return (
         <div className="mainBook">
-            <div className="polli">Wan fast Video Generator</div>
+            <div className="polli">Ltx-2 Video Generator</div>
             <h2></h2>
             <textarea
                 rows="3"
@@ -89,7 +89,7 @@ export default function AiPolliVid() {
             />
             <br />
             <button onClick={handleGenerate} disabled={loading}>
-                {loading ? "Generating..." : "Generate 5 sec Video"}
+                {loading ? "Generating..." : "Generate 10 sec Video"}
             </button>
             <br />
             {loading && <div style={{ marginTop: "15px" }}>

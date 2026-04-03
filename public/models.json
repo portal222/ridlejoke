@@ -28,8 +28,8 @@
         "name": "nova-fast"
     },
     {
-        "description": "Qwen3 Coder 30B - Specialized for Code Generation. Alibaba",
-        "name": "qwen-coder"
+        "description": "Qwen3.5 plus. Alibaba",
+        "name": "qwen-large"
     },
     {
         "description": "Qwen3 VL plus. Alibaba",

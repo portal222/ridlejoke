@@ -33,6 +33,10 @@
         "name": "polly"
     },
        {
+        "description": "Qwen3 Coder 30B - Specialized for Code Generation. Alibaba",
+        "name": "qwen-coder"
+    },
+       {
         "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
         "name": "chickytutor"
     },
@@ -92,4 +96,3 @@
         "name": "mimo-v2-flash"
     }
 ]
-
