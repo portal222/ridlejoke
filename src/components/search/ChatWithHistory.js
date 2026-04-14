@@ -63,7 +63,7 @@ export default function ChatWithHistory() {
       setAnswerLink(data.citations);
       setSeconds(0);
       setTimerActive(true);
-      setTimestamp(data.created)
+      setTimestamp(data.created);
 
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);

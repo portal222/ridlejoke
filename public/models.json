@@ -12,12 +12,16 @@
         "name": "perplexity-fast"
     },
     {
-        "description": "Perplexity Sonar Reasoning",
+        "description": "Perplexity Sonar Reasoning, with links (San Francisco, CEO Aravind Srinivas)",
         "name": "perplexity-reasoning"
     },
     {
         "description": "Mistral Small 3.2 24B - Efficient & Cost-Effective",
         "name": "mistral"
+    },
+     {
+        "description": "Mistral Large 3 (France LLM)",
+        "name": "mistral-large"
     },
        {
         "description": "OpenAI GPT-5 Mini - Fast & Balanced",
@@ -34,6 +38,14 @@
     {
         "description": "Qwen3 VL plus. Alibaba",
         "name": "qwen-vision"
+    },
+        {
+        "description": "xAI Grok 4.1 Fast",
+        "name": "grok"
+    },
+            {
+        "description": "xAI Grok 4.20 Reasoning",
+        "name": "grok-large"
     },
     {
         "description": "Anthropic Claude Haiku 4.5",

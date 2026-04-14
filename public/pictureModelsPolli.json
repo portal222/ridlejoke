@@ -3,6 +3,9 @@
         "name": "flux"
     },
       {
+        "name": "kontext"
+    },
+      {
         "name": "zimage"
     },
       {
@@ -13,6 +16,9 @@
     },
           {
         "name": "gptimage"
+    },
+              {
+        "name": "gptimage-large"
     },
             {
         "name": "wan-image"
