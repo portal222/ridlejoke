@@ -1066,15 +1066,21 @@ body {
             border-radius: 10px;
             padding: 10px;
             box-shadow: 3px 3px 7px rgb(118, 169, 220);
+            cursor: pointer;
+
+            &:hover {
+                background-color: #a4c2da;
+            }
+            &:active {
+                background-color: #a4c2da;
+
+            }
 
             a {
                 font-size: 20px;
                 font-weight: bold;
-                cursor: pointer;
                 color: #014780;
-                &:hover {
-                    color: #64b5f6;
-                }
+            
             }
             p {
                 padding-top: 10px;

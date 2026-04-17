@@ -11,9 +11,9 @@ const Aigenerator = () => {
 
     const [aitext, setAitext] = useState([]);
     const [aitextM, setAitextM] = useState([]);
-    const [aitextPer, setAitextPer] = useState([]);
     const [aitextLar, setAitextLar] = useState([]);
     const [aitextQwen, setAitextQwen] = useState([]);
+    const [aitextNom, setAitextNom] = useState([]);
     const [error, setError] = useState(null);
 
     const globalCtx = useContext(GlobalContext);
@@ -23,13 +23,13 @@ const Aigenerator = () => {
         getModels();
         getText(searchStringValue);
         getAmazon(searchStringValue);
-        getPerple(searchStringValue);
         getLarge(searchStringValue);
         getQwen(searchStringValue);
+        getNom(searchStringValue);
     }, [searchStringValue]);
 
     const getModels = async () => {
-        const urlM = `https://gen.pollinations.ai/text/models?key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/image/models?key=pk_N3F6nCawqxWe8khl`
 
         try {
             const response = await axios.get(urlM);
@@ -67,21 +67,6 @@ const Aigenerator = () => {
         }
     }
 
-    const getPerple = async (searchStringValue) => {
-
-
-        const urlPer = `https://gen.pollinations.ai/text/${searchStringValue}?model=midijourney&key=pk_N3F6nCawqxWe8khl`
-
-        try {
-            const responsePer = await axios.get(urlPer);
-            const dataPer = responsePer
-            setAitextPer(dataPer);
-
-        } catch (err) {
-            setError(err);
-        }
-    }
-
     const getLarge = async (searchStringValue) => {
         const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=minimax&key=pk_N3F6nCawqxWe8khl`
         try {
@@ -100,6 +85,18 @@ const Aigenerator = () => {
             const responseQ = await axios.get(urlQ);
             const dataQ = responseQ
             setAitextQwen(dataQ);
+
+        } catch (err) {
+            setError(err);
+        }
+    }
+
+     const getNom = async (searchStringValue) => {
+        const urlN = `https://gen.pollinations.ai/text/${searchStringValue}?model=nomnom&key=pk_N3F6nCawqxWe8khl`
+        try {
+            const responseN = await axios.get(urlN);
+            const dataN = responseN
+            setAitextNom(dataN);
 
         } catch (err) {
             setError(err);
@@ -155,14 +152,6 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Midijourney</div>
-                <div >
-                    {aitextPer.data ? <div className="totalPer"
-                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextPer.data) }}
-                    >
-                    </div>
-                        : <p>Loading text...</p>}
-                </div>
                 <div className="polli">Minimax</div>
                 <div >
                     {aitextLar.data ? <div className="totalPer"
@@ -175,6 +164,14 @@ const Aigenerator = () => {
                 <div >
                     {aitextQwen.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}
+                    >
+                    </div>
+                        : <p>Loading text...</p>}
+                </div>
+                <div className="polli">Nomnom</div>
+                <div >
+                    {aitextNom.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextNom.data) }}
                     >
                     </div>
                         : <p>Loading text...</p>}

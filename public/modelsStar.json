@@ -79,6 +79,12 @@
              {
         "name": "klein-large"
     },
+      {
+        "name": "gptimage"
+    },
+              {
+        "name": "gptimage-large"
+    },
      {
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
         "name": "deepseek"

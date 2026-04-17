@@ -118,11 +118,13 @@ export default function ChatWithHistory() {
       </div>
       <div className="aiGrid">
         {modelsJson.map((mod, id) => (
-          <div key={id} className="aiButt"><a
-            onClick={() => {
+          <div key={id} className="aiButt"
+             onClick={() => {
               setSelectedModel(mod.name);
               setSelectedDescription(mod.description);
             }}
+          ><a
+         
           >{mod.name}</a>
           </div>
         ))}

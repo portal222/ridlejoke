@@ -97,10 +97,12 @@ export default function AiPictures() {
             </div>
             <div className="aiGrid">
                 {picturePolli.map((mod, id) => (
-                    <div key={id} className="aiButt"><a
-                        onClick={() => {
+                    <div key={id} className="aiButt"
+                      onClick={() => {
                             setSelectedModel(mod.name);
                         }}
+                    ><a
+                      
                     >{mod.name}</a>
 
                     </div>

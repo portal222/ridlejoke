@@ -14,12 +14,6 @@
               {
         "name": "qwen-image"
     },
-          {
-        "name": "gptimage"
-    },
-              {
-        "name": "gptimage-large"
-    },
             {
         "name": "wan-image"
     }
