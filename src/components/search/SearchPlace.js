@@ -8,9 +8,7 @@ import SearchColors from "./SearchColors";
 import SearchPoke from "../pokemons/SearchPoke";
 import SearchNYT from "./SearchNYT";
 import SearchMetro from "../metropolitan/SearchMetro";
-import SearchImage from "./SearchImage";
 import SearchAnimals from "./SearchAnimals";
-import SearchAiGen from "./SearchAiGen";
 import SearchMp3 from "./SearchMp3";
 import ExtinctAnimal from "../animals/ExtinctAnimal";
 
@@ -27,7 +25,6 @@ const SearchPlace = () => {
                     <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
                     <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
                     <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} />
-                    <SearchImage placeholder={'Images & Videos'} linkTo={'/video'} />
                     <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
                     <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
                 </div>

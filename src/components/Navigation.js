@@ -43,7 +43,6 @@ import ResultsClickPerson from "./search/ResultsClickPerson";
 import ClickMetro from "./metropolitan/ClickMetro";
 import ClickMetro2 from "./metropolitan/ClickMetro2";
 import Books from "./search/Books";
-import Video from "./search/Video";
 import BooksClick from "./search/BooksClick";
 import AnimalsResults from "./animals/AnimalsResults";
 import Aigenerator from "./search/Aigenerator";
@@ -144,7 +143,6 @@ const Navigation = () => {
           <Route path="/pokJson" element={<PokJson />} />
           <Route path="/books" element={<Books />} />
           <Route path="/linkBooks/:works" element={<BooksClick />} />
-          <Route path="/video" element={<Video />} />
           <Route path="/animals" element={<AnimalsResults />} />
           <Route path="/animalsMp3" element={<AnimalsMp3 />} />
           <Route path="/aiGenerator" element={<Aigenerator />} />

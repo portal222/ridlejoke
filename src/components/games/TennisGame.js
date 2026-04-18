@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const TennisGame = () => {
   const [gameState, setGameState] = useState('menu');
@@ -17,6 +19,7 @@ const TennisGame = () => {
   const GAME_HEIGHT = Math.min(window.innerHeight * 0.6, 450);
   const PADDLE_SPEED = 8;
   const MAX_SCORE = 10;
+  const [controlMode, setControlMode] = useState('buttons'); 
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -216,7 +219,7 @@ const TennisGame = () => {
         {gameState === 'gameOver' && (
           <div>
             <h3>Result:</h3>
-            <p style={{fontSize: "28px"}}>
+            <p style={{ fontSize: "28px" }}>
               🙎🏻‍♂️: {playerScore} – 💻: {computerScore}{' '}
             </p>
             <p style={{ fontWeight: "bold", fontSize: "32px", color: "blue", padding: "25px", textAlign: "center" }}>
@@ -249,6 +252,21 @@ const TennisGame = () => {
                 height: GAME_HEIGHT,
                 backgroundColor: 'black',
                 margin: 'auto'
+              }}
+               onTouchStart={(e) => {
+                if (controlMode === 'touch') {
+                  const touchY = e.touches[0].clientY;
+                  if (touchY < window.innerHeight / 2) {
+                    setKeys(prev => ({ ...prev, ArrowUp: true }));
+                  } else {
+                    setKeys(prev => ({ ...prev, ArrowDown: true }));
+                  }
+                }
+              }}
+              onTouchEnd={() => {
+                if (controlMode === 'touch') {
+                  setKeys(prev => ({ ...prev, ArrowUp: false, ArrowDown: false }));
+                }
               }}
             >
               <div
@@ -300,72 +318,73 @@ const TennisGame = () => {
               🙎🏻‍♂️: {playerScore} | 💻: {computerScore}
             </div>
 
-           
-            {gameState === 'playing' && (
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+            {controlMode === 'buttons' && gameState === 'playing' && (
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
                 <button className='tennisBut'
                   onTouchStart={() => setKeys(prev => ({ ...prev, ArrowUp: true }))}
-                  onTouchEnd={() => setKeys(prev => ({ ...prev, ArrowUp: false }))}
-
+                  onTouchEnd={() => setKeys(prev => ({ ...prev, ArrowUp: false }))}  
                 >
-                  ⇑
+                  <ArrowUpwardIcon />
                 </button>
                 <button className='tennisBut'
                   onTouchStart={() => setKeys(prev => ({ ...prev, ArrowDown: true }))}
                   onTouchEnd={() => setKeys(prev => ({ ...prev, ArrowDown: false }))}
                 >
-                  ⇓
+                  <ArrowDownwardIcon />
                 </button>
               </div>
             )}
+
+            <div className='tennisBut2'
+              onClick={() => setControlMode(prev => prev === 'buttons' ? 'touch' : 'buttons')}
+            >
+              {controlMode === 'buttons' ? 'Switch to Touch' : 'Switch to Buttons'}
+            </div>
           </>
         )}
-
+    
         <div>
           {gameState === 'playing' && (
             <div style={{ padding: '10px 40px' }}>
               <p style={{ fontWeight: "bold" }}>
                 The first to collect {MAX_SCORE} points wins!
               </p>
-
-
-              Controls: for PC, use the arrow keys or W and S, for mobile, use the buttons
-
+              Controls: for PC, use the arrow keys or W and S, for mobile, use the buttons or switch to touch
             </div>
           )}
         </div>
-         <div
-              onClick={togglePause}
-              style={{
-                padding: '10px 20px',
-                fontSize: '18px',
-                backgroundColor: '#44336',
-                color: 'green',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                display: 'inline-block',
-                marginTop: '10px'
-              }}
-            >
-              {gameState === 'playing' ? 'Pause' : 'Continue'}
-            </div>
+        <div
+          onClick={togglePause}
+          style={{
+            padding: '10px 20px',
+            fontSize: '18px',
+            backgroundColor: '#44336',
+            color: 'green',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            display: 'inline-block',
+            marginTop: '10px'
+          }}
+        >
+          {gameState === 'playing' ? 'Pause' : 'Continue'}
+        </div>
 
-            <div
-              onClick={() => setGameState('menu')}
-              style={{
-                padding: '10px 20px',
-                fontSize: '18px',
-                backgroundColor: '#44336',
-                color: 'green',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                display: 'inline-block',
-                marginTop: '10px',
-                marginLeft: '10px'
-              }}
-            >
-              MENI
-            </div>
+        <div
+          onClick={() => setGameState('menu')}
+          style={{
+            padding: '10px 20px',
+            fontSize: '18px',
+            backgroundColor: '#44336',
+            color: 'green',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            display: 'inline-block',
+            marginTop: '10px',
+            marginLeft: '10px'
+          }}
+        >
+          MENI
+        </div>
       </div>
     </>
   );
