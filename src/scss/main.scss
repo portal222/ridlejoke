@@ -1071,6 +1071,7 @@ body {
             &:hover {
                 background-color: #a4c2da;
             }
+
             &:active {
                 background-color: #a4c2da;
 
@@ -1080,8 +1081,9 @@ body {
                 font-size: 20px;
                 font-weight: bold;
                 color: #014780;
-            
+
             }
+
             p {
                 padding-top: 10px;
                 font-size: 12px;
@@ -1089,14 +1091,15 @@ body {
             }
         }
     }
-.linkList {
-    text-decoration: none;
-    color: #014780;
+
+    .linkList {
+        text-decoration: none;
+        color: #014780;
 
         &:hover {
             color: #64b5f6;
         }
-}
+    }
 }
 
 .listVideo {
@@ -1726,11 +1729,13 @@ body {
         border: solid 3px #95beba7c;
     }
 }
-.tennisMain {
 
+.tennisMain {
+    padding: 20px 10px;
     width: 900px;
     margin: auto;
     background-color: #aed1a9;
+
     p {
         padding: 10px 20px;
     }
@@ -2770,13 +2775,14 @@ body {
     .back-to-top {
         right: 20px;
     }
+
     .tennisMain {
 
-    width: 350px;
+        width: 350px;
 
 
-    p {
-        padding: 10px 20px;
+        p {
+            padding: 10px 20px;
+        }
     }
-}
 }

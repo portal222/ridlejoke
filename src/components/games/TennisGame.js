@@ -201,7 +201,7 @@ const TennisGame = () => {
                 padding: '10px 20px',
                 fontSize: '18px',
                 backgroundColor: 'green',
-                color: 'white',
+                color: '#ff8f00',
                 borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'inline-block',
@@ -214,9 +214,9 @@ const TennisGame = () => {
         )}
 
         {gameState === 'gameOver' && (
-          <div className='endGame'>
-            <h3>Result</h3>
-            <p>
+          <div>
+            <h3>Result:</h3>
+            <p style={{fontSize: "28px"}}>
               🙎🏻‍♂️: {playerScore} – 💻: {computerScore}{' '}
             </p>
             <p style={{ fontWeight: "bold", fontSize: "32px", color: "blue", padding: "25px", textAlign: "center" }}>
@@ -228,7 +228,7 @@ const TennisGame = () => {
                 padding: '10px 20px',
                 fontSize: '18px',
                 backgroundColor: '#44336',
-                color: 'white',
+                color: 'green',
                 borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'inline-block',
@@ -296,7 +296,7 @@ const TennisGame = () => {
               />
             </div>
 
-            <div style={{ color: 'white', textAlign: 'center', fontSize: '24px' }}>
+            <div style={{ color: 'green', textAlign: 'center', fontSize: '24px', marginTop: "15px" }}>
               🙎🏻‍♂️: {playerScore} | 💻: {computerScore}
             </div>
 
@@ -340,7 +340,7 @@ const TennisGame = () => {
                 padding: '10px 20px',
                 fontSize: '18px',
                 backgroundColor: '#44336',
-                color: 'white',
+                color: 'green',
                 borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'inline-block',
@@ -356,7 +356,7 @@ const TennisGame = () => {
                 padding: '10px 20px',
                 fontSize: '18px',
                 backgroundColor: '#44336',
-                color: 'white',
+                color: 'green',
                 borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'inline-block',
