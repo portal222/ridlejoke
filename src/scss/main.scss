@@ -1472,8 +1472,8 @@ body {
 .footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    padding-top: 200px;
-    height: 80px;
+    padding-top: 120px;
+    height: 20px;
 }
 
 .metropolitanMain {
@@ -1726,8 +1726,25 @@ body {
         border: solid 3px #95beba7c;
     }
 }
+.tennisMain {
 
+    width: 900px;
+    margin: auto;
+    background-color: #aed1a9;
+    p {
+        padding: 10px 20px;
+    }
 
+    .tennisBut {
+        margin: 10px;
+        padding: 5px;
+        width: 40px;
+        text-align: center;
+        background-color: #00897b;
+        color: #ff8f00;
+        border-radius: 5px;
+    }
+}
 
 @media screen and (max-width: 500px) {
     .navigator {
@@ -2753,4 +2770,13 @@ body {
     .back-to-top {
         right: 20px;
     }
+    .tennisMain {
+
+    width: 330px;
+    margin: auto;
+    background-color: #6bac61;
+    p {
+        padding: 10px 20px;
+    }
+}
 }

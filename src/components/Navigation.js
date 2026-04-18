@@ -52,6 +52,7 @@ import AnimalsMp3OnClick from "./animals/AnimalsMp3OnClick";
 import Quiz from "./trivia/Quiz";
 import NobelPrizes from "./nobel/NobelPrizes";
 import NobelPrizesNext from "./nobel/NobelPrizesNext";
+import TennisGame from "./games/TennisGame";
 
 const theme = createTheme({
   palette: {
@@ -151,6 +152,7 @@ const Navigation = () => {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/nobel" element={<NobelPrizes />} />
           <Route path="/nobelNext/:link" element={<NobelPrizesNext />} />
+          <Route path="/tenis" element={<TennisGame />} />
         </Routes>
       </HashRouter>
       <Footers />
