@@ -248,7 +248,7 @@ const TennisGame = () => {
                 width: GAME_WIDTH,
                 height: GAME_HEIGHT,
                 backgroundColor: 'black',
-                margin: '20px auto'
+                margin: 'auto'
               }}
             >
               <div
@@ -300,38 +300,7 @@ const TennisGame = () => {
               🙎🏻‍♂️: {playerScore} | 💻: {computerScore}
             </div>
 
-            <div
-              onClick={togglePause}
-              style={{
-                padding: '10px 20px',
-                fontSize: '18px',
-                backgroundColor: '#44336',
-                color: 'white',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                display: 'inline-block',
-                marginTop: '10px'
-              }}
-            >
-              {gameState === 'playing' ? 'Pause' : 'Continue'}
-            </div>
-
-            <div
-              onClick={() => setGameState('menu')}
-              style={{
-                padding: '10px 20px',
-                fontSize: '18px',
-                backgroundColor: '#44336',
-                color: 'white',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                display: 'inline-block',
-                marginTop: '10px',
-                marginLeft: '10px'
-              }}
-            >
-              MENI
-            </div>
+           
             {gameState === 'playing' && (
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                 <button className='tennisBut'
@@ -365,6 +334,38 @@ const TennisGame = () => {
             </div>
           )}
         </div>
+         <div
+              onClick={togglePause}
+              style={{
+                padding: '10px 20px',
+                fontSize: '18px',
+                backgroundColor: '#44336',
+                color: 'white',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                display: 'inline-block',
+                marginTop: '10px'
+              }}
+            >
+              {gameState === 'playing' ? 'Pause' : 'Continue'}
+            </div>
+
+            <div
+              onClick={() => setGameState('menu')}
+              style={{
+                padding: '10px 20px',
+                fontSize: '18px',
+                backgroundColor: '#44336',
+                color: 'white',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                display: 'inline-block',
+                marginTop: '10px',
+                marginLeft: '10px'
+              }}
+            >
+              MENI
+            </div>
       </div>
     </>
   );
