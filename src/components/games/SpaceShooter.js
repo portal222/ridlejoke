@@ -47,7 +47,7 @@ const SpaceShooter = () => {
           ...prev,
           { id: Date.now(), x: shipX + SHIP_WIDTH / 2 - 2, y: GAME_HEIGHT - SHIP_HEIGHT, size: 14 }
         ]);
-        playSound("/sounds/bull.wav");
+        playSound("assets/sounds/bull.wav");
       } else if (e.key.toLowerCase() === 'p') {
         setPaused(p => !p);
       }
@@ -82,7 +82,7 @@ const SpaceShooter = () => {
           ...prev,
           { id: Date.now(), x: shipX + SHIP_WIDTH / 2 - 2, y: GAME_HEIGHT - SHIP_HEIGHT, size: 14 }
         ]);
-        playSound("/sounds/bull.wav");
+        playSound("assets/sounds/bull.wav");
         setKeys(prev => ({ ...prev, Space: false }));
       }
     }, 50);
@@ -130,7 +130,7 @@ const SpaceShooter = () => {
               setLives(l => {
                 if (l - 1 <= 0) {
                   setGameOver(true);
-                  playSound("/sounds/end.wav");
+                  playSound("assets/sounds/end.wav");
                   return 0;
                 }
                 return l - 1;
@@ -161,7 +161,7 @@ const SpaceShooter = () => {
             hit = true;
             setBullets(prev => prev.filter(b => b.id !== bullet.id));
             newExplosions.push({ id: enemy.id, x: enemy.x, y: enemy.y, size: enemy.size });
-            playSound("/sounds/enem.wav");
+            playSound("assets/sounds/enem.wav");
             break;
           }
         }
@@ -197,7 +197,7 @@ const SpaceShooter = () => {
           health: 10
         });
 
-        playSound("/sounds/bossIntro.wav");
+        playSound("assets/sounds/bossIntro.wav");
       }
     }, 20000);
     return () => clearInterval(interval);
@@ -251,7 +251,7 @@ const SpaceShooter = () => {
       if (newHealth <= 0) {
         setScore(s => s + 100);
         setExplosions(prev => [...prev, { id: boss.id, x: boss.x, y: boss.y, size: boss.size }]);
-        playSound("/sounds/boss.mp3");
+        playSound("assets/sounds/boss.mp3");
 
         setBoss(null);
       } else {
@@ -295,7 +295,7 @@ const SpaceShooter = () => {
           ) {
             hit = true;
             setLives(l => l + 1);
-            playSound("/sounds/heart.wav");
+            playSound("assets/sounds/heart.wav");
             setBullets(prev => prev.filter(b => b.id !== bullet.id));
             break;
           }
@@ -427,6 +427,7 @@ const SpaceShooter = () => {
             👾
           </div>
         )}
+
         {hearts.map((h) => (
           <div
             key={h.id}
@@ -441,6 +442,7 @@ const SpaceShooter = () => {
             ❤️
           </div>
         ))}
+        {/* Game Over */}
         {gameOver && (
           <div
             style={{
