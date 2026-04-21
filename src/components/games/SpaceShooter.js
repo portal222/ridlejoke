@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import KeyboardArrowLeftOutlinedIcon from '@mui/icons-material/KeyboardArrowLeftOutlined';
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-
+import BossExp from '../../../public/assets/sounds/boss.mp3';
+import HeartSound from '../../../public/assets/sounds/heart.mp3';
+import BulletSound from '../../../public/assets/sounds/bull.mp3';
+import EndSound from '../../../public/assets/sounds/end.mp3';
+import EnemSound from '../../../public/assets/sounds/enem.mp3';
+import BossIntro from '../../../public/assets/sounds/bossIntro.mp3';
 const SpaceShooter = () => {
 
   const GAME_WIDTH = Math.min(window.innerWidth * 0.9, 550);
@@ -47,7 +52,7 @@ const SpaceShooter = () => {
           ...prev,
           { id: Date.now(), x: shipX + SHIP_WIDTH / 2 - 2, y: GAME_HEIGHT - SHIP_HEIGHT, size: 14 }
         ]);
-        playSound("assets/sounds/bull.wav");
+        playSound(BulletSound);
       } else if (e.key.toLowerCase() === 'p') {
         setPaused(p => !p);
       }
@@ -82,7 +87,7 @@ const SpaceShooter = () => {
           ...prev,
           { id: Date.now(), x: shipX + SHIP_WIDTH / 2 - 2, y: GAME_HEIGHT - SHIP_HEIGHT, size: 14 }
         ]);
-        playSound("assets/sounds/bull.wav");
+        playSound(BulletSound);
         setKeys(prev => ({ ...prev, Space: false }));
       }
     }, 50);
@@ -115,7 +120,7 @@ const SpaceShooter = () => {
         ...prev,
         { id: Date.now(), x, y: 0, size: sizes[idx], speed: Math.min(speeds[idx] + wave, 6), points: points[idx] }
       ]);
-    }, Math.max(1500, 2500 - wave * 150)); 
+    }, Math.max(1500, 2500 - wave * 150));
     return () => clearInterval(interval);
   }, [paused, gameOver, wave]);
 
@@ -130,7 +135,7 @@ const SpaceShooter = () => {
               setLives(l => {
                 if (l - 1 <= 0) {
                   setGameOver(true);
-                  playSound("assets/sounds/end.wav");
+                  playSound(EndSound);
                   return 0;
                 }
                 return l - 1;
@@ -161,7 +166,7 @@ const SpaceShooter = () => {
             hit = true;
             setBullets(prev => prev.filter(b => b.id !== bullet.id));
             newExplosions.push({ id: enemy.id, x: enemy.x, y: enemy.y, size: enemy.size });
-            playSound("assets/sounds/enem.wav");
+            playSound(EnemSound);
             break;
           }
         }
@@ -197,7 +202,7 @@ const SpaceShooter = () => {
           health: 10
         });
 
-        playSound("assets/sounds/bossIntro.wav");
+        playSound(BossIntro);
       }
     }, 20000);
     return () => clearInterval(interval);
@@ -251,7 +256,7 @@ const SpaceShooter = () => {
       if (newHealth <= 0) {
         setScore(s => s + 100);
         setExplosions(prev => [...prev, { id: boss.id, x: boss.x, y: boss.y, size: boss.size }]);
-        playSound("assets/sounds/boss.mp3");
+        playSound(BossExp);
 
         setBoss(null);
       } else {
@@ -295,7 +300,7 @@ const SpaceShooter = () => {
           ) {
             hit = true;
             setLives(l => l + 1);
-            playSound("assets/sounds/heart.wav");
+            playSound(HeartSound);
             setBullets(prev => prev.filter(b => b.id !== bullet.id));
             break;
           }
@@ -442,7 +447,6 @@ const SpaceShooter = () => {
             ❤️
           </div>
         ))}
-        {/* Game Over */}
         {gameOver && (
           <div
             style={{
@@ -466,8 +470,6 @@ const SpaceShooter = () => {
           </div>
         )}
       </div>
-
-
       <div className='game-container'>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px', gap: '10px' }}>
           <button
@@ -493,7 +495,6 @@ const SpaceShooter = () => {
           Controls: For PC use the left and right arrow keys on your keyboard and spacebar to shoot. For mobile use the buttons.
         </p>
       </div>
-
     </>
   );
 };
