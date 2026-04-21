@@ -23,7 +23,6 @@ const TennisGame = () => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // sprečava pomeranje stranice kada se koriste strelice
       if (["ArrowUp", "ArrowDown", "w", "s"].includes(e.key)) {
         e.preventDefault();
       }

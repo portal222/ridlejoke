@@ -22,6 +22,10 @@ const PickTrivia = () => {
         const LinkTo = '/tenis';
         navigate(LinkTo);
     }
+          const handleSpace = () => {
+        const LinkTo = '/space';
+        navigate(LinkTo);
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -70,19 +74,23 @@ const PickTrivia = () => {
                 </div>
 
             </div >
-            <div className="pickTrivia">
-                <div className="description">
+            <div className="gamePlace">
+           
                     <p>
-                        One of the first video games to appear on a console.
+                        Тwo famous games from the past.
                     </p>
-                </div>
+          
 
 
 
-                <div>
+                <div style={{display: "flex"}}>
                     <div onClick={() => handleTenis()}
-                        className="category">
-                       Tenis
+                        className="gameBut">
+                       Tennis
+                    </div>
+                      <div onClick={() => handleSpace()}
+                        className="gameBut">
+                       Space Shooter
                     </div>
                 </div>
             </div>

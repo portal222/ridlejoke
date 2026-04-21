@@ -1,5 +1,13 @@
 [
     {
+        "description": "Amazon Nova 2 Lite",
+        "name": "nova"
+    },
+    {
+        "description": "Anthropic Claude Haiku 4.5",
+        "name": "claude-fast"
+    },
+    {
         "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
         "name": "gemini-fast"
     },
@@ -19,36 +27,32 @@
         "description": "Mistral Small 3.2 24B - Efficient & Cost-Effective",
         "name": "mistral"
     },
-     {
+    {
         "description": "Mistral Large 3 (France LLM)",
         "name": "mistral-large"
     },
-       {
+    {
         "description": "OpenAI GPT-5 Mini - Fast & Balanced",
         "name": "openai"
     },
     {
-        "description": "Amazon Nova Micro - Ultra Fast & Ultra Cheap",
-        "name": "nova-fast"
+        "description": "OpenAI GPT-5.4",
+        "name": "openai-large"
+    },
+    {
+        "description": "Qwen3 VL plus. Alibaba",
+        "name": "qwen-vision"
     },
     {
         "description": "Qwen3.5 plus. Alibaba",
         "name": "qwen-large"
     },
     {
-        "description": "Qwen3 VL plus. Alibaba",
-        "name": "qwen-vision"
-    },
-        {
         "description": "xAI Grok 4.1 Fast",
         "name": "grok"
     },
-            {
+    {
         "description": "xAI Grok 4.20 Reasoning",
         "name": "grok-large"
-    },
-    {
-        "description": "Anthropic Claude Haiku 4.5",
-        "name": "claude-fast"
     }
 ]
