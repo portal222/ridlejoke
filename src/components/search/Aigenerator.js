@@ -80,7 +80,7 @@ const Aigenerator = () => {
     }
 
     const getQwen = async (searchStringValue) => {
-        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=kimi&key=pk_N3F6nCawqxWe8khl`
+        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=qwen-safety&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseQ = await axios.get(urlQ);
             const dataQ = responseQ
@@ -92,7 +92,7 @@ const Aigenerator = () => {
     }
 
      const getNom = async (searchStringValue) => {
-        const urlN = `https://gen.pollinations.ai/text/${searchStringValue}?model=nova-fast&key=pk_N3F6nCawqxWe8khl`
+        const urlN = `https://gen.pollinations.ai/text/${searchStringValue}?model=openai-fast&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseN = await axios.get(urlN);
             const dataN = responseN
@@ -160,7 +160,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Kimi</div>
+                <div className="polli">Qwen safety</div>
                 <div >
                     {aitextQwen.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}
@@ -168,7 +168,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Nova fast</div>
+                <div className="polli">GPT-5 Nano</div>
                 <div >
                     {aitextNom.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextNom.data) }}
