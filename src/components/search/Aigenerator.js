@@ -160,7 +160,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Qwen safety</div>
+                <div className="polli">Qwen-safety</div>
                 <div >
                     {aitextQwen.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}
