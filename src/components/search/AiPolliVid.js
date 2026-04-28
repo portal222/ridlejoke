@@ -29,7 +29,7 @@ export default function AiPolliVid() {
                 {
                     responseType: "blob",
                     headers: {
-                        Authorization: "Bearer sk_eyH8UCyiHI9JCBZR9Q8KrqCBNuZaKSxv",
+                        Authorization: "Bearer sk_NjDvjNC72ic0H38C6DXUKJuVP12hwul0",
                     },
                     params: {
                         model: "ltx-2",
