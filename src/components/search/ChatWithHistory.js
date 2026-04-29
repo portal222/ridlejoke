@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import modelsJson from "../../../public/models.json";
 
+
 export default function ChatWithHistory() {
   const [messages, setMessages] = useState([]);
   const [query, setQuery] = useState("");
@@ -31,6 +32,7 @@ export default function ChatWithHistory() {
     if (!query.trim()) return;
 
     const newMessages = [...messages, { role: "user", content: query }];
+   
     setMessages(newMessages);
     setQuery("");
     setLoading(true);
@@ -48,6 +50,8 @@ export default function ChatWithHistory() {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer sk_NjDvjNC72ic0H38C6DXUKJuVP12hwul0"
+         
+      
           }
         }
       );
