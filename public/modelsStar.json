@@ -100,5 +100,13 @@
       {
         "description": "Xiaomi, cloud",
         "name": "mimo-v2-flash"
+    },
+      {
+        "description": "Meta Llama 3.3 70B Instruct",
+        "name": "llama"
+    },
+     {
+        "description": "Moonshot Kimi K2.6 Thinking - Deep Reasoning & Tool Orchestration",
+        "name": "kimi-k2.6"
     }
 ]

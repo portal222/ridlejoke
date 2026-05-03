@@ -51,8 +51,8 @@
         "description": "xAI Grok 4.1 Fast",
         "name": "grok"
     },
-    {
-        "description": "xAI Grok 4.20 Reasoning",
-        "name": "grok-large"
+     {
+        "description": "OpenAI GPT-5 Nano, trained until June 2024",
+        "name": "openai-fast"
     }
 ]
