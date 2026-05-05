@@ -11,6 +11,12 @@
       {
         "name": "klein"
     },
+                  {
+        "name": "gptimage"
+    },
+                     {
+        "name": "gptimage-large"
+    },
               {
         "name": "qwen-image"
     },

@@ -80,7 +80,7 @@ const Aigenerator = () => {
     }
 
     const getQwen = async (searchStringValue) => {
-        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=qwen-safety&key=pk_N3F6nCawqxWe8khl`
+        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=nova-fast&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseQ = await axios.get(urlQ);
             const dataQ = responseQ
@@ -161,7 +161,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Qwen-safety</div>
+                <div className="polli">Nova Micro, Amazon</div>
                 <div >
                     {aitextQwen.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}

@@ -47,6 +47,8 @@ export default function AiPictures() {
             const imageUrl = URL.createObjectURL(response.data);
             setImage(imageUrl);
 
+            console.log("detalji za slike",response);
+
         } catch (error) {
             console.error(error);
         } finally {

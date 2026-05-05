@@ -7,6 +7,7 @@ import BulletSound from '../../../public/assets/sounds/bull.mp3';
 import EndSound from '../../../public/assets/sounds/end.mp3';
 import EnemSound from '../../../public/assets/sounds/enem.mp3';
 import BossIntro from '../../../public/assets/sounds/bossIntro.mp3';
+import BossImg from '../../../public/assets/img/BossPic.png';
 const SpaceShooter = () => {
 
   const GAME_WIDTH = Math.min(window.innerWidth * 0.9, 550);
@@ -346,7 +347,7 @@ const SpaceShooter = () => {
           position: 'relative',
           width: GAME_WIDTH,
           height: GAME_HEIGHT,
-          background: '#2c2b2bff',
+          background: '#000000ff',
           overflow: 'hidden',
           border: '2px solid #000000ff'
         }}
@@ -429,7 +430,8 @@ const SpaceShooter = () => {
               fontSize: `${boss.size}px`
             }}
           >
-            👾
+            <img src={BossImg} style={{width: "80px"}}/>
+       
           </div>
         )}
 
