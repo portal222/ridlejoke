@@ -49,9 +49,7 @@ export default function ChatWithHistory() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer sk_NjDvjNC72ic0H38C6DXUKJuVP12hwul0"
-         
-      
+            Authorization: "Bearer pk_N3F6nCawqxWe8khl"
           }
         }
       );
@@ -74,8 +72,6 @@ export default function ChatWithHistory() {
     } finally {
       setLoading(false);
       setTimerActive(false);
-
-
     }
   };
 

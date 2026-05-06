@@ -22,8 +22,6 @@ export default function AiPictures() {
         return () => clearInterval(interval);
     }, [timerActive]);
 
-
-
     const generateImage = async () => {
         if (!prompt.trim()) return;
         setLoading(true);
@@ -35,7 +33,7 @@ export default function AiPictures() {
                 {
                     responseType: "blob",
                     headers: {
-                        Authorization: "Bearer sk_NjDvjNC72ic0H38C6DXUKJuVP12hwul0",
+                        Authorization: "Bearer pk_N3F6nCawqxWe8khl"
                     },
                     params: {
 
@@ -46,8 +44,6 @@ export default function AiPictures() {
 
             const imageUrl = URL.createObjectURL(response.data);
             setImage(imageUrl);
-
-            console.log("detalji za slike",response);
 
         } catch (error) {
             console.error(error);
@@ -100,11 +96,11 @@ export default function AiPictures() {
             <div className="aiGrid">
                 {picturePolli.map((mod, id) => (
                     <div key={id} className="aiButt"
-                      onClick={() => {
+                        onClick={() => {
                             setSelectedModel(mod.name);
                         }}
                     ><a
-                      
+
                     >{mod.name}</a>
 
                     </div>
