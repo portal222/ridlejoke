@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import hitscore from '../../../public/assets/sounds/score.mp3';
+import applause from '../../../public/assets/sounds/applause2.mp3';
+import hitraket from '../../../public/assets/sounds/hit-a-ball.mp3';
+import hitraket2 from '../../../public/assets/sounds/impact.mp3';
+
 
 const TennisGame = () => {
   const [gameState, setGameState] = useState('menu');
@@ -19,7 +24,14 @@ const TennisGame = () => {
   const GAME_HEIGHT = Math.min(window.innerHeight * 0.6, 450);
   const PADDLE_SPEED = 8;
   const MAX_SCORE = 10;
-  const [controlMode, setControlMode] = useState('buttons'); 
+  const [controlMode, setControlMode] = useState('buttons');
+  const [muted, setMuted] = useState(false);
+
+  const playSound = (src) => {
+    if (muted) return;
+    const audio = new Audio(src);
+    audio.play().catch(err => console.log("Audio error:", err));
+  };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -82,10 +94,16 @@ const TennisGame = () => {
         if (newY <= 0) {
           newY = 0;
           newDy = Math.abs(newDy);
+
+          playSound(hitraket2);
+          playSound.currentTime = 0
         }
         if (newY >= GAME_HEIGHT - BALL_SIZE) {
           newY = GAME_HEIGHT - BALL_SIZE;
           newDy = -Math.abs(newDy);
+
+          playSound(hitraket2);
+          playSound.currentTime = 0
         }
 
         if (
@@ -98,6 +116,9 @@ const TennisGame = () => {
           const hitPos = (newY - playerPaddle.y) / PADDLE_HEIGHT;
           newDy = (hitPos - 0.5) * 10;
           if (Math.abs(newDy) < 2) newDy = newDy < 0 ? -2 : 2;
+
+          playSound(hitraket);
+          playSound.currentTime = 0
         }
 
         if (
@@ -110,15 +131,24 @@ const TennisGame = () => {
           const hitPos = (newY - computerPaddle.y) / PADDLE_HEIGHT;
           newDy = (hitPos - 0.5) * 10;
           if (Math.abs(newDy) < 2) newDy = newDy < 0 ? -2 : 2;
+
+          playSound(hitraket);
+          playSound.currentTime = 0
         }
 
         if (newX < 0) {
           setComputerScore(prev => prev + 1);
+          playSound.currentTime = 0;
+          playSound(hitscore);
+
           resetBall();
           return { x: GAME_WIDTH / 2, y: GAME_HEIGHT / 2 };
         }
         if (newX > GAME_WIDTH) {
           setPlayerScore(prev => prev + 1);
+          playSound.currentTime = 0;
+          playSound(hitscore);
+
           resetBall();
           return { x: GAME_WIDTH / 2, y: GAME_HEIGHT / 2 };
         }
@@ -146,6 +176,7 @@ const TennisGame = () => {
 
     if (playerScore >= MAX_SCORE || computerScore >= MAX_SCORE) {
       setGameState('gameOver');
+       playSound(applause);
     }
   }, [gameState, ballVelocity, playerPaddle, computerPaddle, ballPosition, playerScore, computerScore]);
 
@@ -196,7 +227,7 @@ const TennisGame = () => {
         {gameState === 'menu' && (
           <div>
             <p>Welcome to Tennis game!</p>
-            <p>Use the up / down or W / S arrows to move the racket</p>
+            <p>Controls: use the keys W and S or the arrow keys</p>
             <div
               onClick={startGame}
               style={{
@@ -252,7 +283,7 @@ const TennisGame = () => {
                 backgroundColor: 'black',
                 margin: 'auto'
               }}
-               onTouchStart={(e) => {
+              onTouchStart={(e) => {
                 if (controlMode === 'touch') {
                   const touchY = e.touches[0].clientY;
                   if (touchY < window.innerHeight / 2) {
@@ -321,7 +352,7 @@ const TennisGame = () => {
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
                 <button className='tennisBut'
                   onTouchStart={() => setKeys(prev => ({ ...prev, ArrowUp: true }))}
-                  onTouchEnd={() => setKeys(prev => ({ ...prev, ArrowUp: false }))}  
+                  onTouchEnd={() => setKeys(prev => ({ ...prev, ArrowUp: false }))}
                 >
                   <ArrowUpwardIcon />
                 </button>
@@ -339,9 +370,15 @@ const TennisGame = () => {
             >
               {controlMode === 'buttons' ? 'Switch to Touch' : 'Switch to Buttons'}
             </div>
+               <button
+                            onClick={() => setMuted(m => !m)}
+                            style={{ marginLeft: '10px', fontSize: '14px' }}
+                        >
+                            {muted ? "Unmute 🔊" : "Mute 🔇"}
+                        </button>
           </>
         )}
-    
+
         <div>
           {gameState === 'playing' && (
             <div style={{ padding: '10px 40px' }}>

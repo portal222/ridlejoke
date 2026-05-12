@@ -22,6 +22,10 @@ const PickTrivia = () => {
         const LinkTo = '/tenis';
         navigate(LinkTo);
     }
+     const handleTenis2p = () => {
+        const LinkTo = '/tenis2p';
+        navigate(LinkTo);
+    }
           const handleSpace = () => {
         const LinkTo = '/space';
         navigate(LinkTo);
@@ -87,6 +91,10 @@ const PickTrivia = () => {
                     <div onClick={() => handleTenis()}
                         className="gameBut">
                        Tennis
+                    </div>
+                    <div onClick={() => handleTenis2p()}
+                        className="gameBut">
+                       Tennis for two
                     </div>
                       <div onClick={() => handleSpace()}
                         className="gameBut">
