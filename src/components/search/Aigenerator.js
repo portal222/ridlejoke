@@ -55,7 +55,7 @@ const Aigenerator = () => {
 
     const getAmazon = async (searchStringValue) => {
 
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=deepseek&key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=llama&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const responseM = await axios.get(urlM);
@@ -145,7 +145,7 @@ const Aigenerator = () => {
                         : <p>Loading text...</p>}
                 </div>
 
-                <div className="polli">Deepseek</div>
+                <div className="polli">LLAMA</div>
                 <div >
                     {aitextM.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextM.data) }}
@@ -169,7 +169,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                {/* <div className="polli">GPT-5 Nano</div> */}
+            
                 <div className="polli">Moonshot Kimi K2.6</div>
                 
         

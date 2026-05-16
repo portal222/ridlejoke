@@ -95,15 +95,15 @@ const TennisGame = () => {
           newY = 0;
           newDy = Math.abs(newDy);
 
-          playSound(hitraket2);
           playSound.currentTime = 0
+          playSound(hitraket2);
         }
         if (newY >= GAME_HEIGHT - BALL_SIZE) {
           newY = GAME_HEIGHT - BALL_SIZE;
           newDy = -Math.abs(newDy);
 
-          playSound(hitraket2);
           playSound.currentTime = 0
+          playSound(hitraket2);
         }
 
         if (
@@ -117,8 +117,8 @@ const TennisGame = () => {
           newDy = (hitPos - 0.5) * 10;
           if (Math.abs(newDy) < 2) newDy = newDy < 0 ? -2 : 2;
 
-          playSound(hitraket);
           playSound.currentTime = 0
+          playSound(hitraket);
         }
 
         if (
@@ -132,8 +132,8 @@ const TennisGame = () => {
           newDy = (hitPos - 0.5) * 10;
           if (Math.abs(newDy) < 2) newDy = newDy < 0 ? -2 : 2;
 
-          playSound(hitraket);
           playSound.currentTime = 0
+          playSound(hitraket);
         }
 
         if (newX < 0) {
@@ -176,7 +176,8 @@ const TennisGame = () => {
 
     if (playerScore >= MAX_SCORE || computerScore >= MAX_SCORE) {
       setGameState('gameOver');
-       playSound(applause);
+      playSound.currentTime = 0;
+      playSound(applause);
     }
   }, [gameState, ballVelocity, playerPaddle, computerPaddle, ballPosition, playerScore, computerScore]);
 
@@ -370,12 +371,12 @@ const TennisGame = () => {
             >
               {controlMode === 'buttons' ? 'Switch to Touch' : 'Switch to Buttons'}
             </div>
-               <button
-                            onClick={() => setMuted(m => !m)}
-                            style={{ marginLeft: '10px', fontSize: '14px' }}
-                        >
-                            {muted ? "Unmute 🔊" : "Mute 🔇"}
-                        </button>
+            <button
+              onClick={() => setMuted(m => !m)}
+              style={{ marginLeft: '10px', fontSize: '14px' }}
+            >
+              {muted ? "Unmute 🔊" : "Mute 🔇"}
+            </button>
           </>
         )}
 

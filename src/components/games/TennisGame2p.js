@@ -1,22 +1,30 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-
 import hitscore from '../../../public/assets/sounds/score.mp3';
 import applause from '../../../public/assets/sounds/applause2.mp3';
 import hitraket from '../../../public/assets/sounds/hit-a-ball.mp3';
 import hitraket2 from '../../../public/assets/sounds/impact.mp3';
+import shrink from '../../../public/assets/sounds/shrink.mp3';
+import powerspeed from '../../../public/assets/sounds/bostspeed.mp3';
 
 const TennisGame2p = () => {
     const [gameState, setGameState] = useState('menu');
     const [playerScore, setPlayerScore] = useState(0);
-    const [computerScore, setComputerScore] = useState(0);
+    const [player2Score, setPlayer2Score] = useState(0);
+
     const [ballPosition, setBallPosition] = useState({ x: 400, y: 300 });
     const [ballVelocity, setBallVelocity] = useState({ dx: 6, dy: 4 });
+
     const [playerPaddle, setPlayerPaddle] = useState({ y: 250 });
     const [player2Paddle, setPlayer2Paddle] = useState({ y: 250 });
 
+    const [player1PaddleHeight, setPlayer1PaddleHeight] = useState(70);
+    const [player2PaddleHeight, setPlayer2PaddleHeight] = useState(70);
+
     const [keys, setKeys] = useState({});
+
+    const [speedPowerUp, setSpeedPowerUp] = useState(null);
+    const [shrinkPowerUp, setShrinkPowerUp] = useState(null);
+    const [boostFactor, setBoostFactor] = useState(1);
 
     const PADDLE_HEIGHT = 70;
     const PADDLE_WIDTH = 10;
@@ -25,9 +33,7 @@ const TennisGame2p = () => {
     const GAME_HEIGHT = Math.min(window.innerHeight * 0.6, 450);
     const PADDLE_SPEED = 8;
     const MAX_SCORE = 10;
-    const [controlMode, setControlMode] = useState('buttons');
     const [muted, setMuted] = useState(false);
-
 
     const playSound = (src) => {
         if (muted) return;
@@ -60,12 +66,14 @@ const TennisGame2p = () => {
         if (gameState !== 'playing') return;
 
         const movePaddles = () => {
+
             setPlayerPaddle(prev => {
                 let newY = prev.y;
                 if (keys['w']) newY = Math.max(0, prev.y - PADDLE_SPEED);
                 if (keys['s']) newY = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, prev.y + PADDLE_SPEED);
                 return { y: newY };
             });
+
             setPlayer2Paddle(prev => {
                 let newY = prev.y;
                 if (keys['ArrowUp']) newY = Math.max(0, prev.y - PADDLE_SPEED);
@@ -76,17 +84,30 @@ const TennisGame2p = () => {
 
         const interval = setInterval(movePaddles, 16);
         return () => clearInterval(interval);
-    }, [keys, gameState]);
+    }, [keys, gameState, player1PaddleHeight, player2PaddleHeight]);
 
+    useEffect(() => {
+        if (gameState !== 'playing') return;
+
+        const spawnInterval = setInterval(() => {
+            const x = Math.random() * (GAME_WIDTH - 30) + 15;
+            const y = Math.random() * (GAME_HEIGHT - 30) + 15;
+            if (Math.random() > 0.5) {
+                setSpeedPowerUp({ x, y });
+            } else {
+                setShrinkPowerUp({ x, y });
+            }
+        }, 12000);
+
+        return () => clearInterval(spawnInterval);
+    }, [gameState]);
 
     const updateGame = useCallback(() => {
         if (gameState !== 'playing') return;
 
-        const steps = 4;
+        const steps = 2;
         const stepDx = ballVelocity.dx / steps;
         const stepDy = ballVelocity.dy / steps;
-
-
 
         setBallPosition(prev => {
             let newX = prev.x;
@@ -101,55 +122,48 @@ const TennisGame2p = () => {
                 if (newY <= 0) {
                     newY = 0;
                     newDy = Math.abs(newDy);
-
-                    playSound(hitraket2);
                     playSound.currentTime = 0
+                    playSound(hitraket2);
                 }
                 if (newY >= GAME_HEIGHT - BALL_SIZE) {
                     newY = GAME_HEIGHT - BALL_SIZE;
                     newDy = -Math.abs(newDy);
-
-                    playSound(hitraket2);
                     playSound.currentTime = 0
+                    playSound(hitraket2);
                 }
 
                 if (
                     newX <= PADDLE_WIDTH &&
                     newX + BALL_SIZE >= 0 &&
-                    newY < playerPaddle.y + PADDLE_HEIGHT &&
+                    newY < playerPaddle.y + player1PaddleHeight &&
                     newY + BALL_SIZE > playerPaddle.y
                 ) {
                     newDx = Math.abs(newDx);
                     const hitPos = (newY - playerPaddle.y) / PADDLE_HEIGHT;
                     newDy = (hitPos - 0.5) * 10;
                     if (Math.abs(newDy) < 2) newDy = newDy < 0 ? -2 : 2;
-
-                    playSound(hitraket);
                     playSound.currentTime = 0
+                    playSound(hitraket);
                 }
 
                 if (
                     newX + BALL_SIZE >= GAME_WIDTH - PADDLE_WIDTH &&
                     newX <= GAME_WIDTH &&
-                    newY < player2Paddle.y + PADDLE_HEIGHT &&
+                    newY < player2Paddle.y + player2PaddleHeight &&
                     newY + BALL_SIZE > player2Paddle.y
                 ) {
                     newDx = -Math.abs(newDx);
                     const hitPos = (newY - player2Paddle.y) / PADDLE_HEIGHT;
                     newDy = (hitPos - 0.5) * 10;
                     if (Math.abs(newDy) < 2) newDy = newDy < 0 ? -2 : 2;
-
-                    playSound(hitraket);
                     playSound.currentTime = 0
-
+                    playSound(hitraket);
                 }
 
-
                 if (newX < 0) {
-                    setComputerScore(prev => prev + 1);
+                    setPlayer2Score(prev => prev + 1);
                     playSound.currentTime = 0;
                     playSound(hitscore);
-
                     resetBall();
                     return { x: GAME_WIDTH / 2, y: GAME_HEIGHT / 2 };
                 }
@@ -157,9 +171,65 @@ const TennisGame2p = () => {
                     setPlayerScore(prev => prev + 1);
                     playSound.currentTime = 0;
                     playSound(hitscore);
-
                     resetBall();
                     return { x: GAME_WIDTH / 2, y: GAME_HEIGHT / 2 };
+                }
+
+                if (
+                    speedPowerUp &&
+                    ballPosition.x < speedPowerUp.x + 45 &&
+                    ballPosition.x + BALL_SIZE > speedPowerUp.x &&
+                    ballPosition.y < speedPowerUp.y + 25 &&
+                    ballPosition.y + BALL_SIZE > speedPowerUp.y
+                ) {
+                    setBallVelocity(prev => ({
+                        dx: prev.dx * 6,
+                        dy: prev.dy * 6
+                    }));
+                    setBoostFactor(1.01);
+                    setSpeedPowerUp(null);
+
+                    playSound.currentTime = 0
+                    playSound(powerspeed);
+
+                    setTimeout(() => {
+                        setBallVelocity(prev => {
+                            const angle = Math.atan2(prev.dy, prev.dx);
+                            const speed = Math.sqrt(prev.dx * prev.dx + prev.dy * prev.dy);
+                            const normalSpeed = speed / boostFactor;
+                            return {
+                                dx: Math.cos(angle) * normalSpeed,
+                                dy: Math.sin(angle) * normalSpeed
+                            };
+                        });
+                        setBoostFactor(1);
+                    }, 5000);
+                }
+
+                if (
+                    shrinkPowerUp &&
+                    ballPosition.x < shrinkPowerUp.x + 70 &&
+                    ballPosition.x + BALL_SIZE > shrinkPowerUp.x &&
+                    ballPosition.y < shrinkPowerUp.y + 20 &&
+                    ballPosition.y + BALL_SIZE > shrinkPowerUp.y
+                ) {
+                    if (ballVelocity.dx > 0) {
+                        setPlayer2PaddleHeight(40);
+                        playSound.currentTime = 0
+                        playSound(shrink);
+                        setTimeout(() => setPlayer2PaddleHeight(70), 5000);
+                    } else {
+                        setPlayer1PaddleHeight(40);
+                        playSound.currentTime = 0
+                        playSound(shrink);
+                        setTimeout(() => setPlayer1PaddleHeight(70), 5000);
+                    }
+                    setShrinkPowerUp(null);
+                }
+
+                if (playerScore >= MAX_SCORE || player2Score >= MAX_SCORE) {
+                    setGameState('gameOver');
+                    playSound(applause);
                 }
             }
 
@@ -167,24 +237,17 @@ const TennisGame2p = () => {
             return { x: newX, y: newY };
         });
 
-        if (playerScore >= MAX_SCORE || computerScore >= MAX_SCORE) {
-            setGameState('gameOver');
-            playSound(applause);
-        }
-    }, [gameState, ballVelocity, playerPaddle, player2Paddle, ballPosition, playerScore, computerScore]);
+    }, [gameState, ballVelocity, playerPaddle, player2Paddle, ballPosition, playerScore, player2Score, speedPowerUp, boostFactor]);
 
     useEffect(() => {
         let animationFrameId;
-
         const loop = () => {
             updateGame();
             animationFrameId = requestAnimationFrame(loop);
         };
-
         if (gameState === 'playing') {
             animationFrameId = requestAnimationFrame(loop);
         }
-
         return () => {
             if (animationFrameId) cancelAnimationFrame(animationFrameId);
         };
@@ -202,7 +265,7 @@ const TennisGame2p = () => {
     const startGame = () => {
         setGameState('playing');
         setPlayerScore(0);
-        setComputerScore(0);
+        setPlayer2Score(0);
         resetBall();
     };
 
@@ -210,9 +273,10 @@ const TennisGame2p = () => {
         setGameState(prev => (prev === 'playing' ? 'paused' : 'playing'));
     };
 
-    const restartGame = () => {
-        startGame();
-    };
+
+    // const restartGame = () => {
+    //     startGame();
+    // };
 
     return (
         <>
@@ -243,13 +307,13 @@ const TennisGame2p = () => {
                     <div>
                         <h3>Result:</h3>
                         <p style={{ fontSize: "30px" }}>
-                            👮‍♂️: {playerScore} – 👨‍🎓: {computerScore}{' '}
+                            👮‍♂️: {playerScore} – 👨‍🎓: {player2Score}{' '}
                         </p>
                         <p style={{ fontWeight: "bold", fontSize: "32px", color: "blue", padding: "25px", textAlign: "center" }}>
                             {playerScore >= MAX_SCORE ? 'PLAYER ONE WIN!' : 'PLAYER TWO WIN!'}
                         </p>
                         <div
-                            onClick={restartGame}
+                            onClick={startGame}
                             style={{
                                 padding: '10px 20px',
                                 fontSize: '18px',
@@ -276,21 +340,6 @@ const TennisGame2p = () => {
                                 backgroundColor: 'black',
                                 margin: 'auto'
                             }}
-                            onTouchStart={(e) => {
-                                if (controlMode === 'touch') {
-                                    const touchY = e.touches[0].clientY;
-                                    if (touchY < window.innerHeight / 2) {
-                                        setKeys(prev => ({ ...prev, ArrowUp: true }));
-                                    } else {
-                                        setKeys(prev => ({ ...prev, ArrowDown: true }));
-                                    }
-                                }
-                            }}
-                            onTouchEnd={() => {
-                                if (controlMode === 'touch') {
-                                    setKeys(prev => ({ ...prev, ArrowUp: false, ArrowDown: false }));
-                                }
-                            }}
                         >
                             <div
                                 style={{
@@ -311,18 +360,20 @@ const TennisGame2p = () => {
                                     top: ballPosition.y,
                                     width: BALL_SIZE,
                                     height: BALL_SIZE,
-                                    backgroundColor: 'white',
+                                    backgroundColor: boostFactor > 1 ? 'yellow' : 'white',
                                     borderRadius: '50%'
                                 }}
                             />
+
+
                             <div
                                 style={{
                                     position: 'absolute',
                                     left: 0,
                                     top: playerPaddle.y,
                                     width: PADDLE_WIDTH,
-                                    height: PADDLE_HEIGHT,
-                                    backgroundColor: '#1565c0'
+                                    height: player1PaddleHeight,
+                                    backgroundImage: 'linear-gradient(#1565c0, #223794ff, #1565c0)'
                                 }}
                             />
                             <div
@@ -331,18 +382,50 @@ const TennisGame2p = () => {
                                     right: 0,
                                     top: player2Paddle.y,
                                     width: PADDLE_WIDTH,
-                                    height: PADDLE_HEIGHT,
-                                    backgroundColor: '#feb867'
+                                    height: player2PaddleHeight,
+                                    backgroundImage: 'linear-gradient(#feb867, #f77a53ff, #feb867)'
                                 }}
                             />
+
+                            {speedPowerUp && (
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        left: speedPowerUp.x,
+                                        top: speedPowerUp.y,
+                                        width: 45,
+                                        height: 25,
+                                        fontSize: 14,
+                                        paddingTop: 5,
+                                        textAlign: 'center',
+                                        color: 'white',
+                                        backgroundColor: '#c35454ff',
+                                        borderRadius: '15%'
+                                    }}
+                                > speed</div>
+                            )}
+                            {shrinkPowerUp && (
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                        left: shrinkPowerUp.x,
+                                        top: shrinkPowerUp.y,
+                                        width: 70,
+                                        height: 20,
+                                        paddingTop: 5,
+                                        fontSize: 14,
+                                        textAlign: 'center',
+                                        color: 'white',
+                                        backgroundColor: '#42bdc5ff',
+                                        borderRadius: '10%'
+                                    }}
+                                >shrink </div>
+                            )}
                         </div>
 
                         <div style={{ color: 'green', textAlign: 'center', fontSize: '26px', marginTop: "15px" }}>
-                            👮‍♂️: {playerScore} | 👨‍🎓: {computerScore}
+                            👮‍♂️: {playerScore} | 👨‍🎓: {player2Score}
                         </div>
-
-
-                      
                         <button
                             onClick={() => setMuted(m => !m)}
                             style={{ marginLeft: '10px', fontSize: '14px' }}
@@ -398,5 +481,4 @@ const TennisGame2p = () => {
         </>
     );
 };
-
 export default TennisGame2p;
