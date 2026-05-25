@@ -82,6 +82,14 @@
       {
         "name": "gptimage"
     },
+        {
+        "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
+        "name": "gemini-fast"
+    },
+    {
+        "description": "Google Gemini 3 Flash",
+        "name": "gemini-search"
+    },
               {
         "name": "gptimage-large"
     },

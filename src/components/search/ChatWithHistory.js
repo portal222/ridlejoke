@@ -8,8 +8,8 @@ export default function ChatWithHistory() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [totalTok, setTotalTok] = useState(0);
-  const [selectedModel, setSelectedModel] = useState("gemini-fast");
-  const [selectedDescription, setSelectedDescription] = useState("Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective");
+  const [selectedModel, setSelectedModel] = useState("perplexity-fast");
+  const [selectedDescription, setSelectedDescription] = useState("Perplexity Sonar - Fast & Affordable with Web Search and links");
   const [timestamp, setTimestamp] = useState();
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
@@ -66,6 +66,8 @@ export default function ChatWithHistory() {
       setSeconds(0);
       setTimerActive(true);
       setTimestamp(data.created);
+
+      console.log("detalji ai odgovora", data);
 
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);

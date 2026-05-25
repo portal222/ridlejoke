@@ -7,14 +7,7 @@
         "description": "Anthropic Claude Haiku 4.5 (San Francisco, trained until April 2024)",
         "name": "claude-fast"
     },
-    {
-        "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
-        "name": "gemini-fast"
-    },
-    {
-        "description": "Google Gemini 3 Flash",
-        "name": "gemini-search"
-    },
+
     {
         "description": "Perplexity Sonar - Fast & Affordable with Web Search and links",
         "name": "perplexity-fast"
@@ -54,5 +47,13 @@
      {
         "description": "OpenAI GPT-5 Nano, trained until June 2024",
         "name": "openai-fast"
+    },
+       {
+        "description": "深度求索 (Shēndù Qiúsuǒ), large language model, trained until May 2025.",
+        "name": "deepseek"
+    },
+         {
+        "description": "MiniMax m2.7, Beijing China (CEO Ji Xao). In addition to the answer, also provides reflection on the question itself.Trained until 2024-25.",
+        "name": "minimax"
     }
 ]

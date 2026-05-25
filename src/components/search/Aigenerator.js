@@ -55,7 +55,7 @@ const Aigenerator = () => {
 
     const getAmazon = async (searchStringValue) => {
 
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=llama&key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=polly&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const responseM = await axios.get(urlM);
@@ -68,7 +68,7 @@ const Aigenerator = () => {
     }
 
     const getLarge = async (searchStringValue) => {
-        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=minimax&key=pk_N3F6nCawqxWe8khl`
+        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=mistral-4&key=pk_N3F6nCawqxWe8khl`
         try {
             const responseLar = await axios.get(urlLar);
             const dataLar = responseLar
@@ -145,7 +145,7 @@ const Aigenerator = () => {
                         : <p>Loading text...</p>}
                 </div>
 
-                <div className="polli">LLAMA</div>
+                <div className="polli">Polly by @Itachi-1824</div>
                 <div >
                     {aitextM.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextM.data) }}
@@ -153,7 +153,7 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-                <div className="polli">Minimax</div>
+                <div className="polli">Mistral Small 4</div>
                 <div >
                     {aitextLar.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextLar.data) }}
