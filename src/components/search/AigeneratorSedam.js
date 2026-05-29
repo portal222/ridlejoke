@@ -11,11 +11,11 @@ const Aigenerator = () => {
 
     const [aitext, setAitext] = useState([]);
     const [aitextM, setAitextM] = useState([]);
+    const [aitextLar, setAitextLar] = useState([]);
+    const [aitextQwen, setAitextQwen] = useState([]);
     const [aitextNom, setAitextNom] = useState([]);
     const [aitextGemma, setAitextGemma] = useState([]);
     const [aitextGpt, setAitextGpt] = useState([]);
-    const [aitextStep, setAitextStep] = useState([]);
-    const [aitextLlama, setAitextLlama] = useState([]);
     const [error, setError] = useState(null);
 
     const globalCtx = useContext(GlobalContext);
@@ -25,11 +25,11 @@ const Aigenerator = () => {
         getModels();
         getText(searchStringValue);
         getAmazon(searchStringValue);
+        getLarge(searchStringValue);
+        getQwen(searchStringValue);
         getNom(searchStringValue);
         getGemma(searchStringValue);
         getGpt(searchStringValue);
-        getStep(searchStringValue);
-        getLlama(searchStringValue);
     }, [searchStringValue]);
 
     const getModels = async () => {
@@ -71,7 +71,7 @@ const Aigenerator = () => {
         }
     }
 
-    const getGpt = async (searchStringValue) => {
+       const getGpt = async (searchStringValue) => {
 
 
         const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=gpt-5.5&key=pk_N3F6nCawqxWe8khl`
@@ -86,7 +86,7 @@ const Aigenerator = () => {
         }
     }
 
-    const getGemma = async (searchStringValue) => {
+       const getGemma = async (searchStringValue) => {
 
         const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=gemma&key=pk_N3F6nCawqxWe8khl`
 
@@ -100,38 +100,33 @@ const Aigenerator = () => {
         }
     }
 
-
-    const getStep = async (searchStringValue) => {
-
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=step-flash&key=pk_N3F6nCawqxWe8khl`
-
+    const getLarge = async (searchStringValue) => {
+        const urlLar = `https://gen.pollinations.ai/text/${searchStringValue}?model=mistral-4&key=pk_N3F6nCawqxWe8khl`
         try {
-            const responseM = await axios.get(urlM);
-            const dataM = responseM
-            setAitextStep(dataM);
+            const responseLar = await axios.get(urlLar);
+            const dataLar = responseLar
+            setAitextLar(dataLar);
 
         } catch (err) {
             setError(err);
         }
     }
 
-    const getLlama = async (searchStringValue) => {
-
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=llama&key=pk_N3F6nCawqxWe8khl`
-
+    const getQwen = async (searchStringValue) => {
+        const urlQ = `https://gen.pollinations.ai/text/${searchStringValue}?model=nova-fast&key=pk_N3F6nCawqxWe8khl`
         try {
-            const responseM = await axios.get(urlM);
-            const dataM = responseM
-            setAitextLlama(dataM);
+            const responseQ = await axios.get(urlQ);
+            const dataQ = responseQ
+            setAitextQwen(dataQ);
 
         } catch (err) {
             setError(err);
         }
     }
 
-    const getNom = async (searchStringValue) => {
+     const getNom = async (searchStringValue) => {
         const urlN = `https://gen.pollinations.ai/text/${searchStringValue}?model=kimi-k2.6&key=pk_N3F6nCawqxWe8khl`
-
+   
         try {
             const responseN = await axios.get(urlN);
             const dataN = responseN
@@ -160,7 +155,7 @@ const Aigenerator = () => {
         <>
             <div className="mainBook">
                 <div className="aiTitle" >
-                    <p className="intro">Test various Artificial Intelligence models, get seven answers for one query, or chat with them. You can use any language in the prompt.
+                    <p className="intro">Test various Artificial Intelligence models, get five answers for one query, or chat with them. You can use any language in the prompt.
                         And generate images or video.
                     </p>
                     <div className="aiSearch">
@@ -192,7 +187,7 @@ const Aigenerator = () => {
                         : <p>Loading text...</p>}
                 </div>
 
-                <div className="polli">GPT-5.5</div>
+                         <div className="polli">GPT</div>
                 <div >
                     {aitextGpt.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextGpt.data) }}
@@ -200,8 +195,8 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-
-                <div className="polli">Gemma 4 26B A4B</div>
+                
+                 <div className="polli">Gemma 4 26B A4B</div>
                 <div >
                     {aitextGemma.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextGemma.data) }}
@@ -209,27 +204,27 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-
-                <div className="polli">StepFun Step 3.7 Flash</div>
+                <div className="polli">Mistral Small 4</div>
                 <div >
-                    {aitextStep.data ? <div className="totalPer"
-                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextStep.data) }}
+                    {aitextLar.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextLar.data) }}
                     >
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-
-
-                <div className="polli">Meta Llama 3.3 70B</div>
+                <div className="polli">Nova Micro, Amazon</div>
                 <div >
-                    {aitextLlama.data ? <div className="totalPer"
-                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextLlama.data) }}
+                    {aitextQwen.data ? <div className="totalPer"
+                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextQwen.data) }}
                     >
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-
+            
                 <div className="polli">Moonshot Kimi K2.6</div>
+                
+        
+                
                 <div >
                     {aitextNom.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextNom.data) }}

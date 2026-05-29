@@ -15,36 +15,39 @@
         "description": "Qwen3 Coder 30B - Specialized for Code Generation",
         "name": "qwen-coder"
     },
-      {
+    {
         "description": "NomNom by @Itachi-1824 - Web Research with Search, Scrape & Crawl (Alpha)",
         "name": "nomnom"
     },
-      {
+    {
         "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
         "name": "minimax"
     },
-      
     {
         "description": "xAI Grok 4 Fast - High Speed & Real-Time",
         "name": "grok"
     },
-      {
+    {
+        "description": "xAI Grok 4.3",
+        "name": "grok-4.3"
+    },
+    {
         "description": "Polly by @Itachi-1824 - coder",
         "name": "polly"
     },
-       {
+    {
         "description": "Qwen3 Coder 30B - Specialized for Code Generation. Alibaba",
         "name": "qwen-coder"
     },
-       {
+    {
         "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
         "name": "chickytutor"
     },
-       {
+    {
         "description": "OpenAI GPT-5 Nano, trained until June 2024",
         "name": "openai-fast"
     },
-   {
+    {
         "description": "MiniMax M2.1 MiniMax (Beijing 2021)",
         "name": "minimax"
     },
@@ -56,19 +59,19 @@
         "description": "Perplexity Sonar - Fast & Affordable with Web Search",
         "name": "perplexity-fast"
     },
-       {
+    {
         "description": "ChickyTutor AI Language Tutor - (chickytutor.com)",
         "name": "chickytutor"
     },
-       {
+    {
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
         "name": "deepseek"
     },
-      {
+    {
         "description": "OpenAI GPT-5.2, reasoning, trained until September 2025",
         "name": "openai-large"
     },
-        {
+    {
         "description": "OpenAI GPT-4o Mini Audio",
         "name": "openai-audio"
     },
@@ -76,13 +79,13 @@
         "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
         "name": "kimi"
     },
-             {
+    {
         "name": "klein-large"
     },
-      {
+    {
         "name": "gptimage"
     },
-        {
+    {
         "description": "Google Gemini 2.5 Flash Lite - Ultra Fast & Cost-Effective",
         "name": "gemini-fast"
     },
@@ -90,31 +93,51 @@
         "description": "Google Gemini 3 Flash",
         "name": "gemini-search"
     },
-              {
+    {
         "name": "gptimage-large"
     },
-     {
+    {
         "description": "DeepSeek v3.2 Anthropic (San Francisco 2021)",
         "name": "deepseek"
     },
-     {
+    {
         "description": "Z.ai GLM-4.7",
         "name": "glm"
     },
-     {
+    {
         "description": "Moonshot Kimi K2 Thinking - Deep Reasoning & Tool Orchestration",
         "name": "kimi"
     },
-      {
+    {
         "description": "Xiaomi, cloud",
         "name": "mimo-v2-flash"
     },
-      {
+    {
         "description": "Meta Llama 3.3 70B Instruct",
         "name": "llama"
     },
-     {
+    {
         "description": "Moonshot Kimi K2.6 Thinking - Deep Reasoning & Tool Orchestration",
         "name": "kimi-k2.6"
+    },
+    {
+        "description": "Qwen3 VL 235B A22B Thinking",
+        "name": "qwen-vision-pro"
+    },
+    {
+        "description": "Qwen3 VL 235B A22B Thinking",
+        "name": "gemma"
+    },
+    {
+        "description": "GPT-5.5",
+        "name": "gpt-5.5"
+    },
+                 {
+        "description": "StepFun Step 3.7 Flash",
+        "name": "step-flash"
+    },
+             {
+        "description": "GPT Realtime 2",
+        "name": "gpt-realtime-2"
     }
 ]
