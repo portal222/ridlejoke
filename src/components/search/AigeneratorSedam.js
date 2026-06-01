@@ -16,6 +16,8 @@ const Aigenerator = () => {
     const [aitextNom, setAitextNom] = useState([]);
     const [aitextGemma, setAitextGemma] = useState([]);
     const [aitextGpt, setAitextGpt] = useState([]);
+        const [aitextLlama, setAitextLlama] = useState([]);
+    
     const [error, setError] = useState(null);
 
     const globalCtx = useContext(GlobalContext);
@@ -30,6 +32,8 @@ const Aigenerator = () => {
         getNom(searchStringValue);
         getGemma(searchStringValue);
         getGpt(searchStringValue);
+        getLlama(searchStringValue);
+
     }, [searchStringValue]);
 
     const getModels = async () => {
@@ -137,6 +141,7 @@ const Aigenerator = () => {
         }
     }
 
+
     function makeLinks(text) {
         return text.replace(
             /(https?:\/\/[^\s]+)/g,
@@ -149,6 +154,20 @@ const Aigenerator = () => {
                 }
             }
         );
+    }
+
+        const getLlama = async (searchStringValue) => {
+
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=llama&key=pk_N3F6nCawqxWe8khl`
+
+        try {
+            const responseM = await axios.get(urlM);
+            const dataM = responseM
+            setAitextLlama(dataM);
+
+        } catch (err) {
+            setError(err);
+        }
     }
 
     return (

@@ -1,13 +1,12 @@
 [
     {
-        "description": "Amazon Nova 2 Lite",
+        "description": "Amazon Nova 2 Lite. Trained until October 2023.",
         "name": "nova"
     },
     {
         "description": "Anthropic Claude Haiku 4.5 (San Francisco, trained until April 2024.)",
         "name": "claude-fast"
     },
-
     {
         "description": "Perplexity Sonar - Fast & Affordable with Web Search and links",
         "name": "perplexity-fast"
@@ -21,7 +20,7 @@
         "name": "mistral"
     },
     {
-        "description": "Mistral Large 3 (France LLM)",
+        "description": "Mistral Large 3 (France LLM). Тrained until October 2023.",
         "name": "mistral-large"
     },
     {
@@ -33,32 +32,31 @@
         "name": "openai-large"
     },
     {
-        "description": "Qwen3 VL plus. Alibaba",
+        "description": "Qwen3 VL plus. Alibaba,  trained until September 2024.",
         "name": "qwen-vision"
     },
     {
-        "description": "Qwen3.5 plus. Alibaba",
+        "description": "Qwen3.5 plus. Alibaba. Аlso provides reflection on the question itself, trained until 2026.",
         "name": "qwen-large"
     },
     {
         "description": "xAI Grok 4.20 Fast",
         "name": "grok"
     },
-      {
+    {
         "description": "xAI Grok 4.20 Reasoning, trained until 10. July 2025.",
         "name": "grok-large"
     },
-     {
-        "description": "OpenAI GPT-5 Nano, trained until June 2024.",
-        "name": "openai-fast"
-    },
-       {
+    {
         "description": "深度求索 (Shēndù Qiúsuǒ), large language model, trained until May 2025.",
         "name": "deepseek"
     },
-         {
-        "description": "MiniMax m2.7, Beijing China (CEO Ji Xao). In addition to the answer, also provides reflection on the question itself.Trained until 2024-25.",
+    {
+        "description": "DeepSeek V4 Pro, also provides reflection on the question itself. Trained until October 2023.",
+        "name": "deepseek-pro"
+    },
+    {
+        "description": "MiniMax m2.7, Beijing China (CEO Ji Xao). In addition to the answer, also provides reflection on the question itself. Trained until 2024-25.",
         "name": "minimax"
     }
-
 ]
