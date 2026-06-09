@@ -14,7 +14,6 @@ export default function ChatWithHistory() {
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
   const [answerLink, setAnswerLink] = useState([]);
-
   const [aimisao, setAimisao] = useState([]);
 
   useEffect(() => {

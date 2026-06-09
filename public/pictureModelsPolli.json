@@ -1,29 +1,23 @@
 [
-    {
-        "name": "flux"
-    },
-      {
-        "name": "kontext"
-    },
-      {
-        "name": "zimage"
-    },
-      {
-        "name": "klein"
-    },
-                  {
-        "name": "gptimage"
-    },
-                     {
-        "name": "gptimage-large"
-    },
-              {
-        "name": "qwen-image"
-    },
-            {
-        "name": "wan-image"
-    },
-    {
-      "name": "nova-canvas"
-    }
+  {
+    "name": "flux"
+  },
+  {
+    "name": "klein"
+  },
+  {
+    "name": "kontext"
+  },
+  {
+    "name": "zimage"
+  },
+  {
+    "name": "gptimage"
+  },
+  {
+    "name": "gptimage-large"
+  },
+  {
+    "name": "nova-canvas"
+  }
 ]

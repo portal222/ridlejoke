@@ -11,11 +11,11 @@ const Aigenerator = () => {
 
     const [aitext, setAitext] = useState([]);
     const [aitextM, setAitextM] = useState([]);
-    const [aitextNom, setAitextNom] = useState([]);
     const [aitextGemma, setAitextGemma] = useState([]);
     const [aitextGpt, setAitextGpt] = useState([]);
     const [aitextStep, setAitextStep] = useState([]);
     const [error, setError] = useState(null);
+
 
     const globalCtx = useContext(GlobalContext);
     const searchStringValue = globalCtx.searchStringValue;
@@ -24,18 +24,19 @@ const Aigenerator = () => {
         getModels();
         getText(searchStringValue);
         getAmazon(searchStringValue);
-        // getNom(searchStringValue);
         getGemma(searchStringValue);
         getGpt(searchStringValue);
         getStep(searchStringValue);
     }, [searchStringValue]);
 
     const getModels = async () => {
-        const urlM = `https://gen.pollinations.ai/image/models?key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/models?key=pk_N3F6nCawqxWe8khl`
 
         try {
             const response = await axios.get(urlM);
             const data = response
+
+            console.log("modeli polinations", data);
 
         } catch (err) {
             setError(err);
@@ -193,25 +194,6 @@ const Aigenerator = () => {
                     </div>
                         : <p>Loading text...</p>}
                 </div>
-
-
-                {/* <div className="polli">Meta Llama 3.3 70B</div>
-                <div >
-                    {aitextLlama.data ? <div className="totalPer"
-                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextLlama.data) }}
-                    >
-                    </div>
-                        : <p>Loading text...</p>}
-                </div> */}
-
-                {/* <div className="polli">Moonshot Kimi K2.6</div>
-                <div >
-                    {aitextNom.data ? <div className="totalPer"
-                        dangerouslySetInnerHTML={{ __html: makeLinks(aitextNom.data) }}
-                    >
-                    </div>
-                        : <p>Loading text...</p>}
-                </div> */}
                 <br></br>
                 <div style={{ height: "20px" }}>
                 </div>

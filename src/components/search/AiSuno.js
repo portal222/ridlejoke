@@ -39,7 +39,7 @@ function AiSuno() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY"
+          Authorization: "Bearer sk-air-z5vP0btugDbsxNARODCFwJSCrkUcKPIt0hNu23L48Ry5wIEf7sRBGS57SazfD6kO"
         },
         body: JSON.stringify({
           model: "suno-v5",

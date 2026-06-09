@@ -1090,6 +1090,22 @@ body {
                 text-align: left;
             }
         }
+        .modelPlace {
+            width: 160px;
+            padding: 10px;
+            border: 1px solid green;
+            background-color: whitesmoke;
+
+            p {
+                padding-top: 15px;
+            }
+            .descriptionModel {
+                font-size: 14px;
+                text-align: justify;
+                padding-top: 10px;
+            }
+
+        }
     }
 
     .linkList {
