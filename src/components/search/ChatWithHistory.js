@@ -66,6 +66,7 @@ export default function ChatWithHistory() {
       setTimerActive(true);
       setTimestamp(data.created);
 
+
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {

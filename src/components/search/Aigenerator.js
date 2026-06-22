@@ -36,7 +36,6 @@ const Aigenerator = () => {
             const response = await axios.get(urlM);
             const data = response
 
-            console.log("modeli polinations", data);
 
         } catch (err) {
             setError(err);
@@ -44,7 +43,7 @@ const Aigenerator = () => {
     }
 
     const getText = async (searchStringValue) => {
-        const url = `https://gen.pollinations.ai/text/${searchStringValue}?model=glm&key=pk_N3F6nCawqxWe8khl`
+        const url = `https://gen.pollinations.ai/text/${searchStringValue}?model=kimi&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const response = await axios.get(url);
@@ -58,7 +57,7 @@ const Aigenerator = () => {
 
     const getAmazon = async (searchStringValue) => {
 
-        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=polly&key=pk_N3F6nCawqxWe8khl`
+        const urlM = `https://gen.pollinations.ai/text/${searchStringValue}?model=llama&key=pk_N3F6nCawqxWe8khl`
 
         try {
             const responseM = await axios.get(urlM);
@@ -150,7 +149,7 @@ const Aigenerator = () => {
                     </div>
                 </div>
 
-                <div className="polli">GLM 5</div>
+                <div className="polli">Kimi</div>
                 <div >
                     {aitext.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitext.data) }}
@@ -159,7 +158,7 @@ const Aigenerator = () => {
                         : <p>Loading text...</p>}
                 </div>
 
-                <div className="polli">Polly by @Itachi-1824</div>
+                <div className="polli">Llama Meta</div>
                 <div >
                     {aitextM.data ? <div className="totalPer"
                         dangerouslySetInnerHTML={{ __html: makeLinks(aitextM.data) }}

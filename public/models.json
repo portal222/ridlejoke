@@ -1,12 +1,5 @@
 [
-    {
-        "description": "Amazon Nova 2 Lite. Trained until October 2023.",
-        "name": "nova"
-    },
-    {
-        "description": "Anthropic Claude Haiku 4.5 (San Francisco, trained until April 2024.)",
-        "name": "claude-fast"
-    },
+  
     {
         "description": "Perplexity Sonar - Fast & Affordable with Web Search and links",
         "name": "perplexity-fast"
@@ -28,7 +21,7 @@
         "name": "openai"
     },
     {
-        "description": "OpenAI GPT-5.4 trained until June 2024.",
+        "description": "OpenAI GPT-5.5 trained until June 2024.",
         "name": "openai-large"
     },
     {
@@ -44,7 +37,7 @@
         "name": "grok"
     },
     {
-        "description": "xAI Grok 4.20 Reasoning, trained until 10. July 2025.",
+        "description": "xAI Grok 4.3 Reasoning, trained until 10. July 2025.",
         "name": "grok-large"
     },
     {
@@ -58,5 +51,17 @@
     {
         "description": "MiniMax m2.7, Beijing China (CEO Ji Xao). In addition to the answer, also provides reflection on the question itself. Trained until 2024-25.",
         "name": "minimax"
+    },
+      {
+        "description": "Amazon Nova 2 Lite. Trained until October 2023.",
+        "name": "nova"
+    },
+        {
+        "description": "Z.ai GLM-4.7 also provides reflection on the question itself(Beijing)",
+        "name": "glm"
+    },
+      {
+        "description": "Polly by @Itachi-1824 - coder. Can search the internet.",
+        "name": "polly"
     }
 ]
