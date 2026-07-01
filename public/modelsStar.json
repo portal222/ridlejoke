@@ -147,5 +147,9 @@
         {
         "description": "Anthropic Claude Haiku 4.5 (San Francisco, trained until April 2024.)",
         "name": "claude-fast"
+    },
+          {
+        "description": "Z.ai GLM-4.7 also provides reflection on the question itself(Beijing)",
+        "name": "glm"
     }
 ]

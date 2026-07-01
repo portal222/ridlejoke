@@ -56,10 +56,6 @@
         "description": "Amazon Nova 2 Lite. Trained until October 2023.",
         "name": "nova"
     },
-        {
-        "description": "Z.ai GLM-4.7 also provides reflection on the question itself(Beijing)",
-        "name": "glm"
-    },
       {
         "description": "Polly by @Itachi-1824 - coder. Can search the internet.",
         "name": "polly"
