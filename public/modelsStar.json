@@ -151,5 +151,13 @@
           {
         "description": "Z.ai GLM-4.7 also provides reflection on the question itself(Beijing)",
         "name": "glm"
+    },
+         {
+        "description": "Z.ai (China)",
+        "name": "glm-4.7-flash"
+    },
+    {
+        "description": "MINIMAX",
+        "name": "minimax-m2.5"
     }
 ]

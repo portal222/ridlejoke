@@ -25,7 +25,7 @@ const JokePlace = () => {
                     {<ChukNorris />}
                 </div>
             </div>
-            <div className="place"></div>
+         
         </>
     )
 }

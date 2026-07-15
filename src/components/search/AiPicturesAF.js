@@ -34,7 +34,7 @@ export default function AiPicturesAF() {
         const response = await fetch("https://api.airforce/v1/images/generations", {
             method: "POST",
             headers: {
-                "Authorization": "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY",
+                "Authorization": "Bearer sk-air-z5vP0btugDbsxNARODCFwJSCrkUcKPIt0hNu23L48Ry5wIEf7sRBGS57SazfD6kO",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({

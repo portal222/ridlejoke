@@ -23,55 +23,107 @@ function AiVideoJson() {
         return () => clearInterval(interval);
     }, [timerActive, timerActiveW]);
 
-    const generateVideo = async () => {
-        if (!prompt.trim()) return;
-        if (loading) return;
+const generateVideo = async () => {
+    if (!prompt.trim()) return;
+    if (loading) return;
 
-        setLoading(true);
-        setVideoUrl(null);
+    setLoading(true);
+    setVideoUrl(null);
 
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 800000);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 800000);
 
-        try {
-            const response = await fetch("https://api.json2video.com/v2/movies", {
-                method: "POST",
-                headers: {
-                    "x-api-key": process.env.Le1b74Ddo6gC0L9bmKgFSL6ADHdARAJIVXcAI05q,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    resolution: "full-hd",
-                    scenes: [{ elements: [{ type: "text", text: prompt, duration: 5 }] }]
-                })
+    try {
+        // KORAK 1: Kreiraj projekat
+        const createResponse = await fetch("https://ridlejoke-proxy.kvaka32.workers.dev/jsonvideo", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                resolution: "full-hd",
+                scenes: [{ elements: [{ type: "text", text: prompt, duration: 6 }] }]
+            })
+        });
 
-            });
-            const  project  = await response.json();
-            console.log("json 2 video detalji", project);
-
-            clearTimeout(timeoutId);
-
-            if (!response.ok) {
-                console.error("Status:", response.status, response.statusText);
-                throw new Error("Network response was not ok");
-            }
-
-            const data = await response.json();
-
-            if (data.data && data.data[0]?.url) {
-                // setVideoUrl(data.data[0].url);
-                // setSeconds(0);
-                // setTimerActive(true);
-                // setTimerActiveW(false);
-
-
-            }
-        } catch (error) {
-            console.error("network error:", error);
-        } finally {
-            setLoading(false);
+        if (!createResponse.ok) {
+            throw new Error("Greška pri kreiranju projekta");
         }
-    };
+
+        const createData = await createResponse.json();
+        const projectId = createData.project;
+
+        if (!projectId) {
+            throw new Error("Nije dobijen project ID");
+        }
+
+        console.log("Projekat kreiran, ID:", projectId);
+
+        // KORAK 2: Pokreni renderovanje
+        const renderResponse = await fetch("https://ridlejoke-proxy.kvaka32.workers.dev/render-video", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ projectId })
+        });
+
+        if (!renderResponse.ok) {
+            throw new Error("Greška pri renderovanju");
+        }
+
+        console.log("Renderovanje pokrenuto, čekam...");
+
+        // KORAK 3: Čekaj da se renderovanje završi (polling)
+        let videoUrl = null;
+        let attempts = 0;
+        const maxAttempts = 60; // Maksimalno 60 pokušaja (oko 2 minuta)
+
+        while (!videoUrl && attempts < maxAttempts) {
+            attempts++;
+            
+            // Sačekaj 2 sekunde između provera
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            const statusResponse = await fetch(`https://ridlejoke-proxy.kvaka32.workers.dev/video-status/${projectId}`, {
+                method: "GET"
+            });
+
+            if (statusResponse.ok) {
+                const statusData = await statusResponse.json();
+                console.log(`Status (${attempts}/${maxAttempts}):`, statusData);
+
+        // ISPRAVKA: status i url su u movie objektu
+        const movie = statusData.movie;
+        const projectStatus = movie?.status;
+        const videoUrlFromApi = movie?.url;
+
+                if (projectStatus === "done" && videoUrlFromApi) {
+                    videoUrl = videoUrlFromApi;
+                    break;
+                } else if (projectStatus === "error") {
+                    throw new Error("Greška pri renderovanju videa");
+                }
+            }
+        }
+
+        if (videoUrl) {
+            setVideoUrl(videoUrl);
+            setSeconds(0);
+            setTimerActive(true);
+            setTimerActiveW(false);
+        } else {
+            throw new Error("Video nije gotov nakon dužeg čekanja");
+        }
+
+        clearTimeout(timeoutId);
+
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.log("Zahtev je prekinut zbog timeout-a");
+        } else {
+            console.error("network error:", error);
+        }
+    } finally {
+        setLoading(false);
+    }
+};
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {

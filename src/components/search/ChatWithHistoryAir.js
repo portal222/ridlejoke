@@ -7,23 +7,14 @@ export default function ChatWithHistoryAir() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [totalTok, setTotalTok] = useState(0);
-  const [selectedModel, setSelectedModel] = useState("step-3.5-flash:free");
-  const [selectedDescription, setSelectedDescription] = useState("StepFun 阶跃星辰(China) platform llmplayground.net");
+  const [selectedModel, setSelectedModel] = useState("unmoderated-gpt");
+  const [selectedDescription, setSelectedDescription] = useState("GPT");
   const [seconds, setSeconds] = useState(0);
   const [secondsW, setSecondsW] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
   const [timerActiveW, setTimerActiveW] = useState(false);
   const [timestamp, setTimestamp] = useState();
-
-  useEffect(() => {
-    let interval;
-    if (timerActive) {
-      interval = setInterval(() => {
-        setSeconds((prev) => prev + 1);
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [timerActive]);
+  const [Aimisao, setAimisao] = useState([]);
 
   useEffect(() => {
     let interval;
@@ -35,9 +26,15 @@ export default function ChatWithHistoryAir() {
     return () => clearInterval(interval);
   }, [timerActiveW]);
 
-
-
-
+    useEffect(() => {
+    let interval;
+    if (timerActive) {
+      interval = setInterval(() => {
+        setSeconds((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [timerActive]);
 
   const sendQuery = async () => {
     if (!query.trim()) return;
@@ -49,7 +46,7 @@ export default function ChatWithHistoryAir() {
 
     try {
       const { data } = await axios.post(
-        "https://api.airforce/v1/chat/completions",
+        "https://ridlejoke-proxy.kvaka32.workers.dev/airforce",
         {
           model: selectedModel,
           messages: newMessages,
@@ -59,7 +56,6 @@ export default function ChatWithHistoryAir() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer sk-air-mgWKgdOE29YNozAAMpFv5LNTZr627U2iWbzPuEDpOVb3EQDjtYgeo9TpDOAo0BwY"
           }
         }
       );
@@ -69,6 +65,8 @@ export default function ChatWithHistoryAir() {
 
       const answer = data.choices?.[0]?.message?.content || "No answer.";
       const tokens = data.usage.total_tokens;
+       const misao = data.choices?.[0]?.message?.reasoning;
+      setAimisao(misao);
 
       setTotalTok(tokens);
 
@@ -79,14 +77,11 @@ export default function ChatWithHistoryAir() {
       setTimerActiveW(false);
       setTimestamp(data.created)
 
-
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
     } finally {
       setLoading(false);
     }
-
-
   };
 
   const date = new Date(timestamp * 1000);
@@ -98,7 +93,6 @@ export default function ChatWithHistoryAir() {
       setSecondsW(0);
       setTimerActiveW(true);
       setTimerActive(false);
-
     }
   };
 
@@ -134,17 +128,19 @@ export default function ChatWithHistoryAir() {
 
       </div>
       <div className="polli2">
-        Or choose another model
+        Or choose another Air Force model
       </div>
+                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute.</p>
+
       <div className="aiGrid">
         {modelsJson.map((mod, id) => (
-          <div key={id} className="aiButt"><a
+          <div key={id} className="aiButt"
             onClick={() => {
               setSelectedModel(mod.name);
               setSelectedDescription(mod.description);
             }}
-          >{mod.name}</a>
-
+          >
+          <a>{mod.name}</a>
           </div>
         ))}
       </div>
@@ -156,6 +152,7 @@ export default function ChatWithHistoryAir() {
             <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
+        <p style={{fontSize: "14px"}}>{Aimisao}</p>
         {date && (
           <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
         )}
@@ -173,7 +170,7 @@ export default function ChatWithHistoryAir() {
       <br />
       <button
         onClick={handleClick}
-        disabled={loading}>
+        disabled={loading || !query}>
         {loading ? (
           <>
             <div className="spinner"></div> Sending...

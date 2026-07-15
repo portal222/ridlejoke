@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import JokePlace from "../jokes/JokePlace";
+import XkcdComics from "../jokes/XkcdComics";
 
 const PickTrivia = () => {
 
@@ -105,6 +106,7 @@ const PickTrivia = () => {
 
 
             <JokePlace />
+            <XkcdComics />
         </>
     )
 }
