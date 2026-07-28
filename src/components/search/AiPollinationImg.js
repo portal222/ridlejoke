@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import picturePolli from "../../../public/pictureModelsPolli.json";
 
 export default function AiPollinationImg() {
     const [prompt, setPrompt] = useState("");
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [selectedModel, setSelectedModel] = useState("flux");
     const [seconds, setSeconds] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
 
@@ -22,20 +19,15 @@ export default function AiPollinationImg() {
         return () => clearInterval(interval);
     }, [timerActive]);
 
-
-
     const generateImage = () => {
         if (!prompt.trim()) return;
 
         setLoading(true);
 
         const imageUrl =
-            `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=768&height=768&seed=${Date.now()}`;
-
+            `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
+           
         setImage(imageUrl);
-    
-
-
         setLoading(false);
     }
 
@@ -45,7 +37,6 @@ export default function AiPollinationImg() {
             setSeconds(0);
             setTimerActive(true);
             generateImage();
-
         }
     };
 
@@ -53,7 +44,6 @@ export default function AiPollinationImg() {
         setSeconds(0);
         setTimerActive(true);
         generateImage();
-
     };
 
     <button onClick={handleGenerate} disabled={loading}>
@@ -64,7 +54,6 @@ export default function AiPollinationImg() {
         <div className="mainBook">
             <div className="polli"> Pollinations picture Generator</div>
                 <p style={{ fontSize: "14px", color: "gray" }}>There is no limit, if it doesn't take a picture right away, try again. The quality is questionable.</p>
-
 
             <textarea
                 rows="3"

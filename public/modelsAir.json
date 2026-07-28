@@ -8,12 +8,8 @@
         "name": "gpt-4o-mini"
     },
      {
-        "description": "Esencial ai",
-        "name": "rnj-1"
-    },
-    {
-        "description": "ByteDance (Bejing), trained until September 2023",
-        "name": "seed-rp"
+        "description": "Mistral Ai",
+        "name": "mistral-vibe-cli-fast"   
     },
         {
         "description": "google",

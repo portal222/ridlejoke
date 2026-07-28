@@ -6,7 +6,6 @@ export default function ChatWithHistoryAir() {
   const [messages, setMessages] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [totalTok, setTotalTok] = useState(0);
   const [selectedModel, setSelectedModel] = useState("unmoderated-gpt");
   const [selectedDescription, setSelectedDescription] = useState("GPT");
   const [seconds, setSeconds] = useState(0);
@@ -26,7 +25,7 @@ export default function ChatWithHistoryAir() {
     return () => clearInterval(interval);
   }, [timerActiveW]);
 
-    useEffect(() => {
+  useEffect(() => {
     let interval;
     if (timerActive) {
       interval = setInterval(() => {
@@ -60,16 +59,9 @@ export default function ChatWithHistoryAir() {
         }
       );
 
-
-
-
       const answer = data.choices?.[0]?.message?.content || "No answer.";
-      const tokens = data.usage.total_tokens;
-       const misao = data.choices?.[0]?.message?.reasoning;
+      const misao = data.choices?.[0]?.message?.reasoning;
       setAimisao(misao);
-
-      setTotalTok(tokens);
-
 
       setMessages([...newMessages, { role: "assistant", content: answer }]);
       setSeconds(0);
@@ -130,7 +122,7 @@ export default function ChatWithHistoryAir() {
       <div className="polli2">
         Or choose another Air Force model
       </div>
-                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute.</p>
+      <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute.</p>
 
       <div className="aiGrid">
         {modelsJson.map((mod, id) => (
@@ -140,7 +132,7 @@ export default function ChatWithHistoryAir() {
               setSelectedDescription(mod.description);
             }}
           >
-          <a>{mod.name}</a>
+            <a>{mod.name}</a>
           </div>
         ))}
       </div>
@@ -152,7 +144,7 @@ export default function ChatWithHistoryAir() {
             <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
-        <p style={{fontSize: "14px"}}>{Aimisao}</p>
+        <p style={{ fontSize: "14px" }}>{Aimisao}</p>
         {date && (
           <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
         )}
@@ -180,25 +172,17 @@ export default function ChatWithHistoryAir() {
         )}
       </button>
       <br />
-   
-     
-        {timerActiveW && (
-          <p style={{ fontSize: "20px", margin: "10px" }}>
-            ⏱ {"Answer generation time " + secondsW + " s or " + (secondsW / 60).toFixed(1) + " m"}
-          </p>
-        )}
-        {timerActive && (
-          <p style={{ fontSize: "20px", margin: "10px" }}>
-            ⏱ {"Wait at least a two minutes until the next question " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
-          </p>
-        )}
 
-  
-
-
-      <div style={{ fontSize: "10px", padding: "10px 20px" }}>
-        total tokens {totalTok}
-      </div>
+      {timerActiveW && (
+        <p style={{ fontSize: "20px", margin: "10px" }}>
+          ⏱ {"Answer generation time " + secondsW + " s or " + (secondsW / 60).toFixed(1) + " m"}
+        </p>
+      )}
+      {timerActive && (
+        <p style={{ fontSize: "20px", margin: "10px" }}>
+          ⏱ {"Wait at least a two minutes until the next question " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
+        </p>
+      )}
     </div>
   );
 }

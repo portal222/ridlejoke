@@ -4,15 +4,17 @@ import ChatWithHistoryAir from "./ChatWithHistoryAir";
 import ChatWithGroq from "./ChatWithGroq";
 import ChatOpenRouter from "./ChatOpenRouter";
 import AiPollinationImg from "./AiPollinationImg";
+import ChatWithDeepSeek from "./ChatWithDeepSeek";
 
 const Aigenerator = () => {
 
 
     return (
         <>
-            <ChatWithHistoryAir />
+            <ChatWithDeepSeek />
             <ChatOpenRouter />
             <ChatWithGroq />
+            <ChatWithHistoryAir />
             <AiPollinationImg />
             <BackToTop />
         </>

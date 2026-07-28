@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import models from "../../../public/modelsOpenR.json";
 
 export default function ChatOpenRouter() {
@@ -11,10 +10,8 @@ export default function ChatOpenRouter() {
     const [redAlert, setRedAlert] = useState([]);
     const [timerActive, setTimerActive] = useState(false);
     const [timerActiveW, setTimerActiveW] = useState(false);
-    const [totalTok, setTotalTok] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
-
     const [selectedModel, setSelectedModel] = useState("Poolside: Laguna XS 2.1 (free)");
     const [selectedDescription, setSelectedDescription] = useState("Laguna XS 2.1 is the latest coding agent model in the 33B-A3B category from [Poolside]");
     const [modelId, setModelId] = useState("poolside/laguna-xs-2.1:free");
@@ -73,11 +70,9 @@ export default function ChatOpenRouter() {
         try {
             const response = await fetch(url, options);
             const data = await response.json();
-            const tokens = data.usage.total_tokens;
 
             const answer = data.choices?.[0]?.message?.content || "Nema odgovora";
             const reasoning = data.choices?.[0]?.message?.reasoning || "nema razmisljanja";
-            console.log("open router odgovor", data);
 
             setChatHistory((prev) => [
                 ...prev,
@@ -94,7 +89,7 @@ export default function ChatOpenRouter() {
             setSeconds(0);
             setTimerActive(true);
             setTimerActiveW(false);
-            setTotalTok(tokens);
+        ;
 
         } catch (err) {
             setError(err.message);
@@ -205,9 +200,7 @@ export default function ChatOpenRouter() {
                 )}
 
                 {error && <p style={{ color: "red" }}>Error: {error}</p>}
-                <div style={{ fontSize: "10px", padding: "10px 20px" }}>
-                    total tokens {totalTok}
-                </div>
+               
 
             </div>
         </>
