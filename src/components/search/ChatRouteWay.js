@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import models from "../../../public/modelsOpenR.json";
+import models from "../../../public/modelsRouteWay.json";
 
-export default function ChatOpenRouter() {
+export default function ChatRouteWay() {
     const [question, setQuestion] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -12,14 +12,14 @@ export default function ChatOpenRouter() {
     const [timerActiveW, setTimerActiveW] = useState(false);
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
-    const [selectedModel, setSelectedModel] = useState("Poolside: Laguna XS 2.1 (free)");
-    const [selectedDescription, setSelectedDescription] = useState("Laguna XS 2.1 is the latest coding agent model in the 33B-A3B category from [Poolside]");
-    const [modelId, setModelId] = useState("poolside/laguna-xs-2.1:free");
+    const [selectedModel, setSelectedModel] = useState("Ling free");
+    const [selectedDescription, setSelectedDescription] = useState("LING");
+    const [modelId, setModelId] = useState("ling-3.0-flash:free");
 
     const [requestCount, setRequestCount] = useState(0);
 
 
-    const dailyLimit = 50;
+    const dailyLimit = 200;
 
     useEffect(() => {
         let interval;
@@ -49,7 +49,7 @@ export default function ChatOpenRouter() {
         setLoading(true);
         setError(null);
 
-        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/openrouter";
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/routeway";
         const options = {
             method: "POST",
             headers: {
@@ -126,13 +126,13 @@ export default function ChatOpenRouter() {
 
                 </div>
                 <div className="polli2">
-                    Or choose another OpenRouter model
+                    Or choose another RouteWay model
                 </div>
                 <br/>
-                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 50 requests per day according to the OpenRouter API.</p>
+                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 200 requests per day according to the OpenRouter API.</p>
                 <p style={{ fontSize: "14px", color: "gray" }}>
                     {requestCount >= dailyLimit
-                        ? "⚠️ You have reached the daily limit of 50 requests. Please try again tomorrow."
+                        ? "⚠️ You have reached the daily limit of 200 requests. Please try again tomorrow."
                         : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
                 </p>
                 <div className="aiGrid">

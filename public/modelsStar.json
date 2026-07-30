@@ -173,5 +173,12 @@
         "name": "Tencent: Hy3",
         "id": "tencent/hy3:free",
         "knowledge_cutoff": null
+    },
+     {
+        "description": "Google's Gemma 4 31B instruction-tuned model for heavier reasoning, coding, agentic workflows, and long-context multimodal understanding. ",
+        "name": "Gemma 4 31B",
+        "id": "gemma-4-31b-it:free",
+
+        "knowledge_cutoff": null
     }
 ]

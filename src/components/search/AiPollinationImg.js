@@ -26,7 +26,7 @@ export default function AiPollinationImg() {
 
         const imageUrl =
             `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
-           
+
         setImage(imageUrl);
         setLoading(false);
     }
@@ -53,7 +53,8 @@ export default function AiPollinationImg() {
     return (
         <div className="mainBook">
             <div className="polli"> Pollinations picture Generator</div>
-                <p style={{ fontSize: "14px", color: "gray" }}>There is no limit, if it doesn't take a picture right away, try again. The quality is questionable.</p>
+            <br />
+            <p style={{ fontSize: "14px", color: "gray" }}>There is no limit, if it doesn't take a picture right away, try again. The quality is questionable.</p>
 
             <textarea
                 rows="3"

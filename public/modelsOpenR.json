@@ -17,6 +17,12 @@
         "id": "google/gemma-4-26b-a4b-it:free",
         "knowledge_cutoff": null
     },
+     {
+        "description": "Ling-3.0-flash is a 124B-parameter Mixture-of-Experts (MoE) model, with approximately 5.1B parameters activated per token.",
+        "name": "Ling-3.0-flash (free)",
+        "id": "inclusionai/ling-3.0-flash:free",
+        "knowledge_cutoff": null
+    },
     {
         "description": "The simplest way to get free inference. openrouter/free is a router that selects free models at random from the models available on OpenRouter. The router smartly filters for models that...",
         "name": "Free Models Router",

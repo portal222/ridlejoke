@@ -1,0 +1,14 @@
+[
+    {
+        "description": "Ant Group, a company headquartered in Hangzhou, (Ant Group/Alibaba ecosystem). ",
+        "name": "LING 3.0",
+        "id": "ling-3.0-flash:free",
+        "knowledge_cutoff": null
+    },
+    {
+        "description": "Designed for agentic coding workflows.",
+        "name": "Laguna XS2",
+        "id": "laguna-xs.2:free",
+        "knowledge_cutoff": null
+    }
+]

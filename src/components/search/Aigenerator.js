@@ -1,20 +1,18 @@
 import React from "react";
 import BackToTop from "../BackToTop";
-import ChatWithHistoryAir from "./ChatWithHistoryAir";
 import ChatWithGroq from "./ChatWithGroq";
 import ChatOpenRouter from "./ChatOpenRouter";
 import AiPollinationImg from "./AiPollinationImg";
-import ChatWithDeepSeek from "./ChatWithDeepSeek";
+import ChatRouteWay from "./ChatRouteWay";
 
 const Aigenerator = () => {
 
 
     return (
         <>
-            <ChatWithDeepSeek />
             <ChatOpenRouter />
+            <ChatRouteWay />
             <ChatWithGroq />
-            <ChatWithHistoryAir />
             <AiPollinationImg />
             <BackToTop />
         </>
