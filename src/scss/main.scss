@@ -1,6 +1,6 @@
-@import '../scss/cssreset.scss';
-@import '../scss/_pokemons.scss';
-@import '../scss/_quiz.scss';
+@use '../scss/_cssreset.scss';
+@use '../scss/_pokemons.scss';
+@use '../scss/_quiz.scss';
 
 @font-face {
     font-family: horos;
@@ -1090,6 +1090,7 @@ body {
                 text-align: left;
             }
         }
+
         .modelPlace {
             width: 160px;
             padding: 10px;
@@ -1099,6 +1100,7 @@ body {
             p {
                 padding-top: 15px;
             }
+
             .descriptionModel {
                 font-size: 14px;
                 text-align: justify;
@@ -1114,6 +1116,43 @@ body {
 
         &:hover {
             color: #64b5f6;
+        }
+    }
+
+    .mainGame {
+        display: flex;
+        padding: 15px;
+
+        .description {
+            font-size: 24px;
+            padding: 10px 20px;
+            text-align: justify;
+        }
+
+        p {
+            padding: 5px 20px;
+            text-align: left;
+        }
+
+        .freeButt {
+            padding: 5px;
+            width: 90px;
+            background-color: rgb(118, 169, 220);
+
+            border-radius: 5px;
+            border-right: 2px solid rgb(79, 93, 135);
+            border-bottom: 2px solid rgb(79, 93, 135);
+            cursor: pointer;
+
+            a {
+                font-size: 14px;
+                text-decoration: none;
+            }
+
+            &:hover {
+                background-color: $nobelButt1;
+
+            }
         }
     }
 }
@@ -2549,6 +2588,35 @@ body {
                 }
 
 
+            }
+        }
+
+        .mainGame {
+            display: block;
+            padding: 3px;
+
+            .description {
+                font-size: 20px;
+                padding: 10px 15px;
+                text-align: justify;
+            }
+
+            p {
+                padding: 4px 15px;
+
+            }
+
+            .freeButt {
+                padding: 5px;
+                width: 80px;
+
+
+                border-radius: 5px;
+
+
+                a {
+                    font-size: 12px;
+                }
             }
         }
     }

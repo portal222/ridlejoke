@@ -54,6 +54,7 @@ import NobelPrizesNext from "./nobel/NobelPrizesNext";
 import TennisGame from "./games/TennisGame";
 import TennisGame2p from "./games/TennisGame2p";
 import SpaceShooter from "./games/SpaceShooter";
+import FreeGames from "./games/FreeGames";
 
 const theme = createTheme({
   palette: {
@@ -155,6 +156,7 @@ const Navigation = () => {
           <Route path="/tenis" element={<TennisGame />} />
           <Route path="/tenis2p" element={<TennisGame2p />} />
           <Route path="/space" element={<SpaceShooter />} />
+          <Route path="/freeGames" element={<FreeGames />} />
         </Routes>
       </HashRouter>
       <Footers />

@@ -32,6 +32,11 @@ const PickTrivia = () => {
         navigate(LinkTo);
     }
 
+     const handleGames = () => {
+        const LinkTo = '/freeGames';
+        navigate(LinkTo);
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     return (
@@ -100,6 +105,13 @@ const PickTrivia = () => {
                       <div onClick={() => handleSpace()}
                         className="gameBut">
                        Space Shooter
+                    </div>
+                </div>
+                <div>
+                    <p>Тry over 400 free games online</p>
+                    <div onClick={() => handleGames()}
+                        className="gameBut">
+                       Free Games
                     </div>
                 </div>
             </div>
