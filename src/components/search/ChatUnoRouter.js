@@ -17,6 +17,8 @@ export default function ChatUnoRouter() {
     const [Aimisao, setAimisao] = useState([]);
     const [aiModels, setAiModels] = useState("GPT");
     const [inputpic, setInputpic] = useState("");
+    const [imageData, setImageData] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
 
 
     const [requestCount, setRequestCount] = useState(0);
@@ -44,12 +46,45 @@ export default function ChatUnoRouter() {
         return () => clearInterval(interval);
     }, [timerActiveW]);
 
-    const sendQuery = async () => {
-        if (!query.trim()) return;
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+    };
 
-        const newMessages = [...messages, { role: "user", content: query }];
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            const file = files[0];
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const base64 = event.target.result; // cela data URL
+                    setImageData(base64);
+                    setImagePreview(base64); // za prikaz
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Molimo prevucite sliku.');
+            }
+        }
+    };
+
+
+
+    const sendQuery = async () => {
+
+        if (!query.trim() && !imageData) return;
+        const userContent = [];
+        if (query.trim()) userContent.push({ type: "text", text: query });
+        if (imageData) userContent.push({ type: "image_url", image_url: { url: imageData } });
+        const userMessage = { role: "user", content: userContent };
+
+        const newMessages = [...messages, userMessage];
         setMessages(newMessages);
         setQuery("");
+        setImageData(null);
+        setImagePreview(null);
         setLoading(true);
 
         try {
@@ -140,7 +175,7 @@ export default function ChatUnoRouter() {
                 Or choose another UnoRouter model
             </div>
             <br />
-            <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute.</p>
+            <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute. Models change frequently, so if one doesn't work, try another.</p>
             <p style={{ fontSize: "14px", color: "gray" }}>
                 {requestCount >= dailyLimit
                     ? "⚠️ You have reached the limit for this model, try again next week, or choose another model."
@@ -166,24 +201,55 @@ export default function ChatUnoRouter() {
                 {messages.map((msg, idx) => (
                     <div key={idx} style={{ marginBottom: "8px" }}>
                         <strong>{msg.role === "user" ? "You:" : "AI:"}</strong>{" "}
-                        <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
+                        {Array.isArray(msg.content) ? (
+                            msg.content.map((part, i) => {
+                                if (part.type === "text") {
+                                    return <span key={i} dangerouslySetInnerHTML={{ __html: renderWithLinks(part.text) }} />;
+                                } else if (part.type === "image_url") {
+                                    return <img key={i} src={part.image_url.url} alt="uploaded" style={{ maxHeight: "100px", display: "block" }} />;
+                                }
+                                return null;
+                            })
+                        ) : (
+                            <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }} />
+                        )}
                     </div>
                 ))}
-                <p style={{ fontSize: "14px" }}>{Aimisao}</p>
-                {date && (
-                    <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
+                {Aimisao && (
+                    <p style={{ fontSize: "14px", color: "#555" }}>
+                        <strong>Reasoning:</strong> {String(Aimisao)}
+                    </p>
                 )}
-
+                {date && (
+                    <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>
+                        created: {date.toLocaleTimeString()}
+                    </p>
+                )}
             </div>
 
-            <textarea
-                rows="3"
-                style={{ width: "70%", padding: "10px", margin: "10px" }}
-                placeholder="Enter your query..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
-            />
+
+
+
+            <div
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                style={{ border: imagePreview ? '2px solid #4CAF50' : '2px dashed #ccc', padding: '10px', borderRadius: '8px' }}
+            >
+                <textarea
+                    rows="3"
+                    style={{ width: "70%", padding: "10px", margin: "10px" }}
+                    placeholder="Enter your query or drag an image here"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                />
+                {imagePreview && (
+                    <div style={{ marginTop: '10px' }}>
+                        <img src={imagePreview} alt="preview" style={{ maxHeight: '150px' }} />
+                        <button onClick={() => { setImageData(null); setImagePreview(null); }}>Ukloni</button>
+                    </div>
+                )}
+            </div>
             <br />
             <button
                 onClick={handleClick}

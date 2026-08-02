@@ -1,27 +1,8 @@
 [
     {
-        "description": "Bielik-11b-v3.0. Open-weight instruction model for adaptable chat and self-hosted production workloads",
-        "name": "Bielik",
-        "id": "bielik-11b-v3.0-instruct:free",
-        "knowledge_cutoff": null
-    },
-    {
         "description": "GLM 5.2 is a large-scale reasoning model from Z.ai. It supports text input and output with a 1M-token context window, and is suited for long-horizon agent workflows, project-level software engineering, and complex multi-step automation.",
         "name": "GLM",
         "id": "glm-5.2-thinking:free",
-        "knowledge_cutoff": null
-    },
-    {
-        "description": "Newer StepFun 3.7 flash model for faster agents, coding, and multimodal prompts",
-        "name": "StepFun",
-        "id": "step-3.7-flash:free",
-        "knowledge_cutoff": null
-    },
-    {
-        "description": "MiniMax-M3 is a multimodal foundation model from MiniMax. It supports text, image, and video inputs with text output, a 1M-token context window, and is suited for long-horizon agentic work, coding, and tool use. It is built on MiniMax Sparse Attention (MSA), ",
-        "name": "MiniMax",
-        "id": "minimax-m3:free",
-        "inputpic": "📷",
         "knowledge_cutoff": null
     },
     {
@@ -29,11 +10,6 @@
         "name": "Seed Oss",
         "id": "seed-oss-36b:free",
         "knowledge_cutoff": null
-    },
-    {
-        "name": "DeepSeek",
-        "id": "deepseek-r1-distill-qwen-32b:free",
-        "description": "DeepSeek R1 Distill Qwen 32B is a distilled large language model based on Qwen 2.5 32B, using outputs from DeepSeek R1. It outperforms OpenAI's o1-mini across various benchmarks, achieving new state-o..."
     },
     {
         "name": "DeepSeek",
@@ -47,9 +23,8 @@
     },
     {
         "name": "Mistral",
-        "id": "mistral-medium-3.5:free",
-        "description": "Mistral Medium 3 is a high-performance enterprise-grade language model designed to deliver frontier-level capabilities at significantly reduced operational cost. It balances state-of-the-art reasoning and multimodal performance with 8× lower cost compared to traditional large models, making it suitable for scalable deployments across professional and industrial use cases. The model excels in domains such as coding, STEM reasoning, and enterprise adaptation.",
-        "inputpic": "📷"
+        "id": "mistral-nemotron:free",
+        "description": "Mistral-nemotron model for multilingual chat, reasoning, and tool-assisted workflows"
     },
     {
         "name": "GPT",
@@ -59,24 +34,34 @@
     {
         "name": "Gemma",
         "id": "gemma-4-31b-it:free",
-        "description": "Gemma 4 31B IT is a multimodal dense model by Google DeepMind with 30.7B parameters. It supports text and image input with a 256K context window, configurable thinking mode, native function calling, and multilingual support in 140+ languages."
-    },
-    {
-        "name": "Qwen",
-        "id": "qwen3.6-35b-a3b:free",
         "inputpic": "📷",
-        "description": "Open multimodal Qwen 3.6 35b a3b, MoE for local agents that need vision, audio, and code."
-    },
-    {
-        "name": "Claude",
-        "id": "claude-opus-4.8:free",
-        "description": "Claude Opus 4.8 is Anthropic's most capable generally available model in the Opus family. It supports text, image, and file inputs with text output, with reasoning support and a 1M-token context window. It is suited for highly autonomous agents, long-horizon agentic work, knowledge work, and memory-driven tasks where coherence over extended sessions matters. It is particularly strong on multi-step reasoning, complex coding..."
+        "description": "Gemma 4 31B IT is a multimodal dense model by Google DeepMind with 30.7B parameters. It supports text and image input with a 256K context window, configurable thinking mode, native function calling, and multilingual support in 140+ languages."
     },
     {
         "name": "Gemini",
         "id": "gemini-3.6-flash-thinking:free",
         "description": "Gemini 3.6 Flash is a high-efficiency model from Google for coding, agentic workflows, and web and app development. It is designed to produce polished outputs with fewer unnecessary edits and less hedging, while reducing token use and the number of model calls needed to complete a task.",
         "inputpic": "📷"
+    },
+    {
+        "description": "Newer StepFun 3.7 flash model for faster agents, coding, and multimodal prompts",
+        "name": "StepFun",
+        "inputpic": "📷",
+        "id": "step-3.7-flash:free",
+        "knowledge_cutoff": null
+    },
+    {
+        "description": "MiniMax-M3 is a multimodal foundation model from MiniMax. It supports text, image, and video inputs with text output, a 1M-token context window, and is suited for long-horizon agentic work, coding, and tool use. It is built on MiniMax Sparse Attention (MSA), ",
+        "name": "MiniMax",
+        "id": "minimax-m3:free",
+        "inputpic": "📷",
+        "knowledge_cutoff": null
+    },
+    {
+        "name": "Qwen",
+        "id": "qwen3.6-35b-a3b:free",
+        "inputpic": "📷",
+        "description": "Open multimodal Qwen 3.6 35b a3b, MoE for local agents that need vision, audio, and code."
     },
     {
         "name": "Llama",
