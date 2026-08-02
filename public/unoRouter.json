@@ -18,15 +18,16 @@
         "knowledge_cutoff": null
     },
     {
-        "description": "Seed-OSS-36B-Instruct is a 36B-parameter instruction-tuned reasoning language model from ByteDance’s Seed team, released under Apache-2.0. The model is optimized for general instruction following with strong performance in reasoning, mathematics, coding, ",
-        "name": "Seed Oss",
-        "id": "seed-oss-36b:free",
+        "description": "MiniMax-M3 is a multimodal foundation model from MiniMax. It supports text, image, and video inputs with text output, a 1M-token context window, and is suited for long-horizon agentic work, coding, and tool use. It is built on MiniMax Sparse Attention (MSA), ",
+        "name": "MiniMax",
+        "id": "minimax-m3:free",
+        "inputpic": "📷",
         "knowledge_cutoff": null
     },
     {
-        "description": "Agnes Sapiens AI (Tel Aviv, Israel)",
-        "name": "Agnes",
-        "id": "agnes-2.0-flash:free",
+        "description": "Seed-OSS-36B-Instruct is a 36B-parameter instruction-tuned reasoning language model from ByteDance’s Seed team, released under Apache-2.0. The model is optimized for general instruction following with strong performance in reasoning, mathematics, coding, ",
+        "name": "Seed Oss",
+        "id": "seed-oss-36b:free",
         "knowledge_cutoff": null
     },
     {
