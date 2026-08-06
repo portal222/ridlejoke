@@ -36,9 +36,6 @@ const ResultsMetropolitan = () => {
 
     const getMetro = async (searchStringValue) => {
         const url = `https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=${searchStringValue}`
-        // const url = `https://collectionapi.metmuseum.org/public/collection/v1/search?medium="Sculpture"&artistOrCulture=true&q=${searchStringValue}`
-        // const url = `https://collectionapi.metmuseum.org/public/collection/v1/search?dateBegin=-300&dateEnd=300&q=${searchStringValue}`
-        // const url = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${searchStringValue}`
         const urlTitle = `https://collectionapi.metmuseum.org/public/collection/v1/search?title=true&q=${searchStringValue}`
 
 
