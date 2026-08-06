@@ -53,7 +53,7 @@ export default function ChatRouteWay() {
         const options = {
             method: "POST",
             headers: {
-            
+
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -89,7 +89,7 @@ export default function ChatRouteWay() {
             setSeconds(0);
             setTimerActive(true);
             setTimerActiveW(false);
-        ;
+            ;
 
         } catch (err) {
             setError(err.message);
@@ -128,8 +128,8 @@ export default function ChatRouteWay() {
                 <div className="polli2">
                     Or choose another RouteWay model
                 </div>
-                <br/>
-                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 200 requests per day according to the OpenRouter API.</p>
+                <br />
+                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 200 requests per day according to the RouteWay API.</p>
                 <p style={{ fontSize: "14px", color: "gray" }}>
                     {requestCount >= dailyLimit
                         ? "⚠️ You have reached the daily limit of 200 requests. Please try again tomorrow."
@@ -199,10 +199,7 @@ export default function ChatRouteWay() {
                         ⏱ {"Еlapsed time since last reply  " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
                     </p>
                 )}
-
                 {error && <p style={{ color: "red" }}>Error: {error}</p>}
-               
-
             </div>
         </>
     );

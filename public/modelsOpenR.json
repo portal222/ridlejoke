@@ -1,25 +1,25 @@
 [
     {
         "description": "North Mini Code is Cohere's first agentic coding model and the debut of its North family. A sparse mixture-of-experts model with 30B total parameters and 3B active, it is optimized...",
-        "name": "Cohere: North Mini Code (free)",
+        "name": "Cohere",
         "id": "cohere/north-mini-code:free",
         "knowledge_cutoff": null
     },
-        {
+    {
         "description": "Laguna XS 2.1 is the latest coding agent model in the 33B-A3B category from [Poolside](https://poolside.ai/) and a step forward from their Laguna XS.2 model (released in April 2026). It combines...",
-        "name": "Poolside: Laguna XS 2.1 (free)",
+        "name": "Laguna XS",
         "id": "poolside/laguna-xs-2.1:free",
         "knowledge_cutoff": null
     },
-     {
+    {
         "description": "Gemma 4 26B A4B IT is an instruction-tuned Mixture-of-Experts (MoE) model from Google DeepMind. Despite 25.2B total parameters, only 3.8B activate per token during inference — delivering near-31B quality at...",
-        "name": "Google: Gemma 4 26B A4B (free)",
+        "name": "Gemma 4",
         "id": "google/gemma-4-26b-a4b-it:free",
         "knowledge_cutoff": null
     },
-     {
+    {
         "description": "Ling-3.0-flash is a 124B-parameter Mixture-of-Experts (MoE) model, with approximately 5.1B parameters activated per token.",
-        "name": "Ling-3.0-flash (free)",
+        "name": "Ling 3",
         "id": "inclusionai/ling-3.0-flash:free",
         "knowledge_cutoff": null
     },

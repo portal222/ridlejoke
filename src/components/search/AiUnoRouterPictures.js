@@ -11,6 +11,7 @@ export default function AiUnoRouterPictures() {
     const [timerActive, setTimerActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [selectedName, setSelectedName] = useState("Cogview");
 
 
     useEffect(() => {
@@ -25,11 +26,6 @@ export default function AiUnoRouterPictures() {
         return () => clearInterval(interval);
     }, [timerActive]);
 
-
-
-
-
-    // Funkcija koja se poziva kada korisnik klikne na dugme
     const generateImage = async () => {
         if (!prompt) {
             setError('Molimo vas unesite opis slike.');
@@ -42,14 +38,12 @@ export default function AiUnoRouterPictures() {
 
         try {
             const requestBody = {
-                model: selectedModel, // Zameni sa željenim modelom
+                model: selectedModel, 
                 prompt: prompt,
-                size: "768x1024",
-                response_format: "url", // Može biti i "b64_json"
-                // n: 1, // Opciono, broj slika
+                size: "1024x1024",
+                response_format: "url" || "b64_json", 
             };
 
-            // 3. Pošalji POST zahtev ka UnoRouter API-ju
             const response = await fetch('https://ridlejoke-proxy.kvaka32.workers.dev/unoimages', {
                 method: 'POST',
                 headers: {
@@ -59,23 +53,19 @@ export default function AiUnoRouterPictures() {
                 body: JSON.stringify(requestBody),
             });
 
-            // 4. Proveri da li je zahtev uspešan
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(`Greška: ${response.status} - ${errorData.error?.message || 'Nepoznata greška'}`);
             }
 
-            // 5. Obradi odgovor
             const data = await response.json();
-            console.log('Odgovor API-ja:', data);
-
-            // Odgovor obično izgleda ovako: { created: 12345, data: [ { url: "..." } ] }
+           
             if (data.data && data.data.length > 0) {
-                // Ako je response_format bio "url", dobićeš URL
+       
                 if (data.data[0].url) {
                     setImage(data.data[0].url);
                 }
-                // Ako je response_format bio "b64_json", dobićeš base64 string
+         
                 else if (data.data[0].b64_json) {
                     setImage(`data:image/png;base64,${data.data[0].b64_json}`);
                 }
@@ -91,20 +81,12 @@ export default function AiUnoRouterPictures() {
         }
     };
 
-
-
-
-
-
-
-
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
             setSeconds(0);
             setTimerActive(true);
             generateImage();
-
         }
     };
 
@@ -121,16 +103,20 @@ export default function AiUnoRouterPictures() {
 
     return (
         <div className="mainBook">
-            <div className="polli">{selectedModel} Picture Generator Omni generations</div>
-            <h2></h2>
+            <div className="polli">{selectedName} Picture Generator</div>
+           <div className="polli2">
+                {selectedModel}
+
+                </div>
             <div className="polli2">
-                Or choose another model
+                Or choose another UnoRouter model
             </div>
             <div className="aiGrid">
                 {pictureUno.map((mod, id) => (
                     <div key={id} className="aiButt"
                         onClick={() => {
-                            setSelectedModel(mod.name);
+                            setSelectedModel(mod.id);
+                            setSelectedName(mod.name);
                         }}
                     ><a
 
@@ -146,7 +132,6 @@ export default function AiUnoRouterPictures() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={handleKeyDown}
-
             />
             <br />
             <button onClick={handleGenerate} disabled={loading}>

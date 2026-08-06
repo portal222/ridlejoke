@@ -1,11 +1,18 @@
 [
   {
-    "name": "cogview-4-250304:free"
+    "name": "CogView",
+    "id": "cogview-4-250304:free"
   },
   {
-    "name": "wan2.1-t2i-plus:free"
+    "name": "Wan 2.1",
+    "id": "wan2.1-t2i-plus:free"
   },
   {
-    "name": "wan2.2-t2i-plus:free"
+    "name": "Wan 2.2",
+    "id": "wan2.2-t2i-plus:free"
+  },
+  {
+    "name": "GLM",
+    "id": "glm-image-1:free"
   }
 ]

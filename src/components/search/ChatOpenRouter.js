@@ -12,7 +12,7 @@ export default function ChatOpenRouter() {
     const [timerActiveW, setTimerActiveW] = useState(false);
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
-    const [selectedModel, setSelectedModel] = useState("Poolside: Laguna XS 2.1 (free)");
+    const [selectedModel, setSelectedModel] = useState("Laguna XS");
     const [selectedDescription, setSelectedDescription] = useState("Laguna XS 2.1 is the latest coding agent model in the 33B-A3B category from [Poolside]");
     const [modelId, setModelId] = useState("poolside/laguna-xs-2.1:free");
 
