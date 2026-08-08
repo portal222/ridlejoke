@@ -132,27 +132,27 @@
         "description": "GPT-5.5",
         "name": "gpt-5.5"
     },
-         {
+    {
         "description": "OpenAI GPT-5 Nano, trained until June 2024.",
         "name": "openai-fast"
     },
-                 {
+    {
         "description": "StepFun Step 3.7 Flash",
         "name": "step-flash"
     },
-             {
+    {
         "description": "GPT Realtime 2",
         "name": "gpt-realtime-2"
     },
-        {
+    {
         "description": "Anthropic Claude Haiku 4.5 (San Francisco, trained until April 2024.)",
         "name": "claude-fast"
     },
-          {
+    {
         "description": "Z.ai GLM-4.7 also provides reflection on the question itself(Beijing)",
         "name": "glm"
     },
-         {
+    {
         "description": "Z.ai (China)",
         "name": "glm-4.7-flash"
     },
@@ -160,21 +160,21 @@
         "description": "MINIMAX",
         "name": "minimax-m2.5"
     },
-     {
+    {
         "description": "ByteDance (Bejing), trained until September 2023",
         "name": "seed-rp"
     },
-     {
+    {
         "description": "Esencial ai",
         "name": "rnj-1"
     },
-     {
+    {
         "description": "Hy3 is a 295B-parameter Mixture-of-Experts model from Tencent (21B active, 192 experts with top-8 routing) built for reasoning, agentic workflows, and real-world production use. It supports a configurable reasoning effort:...",
         "name": "Tencent: Hy3",
         "id": "tencent/hy3:free",
         "knowledge_cutoff": null
     },
-       {
+    {
         "description": "Agnes Sapiens AI (Tel Aviv, Israel)",
         "name": "Agnes",
         "id": "agnes-2.0-flash:free",
@@ -196,15 +196,18 @@
         "id": "bielik-11b-v3.0-instruct:free",
         "knowledge_cutoff": null
     },
-     {
+    {
         "description": "Google's Gemma 4 31B instruction-tuned model for heavier reasoning, coding, agentic workflows, and long-context multimodal understanding. ",
         "name": "Gemma 4 31B",
         "id": "gemma-4-31b-it:free",
-
         "knowledge_cutoff": null
     },
-      {
-    "name": "Wan 2.2",
-    "id": "wan2.2-t2i-plus:free"
-  }
+    {
+        "name": "Wan 2.2",
+        "id": "wan2.2-t2i-plus:free"
+    },
+    {
+        "name": "GLM",
+        "id": "glm-image-1:free"
+    }
 ]
