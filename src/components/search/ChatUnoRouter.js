@@ -197,7 +197,7 @@ export default function ChatUnoRouter() {
                 ))}
             </div>
 
-            <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }} className="total">
+            <div style={{ border: "1px solid #dcedf4ff", padding: "10px", margin: "10px" }} className="total">
                 {messages.map((msg, idx) => (
                     <div key={idx} style={{ marginBottom: "8px" }}>
                         <strong>{msg.role === "user" ? "You:" : "AI:"}</strong>{" "}

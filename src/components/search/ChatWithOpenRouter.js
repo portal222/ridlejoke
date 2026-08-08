@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import models from "../../../public/modelsRouteWay.json";
+import models from "../../../public/modelsOpenR.json";
 
-export default function ChatRouteWay() {
+export default function ChatWithOpenRouter() {
     const [question, setQuestion] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -12,14 +12,14 @@ export default function ChatRouteWay() {
     const [timerActiveW, setTimerActiveW] = useState(false);
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
-    const [selectedModel, setSelectedModel] = useState("Ling free");
-    const [selectedDescription, setSelectedDescription] = useState("LING");
-    const [modelId, setModelId] = useState("ling-3.0-flash:free");
+    const [selectedModel, setSelectedModel] = useState("Laguna XS");
+    const [selectedDescription, setSelectedDescription] = useState("Laguna XS 2.1 is the latest coding agent model in the 33B-A3B category from [Poolside]");
+    const [modelId, setModelId] = useState("poolside/laguna-xs-2.1:free");
 
     const [requestCount, setRequestCount] = useState(0);
 
 
-    const dailyLimit = 200;
+    const dailyLimit = 50;
 
     useEffect(() => {
         let interval;
@@ -49,11 +49,11 @@ export default function ChatRouteWay() {
         setLoading(true);
         setError(null);
 
-        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/routeway";
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/openrouter";
         const options = {
             method: "POST",
             headers: {
-
+            
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -71,8 +71,8 @@ export default function ChatRouteWay() {
             const response = await fetch(url, options);
             const data = await response.json();
 
-            const answer = data.choices?.[0]?.message?.content || "No answer";
-            const reasoning = data.choices?.[0]?.message?.reasoning || "No resoning";
+            const answer = data.choices?.[0]?.message?.content || "Nema odgovora";
+            const reasoning = data.choices?.[0]?.message?.reasoning || "nema razmisljanja";
 
             setChatHistory((prev) => [
                 ...prev,
@@ -89,7 +89,7 @@ export default function ChatRouteWay() {
             setSeconds(0);
             setTimerActive(true);
             setTimerActiveW(false);
-            ;
+        ;
 
         } catch (err) {
             setError(err.message);
@@ -126,13 +126,13 @@ export default function ChatRouteWay() {
 
                 </div>
                 <div className="polli2">
-                    Or choose another RouteWay model
+                    Or choose another OpenRouter model
                 </div>
-                <br />
-                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 200 requests per day according to the RouteWay API.</p>
+                <br/>
+                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 50 requests per day according to the OpenRouter API.</p>
                 <p style={{ fontSize: "14px", color: "gray" }}>
                     {requestCount >= dailyLimit
-                        ? "⚠️ You have reached the daily limit of 200 requests. Please try again tomorrow."
+                        ? "⚠️ You have reached the daily limit of 50 requests. Please try again tomorrow."
                         : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
                 </p>
                 <div className="aiGrid">
@@ -199,7 +199,10 @@ export default function ChatRouteWay() {
                         ⏱ {"Еlapsed time since last reply  " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
                     </p>
                 )}
+
                 {error && <p style={{ color: "red" }}>Error: {error}</p>}
+               
+
             </div>
         </>
     );

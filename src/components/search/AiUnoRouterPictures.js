@@ -75,7 +75,7 @@ export default function AiUnoRouterPictures() {
 
         } catch (err) {
             console.error('Došlo je do greške:', err);
-            setError(err.message || 'Došlo je do greške prilikom generisanja slike.');
+            setError(err.message || 'An error occurred while generating the image.');
         } finally {
             setIsLoading(false);
         }

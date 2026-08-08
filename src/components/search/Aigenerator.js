@@ -1,7 +1,7 @@
 import React from "react";
 import BackToTop from "../BackToTop";
 import ChatWithGroq from "./ChatWithGroq";
-import ChatOpenRouter from "./ChatOpenRouter";
+import ChatWithOpenRouter from "./ChatOpenRouter";
 import AiPollinationImg from "./AiPollinationImg";
 import ChatRouteWay from "./ChatRouteWay";
 import ChatUnoRouter from "./ChatUnoRouter";
@@ -14,7 +14,7 @@ const Aigenerator = () => {
     return (
         <>
             <ChatUnoRouter />
-            <ChatOpenRouter />
+            <ChatWithOpenRouter />
             <ChatRouteWay />
             <ChatWithGroq />
             <AiUnoRouterPictures />
