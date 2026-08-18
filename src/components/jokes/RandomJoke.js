@@ -10,18 +10,18 @@ const RandomJoke = () => {
 
     useEffect(() => {
         getJokes();
-    
+
     }, []);
 
     const getJokes = async () => {
-        const url = `https://api.api-ninjas.com/v1/jokes`;
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/jokes";
         const urlG = 'https://geek-jokes.sameerkumar.website/api?format=json'
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );
@@ -30,14 +30,14 @@ const RandomJoke = () => {
             const dataG = responseG.data
             setJokes(data);
             setGeekJoke(dataG);
-          
+
 
         } catch (err) {
             setError(err);
         }
     };
 
-  
+
 
 
 
@@ -45,7 +45,7 @@ const RandomJoke = () => {
     return (
         <>
             <div className="dadJokes2">
-              
+
                 <div className="titleJoke">
                     RANDOM JOKE
                 </div>

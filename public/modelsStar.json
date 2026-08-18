@@ -209,5 +209,11 @@
     {
         "name": "GLM",
         "id": "glm-image-1:free"
+    },
+    {
+        "description": "The simplest way to get free inference. openrouter/free is a router that selects free models at random from the models available on OpenRouter. The router smartly filters for models that...",
+        "name": "Free Models Router",
+        "id": "openrouter/free",
+        "knowledge_cutoff": null
     }
 ]

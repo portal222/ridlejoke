@@ -15,13 +15,13 @@ const ChukNorris = () => {
 
     const getFacts = async () => {
 
-        const url = `https://api.api-ninjas.com/v1/chucknorris?`
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/norris";
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );

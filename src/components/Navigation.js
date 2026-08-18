@@ -17,19 +17,7 @@ import Ridles from "./trivia/Ridles";
 import JokePlace from "./jokes/JokePlace";
 import SearchPlace from "./search/SearchPlace";
 import Trivia from "./trivia/Trivia";
-import TriviaScience from "./trivia/TriviaScience";
-import TriviaGeneral from "./trivia/TriviaGeneral";
-import TriviaFood from "./trivia/TriviaFood";
-import TriviaPeople from "./trivia/TriviaPeople";
-import TriviaHistory from "./trivia/TriviaHistory";
-import TriviaGeography from "./trivia/TriviaGeography";
-import TriviaEntertainment from "./trivia/TriviaEntertainment";
-import TriviaToys from "./trivia/TriviaToys";
-import TriviaMusic from "./trivia/TriviaMusic";
-import TriviaLanguage from "./trivia/TriviaLanguage";
-import TriviaReligion from "./trivia/TriviaReligion";
-import TriviaSport from "./trivia/TriviaSport";
-import TriviaMathematics from "./trivia/TriviaMathematics";
+
 import ResultsMetropolitan from "./search/ResultsMetropolitan";
 import ResultsColors from "./search/ResultsColors";
 import SearchResultsColor from "./search/SearchResultsColor";
@@ -122,20 +110,8 @@ const Navigation = () => {
           <Route path="/trivia/:triviaCat" element={<Trivia />} />
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/ridles" element={<Ridles />} />
-          <Route path="/art" element={<Trivia />} />
-          <Route path="/science" element={<TriviaScience />} />
-          <Route path="/general" element={<TriviaGeneral />} />
-          <Route path="/food" element={<TriviaFood />} />
-          <Route path="/people" element={<TriviaPeople />} />
-          <Route path="/holidays" element={<TriviaHistory />} />
-          <Route path="/geography" element={<TriviaGeography />} />
-          <Route path="/entertainment" element={<TriviaEntertainment />} />
-          <Route path="/toys" element={<TriviaToys />} />
-          <Route path="/music" element={<TriviaMusic />} />
-          <Route path="/language" element={<TriviaLanguage />} />
-          <Route path="/religion" element={<TriviaReligion />} />
-          <Route path="/sport" element={<TriviaSport />} />
-          <Route path="/mathematics" element={<TriviaMathematics />} />
+          <Route path="/trivia" element={<Trivia />} />
+         
           <Route path="/metro" element={<ResultsMetro />} />
           <Route path="/nyTimes" element={<SearchResutsNYT />} />
           <Route path="/colors" element={<ResultsColors />} />

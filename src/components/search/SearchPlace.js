@@ -9,7 +9,7 @@ import SearchPoke from "../pokemons/SearchPoke";
 import SearchNYT from "./SearchNYT";
 import SearchMetro from "../metropolitan/SearchMetro";
 import SearchAnimals from "./SearchAnimals";
-import SearchMp3 from "./SearchMp3";
+
 import ExtinctAnimal from "../animals/ExtinctAnimal";
 
 const SearchPlace = () => {
@@ -34,7 +34,7 @@ const SearchPlace = () => {
                     <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
                     <div className="history">Search Animals</div>
                     <SearchAnimals placeholder={'Animals Cat and Dog'} linkTo={'/animals'} />
-                    <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'} />
+      
                     <SearchPoke placeholder={'Pokemons cards'} linkTo={'/pokemonSearch'} />
 
                 </div>

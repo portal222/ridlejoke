@@ -19,27 +19,31 @@ const Ridles = () => {
     }, []);
 
     const getAnswer = async () => {
-        const url = "https://api.api-ninjas.com/v1/riddles";
-        const url2 = "https://api.api-ninjas.com/v1/riddles";
-        const url3 = "https://api.api-ninjas.com/v1/riddles";
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/riddles";
+        const url2 = "https://ridlejoke-proxy.kvaka32.workers.dev/riddles";
+        const url3 = "https://ridlejoke-proxy.kvaka32.workers.dev/riddles";
+
+        // const url = "https://api.api-ninjas.com/v1/riddles";
+        // const url2 = "https://api.api-ninjas.com/v1/riddles";
+        // const url3 = "https://api.api-ninjas.com/v1/riddles";
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 });
             const response2 = await axios.get(url2,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 });
             const response3 = await axios.get(url3,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 });
 

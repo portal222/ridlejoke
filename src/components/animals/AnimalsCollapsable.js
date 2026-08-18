@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import AnimalsMp3Click from "./AnimalsMp3Click";
+
+import AiPolliAnimals from "./AiPolliAnimals";
 
 const AnimalsCollapsable = (props) => {
     const [error, setError] = useState(null);
     const [animals, setAnimals] = useState([]);
     const [photo, setPhoto] = useState([]);
+
+    const animalId = props.animalId
 
     useEffect(() => {
         getAnimals();
@@ -13,39 +16,25 @@ const AnimalsCollapsable = (props) => {
 
 
     const getAnimals = async () => {
-        const url = `https://api.api-ninjas.com/v1/animals?name=${props.animalId}`;
-        const urlImg = `https://list.ly/api/v4/search/image?q=${props.animalId}`;
-   
+        const url = `https://ridlejoke-proxy.kvaka32.workers.dev/animals?name=${animalId}`;
+      
 
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
-                    }
-                }
-            );
-            const responseImg = await axios.get(urlImg,
-                {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
-          
 
-            const data = response.data;
-            const dataImg = responseImg.data;
+                        'Accept': 'application/json',
+                    }
+                }
+            );
         
 
-         
 
-            console.log("rezultat collapsable pojedine  zivotinjе", data);
-            console.log("rezultat slike za zivotinje", dataImg);
+            const data = response.data;
             setAnimals(data[0]);
-            setPhoto(dataImg.results);
+       
 
         } catch (err) {
             setError(err);
@@ -59,13 +48,8 @@ const AnimalsCollapsable = (props) => {
                 <tbody  >
                     <tr>
                         <td colSpan={2} style={{ textAlign: "center" }}>
-                            {photo.slice(1, 3).map((img, id) => (
-                                <p key={id}>
-
-                                    <img src={img.image} alt=" " />
-                                </p>
-                            ))}
-                            <p style={{fontSize: "12px"}}>ilustrated photo</p>
+                            <AiPolliAnimals name={animals.taxonomy?.scientific_name}/>
+                          
                         </td>
                     </tr>
                     {animals.characteristics?.common_name && (
@@ -396,7 +380,7 @@ const AnimalsCollapsable = (props) => {
                     )}
                 </tbody>
             </table >
-            <AnimalsMp3Click name={props.animalId}/>
+    
         </>
     );
 };

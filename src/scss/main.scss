@@ -83,6 +83,14 @@ body {
         text-align: justify;
         background-color: #457ba8;
 
+        .wikilink {
+            background-color: #457ba8;
+            text-decoration: none;
+            padding: 15px;
+            cursor: pointer;
+
+        }
+
         h1 {
             margin: auto;
             background-color: #6bac61;
@@ -219,7 +227,7 @@ body {
 
     .horoscope {
         padding: 20px;
-        margin: auto;
+
         margin-top: 20px;
         width: 750px;
         background-color: #fff8d3;
@@ -231,34 +239,40 @@ body {
         font-weight: normal;
         text-shadow: 3px 3px 15px transparent;
 
-        h2 {
-            margin: auto;
-            font-weight: bold;
-            color: #006064;
+        .select {
+            margin-left: 100px;
         }
 
 
         .sign {
             display: flex;
             align-items: center;
-            justify-content: center;
+            // justify-content: center;
             flex-direction: column;
             padding: 15px;
 
+            h2 {
+                text-align: center;
+                padding: 20px;
+                font-weight: bold;
+                color: #006064;
+            }
+
             .signImg {
-                width: 150px;
+                width: 180px;
             }
 
             p {
                 font-weight: bold;
                 padding: 10px;
-                width: 200px;
+                width: 520px;
                 text-align: center;
             }
         }
 
         .text {
             padding: 20px;
+            width: 450px;
             text-align: justify;
         }
     }

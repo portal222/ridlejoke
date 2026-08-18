@@ -24,21 +24,23 @@ const ResultsPerson = () => {
     }, [searchStringValue]);
 
     const getPerson = async (searchStringValue) => {
-        const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${searchStringValue}`;
-        const urlCel = `https://api.api-ninjas.com/v1/celebrity?name=${searchStringValue}`;
+        
+            const url = `https://ridlejoke-proxy.kvaka32.workers.dev/person?name=${searchStringValue}`;
+        const urlCel = `https://ridlejoke-proxy.kvaka32.workers.dev/celebrity?name=${searchStringValue}`;
+
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );
             const responseCel = await axios.get(urlCel,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );

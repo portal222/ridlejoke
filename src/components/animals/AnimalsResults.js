@@ -28,30 +28,34 @@ const AnimalsResults = () => {
     console.log("iz resultDog searchStringValue:", searchStringValue)
 
     const getDog = async (searchStringValue) => {
-        const url = `https://api.api-ninjas.com/v1/animals?name=${searchStringValue}`;
-        const urlDog = `https://api.api-ninjas.com/v1/dogs?name=${searchStringValue}`;
-        const urlCat = `https://api.api-ninjas.com/v1/cats?name=${searchStringValue}`;
+        const url = `https://ridlejoke-proxy.kvaka32.workers.dev/animals?name=${searchStringValue}`;
+        const urlDog = `https://ridlejoke-proxy.kvaka32.workers.dev/dogs?name=${searchStringValue}`;
+        const urlCat = `https://ridlejoke-proxy.kvaka32.workers.dev/cats?name=${searchStringValue}`;
+
+        // const url = `https://api.api-ninjas.com/v1/animals?name=${searchStringValue}`;
+        // const urlDog = `https://api.api-ninjas.com/v1/dogs?name=${searchStringValue}`;
+        // const urlCat = `https://api.api-ninjas.com/v1/cats?name=${searchStringValue}`;
 
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                             'Accept': 'application/json',
                     }
                 }
             );
             const responseCat = await axios.get(urlCat,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                             'Accept': 'application/json',
                     }
                 }
             );
             const responseDog = await axios.get(urlDog,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                             'Accept': 'application/json',
                     }
                 }
             );

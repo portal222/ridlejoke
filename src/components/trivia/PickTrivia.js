@@ -11,8 +11,8 @@ const PickTrivia = () => {
         const LinkTo = '/ridles';
         navigate(LinkTo);
     }
-    const handleGeography = () => {
-        const LinkTo = '/geography';
+    const handleTrivia = () => {
+        const LinkTo = '/trivia';
         navigate(LinkTo);
     }
     const handleQuiz = () => {
@@ -61,7 +61,7 @@ const PickTrivia = () => {
                     </p>
                 </div>
                 <div>
-                    <div onClick={() => handleGeography()}
+                    <div onClick={() => handleTrivia()}
                         className="category">
                         Trivia
                     </div>

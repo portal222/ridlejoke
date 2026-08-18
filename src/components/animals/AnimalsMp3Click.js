@@ -20,14 +20,16 @@ const AnimalsMp3Click = ({ name }) => {
     }, [name]);
 
     const getAnimals = async () => {
-        const urlMp3 = `//xeno-canto.org/api/3/recordings?query=en:"${name}"&key=90da96a903a18674ef2ca9ac1790d828cc60705d`;
+        // const urlMp3 = `//xeno-canto.org/api/3/recordings?query=en:"${name}"&key=`;
+        const url = `https://ridlejoke-proxy.kvaka32.workers.dev/xenocanto?query:${name}`;
+
 
         try {
-            const responseMp3 = await axios.get(urlMp3);
+            const responseMp3 = await axios.get(url);
             const dataMp3 = responseMp3.data.recordings;
             const lengthMp3 = responseMp3.data.recordings.length;
 
-            console.log("zvuci mp3", dataMp3);
+            console.log("zvuci mp3", responseMp3);
             console.log("zvuci duzina niza mp3", lengthMp3);
             setIsLoading(false);
 
@@ -36,6 +38,7 @@ const AnimalsMp3Click = ({ name }) => {
 
         } catch (err) {
             setError(err);
+            console.log("xeno greska", err);
         }
     };
        const handleClick = (animalName) => {

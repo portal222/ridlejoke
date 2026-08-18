@@ -7,7 +7,7 @@ const Quotes = () => {
     const [random, setRandom] = useState([]);
     const [random2, setRandom2] = useState([]);
     const [random3, setRandom3] = useState([]);
-   
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,30 +15,29 @@ const Quotes = () => {
     }, []);
 
     const getDomain = async () => {
-
-        const url = `https://api.api-ninjas.com/v1/quotes?all`;
-        const url2 = `https://api.api-ninjas.com/v1/quotes?all`;
-        const url3 = `https://api.api-ninjas.com/v1/quotes?all`;
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/quotes";
+        const url2 = "https://ridlejoke-proxy.kvaka32.workers.dev/quotes";
+        const url3 = "https://ridlejoke-proxy.kvaka32.workers.dev/quotes";
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );
             const response2 = await axios.get(url2,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );
-              const response3 = await axios.get(url3,
+            const response3 = await axios.get(url3,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );
@@ -50,6 +49,7 @@ const Quotes = () => {
             setRandom(data[0]);
             setRandom2(data2[0]);
             setRandom3(data3[0]);
+
         } catch (err) {
             setError(err);
         }
@@ -84,7 +84,7 @@ const Quotes = () => {
                         }}>
                         {random2.author}</p>
                 </div>
-                 <div className="table">
+                <div className="table">
                     <p className="category">{random3.category}</p>
                     <p>{random3.quote}</p>
                     <p className="author"

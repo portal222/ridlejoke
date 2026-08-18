@@ -17,28 +17,30 @@ const ResultsClickPerson = () => {
     const navigate = useNavigate();
 
     const params = useParams()
-    const linkName = params.linkName;
+    const personName = params.linkName;
 
     useEffect(() => {
         getPerson();
     }, []);
 
     const getPerson = async () => {
-        const url = `https://api.api-ninjas.com/v1/historicalfigures?name=${linkName}`;
-        const urlCel = `https://api.api-ninjas.com/v1/celebrity?name=${linkName}`;
+
+        const url = `https://ridlejoke-proxy.kvaka32.workers.dev/person?name=${personName}`;
+        const urlCel = `https://ridlejoke-proxy.kvaka32.workers.dev/celebrity?name=${personName}`;
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
+                     
                     }
                 }
             );
             const responseCel = await axios.get(urlCel,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );
@@ -90,7 +92,7 @@ const ResultsClickPerson = () => {
                                 <td className="historyPerson"
                                     onClick={() => {
                                         handleClick(dataObj.name);
-                                        window.scrollTo({ top: 0, behavior: 'smooth'});
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
                                     }}
                                 >{dataObj.name}</td>
                             </tr>
@@ -103,8 +105,8 @@ const ResultsClickPerson = () => {
                                     className="more"
                                     onClick={() => {
                                         handleClick(dataObj.name);
-                                        window.scrollTo({ top: 0, behavior: 'smooth'});
-                                        }}>
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}>
                                     more...
                                 </td>
                             </tr>
@@ -122,7 +124,7 @@ const ResultsClickPerson = () => {
                     <tr>
                         <th className="history"
                             colSpan={2}>
-                            Persons {linkName}</th>
+                            Persons {personName}</th>
                     </tr>
                     <tr className="results">
                         <th colSpan={2}>Number of Historyc persons: {results}</th>
@@ -135,8 +137,8 @@ const ResultsClickPerson = () => {
                             <td className="historyPerson"
                                 onClick={() => {
                                     handleClick(dataObj.name);
-                                    window.scrollTo({ top: 0, behavior: 'smooth'});
-                                    }}>
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}>
                                 {dataObj.name}</td>
                         </tr>
                         {dataObj.title && (
@@ -150,8 +152,8 @@ const ResultsClickPerson = () => {
                                 className="more"
                                 onClick={() => {
                                     handleClick(dataObj.name);
-                                    window.scrollTo({ top: 0, behavior: 'smooth'});
-                                    }}>
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}>
                                 more...
                             </td>
                         </tr>
@@ -176,7 +178,7 @@ const ResultsClickPerson = () => {
                             <td className="historyPerson"
                                 onClick={() => {
                                     handleClick(dataObj.name);
-                                    window.scrollTo({ top: 0, behavior: 'smooth'});
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
                                 }}
                             >{dataObj.name}</td>
                         </tr>
@@ -191,8 +193,8 @@ const ResultsClickPerson = () => {
                                 className="more"
                                 onClick={() => {
                                     handleClick(dataObj.name);
-                                    window.scrollTo({ top: 0, behavior: 'smooth'});
-                                    }}>
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}>
                                 more...
                             </td>
                         </tr>

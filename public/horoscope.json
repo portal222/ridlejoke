@@ -1,0 +1,50 @@
+[
+    {
+        "name": "aries",
+        "url": "aries"
+    },
+     {
+        "name": "taurus",
+        "url": "taurus"
+    },
+     {
+        "name": "gemini",
+        "url": "gemini"
+    },
+      {
+        "name": "cancer",
+        "url": "cancer"
+    },
+      {
+        "name": "leo",
+        "url": "leo"
+    },
+      {
+        "name": "virgo",
+        "url": "virgo"
+    },
+      {
+        "name": "libra",
+        "url": "libra"
+    },
+      {
+        "name": "scorpio",
+        "url": "scorpio"
+    },
+      {
+        "name": "sagittarius",
+        "url": "sagittarius"
+    },
+      {
+        "name": "capricorn",
+        "url": "capricorn"
+    },
+      {
+        "name": "aquarius",
+        "url": "aquarius"
+    },
+      {
+        "name": "pisces",
+        "url": "pisces"
+    }
+]

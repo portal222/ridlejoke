@@ -1,17 +1,17 @@
 import React from "react";
 import BackToTop from "../BackToTop";
-import ChatWithGroq from "./ChatWithGroq";
-import ChatWithOpenRouter from "./ChatOpenRouter";
-import AiPollinationImg from "./AiPollinationImg";
 import ChatUnoRouter from "./ChatUnoRouter";
+import ChatWithOpenRouterImage from "./ChatWithOpenRouterImage";
+import ChatWithGroq from "./ChatWithGroq";
 import AiUnoRouterPictures from "./AiUnoRouterPictures";
+import AiPollinationImg from "./AiPollinationImg";
 
 const Aigenerator = () => {
 
     return (
         <>
             <ChatUnoRouter />
-            <ChatWithOpenRouter />
+            <ChatWithOpenRouterImage />
             <ChatWithGroq />
             <AiUnoRouterPictures />
             <AiPollinationImg />

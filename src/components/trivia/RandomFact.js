@@ -10,13 +10,15 @@ const RandomFact = () => {
     }, []);
 
     const getFacts = async () => {
-        const url = `https://api.api-ninjas.com/v1/facts`;
+
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/facts";
+
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
                     }
                 }
             );

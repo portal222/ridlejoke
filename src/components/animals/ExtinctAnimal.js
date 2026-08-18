@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ExtinctAnimal = () => {
 
-    const [extinct, setExtinct] = useState([]);
+    const [anim, setAnim] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -17,7 +17,8 @@ const ExtinctAnimal = () => {
             const responseEx = await axios.get(urlEx);
             const dataEx = responseEx.data
 
-            setExtinct(dataEx.data)
+            setAnim(dataEx.data?.[0])
+
         } catch (err) {
             setError(err);
         }
@@ -28,33 +29,43 @@ const ExtinctAnimal = () => {
             <div className="extinct">
                 <h1>Extinct Animal</h1>
             </div>
-            {extinct.map((anim, id) => (
-                <>
-                    <div key={id}>
-                        <div className="extinct">
-                            <div className="extName">
-                                {anim.commonName}
-                            </div>
-                            <div className="extBioname">
-                                {anim.binomialName}
-                            </div>
+
+            <>
+                <div >
+                    <div className="extinct"
+                        key={anim.binomialName} >
+                        <div className="extName">
+                            {anim.commonName}
                         </div>
-                        <div className="extinct">
-                            <p className="records">Last time seen</p>
-                            <div className="records">
-                                {anim.lastRecord + " " + anim.location}
-                            </div>
-                        </div>
-                        <div className="imgPlace">
-                            <img src={anim.imageSrc} alt="" className="imgExt" />
-                        </div>
-                        <div className="extinct">
-                            {anim.shortDesc}
+                        <div className="extBioname">
+                            {anim.binomialName}
                         </div>
                     </div>
-                </>
-            ))
-            }
+                    <div className="extinct"
+                    >
+                        <p className="records">Last time seen</p>
+                        <div className="records">
+                            {anim.lastRecord + " " + anim.location}
+                        </div>
+                    </div>
+                    <div className="imgPlace"
+                    >
+                        <img src={anim.imageSrc} alt="" className="imgExt" />
+                    </div>
+                    <div className="extinct"
+                    >
+                        {anim.shortDesc}
+                    </div>
+                    <div className="extinct">
+                        <a href={anim.wikiLink} target="_blank"
+                            className="wikilink">Wikipedia</a>
+                    </div>
+
+
+                </div>
+            </>
+
+
         </>
     )
 }

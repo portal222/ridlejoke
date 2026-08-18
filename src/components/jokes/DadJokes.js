@@ -21,13 +21,16 @@ const DadJokes = () => {
 
     const getDad = async () => {
 
-        const url = 'https://api.api-ninjas.com/v1/dadjokes'
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/dadjokes";
+
+
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                        "Content-Type": "application/json",
+
                     }
                 });
             const data = response.data;
@@ -50,7 +53,7 @@ const DadJokes = () => {
                         'Accept': 'application/json'
                     }
                 });
-                const responseB = await axios.get(urlB);
+            const responseB = await axios.get(urlB);
             const data = response.data;
             const dataB = responseB.data;
             setJoke(data);
@@ -77,8 +80,8 @@ const DadJokes = () => {
                     {joke.joke}
                 </div>
                 <div >
-                    <img src={cat.url} alt="no picture"/>
-                    </div>
+                    <img src={cat.url} alt="no picture" />
+                </div>
                 <div className="titleJoke">
                     YO MOMMA JOKE
                 </div>

@@ -32,6 +32,7 @@ const AnimalsMp3 = () => {
 
     const getAnimals = async () => {
         const urlMp3 = `//xeno-canto.org/api/3/recordings?query=en:"${searchStringValue}"&key=90da96a903a18674ef2ca9ac1790d828cc60705d`;
+        // const urlMp3 = `https://ridlejoke-proxy.kvaka32.workers.dev/xenocanto?query=en:"${searchStringValue}"`;
 
         try {
             const responseMp3 = await axios.get(urlMp3);

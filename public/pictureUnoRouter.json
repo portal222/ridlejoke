@@ -10,6 +10,9 @@
   {
     "name": "GPT",
     "id": "gpt-image-2:free"
-  }
- 
+  },
+  {
+    "name": "Leonardo",
+    "id": "lucid-origin:free"
+  } 
 ]
