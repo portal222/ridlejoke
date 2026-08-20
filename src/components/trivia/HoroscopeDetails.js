@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ariesimg from "../../../public/assets/img/aries.png";
-import taurusimg from "../../../public/assets/img/taurus.png";
+import aries from "../../../public/assets/img/aries.png";
+import taurus from "../../../public/assets/img/taurus.png";
 import gemini from "../../../public/assets/img/gemini.png";
 import cancer from "../../../public/assets/img/cancer.png";
 import leo from "../../../public/assets/img/leo.png";
