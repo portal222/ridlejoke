@@ -6,7 +6,7 @@ const XkcdComics = () => {
     const [comics, setComics] = useState([]);
     const [error, setError] = useState(null);
 
-    const [randomNumber] = useState(() => Math.floor(Math.random() * 3400) + 1);
+    const [randomNumber] = useState(() => Math.floor(Math.random() * 3300) + 1);
 
     useEffect(() => {
         getComic(randomNumber);

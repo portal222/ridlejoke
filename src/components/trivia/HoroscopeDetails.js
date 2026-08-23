@@ -22,6 +22,8 @@ const HoroscopeDetails = (props) => {
 
 
     const zoname = props.zoname
+    const zourl = props.zoname
+ 
     useEffect(() => {
         if (zoname) {
             getHoros(zoname);
@@ -72,6 +74,9 @@ const HoroscopeDetails = (props) => {
 
                     <h2>{zoname}</h2>
                     {imageSrc && <img src={imageSrc} alt={zoname} className="signImg" />}
+                
+              
+
                 </div>
                 {!isLoading && horos &&
                     <p className="text">

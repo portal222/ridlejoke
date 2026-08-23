@@ -40,7 +40,7 @@ const Horoscope = () => {
                         </select>
                     </div>
                 </div>
-                <HoroscopeDetails zoname={zoname} />
+                <HoroscopeDetails zoname={zoname}/>
                 <div style={{ height: "60px" }}></div>
             </div>
         </>

@@ -4,15 +4,11 @@
     "id": "cogview-4-250304:free"
   },
   {
-    "name": "Wan 2.1",
-    "id": "wan2.1-t2i-plus:free"
+    "name": "GLM",
+    "id": "glm-image-1:free"
   },
   {
-    "name": "GPT",
-    "id": "gpt-image-2:free"
-  },
-  {
-    "name": "Leonardo",
-    "id": "lucid-origin:free"
-  } 
+    "name": "Agnes",
+    "id": "agnes-image-2.1-flash:free"
+  }
 ]

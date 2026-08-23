@@ -6,6 +6,7 @@ import ChukNorris from "./ChukNorris";
 import JokesRandom from "./JokesRandom";
 import JokesOfficial from "./JokesOfficial";
 import RandomJoke from "./RandomJoke";
+import HumorApi from "./HumorApi";
 
 const JokePlace = () => {
 
@@ -19,6 +20,7 @@ const JokePlace = () => {
                     {<JokesOfficial />}
                     {<RandomJoke />}
                     {<YesNoGif />}
+                    {<HumorApi />}
                 </div>
                 <div>
                     {<DadJokes />}

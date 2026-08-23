@@ -1,8 +1,8 @@
 [
     {
-        "description": "GLM 5.2 is a large-scale reasoning model from Z.ai. It supports text input and output with a 1M-token context window, and is suited for long-horizon agent workflows, project-level software engineering, and complex multi-step automation.",
+        "description": "GLM-5V-Turbo is Z.ai’s first native multimodal agent foundation model, built for vision-based coding and agent-driven tasks. It natively handles image, video, and text inputs, excels at long-horizon planning, complex coding, and task execution",
         "name": "GLM",
-        "id": "glm-5.2-thinking:free",
+        "id": "glm-5v-turbo-think-search:free",
         "knowledge_cutoff": null
     },
     {
@@ -13,18 +13,15 @@
     },
     {
         "name": "DeepSeek",
-        "id": "deepseek-v4-flash:free",
-        "description": "DeepSeek V4 Flash is an efficiency-focused MoE model with 284B total parameters (13B active) and a 1M-token context window. It's tuned for fast inference and high-throughput use cases while still holding up on reasoning and coding tasks."
+        "id": "deepseek-v4-pro-0813:free",
+        "description": "DeepSeek V4 Pro-0813 is a large-scale Mixture-of-Experts model from DeepSeek with 1.6T total parameters and 49B activated parameters, supporting a 1M-token context window. It is designed for advanced reasoning, coding, and long-horizon agent workflows"
     },
-    {
-        "name": "Manta",
-        "id": "manta-flash-1.0:free",
-        "description": "Manta-flash-1.0:free from MegaNova.Efficient model for low-latency assistance, extraction, and routine automation"
-    },
+   
     {
         "name": "Mistral",
-        "id": "mistral-nemotron:free",
-        "description": "Mistral-nemotron model for multilingual chat, reasoning, and tool-assisted workflows"
+        "id": "mistral-large-3-675b:free",
+        "inputpic": "📷",
+        "description": "Flagship Mistral model for advanced reasoning, coding, and multilingual work"
     },
     {
         "name": "GPT",
