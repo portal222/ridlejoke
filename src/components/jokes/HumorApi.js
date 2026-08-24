@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import yomomma from '../../../public/yomomma.json';
 
 const HumorApi = () => {
 
     const [error, setError] = useState(null);
-
     const [joke, setJoke] = useState([]);
     const [humorMeme, setHumorMeme] = useState([]);
-
-
-
-
 
     useEffect(() => {
         getHumor();
         getMeme();
     }, [])
 
-
     const getHumor = async () => {
 
         const url = "https://ridlejoke-proxy.kvaka32.workers.dev/humorapi";
-        // const url = "https://abhi-api.vercel.app/api/search/yts?text=fire";
-
-
-
+   
         try {
             const response = await axios.get(url,
                 {
                     headers: {
                         "Content-Type": "application/json",
-
                     }
                 });
             const data = response.data;
             setJoke(data);
-            console.log("humor api detalji", data);
 
         } catch (err) {
             setError(err);
@@ -48,14 +36,11 @@ const HumorApi = () => {
 
         const url = "https://ridlejoke-proxy.kvaka32.workers.dev/humorapimeme";
 
-
-
         try {
             const response = await axios.get(url,
                 {
                     headers: {
                         "Content-Type": "application/json",
-
                     }
                 });
             const data = response.data;
@@ -65,10 +50,7 @@ const HumorApi = () => {
         } catch (err) {
             setError(err);
         }
-
     };
-
-
 
     return (
         <>
@@ -80,7 +62,7 @@ const HumorApi = () => {
                     {humorMeme.url && (
                         <img src={humorMeme.url} alt="no picture" />
                     )}
-                    <p>{humorMeme.description}</p>
+                    <p style={{padding: "8px"}}>{humorMeme.description}</p>
                 </div>
             </div>
         </>

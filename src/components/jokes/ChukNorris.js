@@ -14,7 +14,6 @@ const ChukNorris = () => {
     }, [])
 
     const getFacts = async () => {
-
         const url = "https://ridlejoke-proxy.kvaka32.workers.dev/norris";
 
         try {
@@ -27,7 +26,6 @@ const ChukNorris = () => {
             );
             const data = response.data;
             setFacts(data);
-
 
         } catch (err) {
             setError(err);
@@ -57,7 +55,7 @@ const ChukNorris = () => {
         <>
             <div className="dadJokes">
                 <div className="titleJoke">
-                    CHUCK NORRIS JOKE
+                    Chuck Norris
                 </div>
                 <div className="border">{facts.joke}</div>
                 <div className="border">{chuck2.value}</div>

@@ -6,8 +6,6 @@ const RandomJoke = () => {
     const [jokes, setJokes] = useState([]);
     const [geekJoke, setGeekJoke] = useState([]);
 
-    const [foods, setFoods] = useState([]);
-
     useEffect(() => {
         getJokes();
 
@@ -31,23 +29,17 @@ const RandomJoke = () => {
             setJokes(data);
             setGeekJoke(dataG);
 
-
         } catch (err) {
             setError(err);
         }
     };
-
-
-
-
-
 
     return (
         <>
             <div className="dadJokes2">
 
                 <div className="titleJoke">
-                    RANDOM JOKE
+                    Random Joke
                 </div>
                 {jokes.map((dataObj) => (
                     <div key={dataObj.joke}
@@ -58,7 +50,7 @@ const RandomJoke = () => {
             </div >
             <div className="dadJokes2">
                 <div className="titleJoke">
-                    GEEK JOKE
+                    Geek Joke
                 </div>
                 <div className="border">
                     {geekJoke.joke}

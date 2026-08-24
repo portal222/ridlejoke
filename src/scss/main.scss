@@ -1379,11 +1379,12 @@ body {
         width: 450px;
 
         .titleJoke {
-            text-align: center;
+            text-align: left;
             padding-top: 40px;
+            padding-left: 40px;
             font-size: 24px;
-            font-weight: 700;
-            color: #013441;
+            font-weight: 600;
+            color: #054d39;
 
         }
 
@@ -2032,6 +2033,7 @@ body {
 
             .titleJoke {
                 padding-top: 25px;
+                padding-left: 20px;
                 font-size: 18px;
                 font-weight: 600;
             }

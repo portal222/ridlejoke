@@ -12,25 +12,19 @@ const DadJokes = () => {
     const number = Math.floor(Math.random() * 977);
     const number2 = Math.floor(Math.random() * 977);
 
-
-
     useEffect(() => {
         getDad();
         getJoke();
     }, [])
 
     const getDad = async () => {
-
         const url = "https://ridlejoke-proxy.kvaka32.workers.dev/dadjokes";
-
-
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
                         "Content-Type": "application/json",
-
                     }
                 });
             const data = response.data;
@@ -39,7 +33,6 @@ const DadJokes = () => {
         } catch (err) {
             setError(err);
         }
-
     };
 
     const getJoke = async () => {
@@ -68,7 +61,7 @@ const DadJokes = () => {
         <>
             <div className="dadJokes">
                 <div className="titleJoke">
-                    DAD JOKE
+                    Dad Joke
                 </div>
                 {dad.map((fact) => (
                     <div key={fact.joke}
@@ -83,7 +76,7 @@ const DadJokes = () => {
                     <img src={cat.url} alt="no picture" />
                 </div>
                 <div className="titleJoke">
-                    YO MOMMA JOKE
+                    Yo Momma 
                 </div>
                 <div className="border">
                     {yomomma?.[number]?.text}
