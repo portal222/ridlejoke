@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import models from "../../../public/unoRouter.json";
 
-export default function ChatUnoRouterChosen() {
+export default function ChatAiLmApi() {
     const [messages, setMessages] = useState([]);
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
@@ -19,7 +19,6 @@ export default function ChatUnoRouterChosen() {
     const [inputpic, setInputpic] = useState("");
     const [imageData, setImageData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
-    const [chosenAi, setChosenAi] = useState("");
 
 
     const [requestCount, setRequestCount] = useState(0);
@@ -71,6 +70,8 @@ export default function ChatUnoRouterChosen() {
         }
     };
 
+
+
     const sendQuery = async () => {
 
         if (!query.trim() && !imageData) return;
@@ -88,10 +89,10 @@ export default function ChatUnoRouterChosen() {
 
         try {
             const { data } = await axios.post(
-                " https://ridlejoke-proxy.kvaka32.workers.dev/unorouter",
+                "https://ridlejoke-proxy.kvaka32.workers.dev/ailmapi",
 
                 {
-                    model: chosenAi,
+                    model: ox-alpha,
                     messages: newMessages,
                     max_tokens: 8192,
                     temperature: 1
@@ -115,18 +116,13 @@ export default function ChatUnoRouterChosen() {
             setTimestamp(data.created);
             setRequestCount(prev => prev + 1);
 
+            console.log("aimlapi detalji", data);
+
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
         } finally {
             setLoading(false);
-        }
-    };
-
-     const handleKeyDownChoose = (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-
         }
     };
 
@@ -166,16 +162,19 @@ export default function ChatUnoRouterChosen() {
 
     return (
         <div className="mainBook">
-            <div className="polli">Chat with {chosenAi}
+            <div className="polli">Chat with {aiModels}
             </div>
-          
+            <div className="polli2">
+                {selectedDescription}
+            </div>
             {inputpic && (
                 <div className="polli2">
                     {inputpic}
+
                 </div>
             )}
             <div className="polli2">
-                Or enter another UnoRouter model
+                Or choose another AiLmApi model
             </div>
             <br />
             <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute. Models change frequently, so if one doesn't work, try another.</p>
@@ -184,7 +183,22 @@ export default function ChatUnoRouterChosen() {
                     ? "⚠️ You have reached the limit for this model, try again next week, or choose another model."
                     : `ℹ️ You have used ${requestCount} of requests. Еach model has its limitations, if one doesn't work get another`}
             </p>
-          
+            <div className="aiGrid">
+                {models.map((mod, id) => (
+                    <div key={id} className="aiButt"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.description);
+                            setAiModels(mod.name);
+                            setInputpic(mod.inputpic);
+
+                        }}
+                    >{mod.name}</a>
+
+                    </div>
+                ))}
+            </div>
+
             <div style={{ border: "1px solid #dcedf4ff", padding: "10px", margin: "10px" }} className="total">
                 {messages.map((msg, idx) => (
                     <div key={idx} style={{ marginBottom: "8px" }}>
@@ -215,19 +229,14 @@ export default function ChatUnoRouterChosen() {
                 )}
             </div>
 
+
+
+
             <div
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
                 style={{ border: imagePreview ? '2px solid #4CAF50' : '2px dashed #ccc', padding: '10px', borderRadius: '8px' }}
             >
-                 <textarea
-                rows="1"
-                style={{ width: "20%", padding: "10px", margin: "10px" }}
-                placeholder="Enter AI model"
-                value={chosenAi}
-                onChange={(e) => setChosenAi(e.target.value)}
-                onKeyDown={handleKeyDownChoose}
-            />
                 <textarea
                     rows="3"
                     style={{ width: "70%", padding: "10px", margin: "10px" }}

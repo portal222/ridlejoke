@@ -1,9 +1,5 @@
 [
     {
-        "id": "groq/compound-mini",
-        "description": "Owned by Groq"
-    },
-    {
         "id": "groq/compound",
         "description": "Owned by Groq"
     }

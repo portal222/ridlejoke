@@ -1124,6 +1124,42 @@ body {
         }
     }
 
+     .aiGridEden {
+        padding: 15px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 15px;
+
+        .aiButtEden {
+            background-color: #c0d3e3;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 3px 3px 7px rgb(118, 169, 220);
+            cursor: pointer;
+
+            &:hover {
+                background-color: #a4c2da;
+            }
+
+            &:active {
+                background-color: #a4c2da;
+
+            }
+
+            a {
+                font-size: 18px;
+                font-weight: bold;
+                color: #014780;
+
+            }
+
+            p {
+                padding-top: 10px;
+                font-size: 12px;
+                text-align: left;
+            }
+        }
+    }
     .linkList {
         text-decoration: none;
         color: #014780;

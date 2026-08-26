@@ -45,7 +45,6 @@ const HumorApi = () => {
                 });
             const data = response.data;
             setHumorMeme(data);
-            console.log("humor api meme detalji", data);
 
         } catch (err) {
             setError(err);
