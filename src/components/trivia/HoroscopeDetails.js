@@ -42,7 +42,6 @@ const HoroscopeDetails = (props) => {
                 }
             );
 
-
             const data = response.data;
 
             setHoros(data);
@@ -51,13 +50,8 @@ const HoroscopeDetails = (props) => {
         } catch (err) {
             setError(err);
             setIsLoading(false);
-
         }
     }
-
-
-
-
 
     const getImagePath = (name) => {
         const item = horoscope.find(z => z.name === name);
@@ -70,13 +64,8 @@ const HoroscopeDetails = (props) => {
         <div className="facts">
             <div className="horoscope">
                 <div className="sign">
-
-
                     <h2>{zoname}</h2>
                     {imageSrc && <img src={imageSrc} alt={zoname} className="signImg" />}
-                
-              
-
                 </div>
                 {!isLoading && horos &&
                     <p className="text">

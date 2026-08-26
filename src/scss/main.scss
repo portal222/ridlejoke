@@ -1124,7 +1124,7 @@ body {
         }
     }
 
-     .aiGridEden {
+    .aiGridEden {
         padding: 15px;
         display: grid;
         grid-template-columns: auto auto auto auto;
@@ -1160,6 +1160,7 @@ body {
             }
         }
     }
+
     .linkList {
         text-decoration: none;
         color: #014780;
@@ -2640,6 +2641,29 @@ body {
                 }
 
 
+            }
+        }
+
+        .aiGridEden {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 10px;
+
+            .aiButtEden {
+
+                border-radius: 8px;
+                padding: 7px;
+
+                a {
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+
+                p {
+                    padding-top: 8px;
+                    font-size: 8px;
+                }
             }
         }
 

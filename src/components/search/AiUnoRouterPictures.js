@@ -38,10 +38,10 @@ export default function AiUnoRouterPictures() {
 
         try {
             const requestBody = {
-                model: selectedModel, 
+                model: selectedModel,
                 prompt: prompt,
                 size: "1024x1024",
-                response_format: "url" || "b64_json", 
+                response_format: "url" || "b64_json",
             };
 
             const response = await fetch('https://ridlejoke-proxy.kvaka32.workers.dev/unoimages', {
@@ -59,13 +59,13 @@ export default function AiUnoRouterPictures() {
             }
 
             const data = await response.json();
-           
+
             if (data.data && data.data.length > 0) {
-       
+
                 if (data.data[0].url) {
                     setImage(data.data[0].url);
                 }
-         
+
                 else if (data.data[0].b64_json) {
                     setImage(`data:image/png;base64,${data.data[0].b64_json}`);
                 }
@@ -76,8 +76,12 @@ export default function AiUnoRouterPictures() {
         } catch (err) {
             console.error('Došlo je do greške:', err);
             setError(err.message || 'An error occurred while generating the image.');
+            setTimerActive(false);
+
         } finally {
             setIsLoading(false);
+            setTimerActive(false);
+
         }
     };
 
@@ -104,10 +108,10 @@ export default function AiUnoRouterPictures() {
     return (
         <div className="mainBook">
             <div className="polli">{selectedName} Picture Generator</div>
-           <div className="polli2">
+            <div className="polli2">
                 {selectedModel}
 
-                </div>
+            </div>
             <div className="polli2">
                 Or choose another UnoRouter model
             </div>
@@ -118,10 +122,8 @@ export default function AiUnoRouterPictures() {
                             setSelectedModel(mod.id);
                             setSelectedName(mod.name);
                         }}
-                    ><a
-
-                    >{mod.name}</a>
-
+                    >
+                        <a>{mod.name}</a>
                     </div>
                 ))}
             </div>

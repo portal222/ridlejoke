@@ -30,11 +30,11 @@ export default function ChatEdenAi() {
 
     const dailyLimit = 100;
 
-        useEffect(() => {
-            getModels();
-        }, []);
+    useEffect(() => {
+        getModels();
+    }, []);
 
-     const getModels = async () => {
+    const getModels = async () => {
         const url = `https://api.edenai.run/v3/models`;
 
         try {
@@ -42,12 +42,12 @@ export default function ChatEdenAi() {
 
             const data = response.data;
 
-      const freeModels = data.data.filter(
-        (model) => model.pricing?.input_cost_per_token <= "0.0000000001" 
-      
-      );
-          setModels(freeModels);
-    
+            const freeModels = data.data.filter(
+                (model) => model.pricing?.input_cost_per_token <= "0.0000000001"
+
+            );
+            setModels(freeModels);
+
         } catch (err) {
             setError(err);
         }
@@ -146,8 +146,12 @@ export default function ChatEdenAi() {
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
+            setTimerActive(true);
+            setTimerActiveW(false);
         } finally {
             setLoading(false);
+            setTimerActive(true);
+            setTimerActiveW(false);
         }
     };
 
@@ -190,7 +194,7 @@ export default function ChatEdenAi() {
             <div className="polli">Chat with {aiModels}
             </div>
             <div className="polli2">
-                {selectedDescription} 
+                {selectedDescription}
                 <br></br>
                 {"Owned by: " + owned + ". Input: " + capabiliti + ", " + capabiliti2}
             </div>
@@ -201,7 +205,7 @@ export default function ChatEdenAi() {
                 </div>
             )}
             <div className="polli2">
-                Or choose another Eden AI model
+                Or choose another EdenAi model
             </div>
             <br />
             <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute. Models change frequently, so if one doesn't work, try another.</p>

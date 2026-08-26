@@ -118,12 +118,16 @@ export default function ChatUnoRouterChosen() {
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
+            setTimerActive(true);
+            setTimerActiveW(false);
         } finally {
             setLoading(false);
+            setTimerActive(true);
+            setTimerActiveW(false);
         }
     };
 
-     const handleKeyDownChoose = (e) => {
+    const handleKeyDownChoose = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
 
@@ -168,14 +172,14 @@ export default function ChatUnoRouterChosen() {
         <div className="mainBook">
             <div className="polli">Chat with {chosenAi}
             </div>
-          
+
             {inputpic && (
                 <div className="polli2">
                     {inputpic}
                 </div>
             )}
             <div className="polli2">
-                Or enter another UnoRouter model
+                Еnter UnoRouter model
             </div>
             <br />
             <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of one question per minute. Models change frequently, so if one doesn't work, try another.</p>
@@ -184,7 +188,7 @@ export default function ChatUnoRouterChosen() {
                     ? "⚠️ You have reached the limit for this model, try again next week, or choose another model."
                     : `ℹ️ You have used ${requestCount} of requests. Еach model has its limitations, if one doesn't work get another`}
             </p>
-          
+
             <div style={{ border: "1px solid #dcedf4ff", padding: "10px", margin: "10px" }} className="total">
                 {messages.map((msg, idx) => (
                     <div key={idx} style={{ marginBottom: "8px" }}>
@@ -220,14 +224,14 @@ export default function ChatUnoRouterChosen() {
                 onDrop={handleDrop}
                 style={{ border: imagePreview ? '2px solid #4CAF50' : '2px dashed #ccc', padding: '10px', borderRadius: '8px' }}
             >
-                 <textarea
-                rows="1"
-                style={{ width: "20%", padding: "10px", margin: "10px" }}
-                placeholder="Enter AI model"
-                value={chosenAi}
-                onChange={(e) => setChosenAi(e.target.value)}
-                onKeyDown={handleKeyDownChoose}
-            />
+                <textarea
+                    rows="1"
+                    style={{ width: "20%", padding: "10px", margin: "10px" }}
+                    placeholder="Enter AI model"
+                    value={chosenAi}
+                    onChange={(e) => setChosenAi(e.target.value)}
+                    onKeyDown={handleKeyDownChoose}
+                />
                 <textarea
                     rows="3"
                     style={{ width: "70%", padding: "10px", margin: "10px" }}

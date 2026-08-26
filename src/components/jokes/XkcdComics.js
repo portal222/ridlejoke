@@ -29,7 +29,7 @@ const XkcdComics = () => {
         <>
             <div className="mainBook">
                 <div className="polli">
-                    <div>Xkcd Comics</div>
+                    <div style={{padding: "10px"}}> Xkcd Comics</div>
                     <img src={comics.img} alt="" style={{ width: "700px" }} />
                 </div>
                 <div className="polli2">

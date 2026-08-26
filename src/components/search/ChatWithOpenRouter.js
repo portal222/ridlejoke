@@ -88,12 +88,16 @@ export default function ChatWithOpenRouter() {
             setSeconds(0);
             setTimerActive(true);
             setTimerActiveW(false);
-        ;
+            ;
 
         } catch (err) {
             setError(err.message);
+            setTimerActive(true);
+            setTimerActiveW(false);
         } finally {
             setLoading(false);
+            setTimerActive(true);
+            setTimerActiveW(false);
         }
     };
 
@@ -127,7 +131,7 @@ export default function ChatWithOpenRouter() {
                 <div className="polli2">
                     Or choose another OpenRouter model
                 </div>
-                <br/>
+                <br />
                 <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 50 requests per day according to the OpenRouter API.</p>
                 <p style={{ fontSize: "14px", color: "gray" }}>
                     {requestCount >= dailyLimit
@@ -200,7 +204,7 @@ export default function ChatWithOpenRouter() {
                 )}
 
                 {error && <p style={{ color: "red" }}>Error: {error}</p>}
-               
+
 
             </div>
         </>

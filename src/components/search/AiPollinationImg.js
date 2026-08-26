@@ -29,6 +29,8 @@ export default function AiPollinationImg() {
 
         setImage(imageUrl);
         setLoading(false);
+            setTimerActive(false);
+
     }
 
     const handleKeyDown = (e) => {

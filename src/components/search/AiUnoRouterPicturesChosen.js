@@ -76,8 +76,12 @@ export default function AiUnoRouterPicturesChosen() {
         } catch (err) {
             console.error('Došlo je do greške:', err);
             setError(err.message || 'An error occurred while generating the image.');
+            setTimerActive(false);
+        
         } finally {
             setIsLoading(false);
+            setTimerActive(false);
+
         }
     };
 
@@ -116,11 +120,9 @@ export default function AiUnoRouterPicturesChosen() {
             <div className="polli">{chosenAi} picture Generator</div>
 
             <div className="polli2">
-                Or enter another UnoRouter model
+                Enter UnoRouter model
             </div>
             <div style={{ display: "flex" }}>
-
-
                 <br />
             </div>
             <textarea

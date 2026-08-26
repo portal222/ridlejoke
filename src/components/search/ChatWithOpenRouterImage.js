@@ -120,8 +120,12 @@ export default function ChatWithOpenRouterImage() {
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
+            setTimerActive(true);
+            setTimerActiveW(false);
         } finally {
             setLoading(false);
+            setTimerActive(true);
+            setTimerActiveW(false);
         }
     };
 
@@ -179,8 +183,8 @@ export default function ChatWithOpenRouterImage() {
             <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 50 requests per day according to the OpenRouter API.</p>
             <p style={{ fontSize: "14px", color: "gray" }}>
                 {requestCount >= dailyLimit
-              ? "⚠️ You have reached the daily limit of 100 requests. Please try again tomorrow."
-                        : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
+                    ? "⚠️ You have reached the daily limit of 100 requests. Please try again tomorrow."
+                    : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
             </p>
             <div className="aiGrid">
                 {models.map((mod, id) => (

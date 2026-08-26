@@ -15,10 +15,10 @@ const Aigenerator = () => {
     return (
         <>
             <ChatUnoRouter />
-            <ChatEdenAi />
-            <ChatUnoRouterChosen />
             <ChatWithOpenRouterImage />
+            <ChatEdenAi />
             <ChatWithGroq />
+            <ChatUnoRouterChosen />
             <AiUnoRouterPictures />
             <AiUnoRouterPicturesChosen />
             <AiPollinationImg />

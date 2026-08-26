@@ -119,8 +119,12 @@ export default function ChatUnoRouter() {
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
+            setTimerActive(true);
+            setTimerActiveW(false);
         } finally {
             setLoading(false);
+            setTimerActive(true);
+            setTimerActiveW(false);
         }
     };
 

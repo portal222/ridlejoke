@@ -13,7 +13,7 @@ const FatherJoke = () => {
     }, []);
 
     const getFather = async () => {
-        const url = "https://jokefather.com/api/jokes/random"
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/father"
         
         try {
             const response = await axios.get(url,

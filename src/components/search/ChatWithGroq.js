@@ -48,7 +48,7 @@ export default function ChatWithGroq() {
     try {
       const { data } = await axios.post(
         " https://ridlejoke-proxy.kvaka32.workers.dev/groqai",
-       
+
         {
           model: selectedModel,
           messages: newMessages,
@@ -64,7 +64,7 @@ export default function ChatWithGroq() {
 
       const answer = data.choices?.[0]?.message?.content || "No answer.";
       const tokens = data.usage.total_tokens;
-       const misao = data.choices?.[0]?.message?.reasoning;
+      const misao = data.choices?.[0]?.message?.reasoning;
       setAimisao(misao);
       setTotalTok(tokens);
       setMessages([...newMessages, { role: "assistant", content: answer }]);
@@ -75,8 +75,12 @@ export default function ChatWithGroq() {
 
     } catch (error) {
       setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
+      setTimerActive(true);
+      setTimerActiveW(false);
     } finally {
       setLoading(false);
+      setTimerActive(true);
+      setTimerActiveW(false);
     }
   };
 
@@ -121,21 +125,7 @@ export default function ChatWithGroq() {
       <div className="polli2">
         {selectedDescription}
       </div>
-      <div className="polli2">
-        Or choose another model
-      </div>
-      <div className="aiGrid">
-        {aiGroq.map((mod, id) => (
-          <div key={id} className="aiButt"><a
-            onClick={() => {
-              setSelectedModel(mod.id);
-              setSelectedDescription(mod.description);
-            }}
-          >{mod.id}</a>
-
-          </div>
-        ))}
-      </div>
+  
 
       <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }} className="total">
         {messages.map((msg, idx) => (
@@ -144,7 +134,7 @@ export default function ChatWithGroq() {
             <span dangerouslySetInnerHTML={{ __html: renderWithLinks(msg.content) }}></span>
           </div>
         ))}
-        <p style={{fontSize: "14px"}}>{Aimisao}</p>
+        <p style={{ fontSize: "14px" }}>{Aimisao}</p>
         {date && (
           <p style={{ fontSize: "12px", textAlign: "right", padding: "5px" }}>created: {date.toLocaleTimeString()}</p>
         )}
@@ -172,20 +162,20 @@ export default function ChatWithGroq() {
         )}
       </button>
       <br />
-   
-     
-        {timerActiveW && (
-          <p style={{ fontSize: "20px", margin: "10px" }}>
-            ⏱ {"Answer generation time " + secondsW + " s or " + (secondsW / 60).toFixed(1) + " m"}
-          </p>
-        )}
-        {timerActive && (
-          <p style={{ fontSize: "20px", margin: "10px" }}>
-            ⏱ {"Еlapsed time since last reply  " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
-          </p>
-        )}
 
-  
+
+      {timerActiveW && (
+        <p style={{ fontSize: "20px", margin: "10px" }}>
+          ⏱ {"Answer generation time " + secondsW + " s or " + (secondsW / 60).toFixed(1) + " m"}
+        </p>
+      )}
+      {timerActive && (
+        <p style={{ fontSize: "20px", margin: "10px" }}>
+          ⏱ {"Еlapsed time since last reply  " + seconds + " s or " + (seconds / 60).toFixed(1) + " m"}
+        </p>
+      )}
+
+
 
 
       <div style={{ fontSize: "10px", padding: "10px 20px" }}>
