@@ -4,7 +4,7 @@ import { Paper,InputBase,IconButton } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-import { PictureOutlined } from "@ant-design/icons";
+import { MediumSquareFilled } from "@ant-design/icons";
 
 const SearchMetropolitan = (props) => {
 
@@ -50,7 +50,7 @@ const SearchMetropolitan = (props) => {
             sx={{ p: '10px'}}
             aria-label='search'
             >
-           <PictureOutlined /> 
+           <MediumSquareFilled />
             </IconButton>
         </Paper>
     );

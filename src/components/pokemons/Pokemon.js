@@ -19,6 +19,8 @@ const Pokemon = () => {
             const data = res.data;
             setPokemon(data.data);
             setIsLoading(false);
+
+            console.log("pokemon detalji", data);
         });
     }, [])
 

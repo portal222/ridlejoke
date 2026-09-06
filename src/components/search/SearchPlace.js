@@ -11,6 +11,9 @@ import SearchMetro from "../metropolitan/SearchMetro";
 import SearchAnimals from "./SearchAnimals";
 
 import ExtinctAnimal from "../animals/ExtinctAnimal";
+import SearchSoundEffect from "./SearchSoundEffect";
+import SearchPexelsImg from "./SearchPexelsImg";
+import SearchPexelsVideo from "./SearchPexelsVideo";
 
 const SearchPlace = () => {
 
@@ -27,6 +30,9 @@ const SearchPlace = () => {
                     <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} />
                     <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
                     <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
+                    <SearchSoundEffect placeholder={'Sound Effects'} linkTo={'/soundEffect'} />
+                    <SearchPexelsImg placeholder={'Image'} linkTo={'/pexels'}/>
+                    <SearchPexelsVideo placeholder={'Video'} linkTo={'/pexelsvideo'}/>
                 </div>
                 <div>
                     <div className="history">Search History</div>

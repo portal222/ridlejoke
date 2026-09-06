@@ -413,6 +413,40 @@ body {
     width: 900px;
     background-color: #bbdefb;
     min-height: 80px;
+    
+    .pexels {
+        padding: 10px 100px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .soundEffect {
+        padding: 10px;
+
+        .soundImg {
+            width: 250px;
+        }
+
+        td {
+            width: 33%;
+            padding: 10px;
+        }
+
+        .soundGrid {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto;
+            gap: 10px;
+            font-size: 16px;
+            font-style: italic;
+            width: 100%;
+            color: rgb(79, 84, 78);
+            border-bottom: 1px solid grey;
+
+            p {
+                padding: 5px;
+            }
+        }
+    }
 
     .razmak {
         height: 70px;
@@ -2214,6 +2248,39 @@ body {
 
     .tabelaZemlje {
         width: 358px;
+
+        .pexels {
+        padding: 10px 30px;
+        font-size: 12px;
+        text-align: center;
+    }
+     .soundEffect {
+        padding: 10px;
+
+        .soundImg {
+            width: 60px;
+        }
+
+        td {
+            width: 33%;
+            padding: 8px;
+        }
+
+        .soundGrid {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap: 6px;
+            font-size: 12px;
+           
+            width: 100%;
+            color: rgb(79, 84, 78);
+            border-bottom: 1px solid grey;
+
+            p {
+                padding: 5px;
+            }
+        }
+    }
 
         .razmak {
             height: 20px;

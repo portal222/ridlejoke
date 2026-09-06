@@ -17,7 +17,8 @@ const JokesRandom = () => {
 
     const getRandumJokes = async () => {
 
-        const url = "https://v2.jokeapi.dev/joke/Any?safe-mode";
+        // const url = "https://v2.jokeapi.dev/joke/Any?safe-mode";
+        const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=sexist,explicit&type=twopart";
 
         try {
             const response = await axios.get(url);

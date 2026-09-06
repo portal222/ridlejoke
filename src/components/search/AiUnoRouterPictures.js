@@ -115,6 +115,8 @@ export default function AiUnoRouterPictures() {
             <div className="polli2">
                 Or choose another UnoRouter model
             </div>
+             <br />
+                <p style={{ fontSize: "14px", color: "gray" }}>Note: You have a limit of 1 requests per hour, for the same model.</p>
             <div className="aiGrid">
                 {pictureUno.map((mod, id) => (
                     <div key={id} className="aiButt"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-
-import AiPolliAnimals from "./AiPolliAnimals";
+import AnimalsPexels from "./AnimalsPexels";
+import AnimalsPexelsVideo from "./AnimalsPexelsVideo";
 
 const AnimalsCollapsable = (props) => {
     const [error, setError] = useState(null);
@@ -48,7 +48,15 @@ const AnimalsCollapsable = (props) => {
                 <tbody  >
                     <tr>
                         <td colSpan={2} style={{ textAlign: "center" }}>
-                            <AiPolliAnimals name={animals.taxonomy?.scientific_name}/>
+                     
+                            <AnimalsPexels search={animalId} />
+                          
+                        </td>
+                    </tr>
+                     <tr>
+                        <td colSpan={2} style={{ textAlign: "center" }}>
+                     
+                            <AnimalsPexelsVideo search={animalId} />
                           
                         </td>
                     </tr>

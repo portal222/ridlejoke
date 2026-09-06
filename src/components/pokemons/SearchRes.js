@@ -41,6 +41,8 @@ const SearchRes = () => {
             setResults(data.length);
             setIsLoading(false);
 
+            console.log("pokemon pretraga", data);
+
         } catch (err) {
             setError(err);
         }

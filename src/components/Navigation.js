@@ -43,6 +43,9 @@ import TennisGame from "./games/TennisGame";
 import TennisGame2p from "./games/TennisGame2p";
 import SpaceShooter from "./games/SpaceShooter";
 import FreeGames from "./games/FreeGames";
+import ResultsSoundEffect from "./search/ResultsSoundEffect";
+import PexelsImage from "./animals/PexelsImage";
+import PexelsVideo from "./animals/PexelsVideo";
 
 const theme = createTheme({
   palette: {
@@ -62,31 +65,31 @@ const Navigation = () => {
               theme={theme}>
               <NavLink to="/">
                 <Button variant="contained"
-                   onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}>Home</Button>
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}>Home</Button>
               </NavLink>
               <NavLink to="/pickTrivia">
                 <Button variant="contained" color="secondary" sx={{ ml: 1 }}
                   onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}>
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}>
                   Q & J
                 </Button>
               </NavLink>
               <NavLink to="/aiGen">
                 <Button variant="contained" color="secondary" sx={{ ml: 1 }}
                   onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}>
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}>
                   AI
                 </Button>
               </NavLink>
               <NavLink to="/search">
-                <Button variant="contained" color="secondary" sx={{ ml: 1 }} 
+                <Button variant="contained" color="secondary" sx={{ ml: 1 }}
                   onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}>
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}>
                   Search</Button>
               </NavLink>
             </ThemeProvider>
@@ -111,7 +114,7 @@ const Navigation = () => {
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/ridles" element={<Ridles />} />
           <Route path="/trivia" element={<Trivia />} />
-         
+
           <Route path="/metro" element={<ResultsMetro />} />
           <Route path="/nyTimes" element={<SearchResutsNYT />} />
           <Route path="/colors" element={<ResultsColors />} />
@@ -133,6 +136,9 @@ const Navigation = () => {
           <Route path="/tenis2p" element={<TennisGame2p />} />
           <Route path="/space" element={<SpaceShooter />} />
           <Route path="/freeGames" element={<FreeGames />} />
+          <Route path="/soundEffect" element={<ResultsSoundEffect />} />
+          <Route path="/pexels" element={<PexelsImage />} />
+          <Route path="/pexelsvideo" element={<PexelsVideo />} />
         </Routes>
       </HashRouter>
       <Footers />
