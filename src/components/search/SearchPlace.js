@@ -5,7 +5,6 @@ import SearchHistory from "./searchHistory";
 import SearchHistoryEvents from "./searchHistoryEvents";
 import SearchPerson from "./SearchPerson";
 import SearchColors from "./SearchColors";
-import SearchPoke from "../pokemons/SearchPoke";
 import SearchNYT from "./SearchNYT";
 import SearchMetro from "../metropolitan/SearchMetro";
 import SearchAnimals from "./SearchAnimals";
@@ -41,7 +40,7 @@ const SearchPlace = () => {
                     <div className="history">Search Animals</div>
                     <SearchAnimals placeholder={'Animals Cat and Dog'} linkTo={'/animals'} />
       
-                    <SearchPoke placeholder={'Pokemons cards'} linkTo={'/pokemonSearch'} />
+       
 
                 </div>
             </div>

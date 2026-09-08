@@ -1,22 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import GlobalContext from "../GlobalContext";
 import { useNavigate } from "react-router-dom";
+
 import Loader from "../Loader";
 import PlayerFX from "../PlayerFX";
 import SearchPlace from "./SearchPlace";
 import SearchSoundEffect from "./SearchSoundEffect";
+import { useParams } from "react-router-dom";
 
-const ResultsSoundEffect = () => {
+
+const ResultsSoundEffectOnClick = () => {
     const [error, setError] = useState(null);
     const [sound, setSound] = useState([]);
     const [available, setAvailable] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const navigate = useNavigate();
+     const navigate = useNavigate();
+ 
 
-    const globalCtx = useContext(GlobalContext);
-    const search = globalCtx.searchStringValue;
+      const params = useParams()
+        const search = params.soundName;
 
     useEffect(() => {
         getHistory(search);
@@ -38,14 +41,12 @@ const ResultsSoundEffect = () => {
             setAvailable(data.available);
             setIsLoading(false);
 
-            console.log("detalji zvuka", data);
-
         } catch (err) {
             setError(err);
         }
     };
 
-    const handleClick = (soundName) => {
+      const handleClick = (soundName) => {
         const LinkTo = `/soundEffect/${soundName}`;
         navigate(LinkTo);
     }
@@ -63,7 +64,7 @@ const ResultsSoundEffect = () => {
                         <th className="history">{search} not found</th>
                     </tr>
                     <tr>
-                        <th style={{ padding: "10px" }}>
+                        <th style={{padding: "10px"}}>
                             <SearchSoundEffect />
                         </th>
                     </tr>
@@ -100,7 +101,7 @@ const ResultsSoundEffect = () => {
                             </tr>
                             <tr>
                                 <td className="duration">
-                                    ⏱ {effect.duration_seconds}
+                                     ⏱ {effect.duration_seconds}
                                 </td>
                                 <td className="duration">
                                     {effect.upload_date.split('T')[0] + " 👓 " + effect.views}
@@ -124,23 +125,23 @@ const ResultsSoundEffect = () => {
                                 <td className="soundGrid">
                                     {effect.tags.map((tag, id) => (
                                         <p key={id}
-                                            onClick={() => {
-                                                handleClick(tag);
-                                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                                            }}
+                                        onClick={() => {
+                                            handleClick(tag);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                         >{tag}</p>
                                     ))}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-
+                   
                 </>
             ))}
-            <div style={{ padding: "10px" }} className="tabelaZemlje">
-                <SearchSoundEffect />
-            </div>
+ <div style={{padding: "10px"}} className="tabelaZemlje">
+                        <SearchSoundEffect />
+                    </div>
         </>
     );
 };
-export default ResultsSoundEffect;
+export default ResultsSoundEffectOnClick;

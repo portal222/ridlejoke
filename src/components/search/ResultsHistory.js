@@ -19,13 +19,13 @@ const ResultsHistory = () => {
     }, [searchStringValue]);
 
     const getHistory = async (searchStringValue) => {
-        const url = `https://api.api-ninjas.com/v1/historicalevents?year=${searchStringValue}`;
+            const url = `https://ridlejoke-proxy.kvaka32.workers.dev/history?year=${searchStringValue}`;
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                       "Content-Type": "application/json",
                     }
                 }
             );

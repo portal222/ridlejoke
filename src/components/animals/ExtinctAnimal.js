@@ -29,8 +29,6 @@ const ExtinctAnimal = () => {
             <div className="extinct">
                 <h1>Extinct Animal</h1>
             </div>
-
-            <>
                 <div >
                     <div className="extinct"
                         key={anim.binomialName} >
@@ -60,12 +58,8 @@ const ExtinctAnimal = () => {
                         <a href={anim.wikiLink} target="_blank"
                             className="wikilink">Wikipedia</a>
                     </div>
-
-
                 </div>
-            </>
-
-
+            
         </>
     )
 }

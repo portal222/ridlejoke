@@ -42,6 +42,34 @@ export default function ChatWithOpenRouter() {
     }, [timerActive]);
 
 
+      useEffect(() => {
+        getModels();
+        getModelR();
+    }, []);
+
+    const getModels = async () => {
+        const url = `https://openrouter.ai/api/v1/models`;
+
+        try {
+            const response = await axios.get(url);
+
+            // const data = response.data;
+
+            console.log("openrouter modeli", response);
+
+            // const freeModels = data.data.filter(
+            //     (model) => model.pricing?.input_cost_per_token <= "0.0000000001"
+
+            // );
+            // setModels(freeModels);
+
+        } catch (err) {
+            setError(err);
+        }
+    };
+
+
+
 
     const getModelR = async () => {
         if (!question) return;

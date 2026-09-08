@@ -115,6 +115,7 @@ export default function ChatUnoRouterChosen() {
             setTimestamp(data.created);
             setRequestCount(prev => prev + 1);
 
+            console.log("proba slika", data);
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
@@ -124,6 +125,7 @@ export default function ChatUnoRouterChosen() {
             setLoading(false);
             setTimerActive(true);
             setTimerActiveW(false);
+
         }
     };
 

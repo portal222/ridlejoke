@@ -55,38 +55,6 @@ const RandomFact = () => {
                     </tr>
                 </tbody>
             </table >
-            <table>
-                <tbody>
-                    <tr>
-                        <td rowSpan={3} style={{backgroundColor: "greenyellow"}}>
-                            1 spaja tri reda
-                        </td>
-                        <td>2</td>
-                        <td>3</td>
-
-                    </tr>
-                    <tr>
-                        <td style={{backgroundColor: "green"}}>
-                            2 B
-                        </td>
-                        <td style={{backgroundColor: "green"}}>
-                            3 B
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colSpan={2} style={{backgroundColor: "yellow"}}>
-                            spaja 2 i 3
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td style={{backgroundColor: "red"}} colSpan={3}>
-                            drugi bodi
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
         </>
     );

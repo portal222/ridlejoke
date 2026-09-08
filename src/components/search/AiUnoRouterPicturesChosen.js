@@ -44,7 +44,8 @@ export default function AiUnoRouterPicturesChosen() {
                 response_format: "url" || "b64_json",
             };
 
-            const response = await fetch('https://ridlejoke-proxy.kvaka32.workers.dev/unoimages', {
+            // const response = await fetch('https://ridlejoke-proxy.kvaka32.workers.dev/unoimages', {
+            const response = await fetch('https://ridlejoke-proxy.kvaka32.workers.dev/unoimageschosen', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -59,6 +60,8 @@ export default function AiUnoRouterPicturesChosen() {
             }
 
             const data = await response.json();
+
+            console.log("detalji za slike po pozivu", data);
 
             if (data.data && data.data.length > 0) {
 

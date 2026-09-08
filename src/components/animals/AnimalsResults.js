@@ -25,8 +25,6 @@ const AnimalsResults = () => {
         getDog(searchStringValue);
     }, [searchStringValue]);
 
-    console.log("iz resultDog searchStringValue:", searchStringValue)
-
     const getDog = async (searchStringValue) => {
         const url = `https://ridlejoke-proxy.kvaka32.workers.dev/animals?name=${searchStringValue}`;
         const urlDog = `https://ridlejoke-proxy.kvaka32.workers.dev/dogs?name=${searchStringValue}`;

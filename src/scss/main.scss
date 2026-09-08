@@ -227,7 +227,7 @@ body {
 
     .horoscope {
         padding: 20px;
-
+        margin-left: 60px;
         margin-top: 20px;
         width: 750px;
         background-color: #fff8d3;
@@ -413,7 +413,7 @@ body {
     width: 900px;
     background-color: #bbdefb;
     min-height: 80px;
-    
+
     .pexels {
         padding: 10px 100px;
         font-size: 16px;
@@ -425,6 +425,21 @@ body {
 
         .soundImg {
             width: 250px;
+        }
+
+        .title {
+            font-size: 22px;
+            padding: 10px;
+            overflow: hidden;
+
+        }
+
+        .duration {
+            padding: 10px;
+            font-size: 18px;
+            color: #222;
+            overflow: hidden;
+
         }
 
         td {
@@ -444,6 +459,11 @@ body {
 
             p {
                 padding: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #006064;
+                }
             }
         }
     }
@@ -2250,37 +2270,49 @@ body {
         width: 358px;
 
         .pexels {
-        padding: 10px 30px;
-        font-size: 12px;
-        text-align: center;
-    }
-     .soundEffect {
-        padding: 10px;
-
-        .soundImg {
-            width: 60px;
-        }
-
-        td {
-            width: 33%;
-            padding: 8px;
-        }
-
-        .soundGrid {
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            gap: 6px;
+            padding: 10px 30px;
             font-size: 12px;
-           
-            width: 100%;
-            color: rgb(79, 84, 78);
-            border-bottom: 1px solid grey;
+            text-align: center;
+        }
 
-            p {
+        .soundEffect {
+            padding: 10px;
+
+            .soundImg {
+                width: 90px;
+            }
+
+            .title {
+                font-size: 16px;
                 padding: 5px;
             }
+
+            .duration {
+                padding: 5px;
+                font-size: 12px;
+
+            }
+
+            td {
+                width: 33%;
+                padding: 8px;
+            }
+
+            .soundGrid {
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                gap: 3px;
+                font-size: 11px;
+
+                width: 100%;
+                color: rgb(79, 84, 78);
+                border-bottom: 1px solid grey;
+
+                p {
+                    padding: 5px;
+                }
+            }
         }
-    }
 
         .razmak {
             height: 20px;

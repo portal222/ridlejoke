@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import models from "../../../public/unoRouter.json";
 
 export default function ChatEdenAi() {
     const [messages, setMessages] = useState([]);
@@ -23,10 +22,7 @@ export default function ChatEdenAi() {
     const [owned, setOwned] = useState("Google");
     const [capabiliti, setCapabiliti] = useState("text, image");
     const [capabiliti2, setCapabiliti2] = useState(" ");
-
-
     const [requestCount, setRequestCount] = useState(0);
-
 
     const dailyLimit = 100;
 
@@ -39,11 +35,10 @@ export default function ChatEdenAi() {
 
         try {
             const response = await axios.get(url);
-
             const data = response.data;
 
             const freeModels = data.data.filter(
-                (model) => model.pricing?.input_cost_per_token <= "0.0000000001"
+                (model) => model.pricing?.input_cost_per_token == "0"
 
             );
             setModels(freeModels);
@@ -86,9 +81,9 @@ export default function ChatEdenAi() {
             if (file.type.startsWith('image/')) {
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                    const base64 = event.target.result; // cela data URL
+                    const base64 = event.target.result; 
                     setImageData(base64);
-                    setImagePreview(base64); // za prikaz
+                    setImagePreview(base64); 
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -96,8 +91,6 @@ export default function ChatEdenAi() {
             }
         }
     };
-
-
 
     const sendQuery = async () => {
 
@@ -142,7 +135,6 @@ export default function ChatEdenAi() {
             setTimerActiveW(false);
             setTimestamp(data.created);
             setRequestCount(prev => prev + 1);
-
 
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);

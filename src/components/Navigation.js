@@ -21,10 +21,6 @@ import Trivia from "./trivia/Trivia";
 import ResultsMetropolitan from "./search/ResultsMetropolitan";
 import ResultsColors from "./search/ResultsColors";
 import SearchResultsColor from "./search/SearchResultsColor";
-import Pokemon from "./pokemons/Pokemon";
-import SearchRes from "./pokemons/SearchRes";
-import PokemonPage from "./pokemons/PokemonPage";
-import PokJson from "./pokemons/PokJson";
 import SearchResutsNYT from "./search/SearchResultsNYT";
 import ResultsMetro from "./metropolitan/ResultsMetro";
 import ResultsClickPerson from "./search/ResultsClickPerson";
@@ -46,6 +42,7 @@ import FreeGames from "./games/FreeGames";
 import ResultsSoundEffect from "./search/ResultsSoundEffect";
 import PexelsImage from "./animals/PexelsImage";
 import PexelsVideo from "./animals/PexelsVideo";
+import ResultsSoundEffectOnClick from "./search/ResultsSoundEffectOnClick";
 
 const theme = createTheme({
   palette: {
@@ -119,10 +116,6 @@ const Navigation = () => {
           <Route path="/nyTimes" element={<SearchResutsNYT />} />
           <Route path="/colors" element={<ResultsColors />} />
           <Route path="/colorsSearch" element={<SearchResultsColor />} />
-          <Route path="/pokemon" element={<Pokemon />} />
-          <Route path="/pokemonSearch" element={<SearchRes />} />
-          <Route path="/:numId" element={<PokemonPage />} />
-          <Route path="/pokJson" element={<PokJson />} />
           <Route path="/books" element={<Books />} />
           <Route path="/linkBooks/:works" element={<BooksClick />} />
           <Route path="/animals" element={<AnimalsResults />} />
@@ -139,6 +132,7 @@ const Navigation = () => {
           <Route path="/soundEffect" element={<ResultsSoundEffect />} />
           <Route path="/pexels" element={<PexelsImage />} />
           <Route path="/pexelsvideo" element={<PexelsVideo />} />
+          <Route path="/soundEffect/:soundName" element={<ResultsSoundEffectOnClick />} />
         </Routes>
       </HashRouter>
       <Footers />

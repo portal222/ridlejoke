@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import models from "../../../public/modelsOpenR.json";
+// import models from "../../../public/modelsOpenR.json";
 
 export default function ChatWithOpenRouterImage() {
     const [messages, setMessages] = useState([]);
@@ -8,17 +8,18 @@ export default function ChatWithOpenRouterImage() {
     const [loading, setLoading] = useState(false);
     const [totalTok, setTotalTok] = useState(0);
     const [selectedModel, setSelectedModel] = useState("poolside/laguna-xs-2.1:free");
-    const [selectedDescription, setSelectedDescription] = useState("Laguna XS 2.1 is the latest coding agent model in the 33B-A3B category from [Poolside]");
+    const [selectedDescription, setSelectedDescription] = useState("");
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [timerActiveW, setTimerActiveW] = useState(false);
     const [timestamp, setTimestamp] = useState();
     const [Aimisao, setAimisao] = useState([]);
-    const [aiModels, setAiModels] = useState("Laguna XS");
-    const [inputpic, setInputpic] = useState("");
+    const [aiModels, setAiModels] = useState("chose one");
     const [imageData, setImageData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
+    const [models, setModels] = useState([]);
+    const [modality, setModality] = useState('');
 
 
     const [requestCount, setRequestCount] = useState(0);
@@ -51,6 +52,29 @@ export default function ChatWithOpenRouterImage() {
         e.dataTransfer.dropEffect = 'copy';
     };
 
+       useEffect(() => {
+            getModels();
+        }, []);
+    
+        const getModels = async () => {
+            const url = `https://openrouter.ai/api/v1/models`;
+            
+            try {
+                const response = await axios.get(url);
+                const data = response.data;
+    
+                const freeModels = data.data.filter(
+                    (model) => model.pricing?.completion === "0"
+    
+                );
+                setModels(freeModels);
+
+    
+            } catch (err) {
+                setError(err);
+            }
+        };
+    
     const handleDrop = (e) => {
         e.preventDefault();
         const files = e.dataTransfer.files;
@@ -170,12 +194,9 @@ export default function ChatWithOpenRouterImage() {
             <div className="polli2">
                 {selectedDescription}
             </div>
-            {inputpic && (
-                <div className="polli2">
-                    {inputpic}
-
-                </div>
-            )}
+            <div className="polli2" style={{fontStyle: "italic"}}>
+                {modality}
+            </div>
             <div className="polli2">
                 Or choose another OpenRouter model
             </div>
@@ -187,17 +208,28 @@ export default function ChatWithOpenRouterImage() {
                     : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
             </p>
             <div className="aiGrid">
-                {models.map((mod, id) => (
+                {models.slice(1, 6).map((mod, id) => (
                     <div key={id} className="aiButt"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
                             setSelectedDescription(mod.description);
                             setAiModels(mod.name);
-                            setInputpic(mod.inputpic);
-
+                            setModality(mod?.architecture.modality);
                         }}
                     >{mod.name}</a>
-
+                    </div>
+                ))}
+            </div>
+             <div className="aiGrid">
+                {models.slice(12, 16).map((mod, id) => (
+                    <div key={id} className="aiButt"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.description);
+                            setAiModels(mod.name);
+                            setModality(mod?.architecture.modality);
+                        }}
+                    >{mod.name}</a>
                     </div>
                 ))}
             </div>

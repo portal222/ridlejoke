@@ -55,7 +55,7 @@ const HoroscopeDetails = (props) => {
 
     const getImagePath = (name) => {
         const item = horoscope.find(z => z.name === name);
-        return item ? `/assets/img/${item.url}.png` : null;
+        return item ? `../assets/img/${item.url}.png` : null;
     };
 
     const imageSrc = getImagePath(zoname);
