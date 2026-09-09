@@ -69,7 +69,6 @@ export default function ChatWithOpenRouterImage() {
                 );
                 setModels(freeModels);
 
-    
             } catch (err) {
                 setError(err);
             }
@@ -208,7 +207,7 @@ export default function ChatWithOpenRouterImage() {
                     : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
             </p>
             <div className="aiGrid">
-                {models.slice(1, 6).map((mod, id) => (
+                {models.slice(3, 8).map((mod, id) => (
                     <div key={id} className="aiButt"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
@@ -221,7 +220,7 @@ export default function ChatWithOpenRouterImage() {
                 ))}
             </div>
              <div className="aiGrid">
-                {models.slice(12, 16).map((mod, id) => (
+                {models.slice(15, 19).map((mod, id) => (
                     <div key={id} className="aiButt"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
