@@ -232,7 +232,6 @@ export default function ChatWithOpenRouterImage() {
                     </div>
                 ))}
             </div>
-
             <div style={{ border: "1px solid #dcedf4ff", padding: "10px", margin: "10px" }} className="total">
                 {messages.map((msg, idx) => (
                     <div key={idx} style={{ marginBottom: "8px" }}>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const BooksAuthors = (props) => {
 
+            console.log("unorouter free modeli", freeModels);
     const [error, setError] = useState(null);
     const [biographi, setBiographi] = useState([]);
     const [works, setWorks] = useState([]);

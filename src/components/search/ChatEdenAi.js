@@ -6,21 +6,21 @@ export default function ChatEdenAi() {
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
     const [totalTok, setTotalTok] = useState(0);
-    const [selectedModel, setSelectedModel] = useState("google/gemma-4-31b-it");
-    const [selectedDescription, setSelectedDescription] = useState("Gemma 4 31B Instruct is Google DeepMind's 30.7B dense multimodal model supporting text and image input.");
+    const [selectedModel, setSelectedModel] = useState("");
+    const [selectedDescription, setSelectedDescription] = useState("");
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [timerActiveW, setTimerActiveW] = useState(false);
     const [timestamp, setTimestamp] = useState();
     const [Aimisao, setAimisao] = useState([]);
-    const [aiModels, setAiModels] = useState("Gemma");
+    const [aiModels, setAiModels] = useState("chose one");
     const [inputpic, setInputpic] = useState("");
     const [imageData, setImageData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [models, setModels] = useState([]);
-    const [owned, setOwned] = useState("Google");
-    const [capabiliti, setCapabiliti] = useState("text, image");
+    const [owned, setOwned] = useState("");
+    const [capabiliti, setCapabiliti] = useState("");
     const [capabiliti2, setCapabiliti2] = useState(" ");
     const [requestCount, setRequestCount] = useState(0);
 

@@ -3,28 +3,75 @@ import axios from "axios";
 import models from "../../../public/unoRouter.json";
 
 export default function ChatUnoRouter() {
+       
+    const [error, setError] = useState(null);
     const [messages, setMessages] = useState([]);
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
     const [totalTok, setTotalTok] = useState(0);
-    const [selectedModel, setSelectedModel] = useState("gpt-oss-120b:free");
-    const [selectedDescription, setSelectedDescription] = useState("gpt-oss-120bis our most powerful open-weight model, which fits into a single H100 GPU (117B parameters with 5.1B active parameters).");
+    const [selectedModel, setSelectedModel] = useState("chose one");
+    const [selectedDescription, setSelectedDescription] = useState("");
     const [seconds, setSeconds] = useState(0);
     const [secondsW, setSecondsW] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [timerActiveW, setTimerActiveW] = useState(false);
     const [timestamp, setTimestamp] = useState();
     const [Aimisao, setAimisao] = useState([]);
-    const [aiModels, setAiModels] = useState("GPT");
-    const [inputpic, setInputpic] = useState("");
+    const [aiModels, setAiModels] = useState("chose one");
     const [imageData, setImageData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
+    const [models, setModels] = useState([]);
+    const [modelsQw, setModelsQw] = useState([]);
+    const [created, setCreated] = useState([]);
 
 
     const [requestCount, setRequestCount] = useState(0);
 
 
     const dailyLimit = 100;
+
+
+    useEffect(() => {
+        getModels();
+    }, []);
+
+    const getModels = async () => {
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/unomodel";
+
+
+        try {
+            const response = await axios.get(url,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                }
+            );
+
+            const freeMod = response.data.data.filter(
+                (model => model.id.endsWith(':free'))
+            )
+
+            const freeModels = freeMod.filter(
+                (model => model.owned_by.endsWith('openai'))
+            )
+
+             const freeModelsQw = freeMod.filter(
+                (model => model.id.includes('qwen'))
+            )
+            
+            setModels(freeModels);
+            setModelsQw(freeModelsQw);
+
+        } catch (err) {
+            setError(err);
+
+        }
+    };
+
+
+
+
 
     useEffect(() => {
         let interval;
@@ -167,14 +214,10 @@ export default function ChatUnoRouter() {
             <div className="polli">Chat with {aiModels}
             </div>
             <div className="polli2">
-                {selectedDescription}
+                {"Owned by: " + selectedDescription}
             </div>
-            {inputpic && (
-                <div className="polli2">
-                    {inputpic}
-
-                </div>
-            )}
+         
+   
             <div className="polli2">
                 Or choose another UnoRouter model
             </div>
@@ -186,16 +229,41 @@ export default function ChatUnoRouter() {
                     : `ℹ️ You have used ${requestCount} of requests. Еach model has its limitations, if one doesn't work get another`}
             </p>
             <div className="aiGrid">
-                {models.map((mod, id) => (
+                {models.slice(5, 10).map((mod, id) => (
                     <div key={id} className="aiButt"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
-                            setSelectedDescription(mod.description);
-                            setAiModels(mod.name);
-                            setInputpic(mod.inputpic);
-
+                            setSelectedDescription(mod.owned_by);
+                            setAiModels(mod.id);
+                            setCreated(new Date (mod.created * 1000))
                         }}
-                    >{mod.name}</a>
+                    >{mod.id}</a>
+
+                    </div>
+                ))}
+            </div>
+             <div className="aiGrid">
+                {models.slice(22, 27).map((mod, id) => (
+                    <div key={id} className="aiButt"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.owned_by);
+                            setAiModels(mod.id);
+                        }}
+                    >{mod.id}</a>
+
+                    </div>
+                ))}
+            </div>
+             <div className="aiGrid">
+                {modelsQw.slice(0, 5).map((mod, id) => (
+                    <div key={id} className="aiButt"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.owned_by);
+                            setAiModels(mod.id);
+                        }}
+                    >{mod.id}</a>
 
                     </div>
                 ))}
