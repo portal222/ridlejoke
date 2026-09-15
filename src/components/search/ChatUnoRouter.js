@@ -3,7 +3,7 @@ import axios from "axios";
 import models from "../../../public/unoRouter.json";
 
 export default function ChatUnoRouter() {
-       
+
     const [error, setError] = useState(null);
     const [messages, setMessages] = useState([]);
     const [query, setQuery] = useState("");
@@ -22,6 +22,8 @@ export default function ChatUnoRouter() {
     const [imagePreview, setImagePreview] = useState(null);
     const [models, setModels] = useState([]);
     const [modelsQw, setModelsQw] = useState([]);
+    const [modelsMi, setModelsMi] = useState([]);
+    const [modelsGe, setModelsGe] = useState([]);
     const [created, setCreated] = useState([]);
 
 
@@ -56,12 +58,21 @@ export default function ChatUnoRouter() {
                 (model => model.owned_by.endsWith('openai'))
             )
 
-             const freeModelsQw = freeMod.filter(
+            const freeModelsQw = freeMod.filter(
                 (model => model.id.includes('qwen'))
             )
-            
+
+            const freeModelsMi = freeMod.filter(
+                (model => model.id.includes('mistral'))
+            )
+
+            const freeModelsGe = freeMod.filter(
+                (model => model.id.includes('gemini'))
+            )
             setModels(freeModels);
             setModelsQw(freeModelsQw);
+            setModelsMi(freeModelsMi);
+            setModelsGe(freeModelsGe);
 
         } catch (err) {
             setError(err);
@@ -163,7 +174,6 @@ export default function ChatUnoRouter() {
             setTimestamp(data.created);
             setRequestCount(prev => prev + 1);
 
-
         } catch (error) {
             setMessages([...newMessages, { role: "assistant", content: "Error: " + error.message }]);
             setTimerActive(true);
@@ -216,8 +226,8 @@ export default function ChatUnoRouter() {
             <div className="polli2">
                 {"Owned by: " + selectedDescription}
             </div>
-         
-   
+
+
             <div className="polli2">
                 Or choose another UnoRouter model
             </div>
@@ -228,23 +238,23 @@ export default function ChatUnoRouter() {
                     ? "⚠️ You have reached the limit for this model, try again next week, or choose another model."
                     : `ℹ️ You have used ${requestCount} of requests. Еach model has its limitations, if one doesn't work get another`}
             </p>
-            <div className="aiGrid">
-                {models.slice(5, 10).map((mod, id) => (
-                    <div key={id} className="aiButt"><a
+            <div className="aiGridEden">
+                {models.slice(2, 10).map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
                             setSelectedDescription(mod.owned_by);
                             setAiModels(mod.id);
-                            setCreated(new Date (mod.created * 1000))
+                            setCreated(new Date(mod.created * 1000))
                         }}
                     >{mod.id}</a>
 
                     </div>
                 ))}
             </div>
-             <div className="aiGrid">
-                {models.slice(22, 27).map((mod, id) => (
-                    <div key={id} className="aiButt"><a
+            <div className="aiGridEden">
+                {models.slice(26, 30).map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
                             setSelectedDescription(mod.owned_by);
@@ -255,9 +265,31 @@ export default function ChatUnoRouter() {
                     </div>
                 ))}
             </div>
-             <div className="aiGrid">
-                {modelsQw.slice(0, 5).map((mod, id) => (
-                    <div key={id} className="aiButt"><a
+            <div className="aiGridEden">
+                {modelsMi.slice(0, 2).map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.owned_by);
+                            setAiModels(mod.id);
+                        }}
+                    >{mod.id}</a>
+                    </div>
+                ))}
+                {modelsGe.slice(0, 2).map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.owned_by);
+                            setAiModels(mod.id);
+                        }}
+                    >{mod.id}</a>
+                    </div>
+                ))}
+            </div>
+            <div className="aiGridEden">
+                {modelsQw.slice(4, 8).map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
                             setSelectedDescription(mod.owned_by);

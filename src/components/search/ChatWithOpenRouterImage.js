@@ -19,6 +19,8 @@ export default function ChatWithOpenRouterImage() {
     const [imageData, setImageData] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [models, setModels] = useState([]);
+    const [modelLa, setModelLa] = useState([]);
+    const [modelGe, setModelGe] = useState([]);
     const [modality, setModality] = useState('');
 
 
@@ -64,10 +66,20 @@ export default function ChatWithOpenRouterImage() {
                 const data = response.data;
     
                 const freeModels = data.data.filter(
-                    (model) => model.pricing?.completion === "0"
-    
+                    (model => model.id.endsWith('free'))    
                 );
+
+                const freeModelLa = freeModels.filter(
+                    (model => model.id.includes('laguna'))
+                );
+
+                    const freeModelGe = freeModels.filter(
+                    (model => model.id.includes('gemma'))
+                );
+
                 setModels(freeModels);
+                setModelLa(freeModelLa)
+                setModelGe(freeModelGe);
 
             } catch (err) {
                 setError(err);
@@ -206,9 +218,9 @@ export default function ChatWithOpenRouterImage() {
                     ? "⚠️ You have reached the daily limit of 100 requests. Please try again tomorrow."
                     : `ℹ️ You have used ${requestCount} of your ${dailyLimit} daily requests.`}
             </p>
-            <div className="aiGrid">
-                {models.slice(3, 8).map((mod, id) => (
-                    <div key={id} className="aiButt"><a
+            <div className="aiGridEden">
+                {models.slice(3, 7).map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
                             setSelectedDescription(mod.description);
@@ -219,9 +231,20 @@ export default function ChatWithOpenRouterImage() {
                     </div>
                 ))}
             </div>
-             <div className="aiGrid">
-                {models.slice(15, 19).map((mod, id) => (
-                    <div key={id} className="aiButt"><a
+             <div className="aiGridEden">
+                {modelLa.map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
+                        onClick={() => {
+                            setSelectedModel(mod.id);
+                            setSelectedDescription(mod.description);
+                            setAiModels(mod.name);
+                            setModality(mod?.architecture.modality);
+                        }}
+                    >{mod.name}</a>
+                    </div>
+                ))}
+                  {modelGe.map((mod, id) => (
+                    <div key={id} className="aiButtEden"><a
                         onClick={() => {
                             setSelectedModel(mod.id);
                             setSelectedDescription(mod.description);
