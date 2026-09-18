@@ -1,24 +1,34 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const useAudio = url => {
-  const [audio] = useState(new Audio(url));
+  const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
 
-  const toggle = () => setPlaying(!playing);
-
   useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  },
-    [playing]
-  );
+    const audio = new Audio(url);
+    audioRef.current = audio;
 
-  useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
+    const onEnded = () => setPlaying(false);
+    audio.addEventListener('ended', onEnded);
+
+    setPlaying(false);
+
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
+      audio.pause();
+      audio.removeEventListener('ended', onEnded);
     };
-  }, []);
+
+  }, [url]);
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+    playing ? audioRef.current.play() : audioRef.current.pause();
+  }, [playing]);
+
+  const toggle = () => setPlaying(prev => !prev);
+
+
 
   return [playing, toggle];
 };
@@ -26,7 +36,7 @@ const useAudio = url => {
 const PlayerFX = ({ url }) => {
   const [playing, toggle] = useAudio(url);
 
-  if (url == '') {
+  if (!url) {
     return (
       <>
         <tr>
@@ -39,10 +49,9 @@ const PlayerFX = ({ url }) => {
   }
 
   return (
-  
-        <button onClick={toggle} className="buttonS">{playing ? "Pause" : "Play Sound"}</button>
-    
+
+    <button onClick={toggle} className="buttonS">{playing ? "Pause" : "Play Sound"}</button>
+
   );
 };
-
 export default PlayerFX;

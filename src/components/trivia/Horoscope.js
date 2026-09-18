@@ -16,8 +16,6 @@ const Horoscope = () => {
                     <h2>Horoscope for <Time /></h2>
 
                     <div>
-
-
                         <select
                             className="select"
                             value={zoname}

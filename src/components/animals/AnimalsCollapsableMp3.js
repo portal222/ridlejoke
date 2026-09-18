@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import GlobalContext from "../GlobalContext";
 import Loader from "../Loader";
 import Player from "../Player";
-import SearchMp3 from "../search/SearchMp3";
 
-const AnimalsMp3 = () => {
+const AnimalsCollapsableMp3 = ({ name }) => {
     const [error, setError] = useState(null);
 
     const [animals, setAnimals] = useState([]);
@@ -13,38 +11,27 @@ const AnimalsMp3 = () => {
     const [totalMp3, setTotalMp3] = useState(0);
     const [page, setPage] = useState(1);
 
-    const globalCtx = useContext(GlobalContext);
-    const name = globalCtx.searchStringValue;
-
-    const limit = 5;
-
+    const limit = 2;
 
     useEffect(() => {
         getAnimals(name);
     }, [name]);
 
     const getAnimals = async () => {
-        const url = `//xeno-canto.org/api/3/recordings?query=en:"${name}"&key=90da96a903a18674ef2ca9ac1790d828cc60705d`;
-     
+        const urlMp3 = `//xeno-canto.org/api/3/recordings?query=en:"${name}"&key=90da96a903a18674ef2ca9ac1790d828cc60705d`;
+
         try {
-            const response = await axios.get(url,
-                  {
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                }
-            );
-            const data = response.data.recordings;
-            const length = response.data.recordings.length;
+            const responseMp3 = await axios.get(urlMp3);
+            const dataMp3 = responseMp3.data.recordings;
+            const lengthMp3 = responseMp3.data.recordings.length;
 
             setIsLoading(false);
 
-            setAnimals(data);
-            setTotalMp3(length);
+            setAnimals(dataMp3);
+            setTotalMp3(lengthMp3);
 
         } catch (err) {
             setError(err);
-
         }
     };
 
@@ -56,27 +43,18 @@ const AnimalsMp3 = () => {
         return (
             <>
                 <div className="mainBook">
-                    <p className="total">{name} not found</p>
-                    <div style={{ padding: "20px" }}>
-                        <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'} />
-                    </div>
+                    <p className="total">No sound for {name}</p>
                 </div>
-                <div className="place"></div>
-                <div className="place"></div>
             </>
         )
     }
     return (
         <>
             <div className="mainBook">
+                <p className="total">Sound for {name}</p>
+                {animals.slice((page - 1) * limit, page * limit).map((animal) => {
 
-                <div style={{ padding: "20px" }}>
-                    <SearchMp3 placeholder={'Animals sound'} linkTo={'/animalsMp3'} />
-                </div>
-
-                {animals.slice((page - 1) * limit, page * limit).map((animal, id) => {
-
-                    const sonoFull = animal.sono?.large; 
+                    const sonoFull = animal.sono?.large;
                     const identifier = sonoFull.split('/spectrograms/')[1].split('/')[0];
 
                     return (
@@ -93,7 +71,6 @@ const AnimalsMp3 = () => {
                             <table>
                                 <tbody>
                                     <Player url={`//xeno-canto.org/sounds/uploaded/${identifier}/${animal["file-name"]}`} />
-
                                 </tbody>
                             </table>
                             <div className="soundAnim">
@@ -112,16 +89,13 @@ const AnimalsMp3 = () => {
                                     dangerouslySetInnerHTML={{ __html: animal.rmk }}></p>
                             </div>
                             <div className="soundAnim2">
-                                <img src={animal.osci.small} alt="" />
-                                <img src={animal.sono.small} alt="" />
+                                <img src={animal.sono.small} alt="" style={{ width: "320px" }} />
                             </div>
                             <br></br>
                             <hr></hr>
                         </div>
                     )
-
                 })}
-
             </div>
             <div className="imageNum">
                 {Array.from({ length: totalPages }, (_, i) => (
@@ -129,7 +103,6 @@ const AnimalsMp3 = () => {
                         key={i + 1}
                         onClick={() => {
                             setPage(i + 1);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                         disabled={i + 1 === page}
                     >
@@ -139,6 +112,5 @@ const AnimalsMp3 = () => {
             </div>
         </>
     )
-
 };
-export default AnimalsMp3;
+export default AnimalsCollapsableMp3;

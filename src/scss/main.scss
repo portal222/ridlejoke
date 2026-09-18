@@ -1197,14 +1197,12 @@ body {
 
             &:active {
                 background-color: #a4c2da;
-
             }
 
             a {
                 font-size: 18px;
                 font-weight: bold;
                 color: #014780;
-
             }
 
             p {
@@ -2189,6 +2187,7 @@ body {
 
         .horoscope {
             padding: 15px;
+        margin-left: 5px;
 
             margin-top: 15px;
             width: 338px;
@@ -2407,20 +2406,17 @@ body {
         }
 
         .forms {
-
             gap: 8px;
             padding: 5px 10px;
             grid-template-columns: auto auto;
             font-size: 16px;
 
             .form {
-
                 padding: 8px8px;
             }
 
             .wordMain {
                 padding: 8px;
-
 
                 .word {
 

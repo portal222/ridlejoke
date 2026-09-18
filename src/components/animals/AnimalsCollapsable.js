@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import AnimalsPexels from "./AnimalsPexels";
 import AnimalsPexelsVideo from "./AnimalsPexelsVideo";
+import AnimalsCollapsableMp3 from "./AnimalsCollapsableMp3";
 
 const AnimalsCollapsable = (props) => {
     const [error, setError] = useState(null);
@@ -17,7 +18,7 @@ const AnimalsCollapsable = (props) => {
 
     const getAnimals = async () => {
         const url = `https://ridlejoke-proxy.kvaka32.workers.dev/animals?name=${animalId}`;
-      
+
 
 
         try {
@@ -29,12 +30,12 @@ const AnimalsCollapsable = (props) => {
                     }
                 }
             );
-        
+
 
 
             const data = response.data;
             setAnimals(data[0]);
-       
+
 
         } catch (err) {
             setError(err);
@@ -48,16 +49,16 @@ const AnimalsCollapsable = (props) => {
                 <tbody  >
                     <tr>
                         <td colSpan={2} style={{ textAlign: "center" }}>
-                     
+
                             <AnimalsPexels search={animalId} />
-                          
+
                         </td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td colSpan={2} style={{ textAlign: "center" }}>
-                     
+
                             <AnimalsPexelsVideo search={animalId} />
-                          
+
                         </td>
                     </tr>
                     {animals.characteristics?.common_name && (
@@ -388,7 +389,7 @@ const AnimalsCollapsable = (props) => {
                     )}
                 </tbody>
             </table >
-    
+            <AnimalsCollapsableMp3 name={animalId} />
         </>
     );
 };

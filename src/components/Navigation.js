@@ -133,6 +133,7 @@ const Navigation = () => {
           <Route path="/pexels" element={<PexelsImage />} />
           <Route path="/pexelsvideo" element={<PexelsVideo />} />
           <Route path="/soundEffect/:soundName" element={<ResultsSoundEffectOnClick />} />
+          <Route path="/animalSound" element={<AnimalsMp3 />} />
         </Routes>
       </HashRouter>
       <Footers />

@@ -13,6 +13,7 @@ import ExtinctAnimal from "../animals/ExtinctAnimal";
 import SearchSoundEffect from "./SearchSoundEffect";
 import SearchPexelsImg from "./SearchPexelsImg";
 import SearchPexelsVideo from "./SearchPexelsVideo";
+import SearchMp3 from "./SearchMp3";
 
 const SearchPlace = () => {
 
@@ -38,6 +39,7 @@ const SearchPlace = () => {
                     <SearchHistory placeholder={'Year'} linkTo={'/history'} />
                     <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
                     <div className="history">Search Animals</div>
+                    <SearchMp3 placeholder={'animals sound'} linkTo={'/animalSound'} />
                     <SearchAnimals placeholder={'Animals Cat and Dog'} linkTo={'/animals'} />
       
        
