@@ -99,12 +99,12 @@ const ResultsSoundEffectOnClick = () => {
 
                 </thead>
             </table>
-                <>
-                    {sound.map((effect) => (
-                        <>
-                            <table className="tabelaZemlje"
-                            key={effect.id}>
-                                <tbody key={id} className="soundEffect">
+            <>
+                {sound.map((effect) => (
+                    <>
+                        <div key={effect.id}>
+                            <table className="tabelaZemlje">
+                                <tbody className="soundEffect">
                                     <tr>
                                         <td rowSpan={3}>
                                             <img src={effect.thumbnail} alt="" className="soundImg" />
@@ -134,8 +134,7 @@ const ResultsSoundEffectOnClick = () => {
                                     </tr>
                                 </tbody>
                             </table>
-                            <table className="tabelaZemlje"
-                            key={effect.id}>
+                            <table className="tabelaZemlje">
                                 <tbody className="soundEffect">
                                     <tr>
                                         <td className="soundGrid">
@@ -151,28 +150,29 @@ const ResultsSoundEffectOnClick = () => {
                                     </tr>
                                 </tbody>
                             </table>
-                        </>
-                    ))}
-                    <div className="mainBook">
-                        <div className="imageNum">
-                            {Array.from({ length: totalPages }, (_, i) => (
-                                <div className={page === i + 1 ? 'numbActIm' : 'numbIm'}
-                                    key={i + 1}
-                                    onClick={() => {
-                                        setPage(i + 1);
-                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                    }}
-                                    disabled={i + 1 === page}
-                                >
-                                    {i + 1}
-                                </div>
-                            ))}
                         </div>
+                    </>
+                ))}
+                <div className="mainBook">
+                    <div className="imageNum">
+                        {Array.from({ length: totalPages }, (_, i) => (
+                            <div className={page === i + 1 ? 'numbActIm' : 'numbIm'}
+                                key={i + 1}
+                                onClick={() => {
+                                    setPage(i + 1);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                                disabled={i + 1 === page}
+                            >
+                                {i + 1}
+                            </div>
+                        ))}
                     </div>
-                    <div style={{ padding: "10px" }} className="tabelaZemlje">
-                        <SearchSoundEffect />
-                    </div>
-                </>
+                </div>
+                <div style={{ padding: "10px" }} className="tabelaZemlje">
+                    <SearchSoundEffect />
+                </div>
+            </>
             <BackToTop />
         </>
     );
