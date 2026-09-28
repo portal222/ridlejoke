@@ -14,6 +14,8 @@ const XkcdComics = () => {
 
 
 
+
+
     const getComic = async (randomNumber) => {
         const urlCom = `https://ridlejoke-proxy.kvaka32.workers.dev/xkcd?num=${randomNumber}`;
         try {
@@ -29,7 +31,7 @@ const XkcdComics = () => {
         <>
             <div className="mainBook">
                 <div className="polli">
-                    <div style={{padding: "10px"}}> Xkcd Comics</div>
+                    <div style={{ padding: "10px" }}> Xkcd Comics</div>
                     <img src={comics.img} alt="" style={{ width: "700px" }} />
                 </div>
                 <div className="polli2">

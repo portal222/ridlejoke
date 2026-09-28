@@ -43,6 +43,7 @@ import ResultsSoundEffect from "./search/ResultsSoundEffect";
 import PexelsImage from "./animals/PexelsImage";
 import PexelsVideo from "./animals/PexelsVideo";
 import ResultsSoundEffectOnClick from "./search/ResultsSoundEffectOnClick";
+import ResultsMusic from "./search/ResultsMusic";
 
 const theme = createTheme({
   palette: {
@@ -134,6 +135,7 @@ const Navigation = () => {
           <Route path="/pexelsvideo" element={<PexelsVideo />} />
           <Route path="/soundEffect/:soundName" element={<ResultsSoundEffectOnClick />} />
           <Route path="/animalSound" element={<AnimalsMp3 />} />
+          <Route path="/music" element={<ResultsMusic />} />
         </Routes>
       </HashRouter>
       <Footers />

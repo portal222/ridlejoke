@@ -14,6 +14,7 @@ import SearchSoundEffect from "./SearchSoundEffect";
 import SearchPexelsImg from "./SearchPexelsImg";
 import SearchPexelsVideo from "./SearchPexelsVideo";
 import SearchMp3 from "./SearchMp3";
+import SearchMusic from "./SearchMusic";
 
 const SearchPlace = () => {
 
@@ -33,6 +34,7 @@ const SearchPlace = () => {
                     <SearchSoundEffect placeholder={'Sound Effects'} linkTo={'/soundEffect'} />
                     <SearchPexelsImg placeholder={'Image'} linkTo={'/pexels'}/>
                     <SearchPexelsVideo placeholder={'Video'} linkTo={'/pexelsvideo'}/>
+                    <SearchMusic placeholder={'Music'} linkTo={'/music'}/>
                 </div>
                 <div>
                     <div className="history">Search History</div>

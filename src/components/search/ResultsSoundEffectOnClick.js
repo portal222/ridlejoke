@@ -139,7 +139,7 @@ const ResultsSoundEffectOnClick = () => {
                                     <tr>
                                         <td className="soundGrid">
                                             {effect.tags.map((tag, id) => (
-                                                <p key={id}
+                                                <p key={tag}
                                                     onClick={() => {
                                                         handleClick(tag);
                                                         window.scrollTo({ top: 0, behavior: 'smooth' });

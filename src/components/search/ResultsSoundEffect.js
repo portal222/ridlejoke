@@ -94,7 +94,7 @@ const ResultsSoundEffect = () => {
             <table className="tabelaZemlje">
                 <thead >
                     <tr>
-                        <th className="history">Sound Effect for {search}</th>
+                        <th className="history">{available} sound effect for {search}</th>
                     </tr>
 
                 </thead>
