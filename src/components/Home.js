@@ -2,19 +2,18 @@ import React from "react";
 import RandomFact from "./trivia/RandomFact";
 import Quotes from "./trivia/Quotes";
 import Horoscope from "./trivia/Horoscope";
-import WorldWonders from "./metropolitan/WorldWonders";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleNobel = () => {
-      const LinkTo = '/nobel';
-      navigate(LinkTo);
-    }
+  const handleNobel = () => {
+    const LinkTo = '/nobel';
+    navigate(LinkTo);
+  }
 
   return (
     <>
@@ -28,16 +27,16 @@ const Home = () => {
         <hr></hr>
         <div className="nobelPlace">
           <p className="nobelWinn">
-          Here are all the Nobel Prize winners since 1901.
+            Here are all the Nobel Prize winners since 1901.
 
           </p>
           <p className="nobelButt"
-          onClick={() => handleNobel()}
-         >
+            onClick={() => handleNobel()}
+          >
             NOBEL
           </p>
         </div>
-        <WorldWonders />
+        <hr></hr>
         <Horoscope />
       </div>
       <div className="place"></div>

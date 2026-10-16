@@ -20,10 +20,10 @@ const ResultsClickPerson = () => {
     const personName = params.linkName;
 
     useEffect(() => {
-        getPerson();
-    }, []);
+        getPerson(personName);
+    }, [personName]);
 
-    const getPerson = async () => {
+    const getPerson = async (personName) => {
 
         const url = `https://ridlejoke-proxy.kvaka32.workers.dev/person?name=${personName}`;
         const urlCel = `https://ridlejoke-proxy.kvaka32.workers.dev/celebrity?name=${personName}`;
@@ -32,8 +32,7 @@ const ResultsClickPerson = () => {
             const response = await axios.get(url,
                 {
                     headers: {
-                        "Content-Type": "application/json",
-                     
+                        "Content-Type": "application/json",           
                     }
                 }
             );

@@ -2,7 +2,7 @@ import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-import { BgColorsOutlined  } from "@ant-design/icons";
+import { CustomerServiceOutlined  } from "@ant-design/icons";
 
 const SearchMusic = (props) => {
 
@@ -40,7 +40,7 @@ const SearchMusic = (props) => {
             onClick={handleClickSearch}
             aria-label='search'
             >
-           🎵
+           <CustomerServiceOutlined />
             </IconButton>
         </Paper>
     );

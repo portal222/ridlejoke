@@ -67,7 +67,7 @@ const ResultsHistoryEvents = () => {
                     </tr>
                 </thead>
                 {historyEvents.map((dataObj) => (
-                    <tbody key={historyEvents.word}>
+                    <tbody key={dataObj.event}>
                         <tr>
                             <td className="celebrity">{dataObj.day + " " + dataObj.month + " " +
                                 dataObj.year}</td>

@@ -104,7 +104,8 @@ const ResultsSoundEffect = () => {
                     <>
                         <div key={effect.id}>
                             <table className="tabelaZemlje">
-                                <tbody className="soundEffect">
+                                <tbody className="soundEffect"
+                                    key={effect.id}>
                                     <tr>
                                         <td rowSpan={3}>
                                             <img src={effect.thumbnail} alt="" className="soundImg" />
@@ -138,8 +139,8 @@ const ResultsSoundEffect = () => {
                                 <tbody className="soundEffect">
                                     <tr>
                                         <td className="soundGrid">
-                                            {effect.tags.map((tag, id) => (
-                                                <p key={id}
+                                            {effect.tags.map((tag) => (
+                                                <p key={tag}
                                                     onClick={() => {
                                                         handleClick(tag);
                                                         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -170,7 +171,8 @@ const ResultsSoundEffect = () => {
                     </div>
                 </div>
                 <div style={{ padding: "10px" }} className="tabelaZemlje">
-                    <SearchSoundEffect />
+                    <SearchSoundEffect placeholder={'Sound Effects'} linkTo={'/soundEffect'} />
+
                 </div>
             </>
             <BackToTop />

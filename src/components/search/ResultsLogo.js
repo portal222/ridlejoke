@@ -21,14 +21,14 @@ const ResultsCelebs = () => {
     }, [searchStringValue]);
 
     const getLogos = async (searchStringValue) => {
-        const url = `https://api.api-ninjas.com/v1/logo?name=${searchStringValue}`;
+        const url = `https://ridlejoke-proxy.kvaka32.workers.dev/logo?name=${searchStringValue}`;
         const url2 = `https://autocomplete.clearbit.com/v1/companies/suggest?query=${searchStringValue}`;
 
         try {
             const response = await axios.get(url,
                 {
                     headers: {
-                        'X-Api-Key': 'D+dYjCxDSm5fEkIqyoCIeA==c2GvujXTiAbMIH05'
+                         "Content-Type": "application/json",
                     }
                 }
             );
@@ -42,6 +42,8 @@ const ResultsCelebs = () => {
             setResults(data.length);
             setResults2(data2.length);
             setIsLoading(false);
+
+            console.log("logo detalji drugi logo", response2);
         } catch (err) {
             setError(err);
         }
@@ -87,7 +89,7 @@ const ResultsCelebs = () => {
                         </tr>
                         <tr>
                             <td >
-                                <img className="logoImg" src={dataObj.image} />
+                                <img className="logoImg" src={dataObj.image_thumbnail} />
                             </td>
                         </tr>
                         <tr>

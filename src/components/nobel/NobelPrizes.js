@@ -13,8 +13,6 @@ const NobelPrizes = () => {
     const params = useParams()
 
     const link = decodeURIComponent(params.sanitizedLink);
-
-    console.log("link u NobelPrizes", link)
     const navigate = useNavigate();
 
     useEffect(() => {

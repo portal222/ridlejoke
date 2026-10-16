@@ -7,8 +7,10 @@ export default function ChatWithGroq() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [totalTok, setTotalTok] = useState(0);
-  const [selectedModel, setSelectedModel] = useState("groq/compound");
-  const [selectedDescription, setSelectedDescription] = useState("GROQ");
+  // const [selectedModel, setSelectedModel] = useState("groq/compound");
+  const [selectedModel, setSelectedModel] = useState("allam-2-7b");
+  const [selectedDescription, setSelectedDescription] = useState("ALLaM-AI/ALLaM-2.0-7B-Instruct");
+  // const [selectedDescription, setSelectedDescription] = useState("GROQ");
   const [seconds, setSeconds] = useState(0);
   const [secondsW, setSecondsW] = useState(0);
   const [timerActive, setTimerActive] = useState(false);

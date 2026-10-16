@@ -11,7 +11,8 @@ const WorldWonders = () => {
     }, []);
 
     const getWonder = async () => {
-        const url = `https://www.world-wonders-api.org/v0/wonders/random`;
+        const url = `https://ridlejoke-proxy.kvaka32.workers.dev/worldwonders`;
+
 
         try {
             const response = await axios.get(url);

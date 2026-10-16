@@ -17,16 +17,16 @@ const ResultsPerson = () => {
     const navigate = useNavigate();
 
     const globalCtx = useContext(GlobalContext);
-    const searchStringValue = globalCtx.searchStringValue;
+    const personName = globalCtx.searchStringValue;
 
     useEffect(() => {
-        getPerson(searchStringValue);
-    }, [searchStringValue]);
+        getPerson(personName);
+    }, [personName]);
 
-    const getPerson = async (searchStringValue) => {
+    const getPerson = async (personName) => {
         
-            const url = `https://ridlejoke-proxy.kvaka32.workers.dev/person?name=${searchStringValue}`;
-        const urlCel = `https://ridlejoke-proxy.kvaka32.workers.dev/celebrity?name=${searchStringValue}`;
+            const url = `https://ridlejoke-proxy.kvaka32.workers.dev/person?name=${personName}`;
+        const urlCel = `https://ridlejoke-proxy.kvaka32.workers.dev/celebrity?name=${personName}`;
 
 
         try {
@@ -129,7 +129,7 @@ const ResultsPerson = () => {
                     <tr>
                         <th className="history"
                             colSpan={2}>
-                            Persons {searchStringValue}</th>
+                            Persons {personName}</th>
                     </tr>
                     <tr className="results">
                         <th colSpan={2}>Number of Historyc persons: {results}</th>

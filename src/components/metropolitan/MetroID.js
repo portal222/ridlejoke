@@ -21,6 +21,8 @@ const MetroID = (props) => {
             const data = response.data;
             setMetro(data);
 
+            console.log("metro muzej rezultati", data);
+
         } catch (err) {
             setError(err);
         }

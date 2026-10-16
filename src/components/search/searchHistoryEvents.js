@@ -2,7 +2,7 @@ import React, { useRef, useContext } from "react";
 import { Paper,InputBase,IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-import { ReadOutlined } from "@ant-design/icons";
+import { HourglassOutlined } from "@ant-design/icons";
 
 const SearchHistoryEvents = (props) => {
 
@@ -40,7 +40,7 @@ const SearchHistoryEvents = (props) => {
             onClick={handleClickSearch}
             aria-label='search'
             >
-            <ReadOutlined />
+           <HourglassOutlined />
             </IconButton>
         </Paper>
     );

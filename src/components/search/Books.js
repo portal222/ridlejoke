@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Pagination } from "@mui/material";
 import BackToTop from "../BackToTop";
 import Loader from "../Loader";
-import SearchHistoryEvents from "./searchHistoryEvents";
+import SearchBooks from "./SearchBooks";
 import BooksDetails from "./BooksDetails";
 import BookWriter from "./BookWriter";
 import PaginateBook from "./PaginationBook";
@@ -75,7 +75,7 @@ const Books = () => {
                     <div className="total"> Nothing found</div>
                     <div style={{ padding: "20px" }}>
 
-                        <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} />
+                        <SearchBooks placeholder={'Books & Authors'} linkTo={'/books'} />
                     </div>
                 </div>
                 <div className="place"></div>

@@ -2,7 +2,7 @@ import React, { useRef, useContext } from "react";
 import { Paper, InputBase, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "../GlobalContext";
-import { PictureOutlined } from "@ant-design/icons";
+import { CameraOutlined } from "@ant-design/icons";
 
 const SearchPexelsImg = (props) => {
 
@@ -42,7 +42,7 @@ const SearchPexelsImg = (props) => {
 
                 aria-label='search'
             >
-           <PictureOutlined /> 
+           <CameraOutlined />
             </IconButton>
         </Paper>
     );

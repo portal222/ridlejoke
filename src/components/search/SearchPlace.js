@@ -12,9 +12,11 @@ import SearchAnimals from "./SearchAnimals";
 import ExtinctAnimal from "../animals/ExtinctAnimal";
 import SearchSoundEffect from "./SearchSoundEffect";
 import SearchPexelsImg from "./SearchPexelsImg";
+import SearchArtWork from "./SearchArtWork";
 import SearchPexelsVideo from "./SearchPexelsVideo";
 import SearchMp3 from "./SearchMp3";
 import SearchMusic from "./SearchMusic";
+import SearchBooks from "./SearchBooks";
 
 const SearchPlace = () => {
 
@@ -28,12 +30,13 @@ const SearchPlace = () => {
                     <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                     <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
                     <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
-                    <SearchHistoryEvents placeholder={'Books & Authors'} linkTo={'/books'} />
+                    <SearchBooks placeholder={'Books & Authors'} linkTo={'/books'} />
                     <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
                     <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                    <SearchSoundEffect placeholder={'Sound Effects'} linkTo={'/soundEffect'} />
+                    <SearchArtWork placeholder={'Works of art and artists'} linkTo={'/artsearch'}/>
                     <SearchPexelsImg placeholder={'Image'} linkTo={'/pexels'}/>
                     <SearchPexelsVideo placeholder={'Video'} linkTo={'/pexelsvideo'}/>
+                    <SearchSoundEffect placeholder={'Sound Effects'} linkTo={'/soundEffect'} />
                     <SearchMusic placeholder={'Music'} linkTo={'/music'}/>
                 </div>
                 <div>
