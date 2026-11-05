@@ -17,6 +17,7 @@ import SearchPexelsVideo from "./SearchPexelsVideo";
 import SearchMp3 from "./SearchMp3";
 import SearchMusic from "./SearchMusic";
 import SearchBooks from "./SearchBooks";
+import SearchBible from "./searchBible";
 
 const SearchPlace = () => {
 
@@ -29,25 +30,27 @@ const SearchPlace = () => {
                     <SearchPerson placeholder={'Persons'} linkTo={'/historyPerson'} />
                     <SearchLogo placeholder={'Logo'} linkTo={'/logo'} />
                     <SearchColors placeholder={'Colors'} linkTo={'/colorsSearch'} />
-                    <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
-                    <SearchBooks placeholder={'Books & Authors'} linkTo={'/books'} />
                     <SearchNYT placeholder={'The New York Times'} linkTo={'/nyTimes'} />
                     <SearchMetro placeholder={'Metropolitan museum'} linkTo={'/metro'} />
-                    <SearchArtWork placeholder={'Works of art and artists'} linkTo={'/artsearch'}/>
-                    <SearchPexelsImg placeholder={'Image'} linkTo={'/pexels'}/>
-                    <SearchPexelsVideo placeholder={'Video'} linkTo={'/pexelsvideo'}/>
+                    <SearchArtWork placeholder={'Works of art and artists'} linkTo={'/artsearch'} />
+                    <SearchPexelsImg placeholder={'Image'} linkTo={'/pexels'} />
+                    <SearchPexelsVideo placeholder={'Video'} linkTo={'/pexelsvideo'} />
                     <SearchSoundEffect placeholder={'Sound Effects'} linkTo={'/soundEffect'} />
-                    <SearchMusic placeholder={'Music'} linkTo={'/music'}/>
+                    <SearchMusic placeholder={'Music'} linkTo={'/music'} />
                 </div>
                 <div>
+                    <div className="history">Search Books</div>
+                    <SearchBooks placeholder={'Books & Authors'} linkTo={'/books'} />
+                    <SearchBible placeholder={'Bible'} linkTo={'/bible'} />
+                    <Dictionary placeholder={'Dictionary & Advice'} linkTo={'/dictionary'} />
                     <div className="history">Search History</div>
                     <SearchHistory placeholder={'Year'} linkTo={'/history'} />
                     <SearchHistoryEvents placeholder={'Events'} linkTo={'/historyEvents'} />
                     <div className="history">Search Animals</div>
                     <SearchMp3 placeholder={'animals sound'} linkTo={'/animalSound'} />
                     <SearchAnimals placeholder={'Animals Cat and Dog'} linkTo={'/animals'} />
-      
-       
+
+
 
                 </div>
             </div>

@@ -45,6 +45,8 @@ import PexelsVideo from "./animals/PexelsVideo";
 import ResultsSoundEffectOnClick from "./search/ResultsSoundEffectOnClick";
 import ResultsMusic from "./search/ResultsMusic";
 import ResultsArtSearch from "./metropolitan/ResultsArtSearch";
+import ResultsBible from "./search/ResultsBible";
+import ResultsBiblePhrase from "./search/ResultsBiblePhrase";
 
 
 const theme = createTheme({
@@ -139,6 +141,8 @@ const Navigation = () => {
           <Route path="/animalSound" element={<AnimalsMp3 />} />
           <Route path="/music" element={<ResultsMusic />} />
           <Route path="/artsearch" element={<ResultsArtSearch />} />
+          <Route path="/bible" element={<ResultsBible />} />
+          <Route path="/bible/:reference" element={<ResultsBiblePhrase />} />
         </Routes>
       </HashRouter>
       <Footers />
