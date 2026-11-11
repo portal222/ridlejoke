@@ -54,20 +54,13 @@ const HoroscopeDetails = (props) => {
         }
     }
 
-    const getImagePath = (name) => {
-        const item = horoscope.find(z => z.name === name);
-        return item ? `../assets/img/${item.url}.png` : null;
-    };
-
-    const imageSrc = getImagePath(zoname);
-
     return (
         <div className="facts">
             <div className="horoscope">
                 <div className="sign">
                     <h2>{zoname}</h2>
 
-                    {imageSrc && <img src={imageSrc} alt={zoEmoji} className="signImg" />}
+                    <p className="signImg">{zoEmoji}</p> 
                 </div>
                 {!isLoading && horos &&
                     <p className="text">

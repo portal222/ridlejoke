@@ -251,7 +251,7 @@ body {
         .sign {
             display: flex;
             align-items: center;
-            // justify-content: center;
+   
             flex-direction: column;
             padding: 15px;
 
@@ -263,6 +263,8 @@ body {
             }
 
             .signImg {
+                align-items: center;
+                padding: 5px;
                 width: 180px;
                 font-size: 90px;
             }
@@ -2364,10 +2366,11 @@ body {
 
             .sign {
 
-                padding: 10px;
+                padding: 15px;
 
                 .signImg {
-                    width: 70px;
+                    width: 80px;
+
                     font-size: 42px;
                 }
 

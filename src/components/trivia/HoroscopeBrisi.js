@@ -167,6 +167,11 @@ const HoroscopeBrisi = () => {
         }
     }
 
+      const getImagePath = (name) => {
+        const item = horoscope.find(z => z.name === name);
+        return item ? `../assets/img/${item.url}.png` : null;
+    };
+
     if (isLoading) {
         return (
             <HashLoad />)
