@@ -3,6 +3,8 @@ import RandomFact from "./trivia/RandomFact";
 import Quotes from "./trivia/Quotes";
 import Horoscope from "./trivia/Horoscope";
 import { useNavigate } from "react-router-dom";
+import MoonPhase from "./trivia/MoonPhase";
+import ResultsBibleDay from "./search/ResultsBibleDay";
 
 const Home = () => {
 
@@ -24,6 +26,7 @@ const Home = () => {
         <div className="welcom">WELCOME</div>
         <RandomFact />
         <Quotes />
+        <ResultsBibleDay />
         <hr></hr>
         <div className="nobelPlace">
           <p className="nobelWinn">
@@ -37,6 +40,7 @@ const Home = () => {
           </p>
         </div>
         <hr></hr>
+        <MoonPhase />
         <Horoscope />
       </div>
       <div className="place"></div>

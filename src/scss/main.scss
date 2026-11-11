@@ -241,6 +241,10 @@ body {
 
         .select {
             margin-left: 100px;
+            font-size: 22px;
+            padding: 5px 10px;
+
+
         }
 
 
@@ -260,6 +264,7 @@ body {
 
             .signImg {
                 width: 180px;
+                font-size: 90px;
             }
 
             p {
@@ -317,6 +322,57 @@ body {
 
     hr {
         border: 1px solid #4dd0e1;
+    }
+
+    .moonImg {
+        width: 250px;
+        margin: 10px;
+    }
+
+    .distance {
+        padding: 10px 25px;
+        font-size: 18px;
+        color: #9ee3f8;
+    }
+
+    .distance2 {
+        padding: 10px 25px;
+        font-size: 20px;
+        color: #b2ebf2;
+    }
+
+    .moonPar {
+        font-size: 18px;
+        background-color: rgb(222, 245, 247);
+        color: #289e80;
+        text-shadow: 0px 0px 1px black;
+        font-weight: lighter;
+
+        td {
+            padding: 5px 15px;
+        }
+
+    }
+
+    .moonGrid {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto;
+        gap: 15px;
+
+        p {
+            padding: 5px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        h4 {
+            font-size: 14px;
+            padding: 5px;
+            text-align: center;
+            color: whitesmoke;
+            font-weight: lighter;
+        }
+
     }
 }
 
@@ -857,7 +913,6 @@ body {
             padding: 5px 10px;
             background-color: #33cea7;
             border-radius: 5px;
-            width: 120px;
             text-align: center;
             margin: 30px;
 
@@ -2292,6 +2347,14 @@ body {
             border-radius: 8px;
             padding: 10px;
 
+            .select {
+                margin-left: 50px;
+                font-size: 14px;
+                padding: 3px 8px;
+
+
+            }
+
             h2 {
                 margin: auto;
                 font-weight: bold;
@@ -2305,6 +2368,7 @@ body {
 
                 .signImg {
                     width: 70px;
+                    font-size: 42px;
                 }
 
                 p {
@@ -2342,6 +2406,53 @@ body {
             }
 
         }
+
+        .moonImg {
+            width: 120px;
+        }
+
+        .distance {
+            padding: 10px 15px;
+            font-size: 12px;
+            color: #9ee3f8;
+        }
+
+        .distance2 {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #b2ebf2;
+        }
+
+        .moonPar {
+            font-size: 14px;
+
+
+            td {
+                padding: 5px 10px;
+            }
+
+        }
+
+        .moonGrid {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            gap: 10px;
+
+            p {
+                padding: 5px;
+                font-size: 26px;
+
+            }
+
+            h4 {
+                font-size: 10px;
+                padding: 4px;
+
+            }
+
+        }
+
+
     }
 
     .jokeMain {
@@ -2629,11 +2740,7 @@ body {
                 padding: 5px 7px;
                 background-color: #33cea7;
                 border-radius: 3px;
-                width: 90px;
-
                 margin: 20px;
-
-
             }
         }
     }

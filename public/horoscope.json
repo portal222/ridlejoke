@@ -1,50 +1,62 @@
 [
     {
         "name": "aries",
-        "url": "aries"
+        "url": "aries",
+        "emo": "♈"
     },
      {
         "name": "taurus",
-        "url": "taurus"
+        "url": "taurus",
+        "emo": "♉"
     },
      {
         "name": "gemini",
-        "url": "gemini"
+        "url": "gemini",
+        "emo": "♊"
     },
       {
         "name": "cancer",
-        "url": "cancer"
+        "url": "cancer",
+        "emo": "♋"
     },
       {
         "name": "leo",
-        "url": "leo"
+        "url": "leo",
+        "emo": "♌"
     },
       {
         "name": "virgo",
-        "url": "virgo"
+        "url": "virgo",
+        "emo": "♍"
     },
       {
         "name": "libra",
-        "url": "libra"
+        "url": "libra",
+        "emo": "♎"
     },
       {
         "name": "scorpio",
-        "url": "scorpio"
+        "url": "scorpio",
+        "emo": "♏"
     },
       {
         "name": "sagittarius",
-        "url": "sagittarius"
+        "url": "sagittarius",
+        "emo": "♐"
     },
       {
         "name": "capricorn",
-        "url": "capricorn"
+        "url": "capricorn",
+        "emo": "♑"
     },
       {
         "name": "aquarius",
-        "url": "aquarius"
+        "url": "aquarius",
+        "emo": "♒"
     },
       {
         "name": "pisces",
-        "url": "pisces"
+        "url": "pisces",
+        "emo": "♓"
     }
 ]

@@ -7,6 +7,7 @@ const Horoscope = () => {
 
     const [zoname, setZoname] = useState("");
     const [zourl, setZourl] = useState("");
+    const [zoemoji, setZoemoji] = useState("");
 
 
     return (
@@ -26,19 +27,24 @@ const Horoscope = () => {
                                 if (selectedHor) {
                                     setZoname(selectedName);
                                     setZourl(selectedHor.url);
+                                    setZoemoji(selectedHor.emo);
                                 }
-                            }}
+                            }}s
                         >
-                            <option value="" disabled>choose zodiac</option>
+                            <option 
+                            className="selectA"
+                            value="" disabled>choose zodiac</option>
                             {horoscope.map((hor, id) => (
-                                <option key={id} value={hor.name}>
+                                <option 
+                                className="selectA"
+                                key={id} value={hor.name}>
                                     {hor.name}
                                 </option>
                             ))}
                         </select>
                     </div>
                 </div>
-                <HoroscopeDetails zoname={zoname}/>
+                <HoroscopeDetails zoname={zoname} zoemoji={zoemoji}/>
                 <div style={{ height: "60px" }}></div>
             </div>
         </>

@@ -12,25 +12,36 @@ const JokesOfficial = () => {
     useEffect(() => {
         getJokes();
         getFox();
+        getTeehee();
     }, []);
 
     const getJokes = async () => {
 
-        const url = "https://official-joke-api.appspot.com/random_joke";
-        const urlT = "https://teehee.dev/api/joke"
+        const url = "https://ridlejoke-proxy.kvaka32.workers.dev/official";
 
         try {
             const response = await axios.get(url);
-            const responseT = await axios.get(urlT);
             const data = response.data;
-            const dataT = responseT.data;
+console.log("official joke",data)
+           
+        } catch (err) {
+            setError(err);
+        }
+    };
 
-            setJokes(data);
+    const getTeehee = async () => {
+        const urlT = "https://teehee.dev/api/joke"
+
+            try {
+            const responseT = await axios.get(urlT);
+            const dataT = responseT.data;
             setTeehee(dataT);
         } catch (err) {
             setError(err);
         }
     };
+
+    
 
     const getFox = async () => {
         const url = "https://randomfox.ca/floof/";
@@ -51,15 +62,8 @@ const JokesOfficial = () => {
     return (
         <>
             <div className="jokeMain" >
-                <div className="type">Random joke type: {jokes.type}</div>
-                <Collapse
-                    size="large"
-                    items={[{
-                        label: <p className="jokeAnswer">{jokes.setup}</p>,
-                        children: <p className="jokeAns">{text}</p>,
-                        showArrow: false,
-                    }]} />
-                      <div className="type">Teehee joke type: {teehee.id}</div>
+             
+               
                 <Collapse
                     size="large"
                     items={[{

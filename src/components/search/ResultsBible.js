@@ -4,6 +4,7 @@ import GlobalContext from "../GlobalContext";
 import Loader from "../Loader";
 import BackToTop from "../BackToTop";
 import { useNavigate } from "react-router-dom";
+import ResultsBibleDay from "./ResultsBibleDay";
 
 // import SearchBible from "./searchBible";
 
@@ -75,19 +76,7 @@ const ResultsBible = () => {
     if (isLoading) {
         return <Loader />
     }
-    // else if (results == 0) {
-    //     return (
-    //         <>
-    //             <div className="pickTrivia">
-    //                 <SearchBible placeholder={'Bible'} linkTo={'/bible'} />
-    //             </div>
-    //             <div className="tabelaZemlje">
-    //                 <div className="results">Nothing found</div>
-    //             </div>
-    //             <div className="place"></div>
-    //         </>
-    //     )
-    // }
+   
     return (
         <>
             <table className="tabelaZemlje">
@@ -145,6 +134,7 @@ const ResultsBible = () => {
                     </tbody>
                 ))}
             </table >
+            <ResultsBibleDay />
             <BackToTop />
         </>
     );

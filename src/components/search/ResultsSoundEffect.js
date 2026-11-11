@@ -42,6 +42,8 @@ const ResultsSoundEffect = () => {
             setAvailable(data.available);
             setStatus(response.status);
 
+            console.log("yvucni efekti", data.sounds);
+
         } catch (err) {
             if (err.response?.status === 402) {
                 setError('You have reached your request limit for today. Please try again tomorrow.');
@@ -100,12 +102,12 @@ const ResultsSoundEffect = () => {
                 </thead>
             </table>
             <>
-                {sound.map((effect) => (
+                {sound.map(effect => (
                     <>
                         <div key={effect.id}>
                             <table className="tabelaZemlje">
                                 <tbody className="soundEffect"
-                                    key={effect.id}>
+                                >
                                     <tr>
                                         <td rowSpan={3}>
                                             <img src={effect.thumbnail} alt="" className="soundImg" />

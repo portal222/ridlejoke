@@ -23,7 +23,8 @@ const HoroscopeDetails = (props) => {
 
     const zoname = props.zoname
     const zourl = props.zoname
- 
+    const zoEmoji = props.zoemoji
+
     useEffect(() => {
         if (zoname) {
             getHoros(zoname);
@@ -65,7 +66,8 @@ const HoroscopeDetails = (props) => {
             <div className="horoscope">
                 <div className="sign">
                     <h2>{zoname}</h2>
-                    {imageSrc && <img src={imageSrc} alt={zoname} className="signImg" />}
+
+                    {imageSrc && <img src={imageSrc} alt={zoEmoji} className="signImg" />}
                 </div>
                 {!isLoading && horos &&
                     <p className="text">
@@ -76,27 +78,4 @@ const HoroscopeDetails = (props) => {
     );
 };
 
-
-
-
-// return (
-//     <>
-//         <div className="facts">
-
-//             <div className="horoscope">
-//                 <div className="sign">
-//                     {/* <img src={zourl} alt="" className="signImg" /> */}
-//                     <p>
-//                         {horos.sign}
-//                     </p>
-//                 </div>
-//                 <p className="text">
-//                     {horos.horoscope}
-//                 </p>
-//             </div>
-
-//             <div style={{ height: "60px" }}></div>
-//         </div>
-//     </>
-// )
 export default HoroscopeDetails;

@@ -100,7 +100,7 @@ const ResultsSoundEffectOnClick = () => {
                 </thead>
             </table>
             <>
-                {sound.map((effect) => (
+                {sound.map(effect => (
                     <>
                         <div key={effect.id}>
                             <table className="tabelaZemlje">
